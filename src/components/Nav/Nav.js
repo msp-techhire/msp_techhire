@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const styles = {
+  list: {
+    width: '350'
+  }
+}
 const Nav = () => (
   <div className="navbar">
     <div>
