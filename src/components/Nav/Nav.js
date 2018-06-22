@@ -11,8 +11,18 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/info">
-            Info Page
+          <Link to="/search">
+            Search Page
+          </Link>
+        </li>
+        <li>
+          <Link to="/summary">
+            Summary Page
+          </Link>
+        </li>
+        <li>
+          <Link to="/editpartner">
+            Partner Page
           </Link>
         </li>
       </ul>
