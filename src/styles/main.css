@@ -7,19 +7,15 @@ body {
     font-weight: 700;
 }
 
-.instructions {
-    background-color: #00acb0;
-    padding: 5px;
-    color: #ece7e7;
-}
-
 form {
-    background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
+    background-color: #cce1f4;
+    width: 250px;
+    height: 200px;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
+    letter-spacing: 2px;
+
 }
 
 input {
@@ -28,7 +24,13 @@ input {
 }
 
 input[type="submit"] {
+    width: 60px;
     margin: 10px;
+}
+
+#logoLogin {
+    background:  url('/logoLogin.jpg');
+    background-size: 210px 210px;
 }
 
 .message {
