@@ -27,7 +27,7 @@ class SummaryPage extends Component {
       content = (
         <div>
           <p>
-            Info Page
+            Summary Page
           </p>
         </div>
       );
