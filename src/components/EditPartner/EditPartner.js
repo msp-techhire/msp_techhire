@@ -4,12 +4,22 @@ import { connect } from 'react-redux';
 
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import PartnerDropdown from './PartnerDropdown/PartnerDropdown';
 
 const mapStateToProps = state => ({
   user: state.user,
 });
 
 class EditPartner extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedPartner: '',
+      partnerList: ['this', 'is', 'a', 'test'],
+    }
+  }
+
   componentDidMount() {
     this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
   }
@@ -20,15 +30,23 @@ class EditPartner extends Component {
     }
   }
 
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  }
+
   render() {
     let content = null;
 
     if (this.props.user.userName) {
       content = (
         <div>
-          <p>
-            Edit Partner Page
-          </p>
+          <h1>Hello Edit Partner</h1>
+          <PartnerDropdown 
+            partners={this.state.partnerList}
+            handleChange={this.handleChange}
+          />
         </div>
       );
     }
