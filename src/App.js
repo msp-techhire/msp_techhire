@@ -10,7 +10,10 @@ import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
-import InfoPage from './components/InfoPage/InfoPage';
+import Search from './components/Search/Search';
+import SummaryPage from './components/SummaryPage/SummaryPage';
+import EditPartner from './components/EditPartner/EditPartner';
+import Partner from './components/Partner/Partner';
 
 import './styles/main.css';
 
