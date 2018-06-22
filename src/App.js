@@ -41,15 +41,15 @@ const App = () => (
         />
           <Route
           path="/search"
-          component={SearchPage}
+          component={Search}
         />
         <Route
           path="/editpartner"
-          component={EditPartnerPage}
+          component={EditPartner}
         />
         <Route
           path="/partner"
-          component={PartnerPage}
+          component={Partner}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
