@@ -33,8 +33,20 @@ const App = () => (
           component={UserPage}
         />
         <Route
-          path="/info"
-          component={InfoPage}
+          path="/summary"
+          component={SummaryPage}
+        />
+          <Route
+          path="/search"
+          component={SearchPage}
+        />
+        <Route
+          path="/editpartner"
+          component={EditPartnerPage}
+        />
+        <Route
+          path="/partner"
+          component={PartnerPage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
