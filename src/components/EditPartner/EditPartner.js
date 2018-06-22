@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -34,6 +35,17 @@ class EditPartner extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+  }
+
+  getPartners = () => {
+    axios({
+      method: 'GET',
+      url: ''
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch(err => console.log(err))
   }
 
   render() {
