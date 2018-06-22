@@ -76,6 +76,14 @@ input[type="submit"] {
   border-radius: 0px;
 }
 
+#navLogo {
+    background:  url('/images/logoLogin.png');
+    background-size: 240px 160px;
+    height: 160px;
+    width: 240px;
+    margin-top: 20px;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -100,4 +108,15 @@ li a {
 li a:hover {
     text-decoration: underline;
     color: #eee;
+}
+
+#welcome {
+    margin-left: 108px;
+    margin-top: -45px;
+    padding: 10px;
+}
+
+#logoutButton {
+    margin-left: 90%;
+    width: 80px;
 }
