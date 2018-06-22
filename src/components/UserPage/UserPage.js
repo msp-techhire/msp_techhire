@@ -33,16 +33,8 @@ class UserPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h1
-            id="welcome"
-          >
-            Welcome, { this.props.user.userName }!
-          </h1>
-          <button
-            onClick={this.logout}
-          >
-            Log Out
-          </button>
+          <button id="logoutButton"
+            onClick={this.logout}>Log Out</button>
         </div>
       );
     }
