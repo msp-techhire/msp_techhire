@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 class LoginPage extends Component {
   constructor(props) {
     super(props);
-
+ 
     this.state = {
       username: '',
       password: '',
@@ -65,9 +65,9 @@ class LoginPage extends Component {
       <div>
         { this.renderAlert() }
         <form onSubmit={this.login}>
-          <h1>Login</h1>
+          <h1 id="textLogin">Login</h1>
           <div>
-            <label htmlFor="username">
+            <label htmlFor="username" id="textUsername">
               Username:
               <input
                 type="text"
@@ -78,7 +78,7 @@ class LoginPage extends Component {
             </label>
           </div>
           <div>
-            <label htmlFor="password">
+            <label htmlFor="password" id="textPassword">
               Password:
               <input
                 type="password"
