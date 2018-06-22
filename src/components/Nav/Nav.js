@@ -3,19 +3,16 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import {Link} from 'react-router-dom';
-
+import Button from '@material-ui/core/Button';
 
 const drawerWidth = 240;
 
@@ -43,6 +40,7 @@ const styles = theme => ({
   },
   list: {
     textAlign: 'center',
+    color: 'black'
   },
   'contentShift-left': {
         justifyContent: 'center',
@@ -85,32 +83,45 @@ class Nav extends React.Component {
         <div>
           <IconButton onClick={this.handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+
           </IconButton>
         </div>
         <div className={classes.list}>
         <Divider />
         <List>  
-              <Link to="/user">
+              Logo Goes Here
+            </List>
+            <Divider />
+        <List>  
+          <Button size="small">
+              <Link to="/user" style={{color: 'black', textDecoration: 'none'}}>
               User Home
             </Link>
+            </Button>
             </List>
             <Divider />
             <List>
-            <Link to="/search">
+            <Button size="small">
+            <Link to="/search" style={{color: 'black', textDecoration: 'none'}}>
             Search Page
           </Link>
+          </Button>
           </List>
           <Divider />
           <List>
-          <Link to="/summary">
+          <Button size="small">
+          <Link to="/summary" style={{color: 'black', textDecoration: 'none'}}>
             Summary Page
           </Link>
+          </Button>
           </List>
           <Divider />
           <List>
-          <Link to="/editpartner">
+          <Button size="small">
+          <Link to="/editpartner" style={{color: 'black', textDecoration: 'none'}}>
             Partner Page
           </Link>
+          </Button>
             </List>
             </div>
       </Drawer>
