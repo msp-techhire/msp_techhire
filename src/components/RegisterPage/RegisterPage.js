@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class RegisterPage extends Component {
       message: '',
     };
   }
-  
+
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
