@@ -33,6 +33,9 @@ class AdminPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
+          <p> 
+            Admin Page
+          </p>
           <button id="logoutButton"
             onClick={this.logout}>Log Out</button>
         </div>
@@ -42,7 +45,7 @@ class AdminPage extends Component {
     return (
       <div>
         <Nav />
-        { content }
+        {content}
       </div>
     );
   }
