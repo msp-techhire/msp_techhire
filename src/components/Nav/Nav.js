@@ -113,17 +113,9 @@ class Nav extends React.Component {
           <Divider />
           <List>
             <Button size="small">
-              <Link to="/user" style={{ color: 'black', textDecoration: 'none' }}>
-                User Home
+              <Link to="/admin" style={{ color: 'black', textDecoration: 'none' }}>
+                Admin Home
             </Link>
-            </Button>
-          </List>
-          <Divider />
-          <List>
-            <Button size="small">
-              <Link to="/search" style={{ color: 'black', textDecoration: 'none' }}>
-                Search Page
-          </Link>
             </Button>
           </List>
           <Divider />

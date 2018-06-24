@@ -24,31 +24,27 @@ const App = () => (
       <Switch>
         <Redirect exact from="/" to="/home" />
         <Route
-          path="/home"
+          path="/home" // LOGIN page
           component={LoginPage}
         />
         <Route
-          path="/register"
+          path="/register" // TEMPORARY registration page
           component={RegisterPage}
         />
         <Route
-          path="/user"
+          path="/admin" // admin landing page
           component={UserPage}
         />
         <Route
-          path="/summary"
+          path="/summary" // admin summary page
           component={SummaryPage}
         />
-          <Route
-          path="/search"
-          component={Search}
-        />
         <Route
-          path="/editpartner"
+          path="/editpartner" // admin edit partner page
           component={EditPartner}
         />
         <Route
-          path="/partner"
+          path="/partner" // partner landing page
           component={Partner}
         />
         {/* OTHERWISE (no path!) */}
