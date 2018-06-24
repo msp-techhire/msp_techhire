@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -11,6 +12,16 @@ class RegisterPage extends Component {
       password: '',
       message: '',
     };
+  }
+
+  componentDidMount() {
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+  }
+
+  componentDidUpdate() {
+    if (!this.props.user.isLoading && (this.props.user.userName === null || this.props.user.userRole !== 'admin')) {
+      this.props.history.push('login');
+    }
   }
 
   registerUser = (event) => {
