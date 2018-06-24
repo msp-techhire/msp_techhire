@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { connect } from 'react-redux'
 
+const mapStateToProps = state => ({ state });
 class RegisterPage extends Component {
   constructor(props) {
     super(props);
@@ -118,5 +120,5 @@ class RegisterPage extends Component {
   }
 }
 
-export default RegisterPage;
+export default connect(mapStateToProps)(RegisterPage);
 
