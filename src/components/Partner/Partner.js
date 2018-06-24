@@ -35,7 +35,6 @@ class Partner extends Component {
 
     return (
       <div>
-        <Nav />
         { content }
       </div>
     );

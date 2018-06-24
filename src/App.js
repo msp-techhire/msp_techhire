@@ -10,7 +10,6 @@ import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import AdminPage from './components/AdminPage/AdminPage';
-import Search from './components/Search/Search';
 import SummaryPage from './components/SummaryPage/SummaryPage';
 import EditPartner from './components/EditPartner/EditPartner';
 import Partner from './components/Partner/Partner';
