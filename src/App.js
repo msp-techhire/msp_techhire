@@ -13,6 +13,7 @@ import AdminPage from './components/AdminPage/AdminPage';
 import SummaryPage from './components/SummaryPage/SummaryPage';
 import EditPartner from './components/EditPartner/EditPartner';
 import Partner from './components/Partner/Partner';
+import LandingPage from './components/LandingPage/LandingPage';
 
 import './styles/main.css';
 
@@ -45,6 +46,10 @@ const App = () => (
         <Route
           path="/partner" // partner landing page
           component={Partner}
+        />
+        <Route
+          path="/landing"
+          component={LandingPage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
