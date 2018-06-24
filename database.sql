@@ -6,7 +6,7 @@ CREATE TABLE "user" (
 	"id" SERIAL PRIMARY KEY,
 	"username" VARCHAR (80) UNIQUE NOT NULL,
 	"password" VARCHAR(1000) NOT NULL,
-	"user_type" current_type DEFAULT 'partner'
+	"role" current_type DEFAULT 'partner'
 );
 
 CREATE TYPE business AS ENUM ('For-profit', 'Non-profit', 'School/College', 'other');
