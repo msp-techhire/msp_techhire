@@ -2,21 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Nav from '../../components/Nav/Nav';
+
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { triggerLogout } from '../../redux/actions/loginActions';
+
 
 const mapStateToProps = state => ({
   user: state.user,
 });
-
+ 
 class SummaryPage extends Component {
   componentDidMount() {
-    this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER});
   }
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('login');
     }
+  }
+
+  logout = () => {
+    this.props.dispatch(triggerLogout());
+    this.props.history.push('login');
   }
 
   render() {
@@ -28,6 +36,8 @@ class SummaryPage extends Component {
           <p>
             Summary Page
           </p>
+          <button id="logoutButton"
+            onClick={this.logout}>Log Out</button>
         </div>
       );
     }
@@ -37,7 +47,7 @@ class SummaryPage extends Component {
         <Nav />
         { content }
       </div>
-    );
+    ); 
   }
 }
 
