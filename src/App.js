@@ -9,7 +9,7 @@ import {
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-import UserPage from './components/UserPage/UserPage';
+import AdminPage from './components/AdminPage/AdminPage';
 import Search from './components/Search/Search';
 import SummaryPage from './components/SummaryPage/SummaryPage';
 import EditPartner from './components/EditPartner/EditPartner';
@@ -22,9 +22,9 @@ const App = () => (
     <Header title="" />
     <Router>
       <Switch>
-        <Redirect exact from="/" to="/home" />
+        <Redirect exact from="/" to="/login" />
         <Route
-          path="/home" // LOGIN page
+          path="/login" // LOGIN page
           component={LoginPage}
         />
         <Route
@@ -33,7 +33,7 @@ const App = () => (
         />
         <Route
           path="/admin" // admin landing page
-          component={UserPage}
+          component={AdminPage}
         />
         <Route
           path="/summary" // admin summary page
