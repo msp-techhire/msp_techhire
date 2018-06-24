@@ -4,7 +4,7 @@ import axios from 'axios';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { connect } from 'react-redux'
 
-const mapStateToProps = state => ({ state });
+const mapStateToProps = state => ({ user: state.user });
 class RegisterPage extends Component {
   constructor(props) {
     super(props);
