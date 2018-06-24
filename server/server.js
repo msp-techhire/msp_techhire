@@ -11,6 +11,12 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 
+// TO DO
+// work in progress for search
+// need dummy data to test
+// const searchAdmin = require('./routes/search.router');
+
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,6 +30,12 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+
+// TO DO
+// work in progress for search
+// need dummy data to test
+// app.use('/api/search', searchAdmin); 
+
 
 // Serve static files
 app.use(express.static('build'));
