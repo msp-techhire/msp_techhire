@@ -11,8 +11,11 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { connect } from 'react-redux';
+
 
 const drawerWidth = 240;
 
@@ -20,7 +23,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
   },
- 
+
   menuButton: {
     marginLeft: 12,
     marginRight: 20,
@@ -43,15 +46,29 @@ const styles = theme => ({
     color: 'black'
   },
   'contentShift-left': {
-        justifyContent: 'center',
-      },
+    justifyContent: 'center',
+  },
 })
+
+const mapStateToProps = state => ({
+  user: state.user,
+});
 
 class Nav extends React.Component {
   state = {
     open: true,
     anchor: 'left',
   };
+
+  componentDidMount() {
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+  }
+
+  componentDidUpdate() {
+    if (!this.props.user.isLoading && this.props.user.userName === null) {
+      this.props.history.push('login');
+    }
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -71,6 +88,7 @@ class Nav extends React.Component {
     const { classes, theme } = this.props;
     const { anchor, open } = this.state;
 
+    // if (this.props.user.userName) {
     const drawer = (
       <Drawer
         variant="persistent"
@@ -83,49 +101,42 @@ class Nav extends React.Component {
         <div>
           <IconButton onClick={this.handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-
           </IconButton>
+          <div id="welcome" >
+            Welcome, {this.props.user.userName}!
+          </div>
         </div>
         <div className={classes.list}>
-        <Divider />
-        <List>  
-              Logo Goes Here
-            </List>
-            <Divider />
-        <List>  
-          <Button size="small">
-              <Link to="/user" style={{color: 'black', textDecoration: 'none'}}>
-              User Home
+          <Divider />
+          <List id="navLogo">
+          </List>
+          <Divider />
+          <List>
+            <Button size="small">
+              <Link to="/admin" style={{ color: 'black', textDecoration: 'none' }}>
+                Admin Home
             </Link>
             </Button>
-            </List>
-            <Divider />
-            <List>
+          </List>
+          <Divider />
+          <List>
             <Button size="small">
-            <Link to="/search" style={{color: 'black', textDecoration: 'none'}}>
-            Search Page
+              <Link to="/summary" style={{ color: 'black', textDecoration: 'none' }}>
+                Summary Page
           </Link>
-          </Button>
+            </Button>
           </List>
           <Divider />
           <List>
-          <Button size="small">
-          <Link to="/summary" style={{color: 'black', textDecoration: 'none'}}>
-            Summary Page
+            <Button size="small">
+              <Link to="/editpartner" style={{ color: 'black', textDecoration: 'none' }}>
+                Partner Page
           </Link>
-          </Button>
+            </Button>
           </List>
-          <Divider />
-          <List>
-          <Button size="small">
-          <Link to="/editpartner" style={{color: 'black', textDecoration: 'none'}}>
-            Partner Page
-          </Link>
-          </Button>
-            </List>
-            </div>
+        </div>
       </Drawer>
-    );
+    )
 
     let before = null;
     let after = null;
@@ -138,26 +149,26 @@ class Nav extends React.Component {
 
     return (
       <div className={classes.root}>
-            <Toolbar disableGutters={!open}>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={this.handleDrawerOpen}
-                className={classNames(classes.menuButton, open && classes.hide)}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography variant="title" color="inherit" noWrap>
-              </Typography>
-            </Toolbar>
-          {before}
-          <main
-            className={classNames(classes.content, classes[`content-${anchor}`], {
-              [classes.contentShift]: open,
-              [classes[`contentShift-${anchor}`]]: open,
-            })}>
-          </main>
-          {after}
+        <Toolbar disableGutters={!open}>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={this.handleDrawerOpen}
+            className={classNames(classes.menuButton, open && classes.hide)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="title" color="inherit" noWrap>
+          </Typography>
+        </Toolbar>
+        {before}
+        <main
+          className={classNames(classes.content, classes[`content-${anchor}`], {
+            [classes.contentShift]: open,
+            [classes[`contentShift-${anchor}`]]: open,
+          })}>
+        </main>
+        {after}
       </div>
     );
   }
@@ -168,6 +179,8 @@ Nav.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(Nav);
-   
+export default connect(mapStateToProps)(withStyles(styles, { withTheme: true })(Nav));
+
+
+
 

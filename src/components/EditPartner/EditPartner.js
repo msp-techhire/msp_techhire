@@ -1,11 +1,13 @@
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
 import Nav from '../../components/Nav/Nav';
+
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import PartnerDropdown from './PartnerDropdown/PartnerDropdown';
+import { triggerLogout } from '../../redux/actions/loginActions';
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -22,13 +24,18 @@ class EditPartner extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
 
   componentDidUpdate() {
-    if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
+    if (!this.props.user.isLoading && (this.props.user.userName === null || this.props.user.userRole !== 'admin')) {
+      this.props.history.push('login');
     }
+  } 
+
+  logout = () => {
+    this.props.dispatch(triggerLogout());
+    this.props.history.push('login');
   }
 
   handleChange = (event) => {
@@ -54,11 +61,18 @@ class EditPartner extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
+
           <h1>Hello Edit Partner</h1>
           <PartnerDropdown 
             partners={this.state.partnerList}
             handleChange={this.handleChange}
           />
+
+          <p>
+            Edit Partner Page
+          </p>
+          <button id="logoutButton"
+            onClick={this.logout}>Log Out</button>
         </div>
       );
     }
@@ -66,7 +80,7 @@ class EditPartner extends Component {
     return (
       <div>
         <Nav />
-        { content }
+        {content}
       </div>
     );
   }
