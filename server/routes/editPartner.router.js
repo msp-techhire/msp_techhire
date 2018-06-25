@@ -10,7 +10,10 @@ router.get('/partners', (req, res) => {
 
 router.get('/partnerInfo/:id', (req, res) => {
     let idToGet = req.params.id;
-    res.send(idToGet);
+    const queryText = `SELECT * FROM "partner" WHERE id=$1`;
+    pool.query(queryText, [idToGet])
+    .then(response => res.send(response.rows))
+    .catch(err => res.sendStatus(500));
 })
 
 module.exports = router;

@@ -20,6 +20,7 @@ class EditPartner extends Component {
 
     this.state = {
       selectedPartnerID: '',
+      selectedPartnerData: [],
       partnerList: [],
     }
   }
@@ -33,7 +34,6 @@ class EditPartner extends Component {
     if (!this.props.user.isLoading && (this.props.user.userName === null || this.props.user.userRole !== 'admin')) {
       this.props.history.push('login');
     }
-    this.getPartnerData(this.state.selectedPartnerID);
   } 
 
   logout = () => {
@@ -45,6 +45,7 @@ class EditPartner extends Component {
     this.setState({
       selectedPartnerID: event.target.value,
     });
+    this.getPartnerData(event.target.value);
   }
 
   getPartners = () => {
@@ -60,17 +61,22 @@ class EditPartner extends Component {
     .catch(err => console.log(err))
   }
 
-  getPartnerData = (partnerID) => {
-    if(this.state.selectedPartnerID !== '') {
-      return axios({
-        method: 'GET',
-        url: `/api/editPartner/partnerInfo/${partnerID}`
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch(err => console.log(err)); 
-    }
+  getPartnerData = (id) => {
+      let action = {
+        type: USER_ACTIONS.GET_PARTNER_DATA,
+        payload: id,
+      }
+      this.props.dispatch(action);
+    //   return axios({
+    //     method: 'GET',
+    //     url: `/api/editPartner/partnerInfo/${partnerID}`
+    //   })
+    //   .then((response) => {
+    //     this.setState({
+    //       selectedPartnerData: response.data,
+    //     });
+    //   })
+    //   .catch(err => console.log(err)); 
   }
 
   render() {
