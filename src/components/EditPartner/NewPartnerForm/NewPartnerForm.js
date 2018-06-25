@@ -18,8 +18,23 @@ class NewPartnerForm extends Component {
     render() {
 
         return <form>
-            <h1>Hello New Form</h1>
-            <label htmlFor="orgName">Organization Name</label>
+            <h2>Register New Partner</h2>
+            <div>
+                <label htmlFor="orgName">Organization Name</label>
+                <input onChange={this.handleChange} type="text" name="orgName" id="orgName"value={this.state.orgName}/>
+            </div>
+            
+            <label htmlFor="orgName">Address</label>
+            <input onChange={this.handleChange} type="text" name="orgName" id="orgName"value={this.state.orgName}/>
+            <label htmlFor="orgName">Website</label>
+            <input onChange={this.handleChange} type="text" name="orgName" id="orgName"value={this.state.orgName}/>
+            <label htmlFor="orgName">Phone Number</label>
+            <input onChange={this.handleChange} type="text" name="orgName" id="orgName"value={this.state.orgName}/>
+            <label htmlFor="orgName">Director First Name</label>
+            <input onChange={this.handleChange} type="text" name="orgName" id="orgName"value={this.state.orgName}/>
+            <label htmlFor="orgName">Director Last Name</label>
+            <input onChange={this.handleChange} type="text" name="orgName" id="orgName"value={this.state.orgName}/>
+            <label htmlFor="orgName">Business Type</label>
             <input onChange={this.handleChange} type="text" name="orgName" id="orgName"value={this.state.orgName}/>
         </form>
     }

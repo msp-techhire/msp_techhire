@@ -82,7 +82,7 @@ class RegisterPage extends Component {
     return (
       <div>
         {this.renderAlert()}
-        <form onSubmit={this.registerUser}>
+        <form onSubmit={this.registerUser} className="logInForm">
           <h1>Register User</h1>
           <div>
             <label htmlFor="username">
@@ -90,6 +90,7 @@ class RegisterPage extends Component {
               <input
                 type="text"
                 name="username"
+                className="logInInput"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
@@ -101,6 +102,7 @@ class RegisterPage extends Component {
               <input
                 type="password"
                 name="password"
+                className="logInInput"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
