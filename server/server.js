@@ -14,7 +14,7 @@ const userRouter = require('./routes/user.router');
 // TO DO
 // work in progress for search
 // need dummy data to test
-// const searchAdmin = require('./routes/search.router');
+const searchAdmin = require('./routes/search.router');
 
 
 // Body parser middleware
@@ -34,7 +34,7 @@ app.use('/api/user', userRouter);
 // TO DO
 // work in progress for search
 // need dummy data to test
-// app.use('/api/search', searchAdmin); 
+app.use('/api/admin', searchAdmin); 
 
 
 // Serve static files

@@ -20,16 +20,16 @@ class AdminPage extends Component {
   // work in progress for search
   // need dummy data to test
 
-  // // adding fields to search
+  // adding fields to search
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     results: [],
-  //     gender: '',
-  //     editOn: false,
-  //   }
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: [],
+      gender: '',
+      editOn: false,
+    }
+  }
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -38,12 +38,12 @@ class AdminPage extends Component {
     // work in progress for search
     // need dummy data to test
 
-    // // adding data fetch
+    // adding data fetch
 
-    // this.fetchData();
-    // this.setState({
-    //   subtopic: this.props.match.params.id
-    // })
+    this.fetchData();
+    this.setState({
+      subtopic: this.props.match.params.id
+    })
   }
 
   componentDidUpdate() {
@@ -61,79 +61,79 @@ class AdminPage extends Component {
   // work in progress for search
   // need dummy data to test
 
-  // // adding new gets, posts, edits, and deletes ---------------
+  // adding new gets, posts, edits, and deletes ---------------
 
-  // fetchData() {
-  //   axios.get(`/api/search/${this.props.match.params.id}`).then((response) => {
-  //     console.log(response.data[0]);
-  //     this.setState({
-  //       results: response.data,
-  //       gender: '',
-  //     })
-  //   }).catch((error) => {
-  //     alert('error with GET in Admin file');
-  //   })
-  // }
+  fetchData() {
+    axios.get(`/api/admin/${this.props.match.params.id}`).then((response) => {
+      console.log(response.data[0]);
+      this.setState({
+        results: response.data,
+        gender: '',
+      })
+    }).catch((error) => {
+      alert('error with GET in Admin file');
+    })
+  }
 
-  // handleSubtopicChange = (event) => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   })
-  // }
+  handleSubtopicChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
-  // sendData = () => {
-  //   console.log('button clicked');
-  //   axios.post('/api/search', this.state).then((response) => {
-  //     console.log('success');
-  //     this.fetchData();
-  //   }).catch((error) => {
-  //     alert('POST error in Admin file');
-  //     console.log(error);
-  //   });
-  // }
+  sendData = () => {
+    console.log('button clicked');
+    axios.post('/api/admin', this.state).then((response) => {
+      console.log('success');
+      this.fetchData();
+    }).catch((error) => {
+      alert('POST error in Admin file');
+      console.log(error);
+    });
+  }
 
-  // dataDelete = id => {
-  //   console.log(this.state.results);
-  //   const deletion = `/api/search/${id}`
-  //   axios.delete(deletion).then((response) => {
-  //     this.fetchData();
-  //     console.log('success with delete!');
-  //   }).catch((error) => {
-  //     alert('There was a problem with DELETE Admin')
-  //   })
-  // }
+  dataDelete = id => {
+    console.log(this.state.results);
+    const deletion = `/api/admin/${id}`
+    axios.delete(deletion).then((response) => {
+      this.fetchData();
+      console.log('success with delete!');
+    }).catch((error) => {
+      alert('There was a problem with DELETE Admin')
+    })
+  }
 
-  // // PUT
+  // PUT
 
-  // addEdit = (gender) => {
-  //   console.log('adding edit', gender);
-  //   axios.put(`/api/search/${this.state.editId}`, { gender: this.state.gender })
-  //     .then((response) => {
-  //       console.log('put response', response);
-  //       this.fetchData();
-  //       this.setState({
-  //         editOn: false
-  //       })
-  //     })
-  //     .catch((error) => {
-  //       console.log('put/add error in addEdit Admin', error);
-  //     });
-  // }
+  addEdit = (gender) => {
+    console.log('adding edit', gender);
+    axios.put(`/api/admin/${this.state.editId}`, { gender: this.state.gender })
+      .then((response) => {
+        console.log('put response', response);
+        this.fetchData();
+        this.setState({
+          editOn: false
+        })
+      })
+      .catch((error) => {
+        console.log('put/add error in addEdit Admin', error);
+      });
+  }
 
-  // toggleEdit = (searchToEdit) => () =>
-  //   this.setState({
-  //     editOn: true,
-  //     gender: searchToEdit.gender,
-  //     editId: searchToEdit.id
-  //   });
+  toggleEdit = (searchToEdit) => () =>
+    this.setState({
+      editOn: true,
+      gender: searchToEdit.gender,
+      editId: searchToEdit.id
+    });
 
-  // handleResourceChange = (event) => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   })
-  // }
+  handleResourceChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
-  // // end adding new gets, posts, edits, and deletes ----------------
+  // end adding new gets, posts, edits, and deletes ----------------
 
   render() {
     let content = null;
@@ -142,12 +142,12 @@ class AdminPage extends Component {
     // work in progress for search
     // need dummy data to test
 
-    // // adding toggled buttons for edit
+    // adding toggled buttons for edit
 
-    // let buttonDisplayed = <Button id="searchButtons" variant="outlined" color="secondary" onClick={this.sendData}>Add search</Button>
-    // if (this.state.editOn) {
-    //   buttonDisplayed = <Button id="searchButtons" variant="outlined" color="secondary" onClick={this.addEdit}>Submit Edit</Button>
-    // }
+    let buttonDisplayed = <Button id="searchButtons" variant="outlined" color="secondary" onClick={this.sendData}>Add search</Button>
+    if (this.state.editOn) {
+      buttonDisplayed = <Button id="searchButtons" variant="outlined" color="secondary" onClick={this.addEdit}>Submit Edit</Button>
+    }
 
 
     if (this.props.user.userName) {
@@ -168,7 +168,7 @@ class AdminPage extends Component {
 
           {/* input fields and buttons */}
 
-          {/* <div id="inputFieldSearchAndResource">
+          <div id="inputFieldSearchAndResource">
             <div>
               <TextField
                 id="addSearch"
@@ -195,7 +195,7 @@ class AdminPage extends Component {
                 </li>
               ))}
             </ul>
-          </div> */}
+          </div>
 
         </div>
       );
