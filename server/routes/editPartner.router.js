@@ -7,8 +7,8 @@ router.get('/partners', (req, res) => {
 });
 
 router.get('/partnerInfo/:id', (req, res) => {
-    console.log(req.params.id);
-    res.send('Sending Partner Info');
+    let idToGet = req.params.id;
+    res.send(idToGet);
 })
 
 module.exports = router;

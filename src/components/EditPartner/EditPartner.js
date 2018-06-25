@@ -7,6 +7,7 @@ import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import PartnerDropdown from './PartnerDropdown/PartnerDropdown';
 import { triggerLogout } from '../../redux/actions/loginActions';
+import NewPartnerForm from './NewPartnerForm/NewPartnerForm';
 
 
 const mapStateToProps = state => ({
@@ -89,8 +90,8 @@ class EditPartner extends Component {
           <p>
             Selected Partner is {this.state.selectedPartnerID}
           </p>
-          <button id="logoutButton"
-            onClick={this.logout}>Log Out</button>
+          <NewPartnerForm />
+          <button id="logoutButton"onClick={this.logout}>Log Out</button>
         </div>
       );
     }
