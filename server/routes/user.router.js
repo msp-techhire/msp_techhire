@@ -23,6 +23,7 @@ router.post('/register', (req, res, next) => {
   // We don't need to enter a role because we want the default role of "partner" to be applied
 
   const queryText = 'INSERT INTO "user" ("username", "password") VALUES ($1, $2) RETURNING "id"';
+
   pool.query(queryText, [username, password])
     .then(() => { res.sendStatus(201); })
     .catch((err) => { next(err); });
