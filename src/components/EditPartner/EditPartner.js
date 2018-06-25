@@ -12,6 +12,7 @@ import NewPartnerForm from './NewPartnerForm/NewPartnerForm';
 
 const mapStateToProps = state => ({
   user: state.user,
+  selectedPartner: state.editPartnerReducer.selectedPartner,
 });
 
 class EditPartner extends Component {
@@ -79,7 +80,7 @@ class EditPartner extends Component {
           />
 
           <p>
-            Selected Partner is {this.state.selectedPartnerID}
+            Selected Partner is {this.props.selectedPartner.org_name}
           </p>
           <NewPartnerForm />
           <button id="logoutButton" onClick={this.logout}>Log Out</button>
