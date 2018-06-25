@@ -3,6 +3,12 @@ This version uses React to control the login requests and redirection in coordin
 
 We **STONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
 
+## Co-conspirators
+Shely Dexter
+Alex Gjorvad
+Liz Goff
+Greg Orvik
+
 ## Prerequisites
 
 Before you get started, make sure you have the following software installed on your computer:
