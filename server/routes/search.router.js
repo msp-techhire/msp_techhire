@@ -23,11 +23,11 @@ router.post('/', (req, res) => {
   }
 });
 
-GET
+// GET
 
 router.get('/', (req, res) => {
   if (req.isAuthenticated()) {
-    const queryText = 'SELECT * FROM person';
+    const queryText = 'SELECT * FROM "person"';
     pool.query(queryText)
       .then((result) => { res.send(result.rows); })
       .catch((err) => {
@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   if (req.isAuthenticated()) {
-    const queryText = 'SELECT * FROM person WHERE "id"=$1;'
+    const queryText = 'SELECT * FROM "person" WHERE "id"=$1;'
     pool.query(queryText, [req.params.id])
       .then((result) => { res.send(result.rows); })
       .catch((err) => {
@@ -75,7 +75,7 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   if (req.isAuthenticated()) {
     const newInfo = req.body; 
-    const queryText = `UPDATE person
+    const queryText = `UPDATE "person"
                       SET "gender" = $1 
                       WHERE "id" = $2`;
     const queryValues = [

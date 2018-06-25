@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Nav from '../../components/Nav/Nav';
+import axios from 'axios';
+
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Delete from '@material-ui/icons/Delete'
+import Edit from '@material-ui/icons/Edit'
 
 
 const mapStateToProps = state => ({
@@ -173,7 +177,7 @@ class AdminPage extends Component {
               <TextField
                 id="addSearch"
                 onChange={this.handleSubtopicChange}
-                name="search"
+                name="person"
                 value={this.state.gender}
                 label="Enter Search"
                 placeholder="Search"
