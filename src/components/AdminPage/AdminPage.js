@@ -68,7 +68,7 @@ class AdminPage extends Component {
   // adding new gets, posts, edits, and deletes ---------------
 
   fetchData() {
-    axios.get(`/api/admin/${this.props.match.params.id}`).then((response) => {
+    axios.get(`/api/admin/${this.props.match.params}`).then((response) => {
       console.log(response.data[0]);
       this.setState({
         results: response.data,
@@ -76,12 +76,6 @@ class AdminPage extends Component {
       })
     }).catch((error) => {
       alert('error with GET in Admin file');
-    })
-  }
-
-  handleSearchChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
     })
   }
 
@@ -130,6 +124,12 @@ class AdminPage extends Component {
       gender: searchToEdit.gender,
       editId: searchToEdit.id
     });
+
+    handleSearchChange = (event) => {
+      this.setState({
+        [event.target.name]: event.target.value
+      })
+    }
 
   // end adding new gets, posts, edits, and deletes ----------------
 
