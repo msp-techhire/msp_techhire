@@ -23,75 +23,75 @@ router.post('/', (req, res) => {
   }
 });
 
-// GET
+GET
 
-// router.get('/', (req, res) => {
-//   if (req.isAuthenticated()) {
-//     const queryText = 'SELECT * FROM person';
-//     pool.query(queryText)
-//       .then((result) => { res.send(result.rows); })
-//       .catch((err) => {
-//         console.log('Error completing GET person query', err);
-//         res.sendStatus(500);
-//       });
-//   } else {
-//     res.sendStatus(403);
-//   } 
-// });
+router.get('/', (req, res) => {
+  if (req.isAuthenticated()) {
+    const queryText = 'SELECT * FROM person';
+    pool.query(queryText)
+      .then((result) => { res.send(result.rows); })
+      .catch((err) => {
+        console.log('Error completing GET person query', err);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  } 
+});
 
-// router.get('/:id', (req, res) => {
-//   if (req.isAuthenticated()) {
-//     const queryText = 'SELECT * FROM person WHERE "id"=$1;'
-//     pool.query(queryText, [req.params.id])
-//       .then((result) => { res.send(result.rows); })
-//       .catch((err) => {
-//         console.log('Error completing GET person query', err);
-//         res.sendStatus(500);
-//       });
-//   } else {
-//     res.sendStatus(403);
-//   }
-// });
+router.get('/:id', (req, res) => {
+  if (req.isAuthenticated()) {
+    const queryText = 'SELECT * FROM person WHERE "id"=$1;'
+    pool.query(queryText, [req.params.id])
+      .then((result) => { res.send(result.rows); })
+      .catch((err) => {
+        console.log('Error completing GET person query', err);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+});
 
-// // DELETE
+// DELETE
 
-// router.delete('/:id', (req, res) => {
-//   if (req.isAuthenticated()) {
-//     const deleteInfo = req.params.id;
-//     pool.query('DELETE FROM "person" WHERE "id"=$1 AND "gender" = $2;', [deleteInfo, req.user.id])
-//       .then((result) => {
-//         res.sendStatus(200);
-//       }).catch((error) => {
-//         console.log('error delete SQL INSERT', error)
-//         res.sendStatus(500);
-//       });
-//   } else {
-//     res.sendStatus(403);
-//   }
-// });
+router.delete('/:id', (req, res) => {
+  if (req.isAuthenticated()) {
+    const deleteInfo = req.params.id;
+    pool.query('DELETE FROM "person" WHERE "id"=$1 AND "gender" = $2;', [deleteInfo, req.user.id])
+      .then((result) => {
+        res.sendStatus(200);
+      }).catch((error) => {
+        console.log('error delete SQL INSERT', error)
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+});
  
-// // PUT
+// PUT
 
-// router.put('/:id', (req, res) => {
-//   if (req.isAuthenticated()) {
-//     const newInfo = req.body; 
-//     const queryText = `UPDATE person
-//                       SET "gender" = $1 
-//                       WHERE "id" = $2`;
-//     const queryValues = [
-//       newInfo.gender,
-//       req.params.id,
-//       req.user.id,
-//     ];
-//     pool.query(queryText, queryValues)
-//       .then(() => { res.sendStatus(200); })
-//       .catch((err) => {
-//         console.log('Error completing PUT person query', err);
-//         res.sendStatus(500);
-//       });
-//   } else {
-//     res.sendStatus(403);
-//   }
-// });
+router.put('/:id', (req, res) => {
+  if (req.isAuthenticated()) {
+    const newInfo = req.body; 
+    const queryText = `UPDATE person
+                      SET "gender" = $1 
+                      WHERE "id" = $2`;
+    const queryValues = [
+      newInfo.gender,
+      req.params.id,
+      req.user.id,
+    ];
+    pool.query(queryText, queryValues)
+      .then(() => { res.sendStatus(200); })
+      .catch((err) => {
+        console.log('Error completing PUT person query', err);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+});
 
-// module.exports = router;
+module.exports = router;
