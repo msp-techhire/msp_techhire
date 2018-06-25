@@ -18,7 +18,7 @@ class EditPartner extends Component {
     super(props);
 
     this.state = {
-      selectedPartner: '',
+      selectedPartnerID: '',
       partnerList: [],
     }
   }
@@ -32,7 +32,7 @@ class EditPartner extends Component {
     if (!this.props.user.isLoading && (this.props.user.userName === null || this.props.user.userRole !== 'admin')) {
       this.props.history.push('login');
     }
-    this.getPartnerData(1);
+    this.getPartnerData(this.state.selectedPartnerID);
   } 
 
   logout = () => {
@@ -42,7 +42,7 @@ class EditPartner extends Component {
 
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value,
+      selectedPartnerID: event.target.value,
     });
   }
 
@@ -60,7 +60,7 @@ class EditPartner extends Component {
   }
 
   getPartnerData = (partnerID) => {
-    if(this.state.selectedPartner !== '') {
+    if(this.state.selectedPartnerID !== '') {
       return axios({
         method: 'GET',
         url: `/api/editPartner/partnerInfo/${partnerID}`
@@ -87,7 +87,7 @@ class EditPartner extends Component {
           />
 
           <p>
-            Selected Partner is {this.state.selectedPartner}
+            Selected Partner is {this.state.selectedPartnerID}
           </p>
           <button id="logoutButton"
             onClick={this.logout}>Log Out</button>
