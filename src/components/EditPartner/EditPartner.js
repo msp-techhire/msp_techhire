@@ -25,6 +25,7 @@ class EditPartner extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    this.getPartners();
   }
 
   componentDidUpdate() {
@@ -47,10 +48,12 @@ class EditPartner extends Component {
   getPartners = () => {
     axios({
       method: 'GET',
-      url: ''
+      url: '/api/editPartner/partners'
     })
     .then((response) => {
-      console.log(response);
+      this.setState({
+        partnerList: response.data
+      });
     })
     .catch(err => console.log(err))
   }
@@ -69,7 +72,7 @@ class EditPartner extends Component {
           />
 
           <p>
-            Edit Partner Page
+            Selected Partner is {this.state.selectedPartner}
           </p>
           <button id="logoutButton"
             onClick={this.logout}>Log Out</button>
