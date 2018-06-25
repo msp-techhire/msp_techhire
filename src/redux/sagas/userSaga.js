@@ -16,6 +16,10 @@ function* fetchUser() {
       user,
     });
     yield put({
+      type: USER_ACTIONS.SET_USER_ROLE,
+      user,
+    });
+    yield put({
       type: USER_ACTIONS.REQUEST_DONE,
     });
   } catch (error) {

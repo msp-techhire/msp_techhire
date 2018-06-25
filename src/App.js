@@ -9,11 +9,11 @@ import {
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-import UserPage from './components/UserPage/UserPage';
-import Search from './components/Search/Search';
+import AdminPage from './components/AdminPage/AdminPage';
 import SummaryPage from './components/SummaryPage/SummaryPage';
 import EditPartner from './components/EditPartner/EditPartner';
 import Partner from './components/Partner/Partner';
+import LandingPage from './components/LandingPage/LandingPage';
 
 import './styles/main.css';
 
@@ -22,34 +22,34 @@ const App = () => (
     <Header title="" />
     <Router>
       <Switch>
-        <Redirect exact from="/" to="/home" />
+        <Redirect exact from="/" to="/login" />
         <Route
-          path="/home"
+          path="/login" // LOGIN page
           component={LoginPage}
         />
         <Route
-          path="/register"
+          path="/register" // TEMPORARY registration page
           component={RegisterPage}
         />
         <Route
-          path="/user"
-          component={UserPage}
+          path="/admin" // admin landing page
+          component={AdminPage}
         />
         <Route
-          path="/summary"
+          path="/summary" // admin summary page
           component={SummaryPage}
         />
-          <Route
-          path="/search"
-          component={Search}
-        />
         <Route
-          path="/editpartner"
+          path="/editpartner" // admin edit partner page
           component={EditPartner}
         />
         <Route
-          path="/partner"
+          path="/partner" // partner landing page
           component={Partner}
+        />
+        <Route
+          path="/landing"
+          component={LandingPage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
