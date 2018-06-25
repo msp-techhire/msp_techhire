@@ -30,7 +30,18 @@ class AdminPage extends Component {
     super(props);
     this.state = {
       results: [],
+      training_id: 3,
       gender: '',
+      person_of_color: true,
+      education_level: 'HS/GED',
+      city_of_residence: 'Minneapolis',
+      scholarship_recipient: true, 
+      previous_job_experience: 'Employee',
+      pre_training_wage: 10,
+      training_start_date: '1800-01-01', 
+      training_status: 'In training',
+      training_end_date: '1800-01-01', 
+      exit_status: 'Entered Employment',
       editOn: false,
     }
   }
@@ -68,22 +79,11 @@ class AdminPage extends Component {
   // adding new gets, posts, edits, and deletes ---------------
 
   fetchData() {
-    axios.get(`/api/admin/${this.props.match.params}`).then((response) => {
+    axios.get(`/api/admin/${this.props.match.params.id}`).then((response) => {
       console.log(response.data[0]);
       this.setState({
         results: response.data,
-        // training_id: '',
         gender: '',
-        person_of_color: '',
-        // education_level: '',
-        // city_of_residence: '',
-        // scholarship_recipient: '',
-        // previous_job_experience: '', 
-        // pre_training_wage: '', 
-        // training_start_date: '',
-        // training_status: '',
-        // training_end_date: '', 
-        // exit_status: '',
       })
     }).catch((error) => {
       alert('error with GET in Admin file');
