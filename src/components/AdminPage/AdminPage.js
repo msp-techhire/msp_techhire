@@ -33,7 +33,7 @@ class AdminPage extends Component {
       training_id: 3,
       gender: '',
       person_of_color: true,
-      education_level: 'HS/GED',
+      education_level: '',
       city_of_residence: 'Minneapolis',
       scholarship_recipient: true, 
       previous_job_experience: 'Employee',
@@ -177,7 +177,7 @@ class AdminPage extends Component {
 
           {/* input fields and buttons */}
 
-          <div id="inputFieldSearchAndResource">
+          <div id="inputFieldSearch">
             <div>
               <TextField
                 id="addSearch"
@@ -199,7 +199,7 @@ class AdminPage extends Component {
                       <Button id="deleteButton" onClick={(() => this.dataDelete(person.id))} variant="outlined" size="small"><Delete /></Button>
                       <Button id="editButton" onClick={this.toggleEdit(person)} variant="outlined" size="small"><Edit /></Button>
                     </span>
-                    : ''}
+                    : 'test'} 
                   <Button id="displayInfo">{person.gender}</Button>
                 </li>
               ))}

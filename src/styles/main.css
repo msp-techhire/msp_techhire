@@ -120,3 +120,30 @@ li a:hover {
     margin-left: 90%;
     width: 80px;
 }
+
+/* ----------admin page ----------- */
+
+#inputFieldSearch {
+    margin-left: 50%;
+    width: 80px;
+}
+
+#searchButtons {
+    margin-left: 50%;
+    width: 80px;
+}
+
+#deleteButton {
+    margin-left: 50%;
+    width: 80px;
+}
+
+#editButton {
+    margin-left: 50%;
+    width: 80px;
+}
+
+#displayInfo {
+    margin-left: 50%;
+    width: 80px;
+}

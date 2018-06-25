@@ -11,7 +11,7 @@ const router = express.Router();
 router.post('/', (req, res) => {
   if (req.isAuthenticated()) {
     const queryText = `INSERT INTO "person" ("id", "training_id", "gender", "person_of_color", "education_level", "city_of_residence", "scholarship_recipient", "previous_job_experience", "pre_training_wage", "training_start_date", "training_status", "training_end_date", "exit_status")
-                      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "gender";`;
+                      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id", "training_id", "gender", "person_of_color", "education_level", "city_of_residence", "scholarship_recipient", "previous_job_experience", "pre_training_wage", "training_start_date", "training_status", "training_end_date", "exit_status";`;
     pool.query(queryText, [req.user.id, req.body.training_id, req.body.gender, req.body.year_of_birth, req.body.person_of_color, req.body.education_level, req.body.ity_of_residence, req.body.scholarship_recipient, req.body.previous_job_experience, req.body.pre_training_wage, req.body.training_start_date, req.body.training_end_date, req.body.exit_status])
       .then(() => { res.sendStatus(201); })
       .catch((err) => {
