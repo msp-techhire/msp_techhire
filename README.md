@@ -1,9 +1,9 @@
-## PEOPLE ON THE TEAM
+# Collaborators:
 
-* Alex
-* Elizabeth
-* Greg
-* Shely
+* Liz Goff
+* Michele Dexter
+* Greg Orvik
+* Alex Gjorvad
 
 
 # Express/Passport with React
