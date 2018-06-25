@@ -79,7 +79,7 @@ class AdminPage extends Component {
     })
   }
 
-  handleSubtopicChange = (event) => {
+  handleSearchChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -131,12 +131,6 @@ class AdminPage extends Component {
       editId: searchToEdit.id
     });
 
-  handleResourceChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-
   // end adding new gets, posts, edits, and deletes ----------------
 
   render() {
@@ -176,8 +170,8 @@ class AdminPage extends Component {
             <div>
               <TextField
                 id="addSearch"
-                onChange={this.handleSubtopicChange}
-                name="person"
+                onChange={this.handleSearchChange}
+                name="gender"
                 value={this.state.gender}
                 label="Enter Search"
                 placeholder="Search"
