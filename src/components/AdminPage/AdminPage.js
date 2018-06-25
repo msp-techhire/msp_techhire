@@ -72,7 +72,18 @@ class AdminPage extends Component {
       console.log(response.data[0]);
       this.setState({
         results: response.data,
+        // training_id: '',
         gender: '',
+        person_of_color: '',
+        // education_level: '',
+        // city_of_residence: '',
+        // scholarship_recipient: '',
+        // previous_job_experience: '', 
+        // pre_training_wage: '', 
+        // training_start_date: '',
+        // training_status: '',
+        // training_end_date: '', 
+        // exit_status: '',
       })
     }).catch((error) => {
       alert('error with GET in Admin file');
