@@ -19,8 +19,6 @@ class EditPartner extends Component {
     super(props);
 
     this.state = {
-      selectedPartnerID: '',
-      selectedPartnerData: [],
       partnerList: [],
     }
   }
@@ -34,7 +32,7 @@ class EditPartner extends Component {
     if (!this.props.user.isLoading && (this.props.user.userName === null || this.props.user.userRole !== 'admin')) {
       this.props.history.push('login');
     }
-  } 
+  }
 
   logout = () => {
     this.props.dispatch(triggerLogout());
@@ -42,9 +40,6 @@ class EditPartner extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({
-      selectedPartnerID: event.target.value,
-    });
     this.getPartnerData(event.target.value);
   }
 
@@ -62,21 +57,11 @@ class EditPartner extends Component {
   }
 
   getPartnerData = (id) => {
-      let action = {
-        type: USER_ACTIONS.GET_PARTNER_DATA,
-        payload: id,
-      }
-      this.props.dispatch(action);
-    //   return axios({
-    //     method: 'GET',
-    //     url: `/api/editPartner/partnerInfo/${partnerID}`
-    //   })
-    //   .then((response) => {
-    //     this.setState({
-    //       selectedPartnerData: response.data,
-    //     });
-    //   })
-    //   .catch(err => console.log(err)); 
+    let action = {
+      type: USER_ACTIONS.GET_SELECTED_PARTNER_DATA,
+      payload: id,
+    };
+    this.props.dispatch(action);
   }
 
   render() {
@@ -87,7 +72,7 @@ class EditPartner extends Component {
         <div>
 
           <h1>Hello Edit Partner</h1>
-          <PartnerDropdown 
+          <PartnerDropdown
             partners={this.state.partnerList}
             handleChange={this.handleChange}
             getPartnerData={this.getPartnerData}
@@ -97,7 +82,7 @@ class EditPartner extends Component {
             Selected Partner is {this.state.selectedPartnerID}
           </p>
           <NewPartnerForm />
-          <button id="logoutButton"onClick={this.logout}>Log Out</button>
+          <button id="logoutButton" onClick={this.logout}>Log Out</button>
         </div>
       );
     }
