@@ -10,8 +10,14 @@ import { triggerLogout } from '../../redux/actions/loginActions';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Delete from '@material-ui/icons/Delete'
-import Edit from '@material-ui/icons/Edit'
+import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import TableBody from '@material-ui/core/TableBody';
+// import Delete from '@material-ui/icons/Delete'
+// import Edit from '@material-ui/icons/Edit'
 
 
 const mapStateToProps = state => ({
@@ -30,19 +36,9 @@ class AdminPage extends Component {
     super(props);
     this.state = {
       results: [],
-      training_id: 3,
-      gender: '',
-      person_of_color: true,
-      education_level: '',
-      city_of_residence: 'Minneapolis',
-      scholarship_recipient: true, 
-      previous_job_experience: 'Employee',
-      pre_training_wage: 10,
-      training_start_date: '1800-01-01', 
-      training_status: 'In training',
-      training_end_date: '1800-01-01', 
-      exit_status: 'Entered Employment',
+      // gender: '',
       editOn: false,
+      searchQuery: '',
     }
   }
 
@@ -56,9 +52,9 @@ class AdminPage extends Component {
     // adding data fetch
 
     this.fetchData();
-    this.setState({
-      subtopic: this.props.match.params.id
-    })
+    // this.setState({
+    //   gender: this.props.match.params.id
+    // })
   }
 
   componentDidUpdate() {
@@ -78,63 +74,63 @@ class AdminPage extends Component {
 
   // adding new gets, posts, edits, and deletes ---------------
 
-  fetchData() {
-    axios.get(`/api/admin/${this.props.match.params.id}`).then((response) => {
-      console.log(response.data[0]);
+  fetchData = () => {
+    axios.get(`/api/admin`).then((response) => {
+      console.log(response.data);
       this.setState({
         results: response.data,
-        gender: '',
+        searchQuery: '',
       })
     }).catch((error) => {
-      alert('error with GET in Admin file');
+      alert('error with GET in Admin file', error);
     })
   }
 
-  sendData = () => {
-    console.log('button clicked');
-    axios.post('/api/admin', this.state).then((response) => {
-      console.log('success');
-      this.fetchData();
-    }).catch((error) => {
-      alert('POST error in Admin file');
-      console.log(error);
-    });
-  }
+  // sendData = () => {
+  //   console.log('button clicked');
+  //   axios.post('/api/admin', this.state).then((response) => {
+  //     console.log('success');
+  //     this.fetchData();
+  //   }).catch((error) => {
+  //     alert('POST error in Admin file');
+  //     console.log(error);
+  //   });
+  // }
 
-  dataDelete = id => {
-    console.log(this.state.results);
-    const deletion = `/api/admin/${id}`
-    axios.delete(deletion).then((response) => {
-      this.fetchData();
-      console.log('success with delete!');
-    }).catch((error) => {
-      alert('There was a problem with DELETE Admin')
-    })
-  }
+  // dataDelete = id => {
+  //   console.log(this.state.results);
+  //   const deletion = `/api/admin/${id}`
+  //   axios.delete(deletion).then((response) => {
+  //     this.fetchData();
+  //     console.log('success with delete!');
+  //   }).catch((error) => {
+  //     alert('There was a problem with DELETE Admin')
+  //   })
+  // }
 
   // PUT
 
-  addEdit = (gender) => {
-    console.log('adding edit', gender);
-    axios.put(`/api/admin/${this.state.editId}`, { gender: this.state.gender })
-      .then((response) => {
-        console.log('put response', response);
-        this.fetchData();
-        this.setState({
-          editOn: false
-        })
-      })
-      .catch((error) => {
-        console.log('put/add error in addEdit Admin', error);
-      });
-  }
+  // addEdit = (taco) => {
+  //   console.log('adding edit', taco);
+  //   axios.put(`/api/admin/${this.state.editId}`, { searchQuery: this.state })
+  //     .then((response) => {
+  //       console.log('put response', response);
+  //       this.fetchData();
+  //       this.setState({
+  //         editOn: false
+  //       })
+  //     })
+  //     .catch((error) => {
+  //       console.log('put/add error in addEdit Admin', error);
+  //     });
+  // }
 
-  toggleEdit = (searchToEdit) => () =>
-    this.setState({
-      editOn: true,
-      gender: searchToEdit.gender,
-      editId: searchToEdit.id
-    });
+  // toggleEdit = (searchToEdit) => () =>
+  //   this.setState({
+  //     editOn: true,
+  //     searchQuery: searchToEdit.id,
+  //     editId: searchToEdit.id
+  //   });
 
     handleSearchChange = (event) => {
       this.setState({
@@ -153,10 +149,10 @@ class AdminPage extends Component {
 
     // adding toggled buttons for edit
 
-    let buttonDisplayed = <Button id="searchButtons" variant="outlined" color="secondary" onClick={this.sendData}>Add search</Button>
-    if (this.state.editOn) {
-      buttonDisplayed = <Button id="searchButtons" variant="outlined" color="secondary" onClick={this.addEdit}>Submit Edit</Button>
-    }
+    let buttonDisplayed = <Button id="searchButtons" variant="outlined" color="secondary" onClick={this.fetchData}>Search</Button>
+    // if (this.state.editOn) {
+    //   buttonDisplayed = <Button id="searchButtons" variant="outlined" color="secondary" onClick={this.addEdit}>Submit Edit</Button>
+    // }
 
 
     if (this.props.user.userName) {
@@ -170,7 +166,6 @@ class AdminPage extends Component {
             <button id="logoutButton"
               onClick={this.logout}>Log Out</button>
           </div>
-
           {/* TO DO */}
           {/* work in progress for search */}
           {/* need dummy data to test */}
@@ -182,8 +177,8 @@ class AdminPage extends Component {
               <TextField
                 id="addSearch"
                 onChange={this.handleSearchChange}
-                name="gender"
-                value={this.state.gender}
+                name="searchQuery"
+                value={this.state.searchQuery}
                 label="Enter Search"
                 placeholder="Search"
                 margin="normal" ></TextField>
@@ -191,21 +186,49 @@ class AdminPage extends Component {
             </div>
           </div>
           <div>
-            <ul id="searchButtons">
-              {this.state.results.map((person, i) => (
-                <li key={i} >
-                  {this.props.user.userId === person.gender ?
-                    <span>
-                      <Button id="deleteButton" onClick={(() => this.dataDelete(person.id))} variant="outlined" size="small"><Delete /></Button>
-                      <Button id="editButton" onClick={this.toggleEdit(person)} variant="outlined" size="small"><Edit /></Button>
-                    </span>
-                    : 'test'} 
-                  <Button id="displayInfo">{person.gender}</Button>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <Paper>
+              <Table id="searchTableResults">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>id</TableCell>
+                    <TableCell>training_id</TableCell>
+                    <TableCell>gender</TableCell>
+                    <TableCell>year_of_birth</TableCell>
+                    <TableCell>person_of_color</TableCell>
+                    <TableCell>education_level</TableCell>
+                    <TableCell>city_of_residence</TableCell>
+                    <TableCell>scholarship_recipient</TableCell>
+                    <TableCell>previous_job_experience</TableCell>
+                    <TableCell>pre_training_wage</TableCell>
+                    <TableCell>training_start_date</TableCell>
+                    <TableCell>training_end_date</TableCell>
+                    <TableCell>exit_status</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {this.state.results.map((person, i) => (
+                  <TableRow key={i}>
+                    <TableCell>{person.id}</TableCell>
+                    <TableCell>{person.training_id}</TableCell>
+                    <TableCell>{person.gender}</TableCell>
+                    <TableCell>{person.year_of_birth}</TableCell>
+                    <TableCell>{person.person_of_color}</TableCell>
+                    <TableCell>{person.education_level}</TableCell>
+                    <TableCell>{person.city_of_residence}</TableCell>
+                    <TableCell>{person.scholarship_recipient}</TableCell>
+                    <TableCell>{person.previous_job_experience}</TableCell>
+                    <TableCell>{person.pre_training_wage}</TableCell>
+                    <TableCell>{person.training_start_date}</TableCell>
+                    <TableCell>{person.training_end_date}</TableCell>
+                    <TableCell>{person.exit_status}</TableCell>
+                  </TableRow>
 
+                  ))};
+                </TableBody>
+              </Table>
+            </Paper>
+          </div>
+          
         </div>
       );
     }
@@ -221,4 +244,5 @@ class AdminPage extends Component {
 
 // this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(AdminPage);
+
 
