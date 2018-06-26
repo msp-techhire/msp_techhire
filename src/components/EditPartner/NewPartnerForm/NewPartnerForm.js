@@ -7,6 +7,7 @@ class NewPartnerForm extends Component {
 
         this.state = {
             orgName: '',
+            orgAbbreviation: '',
             orgAddress: '',
             orgWebsite: '',
             orgPhone: '',
@@ -35,6 +36,7 @@ class NewPartnerForm extends Component {
         .catch(err => console.log(err));
         this.setState({
             orgName: '',
+            orgAbbreviation: '',
             orgAddress: '',
             orgWebsite: '',
             orgPhone: '',
@@ -53,6 +55,11 @@ class NewPartnerForm extends Component {
                 <div className="formGroup">
                 <label htmlFor="orgName">Organization Name</label>
                 <input onChange={this.handleChange} type="text" name="orgName" id="orgName"value={this.state.orgName}/>
+                </div>
+
+                <div className="formGroup">
+                <label htmlFor="orgAbbreviation">Organization Abbreviation</label>
+                <input onChange={this.handleChange} type="text" name="orgAbbreviation" id="orgAbbreviation"value={this.state.orgAbbreviation}/>
                 </div>
 
                 <div className="formGroup">
