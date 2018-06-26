@@ -14,6 +14,11 @@ router.get('/partnerInfo/:id', (req, res) => {
     pool.query(queryText, [idToGet])
     .then(response => res.send(response.rows))
     .catch(err => res.sendStatus(500));
-})
+});
+
+router.post('/newPartner', (req, res) => {
+    console.log(req.body);
+    res.sendStatus(200);
+});
 
 module.exports = router;

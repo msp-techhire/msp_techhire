@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class NewPartnerForm extends Component {
     constructor(props) {
@@ -23,6 +24,15 @@ class NewPartnerForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        axios({
+            method: 'POST',
+            url: '/api/editPartner/newPartner',
+            data: this.state,
+        })
+        .then((response) => {
+            console.log(response);
+        })
+        .catch(err => console.log(err));
         this.setState({
             orgName: '',
             orgAddress: '',
@@ -36,32 +46,48 @@ class NewPartnerForm extends Component {
 
     render() {
 
-        return <form onSubmit={this.handleSubmit}>
-            <h2>Register New Partner</h2>
-            <div>
+        return <div> 
+             <h2>Register New Partner</h2>
+            <form onSubmit={this.handleSubmit}>
+                
+                <div className="formGroup">
                 <label htmlFor="orgName">Organization Name</label>
                 <input onChange={this.handleChange} type="text" name="orgName" id="orgName"value={this.state.orgName}/>
-            </div>
-            <div>
+                </div>
+
+                <div className="formGroup">
                 <label htmlFor="orgAddress">Address</label>
                 <input onChange={this.handleChange} type="text" name="orgAddress" id="orgAddress"value={this.state.orgAddress}/>
-            </div>
-            <div>
+                </div>
+
+                <div className="formGroup">
                 <label htmlFor="orgWebsite">Website</label>
                 <input onChange={this.handleChange} type="text" name="orgWebsite" id="orgWebsite"value={this.state.orgWebsite}/>
+                </div>
+
+                <div className="formGroup">
                 <label htmlFor="orgPhone">Phone Number</label>
                 <input onChange={this.handleChange} type="text" name="orgPhone" id="orgPhone"value={this.state.orgPhone}/>
-            </div>
-            <div>
+                </div>
+
+                <div className="formGroup">
                 <label htmlFor="directorFirst">Director First Name</label>
                 <input onChange={this.handleChange} type="text" name="directorFirst" id="directorFirst"value={this.state.directorFirst}/>
+                </div>
+
+                <div className="formGroup">
                 <label htmlFor="directorLast">Director Last Name</label>
                 <input onChange={this.handleChange} type="text" name="directorLast" id="directorLast"value={this.state.directorLast}/>
+                </div>
+
+                <div className="formGroup">
                 <label htmlFor="businessType">Business Type</label>
                 <input onChange={this.handleChange} type="text" name="businessType" id="businessType"value={this.state.businessType}/>
-            </div>
-            <input type="submit"/>
-        </form>
+                </div>
+
+                <input type="submit"/>
+            </form>
+        </div>
     }
 }
 

@@ -120,3 +120,37 @@ li a:hover {
     margin-left: 90%;
     width: 80px;
 }
+
+
+/* Edit Partner Page */
+
+#editPartnerPage {
+    text-align: center;
+}
+
+#selectedPartnerTable {
+    text-align: center;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+#selectedPartnerTable td,
+#selectedPartnerTable th {
+    padding: 3px 8px;
+    border: 1px solid #333;
+}
+
+#editPartnerPage form {
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.formGroup {
+    padding: 10px 0;
+}
+
+
+.formGroup label {
+    padding-right: 10px;
+}

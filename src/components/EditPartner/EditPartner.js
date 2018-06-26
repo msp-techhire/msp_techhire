@@ -78,18 +78,14 @@ class EditPartner extends Component {
 
     if (this.props.user.userName) {
       content = (
-        <div>
+        <div id="editPartnerPage">
 
-          <h1>Hello Edit Partner</h1>
+          <h1>Select A Partner</h1>
           <PartnerDropdown
             partners={this.state.partnerList}
             handleChange={this.handleChange}
             getPartnerData={this.getPartnerData}
           />
-
-          <p>
-            Selected Partner is {this.props.selectedPartner.org_name}
-          </p>
           <SelectedPartnerInfo />
           <NewPartnerForm />
           <button id="logoutButton" onClick={this.logout}>Log Out</button>
