@@ -16,7 +16,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
-import Delete from '@material-ui/icons/Delete'
 import Edit from '@material-ui/icons/Edit'
 
 
@@ -43,17 +42,6 @@ class AdminPage extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-
-    // TO DO
-    // work in progress for search
-    // need dummy data to test
-
-    // adding data fetch
-
-    this.fetchData();
-    // this.setState({
-    //   gender: this.props.match.params.id
-    // })
   }
 
   componentDidUpdate() {
@@ -67,10 +55,12 @@ class AdminPage extends Component {
     this.props.history.push('login');
   }
 
-
-
   fetchData = () => {
-    axios.get(`/api/admin`).then((response) => {
+    axios.get(`/api/admin`, {
+      params: {
+        search: this.state.searchQuery
+      }
+    }).then((response) => {
       console.log(response.data);
       this.setState({
         results: response.data
@@ -81,7 +71,7 @@ class AdminPage extends Component {
   }
 
   // TO DO 
-  // adding new posts, edits, and deletes ---------------
+  // adding new posts and edits ---------------
 
   // sendData = () => {
   //   console.log('button clicked');
@@ -92,17 +82,6 @@ class AdminPage extends Component {
   //     alert('POST error in Admin file');
   //     console.log(error);
   //   });
-  // }
-
-  // dataDelete = id => {
-  //   console.log(this.state.results);
-  //   const deletion = `/api/admin/${id}`
-  //   axios.delete(deletion).then((response) => {
-  //     this.fetchData();
-  //     console.log('success with delete!');
-  //   }).catch((error) => {
-  //     alert('There was a problem with DELETE Admin')
-  //   })
   // }
 
   // PUT
@@ -132,11 +111,10 @@ class AdminPage extends Component {
   handleSearchChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
-
     })
   }
 
-  // end adding new gets, posts, edits, and deletes ----------------
+  // end adding new gets and edits ----------------
 
   render() {
     let content = null;
@@ -150,8 +128,6 @@ class AdminPage extends Component {
     // if (this.state.editOn) {
     //   buttonDisplayed = <Button id="searchButtons" variant="outlined" color="secondary" onClick={this.addEdit}>Submit Edit</Button>
     // }
-
-    let search = this.state.searchQuery
 
     if (this.props.user.userName) {
       content = (
@@ -187,7 +163,6 @@ class AdminPage extends Component {
               <Table id="searchTableResults">
                 <TableHead>
                   <TableRow>
-                    <TableCell>new</TableCell>
                     <TableCell id="tableIdCell">id</TableCell>
                     <TableCell id="tablePartnerCell">partner_id</TableCell>
                     <TableCell id="tableFormattedCell">formatted_id</TableCell>
@@ -206,13 +181,11 @@ class AdminPage extends Component {
                     <TableCell id="tableClassroomOrOnlineCell">classroom_or_online</TableCell>
                     <TableCell id="tableExitStatusCell">exit_status</TableCell>
                     <TableCell id="tableEditButtonCell">edit</TableCell>
-                    <TableCell id="tableDeleteButtonCell">delete</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {this.state.results.map((person, i) => (
                     <TableRow key={i}>
-                      <TableCell>{search}</TableCell>
                       <TableCell>{person.id}</TableCell>
                       <TableCell>{person.partner_id}</TableCell>
                       <TableCell>{person.formatted_id}</TableCell>
@@ -230,9 +203,6 @@ class AdminPage extends Component {
                       <TableCell>{person.training_type}</TableCell>
                       <TableCell>{person.classroom_or_online}</TableCell>
                       <TableCell>{person.exit_status}</TableCell>
-                      <TableCell><Button id="deleteButton" variant="outlined" size="small"><Delete /></Button></TableCell>
-                      {/* for delete button */}
-                      {/* onClick={(() => this.dataDelete(comments.id))} */}
                       <TableCell><Button id="editButton" variant="outlined" size="small"><Edit /></Button></TableCell>
                       {/* for edit button */}
                       {/* onClick={this.toggleEdit(comments)} */}

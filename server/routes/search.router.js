@@ -25,8 +25,10 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   if (req.isAuthenticated()) {
-    const queryText = 'SELECT * FROM "person" ';
-    pool.query(queryText)
+    const queryText = `SELECT * FROM "person"
+                      WHERE "gender"=$1
+`; // only return first 50, next step is pagination
+    pool.query(queryText, [req.query.search])
       .then((result) => { res.send(result.rows); })
       .catch((err) => {
         console.log('Error completing GET Search query first', err);
@@ -37,49 +39,8 @@ router.get('/', (req, res) => {
   } 
 });
 
-// TO DO
-// ?? Idea I had to try to search by table cell ??
-
-// router.get('/:id', (req, res) => {
-//   if (req.isAuthenticated()) {
-//     const newSearch = req.body; 
-//     const queryText = `SELECT * FROM "person" 
-//                         WHERE "id"=$1;`
-//     const queryValues = [
-//       newSearch.gender,
-//       req.params.id,
-//       req.user.id,
-//     ];
-//     pool.query(queryText, queryValues, [req.params.id])
-//       .then((result) => { res.send(result.rows); })
-//       .catch((err) => {
-//         console.log('Error completing GET search query second', err);
-//         res.sendStatus(500);
-//       });
-//   } else {
-//     res.sendStatus(403);
-//   }
-// });
-
 // TO DO 
-// leave delete and edit alone until I get the GET search working properly. Thanks.
-
-// DELETE
-
-// router.delete('/:id', (req, res) => {
-//   if (req.isAuthenticated()) {
-//     const deleteInfo = req.params.id;
-//     pool.query('DELETE FROM "person" WHERE "id"=$1 AND "gender" = $2;', [deleteInfo, req.user.id])
-//       .then((result) => {
-//         res.sendStatus(200);
-//       }).catch((error) => {
-//         console.log('error delete SQL INSERT', error)
-//         res.sendStatus(500);
-//       });
-//   } else {
-//     res.sendStatus(403);
-//   }
-// });
+// Please, leave edit alone until I get the GET search working properly. Thanks.
  
 // PUT
 
