@@ -98,18 +98,19 @@ class AdminPage extends Component {
     // TO DO
     // adding toggled buttons for edit
 
-    let buttonDisplayed = <Button id="searchButtons" variant="outlined" color="secondary" onClick={this.fetchData}>Search</Button>
+    let buttonDisplayed = <Button id="searchButtons" variant="outlined" size="small" onClick={this.fetchData}>Search</Button>
     // if (this.state.editOn) {
-    //   buttonDisplayed = <Button id="searchButtons" variant="outlined" color="secondary" onClick={this.addEdit}>Submit Edit</Button>
+    //   buttonDisplayed = <Button id="searchButtons" variant="outlined" size="small" onClick={this.addEdit}>Submit Edit</Button>
     // }
 
     if (this.props.user.userName) {
       content = (
-        <div>
+        <div id="mplsPhoto">
           {this.props.data}
-
+          <div id="mplsPhoto">
+          </div>
           <div>
-            <p>
+            <p id="adminTextTopOfPage">
               Admin Page
           </p>
             <button id="logoutButton"
@@ -131,52 +132,52 @@ class AdminPage extends Component {
           </div>
 
           <div>
-                <table id="searchTableResults">
-                  <tr>
-                    <th id="tablePartnerCell">partner_id</th>
-                    <th id="tableFormattedCell">formatted_id</th>
-                    <th id="tableGenderCell">gender</th>
-                    <th id="tableBirthCell">year_of_birth</th>
-                    <th id="tablePocCell">person_of_color</th>
-                    <th id="tableEducationCell">education_level</th>
-                    <th id="tableCityCell">city_of_residence</th>
-                    <th id="tableScholarshipCell">scholarship_recipient</th>
-                    <th id="tablePreviousJobCell">previous_job_experience</th>
-                    <th id="tablePreTrainingWageCell">pre_training_wage</th>
-                    <th id="tableStartDateCell">training_start_date</th>
-                    <th id="tableTrainingStatusCell">training_status</th>
-                    <th id="tableEndDateCell">training_end_date</th>
-                    <th id="tableTrainingTypeCell">training_type</th>
-                    <th id="tableClassroomOrOnlineCell">classroom_or_online</th>
-                    <th id="tableExitStatusCell">exit_status</th>
-                    <th id="tableEditButtonCell">edit</th>
-                    </tr>
-                  <tbody>
-                  {this.state.results.map((person, i) => (
-                    <tr key={i}>
-                      <td>{person.partner_id}</td>
-                      <td>{person.formatted_id}</td>
-                      <td>{person.gender}</td>
-                      <td>{person.year_of_birth}</td>
-                      <td>{person.person_of_color}</td>
-                      <td>{person.education_level}</td>
-                      <td>{person.city_of_residence}</td>
-                      <td>{person.scholarship_recipient}</td>
-                      <td>{person.previous_job_experience}</td>
-                      <td>{person.pre_training_wage}</td>
-                      <td>{person.training_start_date}</td>
-                      <td>{person.training_status}</td>
-                      <td>{person.training_end_date}</td>
-                      <td>{person.training_type}</td>
-                      <td>{person.classroom_or_online}</td>
-                      <td>{person.exit_status}</td>
-                      <td><Button id="editButton" variant="outlined" size="small"><Edit /></Button></td>
-                      {/* for edit button */}
-                      {/* onClick={this.toggleEdit(comments)} */}
-                    </tr>
-                  ))}
-                  </tbody>
-                </table>
+            <table id="searchTableResults">
+              <tr>
+                <th id="tablePartnerCell">Partner</th>
+                <th id="tableFormattedCell">Id</th>
+                <th id="tableGenderCell">Gender</th>
+                <th id="tableBirthCell">YOB</th>
+                <th id="tablePocCell">POC</th>
+                <th id="tableEducationCell">Ed Level</th>
+                <th id="tableCityCell">Residence</th>
+                <th id="tableScholarshipCell">Scholarship</th>
+                <th id="tablePreviousJobCell">Pre-experience</th>
+                <th id="tablePreTrainingWageCell">Pre-wage</th>
+                <th id="tableStartDateCell">Start Date</th>
+                <th id="tableTrainingStatusCell">Current Status</th>
+                <th id="tableEndDateCell">End Date</th>
+                <th id="tableTrainingTypeCell">Type</th>
+                <th id="tableClassroomOrOnlineCell">Class Type</th>
+                <th id="tableExitStatusCell">Exit Status</th>
+                <th id="tableEditButtonCell">Edit</th>
+              </tr>
+              <tbody>
+                {this.state.results.map((person, i) => (
+                  <tr key={i}>
+                    <td id="tablePartnerSearch">{person.partner_id}</td>
+                    <td>{person.formatted_id}</td>
+                    <td>{person.gender}</td>
+                    <td>{person.year_of_birth}</td>
+                    <td>{person.person_of_color}</td>
+                    <td>{person.education_level}</td>
+                    <td>{person.city_of_residence}</td>
+                    <td>{person.scholarship_recipient}</td>
+                    <td>{person.previous_job_experience}</td>
+                    <td>{person.pre_training_wage}</td>
+                    <td>{person.training_start_date}</td>
+                    <td>{person.training_status}</td>
+                    <td>{person.training_end_date}</td>
+                    <td>{person.training_type}</td>
+                    <td>{person.classroom_or_online}</td>
+                    <td>{person.exit_status}</td>
+                    <td><Button id="editButton" variant="outlined" size="small"><Edit /></Button></td>
+                    {/* for edit button */}
+                    {/* onClick={this.toggleEdit(person)} */}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
         </div>
