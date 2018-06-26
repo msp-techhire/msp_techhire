@@ -143,7 +143,42 @@ li a:hover {
     width: 80px;
 }
 
-#displayInfo {
+#searchTableResults {
     /* margin-left: 30%; */
     width: 800px;
+}
+
+/* -------table on admin page ------- */
+#tableIdCell {
+    width: 10px;
+}
+#tableTrainingCell {
+    width: 10px;
+}
+#tableGenderCell {
+    width: 10px;
+}
+#tableBirthCell {
+    width: 10px;
+}
+#tablePocCell {
+    width: 10px;
+}
+#tableEducationCell {
+    width: 10px;
+}
+#tableCityCell {
+    width: 10px;
+}
+#tableScholarshipCell {
+    width: 10px;
+}
+#tablePreviousJobCell {
+    width: 10px;
+}
+#tablePreTrainingWageCell {
+    width: 10px;
+}
+#tableStartDateCell {
+    width: 10px;
 }

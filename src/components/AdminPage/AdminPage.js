@@ -16,8 +16,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
-// import Delete from '@material-ui/icons/Delete'
-// import Edit from '@material-ui/icons/Edit'
+import Delete from '@material-ui/icons/Delete'
+import Edit from '@material-ui/icons/Edit'
 
 
 const mapStateToProps = state => ({
@@ -36,7 +36,6 @@ class AdminPage extends Component {
     super(props);
     this.state = {
       results: [],
-      // gender: '',
       editOn: false,
       searchQuery: '',
     }
@@ -68,23 +67,21 @@ class AdminPage extends Component {
     this.props.history.push('login');
   }
 
-  // TO DO
-  // work in progress for search
-  // need dummy data to test
 
-  // adding new gets, posts, edits, and deletes ---------------
 
   fetchData = () => {
     axios.get(`/api/admin`).then((response) => {
       console.log(response.data);
       this.setState({
-        results: response.data,
-        searchQuery: '',
+        results: response.data
       })
     }).catch((error) => {
       alert('error with GET in Admin file', error);
     })
   }
+
+  // TO DO 
+  // adding new posts, edits, and deletes ---------------
 
   // sendData = () => {
   //   console.log('button clicked');
@@ -132,11 +129,12 @@ class AdminPage extends Component {
   //     editId: searchToEdit.id
   //   });
 
-    handleSearchChange = (event) => {
-      this.setState({
-        [event.target.name]: event.target.value
-      })
-    }
+  handleSearchChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+
+    })
+  }
 
   // end adding new gets, posts, edits, and deletes ----------------
 
@@ -145,7 +143,6 @@ class AdminPage extends Component {
 
     // TO DO
     // work in progress for search
-    // need dummy data to test
 
     // adding toggled buttons for edit
 
@@ -154,6 +151,7 @@ class AdminPage extends Component {
     //   buttonDisplayed = <Button id="searchButtons" variant="outlined" color="secondary" onClick={this.addEdit}>Submit Edit</Button>
     // }
 
+    let search = this.state.searchQuery
 
     if (this.props.user.userName) {
       content = (
@@ -168,7 +166,6 @@ class AdminPage extends Component {
           </div>
           {/* TO DO */}
           {/* work in progress for search */}
-          {/* need dummy data to test */}
 
           {/* input fields and buttons */}
 
@@ -190,45 +187,61 @@ class AdminPage extends Component {
               <Table id="searchTableResults">
                 <TableHead>
                   <TableRow>
-                    <TableCell>id</TableCell>
-                    <TableCell>training_id</TableCell>
-                    <TableCell>gender</TableCell>
-                    <TableCell>year_of_birth</TableCell>
-                    <TableCell>person_of_color</TableCell>
-                    <TableCell>education_level</TableCell>
-                    <TableCell>city_of_residence</TableCell>
-                    <TableCell>scholarship_recipient</TableCell>
-                    <TableCell>previous_job_experience</TableCell>
-                    <TableCell>pre_training_wage</TableCell>
-                    <TableCell>training_start_date</TableCell>
-                    <TableCell>training_end_date</TableCell>
-                    <TableCell>exit_status</TableCell>
+                    <TableCell>new</TableCell>
+                    <TableCell id="tableIdCell">id</TableCell>
+                    <TableCell id="tablePartnerCell">partner_id</TableCell>
+                    <TableCell id="tableFormattedCell">formatted_id</TableCell>
+                    <TableCell id="tableGenderCell">gender</TableCell>
+                    <TableCell id="tableBirthCell">year_of_birth</TableCell>
+                    <TableCell id="tablePocCell">person_of_color</TableCell>
+                    <TableCell id="tableEducationCell">education_level</TableCell>
+                    <TableCell id="tableCityCell">city_of_residence</TableCell>
+                    <TableCell id="tableScholarshipCell">scholarship_recipient</TableCell>
+                    <TableCell id="tablePreviousJobCell">previous_job_experience</TableCell>
+                    <TableCell id="tablePreTrainingWageCell">pre_training_wage</TableCell>
+                    <TableCell id="tableStartDateCell">training_start_date</TableCell>
+                    <TableCell id="tableTrainingStatusCell">training_status</TableCell>
+                    <TableCell id="tableEndDateCell">training_end_date</TableCell>
+                    <TableCell id="tableTrainingTypeCell">training_type</TableCell>
+                    <TableCell id="tableClassroomOrOnlineCell">classroom_or_online</TableCell>
+                    <TableCell id="tableExitStatusCell">exit_status</TableCell>
+                    <TableCell id="tableEditButtonCell">edit</TableCell>
+                    <TableCell id="tableDeleteButtonCell">delete</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {this.state.results.map((person, i) => (
-                  <TableRow key={i}>
-                    <TableCell>{person.id}</TableCell>
-                    <TableCell>{person.training_id}</TableCell>
-                    <TableCell>{person.gender}</TableCell>
-                    <TableCell>{person.year_of_birth}</TableCell>
-                    <TableCell>{person.person_of_color}</TableCell>
-                    <TableCell>{person.education_level}</TableCell>
-                    <TableCell>{person.city_of_residence}</TableCell>
-                    <TableCell>{person.scholarship_recipient}</TableCell>
-                    <TableCell>{person.previous_job_experience}</TableCell>
-                    <TableCell>{person.pre_training_wage}</TableCell>
-                    <TableCell>{person.training_start_date}</TableCell>
-                    <TableCell>{person.training_end_date}</TableCell>
-                    <TableCell>{person.exit_status}</TableCell>
-                  </TableRow>
-
-                  ))};
+                    <TableRow key={i}>
+                      <TableCell>{search}</TableCell>
+                      <TableCell>{person.id}</TableCell>
+                      <TableCell>{person.partner_id}</TableCell>
+                      <TableCell>{person.formatted_id}</TableCell>
+                      <TableCell>{person.gender}</TableCell>
+                      <TableCell>{person.year_of_birth}</TableCell>
+                      <TableCell>{person.person_of_color}</TableCell>
+                      <TableCell>{person.education_level}</TableCell>
+                      <TableCell>{person.city_of_residence}</TableCell>
+                      <TableCell>{person.scholarship_recipient}</TableCell>
+                      <TableCell>{person.previous_job_experience}</TableCell>
+                      <TableCell>{person.pre_training_wage}</TableCell>
+                      <TableCell>{person.training_start_date}</TableCell>
+                      <TableCell>{person.training_status}</TableCell>
+                      <TableCell>{person.training_end_date}</TableCell>
+                      <TableCell>{person.training_type}</TableCell>
+                      <TableCell>{person.classroom_or_online}</TableCell>
+                      <TableCell>{person.exit_status}</TableCell>
+                      <TableCell><Button id="deleteButton" variant="outlined" size="small"><Delete /></Button></TableCell>
+                      {/* for delete button */}
+                      {/* onClick={(() => this.dataDelete(comments.id))} */}
+                      <TableCell><Button id="editButton" variant="outlined" size="small"><Edit /></Button></TableCell>
+                      {/* for edit button */}
+                      {/* onClick={this.toggleEdit(comments)} */}
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </Paper>
           </div>
-          
         </div>
       );
     }
