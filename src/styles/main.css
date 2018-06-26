@@ -2,6 +2,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
+/* #mplsPhoto {
+    background:  url('/images/city-skyline-719951_1280.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 800px 700px;
+    margin-top: -80px;
+} */
+
 .instructions h1 {
     font-size: 24px;
     font-weight: 700;
@@ -122,6 +130,7 @@ li a:hover {
 }
 
 
+
 /* Edit Partner Page */
 
 #editPartnerPage {
@@ -153,4 +162,106 @@ li a:hover {
 
 .formGroup label {
     padding-right: 10px;
+
+}
+/* ----------admin page ----------- */
+
+
+#adminTextTopOfPage {
+    margin-left: 5%;
+}
+
+#inputFieldSearch {
+    margin-left: 76%;
+    width: 800px;
+}
+
+#searchButtons {
+    margin-left: 10px;
+    width: 80px;
+}
+
+#editButton {
+    width: 25px;
+}
+
+/* -------------- table on admin page ------------- */
+
+table, th, td {
+    border: 1px solid black;
+}
+
+#searchTableResults {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+#tablePartnerCell {
+width: 10px;
+}
+
+#tableFormattedCell {
+
+}
+
+#tableGenderCell {
+
+}
+
+#tableBirthCell {
+
+}
+
+#tablePocCell {
+
+}
+
+#tableEducationCell {
+
+}
+
+#tableCityCell {
+
+}
+
+#tableScholarshipCell {
+
+}
+
+#tablePreviousJobCell {
+
+}
+
+#tablePreTrainingWageCell {
+
+}
+
+#tableStartDateCell {
+
+}
+
+#tableTrainingStatusCell {
+
+}
+
+#tableEndDateCell {
+
+}
+
+#tableTrainingTypeCell {
+
+}
+
+#tableClassroomOrOnlineCell {
+
+}
+
+#tableExitStatusCell {
+
+}
+
+#tableEditButtonCell {
+
 }
