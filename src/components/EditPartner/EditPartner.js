@@ -7,10 +7,13 @@ import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import PartnerDropdown from './PartnerDropdown/PartnerDropdown';
 import { triggerLogout } from '../../redux/actions/loginActions';
+import NewPartnerForm from './NewPartnerForm/NewPartnerForm';
+import SelectedPartnerInfo from './SelectedPartnerInfo/SelectedPartnerInfo';
 
 
 const mapStateToProps = state => ({
   user: state.user,
+  selectedPartner: state.editPartnerReducer.selectedPartner,
 });
 
 class EditPartner extends Component {
@@ -18,7 +21,7 @@ class EditPartner extends Component {
     super(props);
 
     this.state = {
-      selectedPartner: '',
+      selectedPartnerID: this.props.selectedPartner.id,
       partnerList: [],
     }
   }
@@ -26,14 +29,16 @@ class EditPartner extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.getPartners();
+    if(this.state.selectedPartnerID === undefined) {
+      this.getPartnerData(1);
+    }
   }
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && (this.props.user.userName === null || this.props.user.userRole !== 'admin')) {
       this.props.history.push('login');
     }
-    this.getPartnerData(1);
-  } 
+  }
 
   logout = () => {
     this.props.dispatch(triggerLogout());
@@ -41,8 +46,9 @@ class EditPartner extends Component {
   }
 
   handleChange = (event) => {
+    this.getPartnerData(event.target.value);
     this.setState({
-      [event.target.name]: event.target.value,
+      selectedPartnerID: event.target.value,
     });
   }
 
@@ -59,17 +65,12 @@ class EditPartner extends Component {
     .catch(err => console.log(err))
   }
 
-  getPartnerData = (partnerID) => {
-    if(this.state.selectedPartner !== '') {
-      return axios({
-        method: 'GET',
-        url: `/api/editPartner/partnerInfo/${partnerID}`
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch(err => console.log(err)); 
-    }
+  getPartnerData = (id) => {
+    let action = {
+      type: USER_ACTIONS.GET_SELECTED_PARTNER_DATA,
+      payload: id,
+    };
+    this.props.dispatch(action);
   }
 
   render() {
@@ -77,20 +78,17 @@ class EditPartner extends Component {
 
     if (this.props.user.userName) {
       content = (
-        <div>
+        <div id="editPartnerPage">
 
-          <h1>Hello Edit Partner</h1>
-          <PartnerDropdown 
+          <h1>Select A Partner</h1>
+          <PartnerDropdown
             partners={this.state.partnerList}
             handleChange={this.handleChange}
             getPartnerData={this.getPartnerData}
           />
-
-          <p>
-            Selected Partner is {this.state.selectedPartner}
-          </p>
-          <button id="logoutButton"
-            onClick={this.logout}>Log Out</button>
+          <SelectedPartnerInfo />
+          <NewPartnerForm getPartners={this.getPartners}/>
+          <button id="logoutButton" onClick={this.logout}>Log Out</button>
         </div>
       );
     }
