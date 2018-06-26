@@ -133,25 +133,27 @@ class AdminPage extends Component {
 
           <div>
             <table id="searchTableResults">
-              <tr>
-                <th id="tablePartnerCell">Partner</th>
-                <th id="tableFormattedCell">Id</th>
-                <th id="tableGenderCell">Gender</th>
-                <th id="tableBirthCell">YOB</th>
-                <th id="tablePocCell">POC</th>
-                <th id="tableEducationCell">Ed Level</th>
-                <th id="tableCityCell">Residence</th>
-                <th id="tableScholarshipCell">Scholarship</th>
-                <th id="tablePreviousJobCell">Pre-experience</th>
-                <th id="tablePreTrainingWageCell">Pre-wage</th>
-                <th id="tableStartDateCell">Start Date</th>
-                <th id="tableTrainingStatusCell">Current Status</th>
-                <th id="tableEndDateCell">End Date</th>
-                <th id="tableTrainingTypeCell">Type</th>
-                <th id="tableClassroomOrOnlineCell">Class Type</th>
-                <th id="tableExitStatusCell">Exit Status</th>
-                <th id="tableEditButtonCell">Edit</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th id="tablePartnerCell">Partner</th>
+                  <th id="tableFormattedCell">Id</th>
+                  <th id="tableGenderCell">Gender</th>
+                  <th id="tableBirthCell">YOB</th>
+                  <th id="tablePocCell">POC</th>
+                  <th id="tableEducationCell">Ed Level</th>
+                  <th id="tableCityCell">Residence</th>
+                  <th id="tableScholarshipCell">Scholarship</th>
+                  <th id="tablePreviousJobCell">Pre-experience</th>
+                  <th id="tablePreTrainingWageCell">Pre-wage</th>
+                  <th id="tableStartDateCell">Start Date</th>
+                  <th id="tableTrainingStatusCell">Current Status</th>
+                  <th id="tableEndDateCell">End Date</th>
+                  <th id="tableTrainingTypeCell">Type</th>
+                  <th id="tableClassroomOrOnlineCell">Class Type</th>
+                  <th id="tableExitStatusCell">Exit Status</th>
+                  <th id="tableEditButtonCell">Edit</th>
+                </tr>
+              </thead>
               <tbody>
                 {this.state.results.map((person, i) => (
                   <tr key={i}>
