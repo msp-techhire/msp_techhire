@@ -8,6 +8,7 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 import PartnerDropdown from './PartnerDropdown/PartnerDropdown';
 import { triggerLogout } from '../../redux/actions/loginActions';
 import NewPartnerForm from './NewPartnerForm/NewPartnerForm';
+import SelectedPartnerInfo from './SelectedPartnerInfo/SelectedPartnerInfo';
 
 
 const mapStateToProps = state => ({
@@ -20,6 +21,7 @@ class EditPartner extends Component {
     super(props);
 
     this.state = {
+      selectedPartnerID: this.props.selectedPartner.id,
       partnerList: [],
     }
   }
@@ -27,6 +29,9 @@ class EditPartner extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.getPartners();
+    if(this.state.selectedPartnerID === undefined) {
+      this.getPartnerData(1);
+    }
   }
 
   componentDidUpdate() {
@@ -42,6 +47,9 @@ class EditPartner extends Component {
 
   handleChange = (event) => {
     this.getPartnerData(event.target.value);
+    this.setState({
+      selectedPartnerID: event.target.value,
+    });
   }
 
   getPartners = () => {
@@ -82,6 +90,7 @@ class EditPartner extends Component {
           <p>
             Selected Partner is {this.props.selectedPartner.org_name}
           </p>
+          <SelectedPartnerInfo />
           <NewPartnerForm />
           <button id="logoutButton" onClick={this.logout}>Log Out</button>
         </div>
