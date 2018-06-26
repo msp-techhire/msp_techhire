@@ -32,18 +32,19 @@ class NewPartnerForm extends Component {
         })
         .then((response) => {
             console.log(response);
+            this.setState({
+                orgName: '',
+                orgAbbreviation: '',
+                orgAddress: '',
+                orgWebsite: '',
+                orgPhone: '',
+                directorFirst: '',
+                directorLast: '',
+                businessType: '',
+            });
+            this.props.getPartners();
         })
         .catch(err => console.log(err));
-        this.setState({
-            orgName: '',
-            orgAbbreviation: '',
-            orgAddress: '',
-            orgWebsite: '',
-            orgPhone: '',
-            directorFirst: '',
-            directorLast: '',
-            businessType: '',
-        });
     }
 
     render() {

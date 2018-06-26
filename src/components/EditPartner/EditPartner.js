@@ -87,7 +87,7 @@ class EditPartner extends Component {
             getPartnerData={this.getPartnerData}
           />
           <SelectedPartnerInfo />
-          <NewPartnerForm />
+          <NewPartnerForm getPartners={this.getPartners}/>
           <button id="logoutButton" onClick={this.logout}>Log Out</button>
         </div>
       );
