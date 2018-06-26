@@ -26,8 +26,22 @@ const router = express.Router();
 router.get('/', (req, res) => {
   if (req.isAuthenticated()) {
     const queryText = `SELECT * FROM "person"
-                      WHERE "gender"=$1
-`; // only return first 50, next step is pagination
+                      WHERE "partner_id"=$1
+                      OR "formatted_id"=$1
+                      OR "gender"=$1
+                      OR "year_of_birth"=$1
+                      OR "person_of_color"=$1
+                      OR "education_level"=$1
+                      OR "city_of_residence"=$1
+                      OR "scholarship_recipient"=$1
+                      OR "previous_job_experience"=$1
+                      OR "pre_training_wage"=$1
+                      OR "training_start_date"=$1
+                      OR "training_status"=$1
+                      OR "training_end_date"=$1
+                      OR "training_type"=$1
+                      OR "classroom_or_online"=$1
+                      OR "exit_status"=$1`; // only return first 50, next step is pagination
     pool.query(queryText, [req.query.search])
       .then((result) => { res.send(result.rows); })
       .catch((err) => {
