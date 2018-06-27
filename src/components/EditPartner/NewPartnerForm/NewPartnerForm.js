@@ -115,7 +115,12 @@ class NewPartnerForm extends Component {
 
                     <div className="formGroup">
                     <label htmlFor="businessType">Business Type</label>
-                    <input onChange={this.handleChange} type="text" name="businessType" id="businessType"value={this.state.businessType}/>
+                    <select onChange={this.handleChange} name="businessType" id="businessType">
+                        <option value="For-profit">For-profit</option>
+                        <option value="Non-profit">Non-profit</option>
+                        <option value="School/College">School/College</option>
+                        <option value="other">other</option>
+                    </select>
                     </div>
 
                     <input type="submit"/>
