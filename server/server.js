@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const editPartner = require('./routes/editPartner.router');
+const partnerRouter = require('./routes/partner.router');
 const summaryRouter = require('./routes/summary.router');
 
 // TO DO
@@ -33,6 +34,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/editPartner', editPartner);
+app.use('/api/partner', partnerRouter)
 app.use('/api/summary', summaryRouter);
 
 // TO DO
