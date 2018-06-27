@@ -21,6 +21,7 @@ class EditPartner extends Component {
     super(props);
 
     this.state = {
+      open: false,
       selectedPartnerID: this.props.selectedPartner.id,
       partnerList: [],
     }
@@ -43,6 +44,14 @@ class EditPartner extends Component {
   logout = () => {
     this.props.dispatch(triggerLogout());
     this.props.history.push('login');
+  }
+
+  openModal = () => {
+    this.setState({ open: true });
+  }
+
+  closeModal = () => {
+    this.setState({ open: false });
   }
 
   handleChange = (event) => {
@@ -87,7 +96,12 @@ class EditPartner extends Component {
             getPartnerData={this.getPartnerData}
           />
           <SelectedPartnerInfo />
-          <NewPartnerForm getPartners={this.getPartners}/>
+          <button value="showModal" onClick={this.openModal}>Add New Partner</button>
+          <NewPartnerForm
+            show={this.state.open} 
+            getPartners={this.getPartners}
+            closeModal={this.closeModal}
+          />
           <button id="logoutButton" onClick={this.logout}>Log Out</button>
         </div>
       );

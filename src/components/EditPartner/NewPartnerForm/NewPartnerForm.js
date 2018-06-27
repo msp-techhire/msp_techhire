@@ -48,6 +48,9 @@ class NewPartnerForm extends Component {
     }
 
     render() {
+        if(!this.props.show) {
+            return null;
+        }
 
         return <div> 
              <h2>Register New Partner</h2>
@@ -95,6 +98,7 @@ class NewPartnerForm extends Component {
 
                 <input type="submit"/>
             </form>
+            <button onClick={this.props.closeModal}>Close Modal</button>
         </div>
     }
 }
