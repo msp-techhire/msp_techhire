@@ -56,7 +56,7 @@ const mapStateToProps = state => ({
 
 class Nav extends React.Component {
   state = {
-    open: true,
+    open: false,
     anchor: 'left',
   };
 
