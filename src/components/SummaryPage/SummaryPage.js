@@ -19,9 +19,6 @@ class SummaryPage extends Component {
     super(props);
     this.state = {
       data: {},
-      columns: [],
-      rows: [],
-      csv: [],
     }
   }
   componentDidMount() {
@@ -50,13 +47,7 @@ class SummaryPage extends Component {
       const data = response.data;
       this.setState({
         data: data,
-        columns: Object.keys(data[0]),
       });
-      // for (let row of data) {
-      //   for (let cell of columns) {
-
-      //   }
-      // }
     }).catch(error => {
       console.log(`ERROR trying to GET /api/summary: ${error}`);
     });
