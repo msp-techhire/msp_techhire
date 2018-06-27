@@ -49,7 +49,7 @@ const processArray = array => {
 }
 
 const convert = data => {
-  if (data.length > 0) {
+  try {
     let columns = Object.keys(data[0]);
     let rows = [columns];
     for (let row of data) {
@@ -60,8 +60,8 @@ const convert = data => {
       rows.push(newRow);
     }
     processArray(rows);
-  } else {
-    console.error(`ERROR: Invalid conversion input: ${data}`);
+  } catch(error) {
+    console.error(`ERROR trying to convert input: ${data}\n${error}`);
   }
 }
 

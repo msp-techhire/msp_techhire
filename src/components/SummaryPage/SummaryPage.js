@@ -76,7 +76,7 @@ class SummaryPage extends Component {
             onClick={this.logout}>Log Out</button>
             <button id="test" onClick={this.fetchAll}>Test</button>
             <div>
-              <JsonArrayToCsv convert="test" />
+              <JsonArrayToCsv convert={this.state.data} />
               {JSON.stringify(this.state.data)}
             </div>
         </div>
