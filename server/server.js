@@ -12,6 +12,8 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const editPartner = require('./routes/editPartner.router');
 const partnerRouter = require('./routes/partner.router');
+const summaryRouter = require('./routes/summary.router');
+
 // TO DO
 // work in progress for search
 // need dummy data to test
@@ -33,6 +35,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/editPartner', editPartner);
 app.use('/api/partner', partnerRouter)
+app.use('/api/summary', summaryRouter);
+
 // TO DO
 // work in progress for search
 // need dummy data to test

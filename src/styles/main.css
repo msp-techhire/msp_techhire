@@ -2,6 +2,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
+/* #mplsPhoto {
+    background:  url('/images/city-skyline-719951_1280.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 800px 700px;
+    margin-top: -80px;
+} */
+
 .instructions h1 {
     font-size: 24px;
     font-weight: 700;
@@ -17,7 +25,7 @@ body {
 
 }
 
-form {
+.logInForm {
     background-color: #cce1f4;
     width: 250px;
     height: 200px;
@@ -40,7 +48,7 @@ form {
     margin-left: 40px;
 }
 
-input {
+.logInInput {
     margin: 5px;
     margin-bottom: 10px;
     margin-left: 108px;
@@ -121,64 +129,145 @@ li a:hover {
     width: 80px;
 }
 
+
+
+/* Edit Partner Page */
+
+#editPartnerPage {
+    text-align: center;
+}
+
+#selectedPartnerTable {
+    text-align: center;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+#selectedPartnerTable td,
+#selectedPartnerTable th {
+    padding: 3px 8px;
+    border: 1px solid #333;
+}
+
+#editPartnerPage form {
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.formGroup {
+    padding: 10px 0;
+}
+
+
+.formGroup label {
+    padding-right: 10px;
+
+}
+
+/* Modal Form */
+
+
+
+
 /* ----------admin page ----------- */
 
+
+#adminTextTopOfPage {
+    margin-left: 5%;
+}
+
 #inputFieldSearch {
-    margin-left: 20%;
+    margin-left: 76%;
     width: 800px;
 }
 
 #searchButtons {
-    margin-left: 20%;
-    width: 80px;
-}
-
-#deleteButton {
-    margin-left: 20%;
+    margin-left: 10px;
     width: 80px;
 }
 
 #editButton {
-    margin-left: 20%;
-    width: 80px;
+    width: 25px;
+}
+
+/* -------------- table on admin page ------------- */
+
+table, th, td {
+    border: 1px solid black;
 }
 
 #searchTableResults {
-    /* margin-left: 30%; */
-    width: 800px;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+#tablePartnerCell {
+width: 10px;
 }
 
-/* -------table on admin page ------- */
-#tableIdCell {
-    width: 10px;
+#tableFormattedCell {
+
 }
-#tableTrainingCell {
-    width: 10px;
-}
+
 #tableGenderCell {
-    width: 10px;
+
 }
+
 #tableBirthCell {
-    width: 10px;
+
 }
+
 #tablePocCell {
-    width: 10px;
+
 }
+
 #tableEducationCell {
-    width: 10px;
+
 }
+
 #tableCityCell {
-    width: 10px;
+
 }
+
 #tableScholarshipCell {
-    width: 10px;
+
 }
+
 #tablePreviousJobCell {
-    width: 10px;
+
 }
+
 #tablePreTrainingWageCell {
-    width: 10px;
+
 }
+
 #tableStartDateCell {
-    width: 10px;
+
+}
+
+#tableTrainingStatusCell {
+
+}
+
+#tableEndDateCell {
+
+}
+
+#tableTrainingTypeCell {
+
+}
+
+#tableClassroomOrOnlineCell {
+
+}
+
+#tableExitStatusCell {
+
+}
+
+#tableEditButtonCell {
+
 }
