@@ -4,13 +4,11 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import axios from 'axios';
 
-
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Edit from '@material-ui/icons/Edit'
 
 
 const mapStateToProps = state => ({
@@ -22,7 +20,6 @@ class AdminPage extends Component {
     super(props);
     this.state = {
       results: [],
-      editOn: false,
       searchQuery: '',
     }
   }
@@ -57,51 +54,16 @@ class AdminPage extends Component {
     })
   }
 
-  // TO DO 
-  // adding new posts and edits ---------------
-
-  // PUT
-
-  // addEdit = (taco) => {
-  //   console.log('adding edit', taco);
-  //   axios.put(`/api/admin/${this.state.editId}`, { searchQuery: this.state })
-  //     .then((response) => {
-  //       console.log('put response', response);
-  //       this.fetchData();
-  //       this.setState({
-  //         editOn: false
-  //       })
-  //     })
-  //     .catch((error) => {
-  //       console.log('put/add error in addEdit Admin', error);
-  //     });
-  // }
-
-  // toggleEdit = (searchToEdit) => () =>
-  //   this.setState({
-  //     editOn: true,
-  //     searchQuery: searchToEdit.id,
-  //     editId: searchToEdit.id
-  //   });
-
   handleSearchChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  // end adding new gets and edits ----------------
-
   render() {
     let content = null;
 
-    // TO DO
-    // adding toggled buttons for edit
-
     let buttonDisplayed = <Button id="searchButtons" variant="outlined" size="small" onClick={this.fetchData}>Search</Button>
-    // if (this.state.editOn) {
-    //   buttonDisplayed = <Button id="searchButtons" variant="outlined" size="small" onClick={this.addEdit}>Submit Edit</Button>
-    // }
 
     if (this.props.user.userName) {
       content = (
@@ -116,7 +78,6 @@ class AdminPage extends Component {
             <button id="logoutButton"
               onClick={this.logout}>Log Out</button>
           </div>
-
           <div id="inputFieldSearch">
             <div>
               <TextField
@@ -130,34 +91,31 @@ class AdminPage extends Component {
               {buttonDisplayed}
             </div>
           </div>
-
           <div>
             <table id="searchTableResults">
-              <thead>
-                <tr>
-                  <th id="tablePartnerCell">Partner</th>
-                  <th id="tableFormattedCell">Id</th>
-                  <th id="tableGenderCell">Gender</th>
-                  <th id="tableBirthCell">YOB</th>
-                  <th id="tablePocCell">POC</th>
-                  <th id="tableEducationCell">Ed Level</th>
-                  <th id="tableCityCell">Residence</th>
-                  <th id="tableScholarshipCell">Scholarship</th>
-                  <th id="tablePreviousJobCell">Pre-experience</th>
-                  <th id="tablePreTrainingWageCell">Pre-wage</th>
-                  <th id="tableStartDateCell">Start Date</th>
-                  <th id="tableTrainingStatusCell">Current Status</th>
-                  <th id="tableEndDateCell">End Date</th>
-                  <th id="tableTrainingTypeCell">Type</th>
-                  <th id="tableClassroomOrOnlineCell">Class Type</th>
-                  <th id="tableExitStatusCell">Exit Status</th>
-                  <th id="tableEditButtonCell">Edit</th>
-                </tr>
-              </thead>
+              <tr>
+                <th>Partner</th>
+                <th>Id</th>
+                <th>Gender</th>
+                <th>YOB</th>
+                <th>POC</th>
+                <th>Ed Level</th>
+                <th>Residence</th>
+                <th>Scholarship</th>
+                <th>Pre-experience</th>
+                <th>Pre-wage</th>
+                <th>Start Date</th>
+                <th>Current Status</th>
+                <th>End Date</th>
+                <th>Type</th>
+                <th>Class Type</th>
+                <th>Exit Status</th>
+                <th>Edit</th>
+              </tr>
               <tbody>
                 {this.state.results.map((person, i) => (
                   <tr key={i}>
-                    <td id="tablePartnerSearch">{person.partner_id}</td>
+                    <td >{person.partner_id}</td>
                     <td>{person.formatted_id}</td>
                     <td>{person.gender}</td>
                     <td>{person.year_of_birth}</td>
@@ -173,15 +131,11 @@ class AdminPage extends Component {
                     <td>{person.training_type}</td>
                     <td>{person.classroom_or_online}</td>
                     <td>{person.exit_status}</td>
-                    <td><Button id="editButton" variant="outlined" size="small"><Edit /></Button></td>
-                    {/* for edit button */}
-                    {/* onClick={this.toggleEdit(person)} */}
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-
         </div>
       );
     }
@@ -195,7 +149,6 @@ class AdminPage extends Component {
   }
 }
 
-// this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(AdminPage);
 
 

@@ -34,30 +34,4 @@ router.get('/', (req, res) => {
   } 
 });
 
-// TO DO 
- 
-// PUT
-
-// router.put('/:id', (req, res) => {
-//   if (req.isAuthenticated()) {
-//     const newInfo = req.body; 
-//     const queryText = `UPDATE "person"
-//                       SET "gender" = $1 
-//                       WHERE "id" = $2`;
-//     const queryValues = [
-//       newInfo.gender,
-//       req.params.id,
-//       req.user.id,
-//     ];
-//     pool.query(queryText, queryValues)
-//       .then(() => { res.sendStatus(200); })
-//       .catch((err) => {
-//         console.log('Error completing PUT search query', err);
-//         res.sendStatus(500);
-//       });
-//   } else {
-//     res.sendStatus(403);
-//   }
-// });
-
 module.exports = router;

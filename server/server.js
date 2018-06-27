@@ -13,12 +13,8 @@ const userRouter = require('./routes/user.router');
 const editPartner = require('./routes/editPartner.router');
 const partnerRouter = require('./routes/partner.router');
 const summaryRouter = require('./routes/summary.router');
-
-// TO DO
-// work in progress for search
-// need dummy data to test
 const searchAdmin = require('./routes/search.router');
-
+const editStudentRouter = require('./routes/studentSearch.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -34,14 +30,11 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/editPartner', editPartner);
+
 app.use('/api/partner', partnerRouter)
 app.use('/api/summary', summaryRouter);
-
-// TO DO
-// work in progress for search
-// need dummy data to test
 app.use('/api/admin', searchAdmin); 
-
+app.use('/api/studentEdit', editStudentRouter);
 
 // Serve static files
 app.use(express.static('build'));
