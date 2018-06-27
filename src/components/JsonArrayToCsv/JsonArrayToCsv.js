@@ -29,12 +29,45 @@ and exported to a CSV file
 
 import React from 'react';
 
+const exportCsv = encodedUri => {
+  let link = document.createElement('a');
+  link.setAttribute('href', encodedUri);
+  link.setAttribute('download', 'data.csv');
+  link.innerHTML = 'Download CSV Spreadsheet';
+  document.body.appendChild(link);
+  link.click();
+}
+
+const processArray = array => {
+  console.log(array);
+  let csvContent = 'data:text/csv;charset=utf-8,';
+  array.forEach(row => {
+    let newRow = row.join(',');
+    csvContent += newRow + '\r\n';
+  });
+  const encodedUri = encodeURI(csvContent);
+  exportCsv(encodedUri);
+}
+
 const convert = data => {
-  console.log(data);
+  if (data.length > 0) {
+    let columns = Object.keys(data[0]);
+    let rows = [columns];
+    for (let row of data) {
+      let newRow = [];
+      for (let field of columns) {
+        newRow.push(row[field]);
+      }
+      rows.push(newRow);
+    }
+    processArray(rows);
+  } else {
+    console.error(`ERROR: Invalid conversion input: ${data}`);
+  }
 }
 
 const JsonArrayToCsv = props => (
-  <div className="JsonArrayToCsv">
+  <div className="JsonArrayToCsv" style={{ display: "inline-block" }}>
     <button onClick={() => convert(props.convert)}>Download CSV Spreadsheet</button>
   </div>
 );
