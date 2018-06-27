@@ -39,7 +39,6 @@ const exportCsv = encodedUri => {
 }
 
 const processArray = array => {
-  console.log(array);
   let csvContent = 'data:text/csv;charset=utf-8,';
   array.forEach(row => {
     let newRow = row.join(',');
