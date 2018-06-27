@@ -1,14 +1,6 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
 }
-
-/* #mplsPhoto {
-    background:  url('/images/city-skyline-719951_1280.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 800px 700px;
-    margin-top: -80px;
-} */
 
 .instructions h1 {
     font-size: 24px;
@@ -146,10 +138,6 @@ li a:hover {
     width: 80px;
 }
 
-#editButton {
-    width: 25px;
-}
-
 /* -------------- table on admin page ------------- */
 
 table, th, td {
@@ -167,66 +155,28 @@ table, th, td {
 width: 10px;
 }
 
-#tableFormattedCell {
+/* -------------- student edit table on admin page ------------- */
 
+#studentFieldSearch {
+    /* margin-left: 76%; */
+    /* width: 800px; */
+    margin-bottom: 40px;
 }
 
-#tableGenderCell {
-
+#searchStudentTableResults {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-size: 12px;
+    border-collapse: collapse;
 }
 
-#tableBirthCell {
-
+#editStudentButtons {
+    margin-left: 3%;
+    margin-right: 10px;
+    width: 80px;
 }
 
-#tablePocCell {
-
-}
-
-#tableEducationCell {
-
-}
-
-#tableCityCell {
-
-}
-
-#tableScholarshipCell {
-
-}
-
-#tablePreviousJobCell {
-
-}
-
-#tablePreTrainingWageCell {
-
-}
-
-#tableStartDateCell {
-
-}
-
-#tableTrainingStatusCell {
-
-}
-
-#tableEndDateCell {
-
-}
-
-#tableTrainingTypeCell {
-
-}
-
-#tableClassroomOrOnlineCell {
-
-}
-
-#tableExitStatusCell {
-
-}
-
-#tableEditButtonCell {
-
+#editButton { 
+    width: 25px;
 }

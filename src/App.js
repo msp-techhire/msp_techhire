@@ -10,6 +10,7 @@ import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import AdminPage from './components/AdminPage/AdminPage';
+import EditStudentPage from './components/EditStudentPage/EditStudentPage';
 import SummaryPage from './components/SummaryPage/SummaryPage';
 import EditPartner from './components/EditPartner/EditPartner';
 import Partner from './components/Partner/Partner';
@@ -42,6 +43,10 @@ const App = () => (
         <Route
           path="/editpartner" // admin edit partner page
           component={EditPartner}
+        />
+        <Route
+          path="/studentEdit" // admin edit student
+          component={EditStudentPage}
         />
         <Route
           path="/partner" // partner landing page
