@@ -11,6 +11,8 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const editPartner = require('./routes/editPartner.router');
+const partnerRouter = require('./routes/partner.router');
+const summaryRouter = require('./routes/summary.router');
 const searchAdmin = require('./routes/search.router');
 const editStudentRouter = require('./routes/studentSearch.router');
 
@@ -28,6 +30,9 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/editPartner', editPartner);
+
+app.use('/api/partner', partnerRouter)
+app.use('/api/summary', summaryRouter);
 app.use('/api/admin', searchAdmin); 
 app.use('/api/studentEdit', editStudentRouter);
 

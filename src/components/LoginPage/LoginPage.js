@@ -64,7 +64,7 @@ class LoginPage extends Component {
     return (
       <div>
         { this.renderAlert() }
-        <form onSubmit={this.login}>
+        <form onSubmit={this.login} className="logInForm">
           <h1 id="textLogin">Login</h1>
           <div>
             <label htmlFor="username" id="textUsername">
@@ -73,6 +73,7 @@ class LoginPage extends Component {
                 type="text"
                 name="username"
                 value={this.state.username}
+                className="logInInput"
                 onChange={this.handleInputChangeFor('username')}
               />
             </label>
@@ -83,6 +84,7 @@ class LoginPage extends Component {
               <input
                 type="password"
                 name="password"
+                className="logInInput"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
