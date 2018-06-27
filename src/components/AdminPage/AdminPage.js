@@ -110,7 +110,6 @@ class AdminPage extends Component {
                 <th>Type</th>
                 <th>Class Type</th>
                 <th>Exit Status</th>
-                <th>Edit</th>
               </tr>
               <tbody>
                 {this.state.results.map((person, i) => (
