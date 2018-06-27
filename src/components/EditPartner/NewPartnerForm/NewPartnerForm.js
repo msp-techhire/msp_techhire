@@ -121,6 +121,7 @@ class NewPartnerForm extends Component {
                     <div className="formGroup">
                     <label htmlFor="businessType">Business Type</label>
                     <select onChange={this.handleChange} name="businessType" id="businessType">
+                        <option value="" disabled selected></option>
                         <option value="For-profit">For-profit</option>
                         <option value="Non-profit">Non-profit</option>
                         <option value="School/College">School/College</option>
