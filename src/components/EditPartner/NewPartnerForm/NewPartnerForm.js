@@ -14,7 +14,7 @@ const backDropStyle = {
 const modalStyle = {
     backgroundColor: '#fff',
     borderRadius: 5,
-    maxWidth: 500,
+    maxWidth: 600,
     minHeight: 500,
     margin: '0 auto',
     padding: 30,
@@ -45,6 +45,11 @@ class NewPartnerForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        if(this.state.orgName === '' || this.state.orgAbbreviation === '' || this.state.orgAddress === '' ||
+            this.state.orgWebsite === '' || this.state.orgPhone === '' || this.state.directorFirst === '' ||
+            this.state.directorLast === '' || this.state.businessType === '') {
+                return alert('Please complete all fields!');
+            }
         axios({
             method: 'POST',
             url: '/api/editPartner/newPartner',
@@ -76,7 +81,7 @@ class NewPartnerForm extends Component {
         return <div style={backDropStyle}> 
             <div style={modalStyle}>
                 <h2>Register New Partner</h2>
-                <form onSubmit={this.handleSubmit}>
+                <form>
                     
                     <div className="formGroup">
                     <label htmlFor="orgName">Organization Name</label>
@@ -122,9 +127,8 @@ class NewPartnerForm extends Component {
                         <option value="other">other</option>
                     </select>
                     </div>
-
-                    <input type="submit"/>
                 </form>
+                <button onClick={this.handleSubmit}>Submit Partner Organization</button>
                 <button onClick={this.props.closeModal}>Close Modal</button>
             </div>
         </div>
