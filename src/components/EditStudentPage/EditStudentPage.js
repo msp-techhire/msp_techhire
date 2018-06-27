@@ -80,7 +80,7 @@ class EditStudentPage extends Component {
       editId: searchStudentToEdit.id
     });
 
-  handleSearchChange = (event) => {
+  handleSearchStudentChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -104,7 +104,7 @@ class EditStudentPage extends Component {
           </div>
           <div>
             <p id="adminTextTopOfPage">
-              Admin Page
+              Edit Student Page
           </p>
             <button id="logoutButton"
               onClick={this.logout}>Log Out</button>
@@ -114,7 +114,7 @@ class EditStudentPage extends Component {
               {toggleButtonDisplayed}
               <TextField
                 id="addSearch"
-                onChange={this.handleSearchChange}
+                onChange={this.handleSearchStudentChange}
                 name="searchStudentQuery"
                 value={this.state.searchStudentQuery}
                 label="Student Search"
