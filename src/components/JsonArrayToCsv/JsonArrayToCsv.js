@@ -42,7 +42,7 @@ const processArray = array => {
   array.forEach(row => {
     let newRow = row.join(',');
     csvContent += newRow + '\r\n';
-  }); 
+  });
   const encodedUri = encodeURI(csvContent);
   exportCsv(encodedUri);
 }
