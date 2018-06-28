@@ -34,7 +34,16 @@ class EditPartner extends Component {
         directorLast: '',
         businessType: ''
       },
-
+      selectedPartner: {
+        orgName: '',
+        orgAbbreviation: '',
+        orgAddress: '',
+        orgWebsite: '',
+        orgPhone: '',
+        directorFirst: '',
+        directorLast: '',
+        businessType: '',
+      }
     }
   }
 
@@ -72,6 +81,7 @@ class EditPartner extends Component {
     });
   }
 
+  //Functions for New Partners
   handleFormChange = (event) => {
     this.setState({
       newOrg: {
@@ -113,6 +123,9 @@ class EditPartner extends Component {
       .catch(err => console.log(err));
   }
 
+  //Functions to Edit Partners
+
+  
   getPartners = () => {
     axios({
       method: 'GET',
@@ -127,11 +140,31 @@ class EditPartner extends Component {
   }
 
   getPartnerData = (id) => {
-    let action = {
-      type: USER_ACTIONS.GET_SELECTED_PARTNER_DATA,
-      payload: id,
-    };
-    this.props.dispatch(action);
+    // let action = {
+    //   type: USER_ACTIONS.GET_SELECTED_PARTNER_DATA,
+    //   payload: id,
+    // };
+    // this.props.dispatch(action);
+    axios({
+      method: 'GET',
+      url: `/api/editPartner/partnerInfo/${id}`,
+    })
+    .then((result) => {
+      let selectedPartner = result.data[0];
+      this.setState({
+        selectedPartner: {
+          orgName: selectedPartner.org_name,
+          orgAbbreviation: selectedPartner.org_abbr,
+          orgAddress: selectedPartner.address,
+          orgWebsite: selectedPartner.website,
+          orgPhone: selectedPartner.phone_number,
+          directorFirst: selectedPartner.director_first_name,
+          directorLast: selectedPartner.director_last_name,
+          businessType: selectedPartner.business_type,
+        }
+      });
+    })
+    .catch(err => console.log(err));
   }
 
   render() {
@@ -147,7 +180,9 @@ class EditPartner extends Component {
             handleChange={this.handleChange}
             getPartnerData={this.getPartnerData}
           />
-          <SelectedPartnerInfo />
+          <SelectedPartnerInfo 
+            selectedPartner={this.state.selectedPartner}
+          />
           <button value="showModal" onClick={this.openModal}>Add New Partner</button>
           <NewPartnerForm
             show={this.state.open}

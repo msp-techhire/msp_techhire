@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import EditPartnerInfoForm from '../EditPartnerInfoForm/EditPartnerInfoForm';
 
 const mapStateToProps = state => ({
-    selectedPartner: state.editPartnerReducer.selectedPartner,
+    testSelectedPartner: state.editPartnerReducer.selectedPartner,
 });
 
 class SelectedPartnerInfo extends Component {
@@ -41,12 +41,12 @@ class SelectedPartnerInfo extends Component {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{this.props.selectedPartner.org_name}</td>
-                        <td>{this.props.selectedPartner.address}</td>
-                        <td>{this.props.selectedPartner.director_first_name} {this.props.selectedPartner.director_last_name}</td>
-                        <td>{this.props.selectedPartner.business_type}</td>
-                        <td>{this.props.selectedPartner.phone_number}</td>
-                        <td>{this.props.selectedPartner.website}</td>
+                        <td>{this.props.selectedPartner.orgName}</td>
+                        <td>{this.props.selectedPartner.orgAddress}</td>
+                        <td>{this.props.selectedPartner.directorFirst} {this.props.selectedPartner.directorLast}</td>
+                        <td>{this.props.selectedPartner.businessType}</td>
+                        <td>{this.props.selectedPartner.orgPhone}</td>
+                        <td>{this.props.selectedPartner.orgWebsite}</td>
                     </tr>
                 </tbody>
             </table>
@@ -54,14 +54,7 @@ class SelectedPartnerInfo extends Component {
             <EditPartnerInfoForm 
                 show={this.state.open}
                 closeModal={this.closeModal}
-                orgName={ this.props.selectedPartner.org_name }
-                orgAbbreviation={this.props.selectedPartner.org_abbr}
-                address={this.props.selectedPartner.address}
-                directorFirst={this.props.selectedPartner.director_first_name}
-                directorLast={this.props.selectedPartner.director_last_name}
-                businessType={this.props.selectedPartner.business_type}
-                phoneNumber={this.props.selectedPartner.phone_number}
-                website={this.props.selectedPartner.website}
+                selectedPartner={this.props.selectedPartner}
             />
         </div>
     }
