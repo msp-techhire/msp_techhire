@@ -85,43 +85,43 @@ class NewPartnerForm extends Component {
                     
                     <div className="formGroup">
                     <label htmlFor="orgName">Organization Name</label>
-                    <input onChange={this.handleChange} type="text" name="orgName" id="orgName"value={this.state.orgName}/>
+                    <input onChange={this.props.handleChange} type="text" name="orgName" id="orgName" value={this.props.orgName}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="orgAbbreviation">Organization Abbreviation</label>
-                    <input onChange={this.handleChange} type="text" name="orgAbbreviation" id="orgAbbreviation"value={this.state.orgAbbreviation}/>
+                    <input onChange={this.props.handleChange} type="text" name="orgAbbreviation" id="orgAbbreviation" value={this.props.orgAbbreviation}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="orgAddress">Address</label>
-                    <input onChange={this.handleChange} type="text" name="orgAddress" id="orgAddress"value={this.state.orgAddress}/>
+                    <input onChange={this.props.handleChange} type="text" name="orgAddress" id="orgAddress" value={this.props.orgAddress}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="orgWebsite">Website</label>
-                    <input onChange={this.handleChange} type="text" name="orgWebsite" id="orgWebsite"value={this.state.orgWebsite}/>
+                    <input onChange={this.props.handleChange} type="text" name="orgWebsite" id="orgWebsite" value={this.props.orgWebsite}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="orgPhone">Phone Number</label>
-                    <input onChange={this.handleChange} type="text" name="orgPhone" id="orgPhone"value={this.state.orgPhone}/>
+                    <input onChange={this.props.handleChange} type="text" name="orgPhone" id="orgPhone" value={this.props.orgPhone}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="directorFirst">Director First Name</label>
-                    <input onChange={this.handleChange} type="text" name="directorFirst" id="directorFirst"value={this.state.directorFirst}/>
+                    <input onChange={this.props.handleChange} type="text" name="directorFirst" id="directorFirst" value={this.props.directorFirst}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="directorLast">Director Last Name</label>
-                    <input onChange={this.handleChange} type="text" name="directorLast" id="directorLast"value={this.state.directorLast}/>
+                    <input onChange={this.props.handleChange} type="text" name="directorLast" id="directorLast" value={this.props.directorLast}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="businessType">Business Type</label>
-                    <select onChange={this.handleChange} name="businessType" id="businessType">
-                        <option value="" disabled selected></option>
+                    <select onChange={this.props.handleChange} defaultValue="" name="businessType" id="businessType">
+                        <option value="" disabled></option>
                         <option value="For-profit">For-profit</option>
                         <option value="Non-profit">Non-profit</option>
                         <option value="School/College">School/College</option>
@@ -129,7 +129,7 @@ class NewPartnerForm extends Component {
                     </select>
                     </div>
                 </form>
-                <button onClick={this.handleSubmit}>Submit Partner Organization</button>
+                <button onClick={this.props.handleSubmit}>Submit Partner Organization</button>
                 <button onClick={this.props.closeModal}>Close Modal</button>
             </div>
         </div>

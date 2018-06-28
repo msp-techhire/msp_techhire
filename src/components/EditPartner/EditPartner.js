@@ -24,6 +24,14 @@ class EditPartner extends Component {
       open: false,
       selectedPartnerID: this.props.selectedPartner.id,
       partnerList: [],
+      orgName: '',
+      orgAbbreviation: '',
+      orgAddress: '',
+      orgWebsite: '',
+      orgPhone: '',
+      directorFirst: '',
+      directorLast: '',
+      businessType: '',
     }
   }
 
@@ -60,6 +68,52 @@ class EditPartner extends Component {
       selectedPartnerID: event.target.value,
     });
   }
+
+  handleFormChange = (event) => {
+    this.setState({
+        [event.target.name]: event.target.value
+    });
+}
+
+handleFormSubmit = (event) => {
+  event.preventDefault();
+  if(this.state.orgName === '' || this.state.orgAbbreviation === '' || this.state.orgAddress === '' ||
+      this.state.orgWebsite === '' || this.state.orgPhone === '' || this.state.directorFirst === '' ||
+      this.state.directorLast === '' || this.state.businessType === '') {
+          return alert('Please complete all fields!');
+      }
+  const objectToSend = {
+    orgName: this.state.orgName,
+    orgAbbreviation: this.state.orgAbbreviation,
+    orgAddress: this.state.orgAddress,
+    orgWebsite: this.state.orgWebsite,
+    orgPhone: this.state.orgPhone,
+    directorFirst: this.state.directorFirst,
+    directorLast: this.state.directorLast,
+    businessType: this.state.businessType,
+  }
+  axios({
+      method: 'POST',
+      url: '/api/editPartner/newPartner',
+      data: objectToSend,
+  })
+  .then((response) => {
+      console.log(response);
+      this.setState({
+          orgName: '',
+          orgAbbreviation: '',
+          orgAddress: '',
+          orgWebsite: '',
+          orgPhone: '',
+          directorFirst: '',
+          directorLast: '',
+          businessType: '',
+      });
+      this.getPartners();
+      this.closeModal();
+  })
+  .catch(err => console.log(err));
+}
 
   getPartners = () => {
     axios({
@@ -101,6 +155,15 @@ class EditPartner extends Component {
             show={this.state.open} 
             getPartners={this.getPartners}
             closeModal={this.closeModal}
+            handleSubmit={this.handleFormSubmit}
+            handleChange={this.handleFormChange}
+            orgName= {this.state.orgName}
+            orgAbbreviation= {this.state.orgAbbreviation}
+            orgAddress= {this.state.orgAddress}
+            orgWebsite= {this.state.orgWebsite}
+            orgPhone= {this.state.orgPhone}
+            directorFirst= {this.state.directorFirst}
+            directorLast= {this.state.directorLast}
           />
           <button id="logoutButton" onClick={this.logout}>Log Out</button>
         </div>

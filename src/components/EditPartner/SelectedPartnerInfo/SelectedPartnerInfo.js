@@ -11,9 +11,10 @@ class SelectedPartnerInfo extends Component {
         super(props);
 
         this.state = {
-            open: false
+            open: false,
         };
     }
+
 
     openModal = () => {
         this.setState({ open: true });
@@ -24,6 +25,7 @@ class SelectedPartnerInfo extends Component {
     }
 
     render() {
+
         return <div>
             <h1>Partner Information</h1>
             <table id="selectedPartnerTable">
@@ -52,6 +54,14 @@ class SelectedPartnerInfo extends Component {
             <EditPartnerInfoForm 
                 show={this.state.open}
                 closeModal={this.closeModal}
+                orgName={ this.props.selectedPartner.org_name }
+                orgAbbreviation={this.props.selectedPartner.org_abbr}
+                address={this.props.selectedPartner.address}
+                directorFirst={this.props.selectedPartner.director_first_name}
+                directorLast={this.props.selectedPartner.director_last_name}
+                businessType={this.props.selectedPartner.business_type}
+                phoneNumber={this.props.selectedPartner.phone_number}
+                website={this.props.selectedPartner.website}
             />
         </div>
     }
