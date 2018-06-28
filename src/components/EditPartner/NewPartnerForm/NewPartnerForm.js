@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 const backDropStyle = {
     position: 'fixed',
@@ -21,60 +20,9 @@ const modalStyle = {
     position: 'relative'
 }
 
-class NewPartnerForm extends Component {
-    constructor(props) {
-        super(props);
+const NewPartnerForm = (props) => {
 
-        this.state = {
-            orgName: '',
-            orgAbbreviation: '',
-            orgAddress: '',
-            orgWebsite: '',
-            orgPhone: '',
-            directorFirst: '',
-            directorLast: '',
-            businessType: '',
-        }
-    }
-
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        if(this.state.orgName === '' || this.state.orgAbbreviation === '' || this.state.orgAddress === '' ||
-            this.state.orgWebsite === '' || this.state.orgPhone === '' || this.state.directorFirst === '' ||
-            this.state.directorLast === '' || this.state.businessType === '') {
-                return alert('Please complete all fields!');
-            }
-        axios({
-            method: 'POST',
-            url: '/api/editPartner/newPartner',
-            data: this.state,
-        })
-        .then((response) => {
-            console.log(response);
-            this.setState({
-                orgName: '',
-                orgAbbreviation: '',
-                orgAddress: '',
-                orgWebsite: '',
-                orgPhone: '',
-                directorFirst: '',
-                directorLast: '',
-                businessType: '',
-            });
-            this.props.getPartners();
-            this.props.closeModal();
-        })
-        .catch(err => console.log(err));
-    }
-
-    render() {
-        if(!this.props.show) {
+        if(!props.show) {
             return null;
         }
 
@@ -85,42 +33,42 @@ class NewPartnerForm extends Component {
                     
                     <div className="formGroup">
                     <label htmlFor="orgName">Organization Name</label>
-                    <input onChange={this.props.handleChange} type="text" name="orgName" id="orgName" value={this.props.orgName}/>
+                    <input onChange={props.handleChange} type="text" name="orgName" id="orgName" value={props.orgName}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="orgAbbreviation">Organization Abbreviation</label>
-                    <input onChange={this.props.handleChange} type="text" name="orgAbbreviation" id="orgAbbreviation" value={this.props.orgAbbreviation}/>
+                    <input onChange={props.handleChange} type="text" name="orgAbbreviation" id="orgAbbreviation" value={props.orgAbbreviation}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="orgAddress">Address</label>
-                    <input onChange={this.props.handleChange} type="text" name="orgAddress" id="orgAddress" value={this.props.orgAddress}/>
+                    <input onChange={props.handleChange} type="text" name="orgAddress" id="orgAddress" value={props.orgAddress}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="orgWebsite">Website</label>
-                    <input onChange={this.props.handleChange} type="text" name="orgWebsite" id="orgWebsite" value={this.props.orgWebsite}/>
+                    <input onChange={props.handleChange} type="text" name="orgWebsite" id="orgWebsite" value={props.orgWebsite}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="orgPhone">Phone Number</label>
-                    <input onChange={this.props.handleChange} type="text" name="orgPhone" id="orgPhone" value={this.props.orgPhone}/>
+                    <input onChange={props.handleChange} type="text" name="orgPhone" id="orgPhone" value={props.orgPhone}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="directorFirst">Director First Name</label>
-                    <input onChange={this.props.handleChange} type="text" name="directorFirst" id="directorFirst" value={this.props.directorFirst}/>
+                    <input onChange={props.handleChange} type="text" name="directorFirst" id="directorFirst" value={props.directorFirst}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="directorLast">Director Last Name</label>
-                    <input onChange={this.props.handleChange} type="text" name="directorLast" id="directorLast" value={this.props.directorLast}/>
+                    <input onChange={props.handleChange} type="text" name="directorLast" id="directorLast" value={props.directorLast}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="businessType">Business Type</label>
-                    <select onChange={this.props.handleChange} defaultValue="" name="businessType" id="businessType">
+                    <select onChange={props.handleChange} defaultValue="" name="businessType" id="businessType">
                         <option value="" disabled></option>
                         <option value="For-profit">For-profit</option>
                         <option value="Non-profit">Non-profit</option>
@@ -129,11 +77,10 @@ class NewPartnerForm extends Component {
                     </select>
                     </div>
                 </form>
-                <button onClick={this.props.handleSubmit}>Submit Partner Organization</button>
-                <button onClick={this.props.closeModal}>Close Modal</button>
+                <button onClick={props.handleSubmit}>Submit Partner Organization</button>
+                <button onClick={props.closeModal}>Close Modal</button>
             </div>
         </div>
-    }
 }
 
 export default NewPartnerForm
