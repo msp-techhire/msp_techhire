@@ -93,6 +93,7 @@ class AdminPage extends Component {
           </div>
           <div>
             <table id="searchTableResults">
+              <thead>
               <tr>
                 <th>Partner</th>
                 <th>Id</th>
@@ -111,6 +112,7 @@ class AdminPage extends Component {
                 <th>Class Type</th>
                 <th>Exit Status</th>
               </tr>
+              </thead>
               <tbody>
                 {this.state.results.map((person, i) => (
                   <tr key={i}>
