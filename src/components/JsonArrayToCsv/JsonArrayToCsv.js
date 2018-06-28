@@ -33,6 +33,7 @@ const exportCsv = encodedUri => {
   let link = document.createElement('a');
   link.setAttribute('href', encodedUri);
   link.setAttribute('download', 'data.csv');
+  link.setAttribute('hidden', 'hidden');
   link.click();
 }
 
