@@ -17,7 +17,8 @@ const EditPartnerInfoForm = (props) => {
             <input type="text" value={props.selectedPartner.businessType} name="businessType" onChange={props.handleEditChange}/>
             <input type="text" value={props.selectedPartner.orgPhone} name="orgPhone" onChange={props.handleEditChange}/>
             <input type="text" value={props.selectedPartner.orgWebsite} name="orgWebsite" onChange={props.handleEditChange}/>
-            <button onClick={() => props.updatePartnerInfo(Number(props.selectedPartnerID))}>Close Edit Modal</button>
+            <button onClick={() => props.updatePartnerInfo(Number(props.selectedPartnerID))}>Update Partner Info</button>
+            <button onClick={props.closeEditPartnerModal}>Close Edit Page</button>
         </div>
 }
 

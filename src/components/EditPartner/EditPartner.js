@@ -21,7 +21,12 @@ class EditPartner extends Component {
     super(props);
 
     this.state = {
-      open: false,
+      newPartnerModal: {
+        open: false,
+      },
+      editPartnerModal: {
+        open: false
+      },
       selectedPartnerID: this.props.selectedPartner.id,
       partnerList: [],
       newOrg: {
@@ -66,20 +71,32 @@ class EditPartner extends Component {
     this.props.history.push('login');
   }
 
-/* ------------------------------ */
-/* OPEN AND CLOSE MODALS */
-/* ------------------------------ */
-  openModal = () => {
-    this.setState({ open: true });
+  /* ------------------------------ */
+  /* OPEN AND CLOSE NEW PARTNER MODALS */
+  /* ------------------------------ */
+  openNewPartnerModal = () => {
+    this.setState({ newPartnerModal: { open: true } });
   }
 
-  closeModal = () => {
-    this.setState({ open: false });
+  closeNewPartnerModal = () => {
+    this.setState({ newPartnerModal: { open: false } });
   }
 
-/* ------------------------------ */
-/* GET SELECTED PARTNER*/
-/* ------------------------------ */
+  /* ------------------------------ */
+  /* OPEN AND CLOSE EDIT PARTNER MODALS */
+  /* ------------------------------ */
+
+  openEditPartnerModal = () => {
+    this.setState({ editPartnerModal: {open: true }});
+  }
+
+  closeEditPartnerModal = () => {
+    this.setState({ editPartnerModal: {open: false }});
+  }
+
+  /* ------------------------------ */
+  /* GET SELECTED PARTNER*/
+  /* ------------------------------ */
   handleChange = (event) => {
     this.getPartnerData(event.target.value);
     this.setState({
@@ -88,8 +105,8 @@ class EditPartner extends Component {
   }
 
   /* ------------------------------ */
-/* FUNCTIONS FOR NEW PARTNERS */
-/* ------------------------------ */
+  /* FUNCTIONS FOR NEW PARTNERS */
+  /* ------------------------------ */
   handleFormChange = (event) => {
     this.setState({
       newOrg: {
@@ -126,14 +143,14 @@ class EditPartner extends Component {
           }
         });
         this.getPartners();
-        this.closeModal();
+        this.closeNewPartnerModal();
       })
       .catch(err => console.log(err));
   }
 
   /* ------------------------------ */
-/* FUNCTIONS TO EDIT PARTNERS */
-/* ------------------------------ */
+  /* FUNCTIONS TO EDIT PARTNERS */
+  /* ------------------------------ */
   handleEditChange = (event) => {
     this.setState({
       selectedPartner: {
@@ -149,15 +166,16 @@ class EditPartner extends Component {
       url: `/api/editPartner/updatePartner/${id}`,
       data: this.state.selectedPartner
     })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch(err => console.log(err));
+      .then((response) => {
+        console.log(response);
+      })
+      .catch(err => console.log(err));
+      this.closeEditPartnerModal();
   }
 
- /* ------------------------------ */
-/* FUNCTIONS TO RETRIEVE DATA */
-/* ------------------------------ */
+  /* ------------------------------ */
+  /* FUNCTIONS TO RETRIEVE DATA */
+  /* ------------------------------ */
   getPartners = () => {
     axios({
       method: 'GET',
@@ -181,22 +199,22 @@ class EditPartner extends Component {
       method: 'GET',
       url: `/api/editPartner/partnerInfo/${id}`,
     })
-    .then((result) => {
-      let selectedPartner = result.data[0];
-      this.setState({
-        selectedPartner: {
-          orgName: selectedPartner.org_name,
-          orgAbbreviation: selectedPartner.org_abbr,
-          orgAddress: selectedPartner.address,
-          orgWebsite: selectedPartner.website,
-          orgPhone: selectedPartner.phone_number,
-          directorFirst: selectedPartner.director_first_name,
-          directorLast: selectedPartner.director_last_name,
-          businessType: selectedPartner.business_type,
-        }
-      });
-    })
-    .catch(err => console.log(err));
+      .then((result) => {
+        let selectedPartner = result.data[0];
+        this.setState({
+          selectedPartner: {
+            orgName: selectedPartner.org_name,
+            orgAbbreviation: selectedPartner.org_abbr,
+            orgAddress: selectedPartner.address,
+            orgWebsite: selectedPartner.website,
+            orgPhone: selectedPartner.phone_number,
+            directorFirst: selectedPartner.director_first_name,
+            directorLast: selectedPartner.director_last_name,
+            businessType: selectedPartner.business_type,
+          }
+        });
+      })
+      .catch(err => console.log(err));
   }
 
 
@@ -214,17 +232,20 @@ class EditPartner extends Component {
             handleChange={this.handleChange}
             getPartnerData={this.getPartnerData}
           />
-          <SelectedPartnerInfo 
+          <SelectedPartnerInfo
             selectedPartner={this.state.selectedPartner}
             handleEditChange={this.handleEditChange}
             updatePartnerInfo={this.updatePartnerInfo}
             selectedPartnerID={this.state.selectedPartnerID}
+            openEditPartnerModal={this.openEditPartnerModal}
+            closeEditPartnerModal={this.closeEditPartnerModal}
+            show={this.state.editPartnerModal.open}
           />
-          <button value="showModal" onClick={this.openModal}>Add New Partner</button>
+          <button value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</button>
           <NewPartnerForm
-            show={this.state.open}
+            show={this.state.newPartnerModal.open}
             getPartners={this.getPartners}
-            closeModal={this.closeModal}
+            closeNewPartnerModal={this.closeNewPartnerModal}
             handleSubmit={this.handleFormSubmit}
             handleChange={this.handleFormChange}
             newOrg={this.state.newOrg}

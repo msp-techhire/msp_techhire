@@ -1,30 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import EditPartnerInfoForm from '../EditPartnerInfoForm/EditPartnerInfoForm';
 
-const mapStateToProps = state => ({
-    testSelectedPartner: state.editPartnerReducer.selectedPartner,
-});
 
-class SelectedPartnerInfo extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            open: false,
-        };
-    }
-
-    //To open/close edit partner modal
-    openModal = () => {
-        this.setState({ open: true });
-    }
-
-    closeModal = () => {
-        this.setState({ open: false });
-    }
-
-    render() {
+const SelectedPartnerInfo = (props) => {
 
         return <div>
             <h1>Partner Information</h1>
@@ -41,26 +19,25 @@ class SelectedPartnerInfo extends Component {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{this.props.selectedPartner.orgName}</td>
-                        <td>{this.props.selectedPartner.orgAddress}</td>
-                        <td>{this.props.selectedPartner.directorFirst} {this.props.selectedPartner.directorLast}</td>
-                        <td>{this.props.selectedPartner.businessType}</td>
-                        <td>{this.props.selectedPartner.orgPhone}</td>
-                        <td>{this.props.selectedPartner.orgWebsite}</td>
+                        <td>{props.selectedPartner.orgName}</td>
+                        <td>{props.selectedPartner.orgAddress}</td>
+                        <td>{props.selectedPartner.directorFirst} {props.selectedPartner.directorLast}</td>
+                        <td>{props.selectedPartner.businessType}</td>
+                        <td>{props.selectedPartner.orgPhone}</td>
+                        <td>{props.selectedPartner.orgWebsite}</td>
                     </tr>
                 </tbody>
             </table>
-            <button onClick={this.openModal}>Edit Partner Information</button>
+            <button onClick={props.openEditPartnerModal}>Edit Partner Information</button>
             <EditPartnerInfoForm 
-                show={this.state.open}
-                closeModal={this.closeModal}
-                selectedPartner={this.props.selectedPartner}
-                handleEditChange={this.props.handleEditChange}
-                updatePartnerInfo={this.props.updatePartnerInfo}
-                selectedPartnerID={this.props.selectedPartnerID}
+                show={props.show}
+                closeEditPartnerModal={props.closeEditPartnerModal}
+                selectedPartner={props.selectedPartner}
+                handleEditChange={props.handleEditChange}
+                updatePartnerInfo={props.updatePartnerInfo}
+                selectedPartnerID={props.selectedPartnerID}
             />
         </div>
-    }
 }
 
-export default connect(mapStateToProps)(SelectedPartnerInfo);
+export default SelectedPartnerInfo;

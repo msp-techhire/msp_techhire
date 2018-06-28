@@ -78,7 +78,7 @@ const NewPartnerForm = (props) => {
                     </div>
                 </form>
                 <button onClick={props.handleSubmit}>Submit Partner Organization</button>
-                <button onClick={props.closeModal}>Close Modal</button>
+                <button onClick={props.closeNewPartnerModal}>Close Modal</button>
             </div>
         </div>
 }
