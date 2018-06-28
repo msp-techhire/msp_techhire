@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 const backDropStyle = {
     position: 'fixed',
@@ -21,60 +20,9 @@ const modalStyle = {
     position: 'relative'
 }
 
-class NewPartnerForm extends Component {
-    constructor(props) {
-        super(props);
+const NewPartnerForm = (props) => {
 
-        this.state = {
-            orgName: '',
-            orgAbbreviation: '',
-            orgAddress: '',
-            orgWebsite: '',
-            orgPhone: '',
-            directorFirst: '',
-            directorLast: '',
-            businessType: '',
-        }
-    }
-
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        if(this.state.orgName === '' || this.state.orgAbbreviation === '' || this.state.orgAddress === '' ||
-            this.state.orgWebsite === '' || this.state.orgPhone === '' || this.state.directorFirst === '' ||
-            this.state.directorLast === '' || this.state.businessType === '') {
-                return alert('Please complete all fields!');
-            }
-        axios({
-            method: 'POST',
-            url: '/api/editPartner/newPartner',
-            data: this.state,
-        })
-        .then((response) => {
-            console.log(response);
-            this.setState({
-                orgName: '',
-                orgAbbreviation: '',
-                orgAddress: '',
-                orgWebsite: '',
-                orgPhone: '',
-                directorFirst: '',
-                directorLast: '',
-                businessType: '',
-            });
-            this.props.getPartners();
-            this.props.closeModal();
-        })
-        .catch(err => console.log(err));
-    }
-
-    render() {
-        if(!this.props.show) {
+        if(!props.show) {
             return null;
         }
 
@@ -84,44 +32,44 @@ class NewPartnerForm extends Component {
                 <form>
                     
                     <div className="formGroup">
-                    <label htmlFor="orgName">Organization Name</label>
-                    <input onChange={this.handleChange} type="text" name="orgName" id="orgName"value={this.state.orgName}/>
+                    <label htmlFor="newOrgName">Organization Name</label>
+                    <input onChange={props.handleChange} type="text" name="orgName" id="newOrgName" value={props.newOrg.orgName}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="orgAbbreviation">Organization Abbreviation</label>
-                    <input onChange={this.handleChange} type="text" name="orgAbbreviation" id="orgAbbreviation"value={this.state.orgAbbreviation}/>
+                    <label htmlFor="neworgAbbreviation">Organization Abbreviation</label>
+                    <input onChange={props.handleChange} type="text" name="orgAbbreviation" id="newOrgAbbreviation" value={props.newOrg.orgAbbreviation}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="orgAddress">Address</label>
-                    <input onChange={this.handleChange} type="text" name="orgAddress" id="orgAddress"value={this.state.orgAddress}/>
+                    <label htmlFor="newOrgAddress">Address</label>
+                    <input onChange={props.handleChange} type="text" name="orgAddress" id="newOrgAddress" value={props.newOrg.orgAddress}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="orgWebsite">Website</label>
-                    <input onChange={this.handleChange} type="text" name="orgWebsite" id="orgWebsite"value={this.state.orgWebsite}/>
+                    <label htmlFor="newOrgWebsite">Website</label>
+                    <input onChange={props.handleChange} type="text" name="orgWebsite" id="newOrgWebsite" value={props.newOrg.orgWebsite}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="orgPhone">Phone Number</label>
-                    <input onChange={this.handleChange} type="text" name="orgPhone" id="orgPhone"value={this.state.orgPhone}/>
+                    <label htmlFor="newOrgPhone">Phone Number</label>
+                    <input onChange={props.handleChange} type="text" name="orgPhone" id="newOrgPhone" value={props.newOrg.orgPhone}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="directorFirst">Director First Name</label>
-                    <input onChange={this.handleChange} type="text" name="directorFirst" id="directorFirst"value={this.state.directorFirst}/>
+                    <label htmlFor="newDirectorFirst">Director First Name</label>
+                    <input onChange={props.handleChange} type="text" name="directorFirst" id="newDirectorFirst" value={props.newOrg.directorFirst}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="directorLast">Director Last Name</label>
-                    <input onChange={this.handleChange} type="text" name="directorLast" id="directorLast"value={this.state.directorLast}/>
+                    <label htmlFor="newDirectorLast">Director Last Name</label>
+                    <input onChange={props.handleChange} type="text" name="directorLast" id="newDirectorLast" value={props.newOrg.directorLast}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="businessType">Business Type</label>
-                    <select onChange={this.handleChange} name="businessType" id="businessType">
-                        <option value="" disabled selected></option>
+                    <label htmlFor="newBusinessType">Business Type</label>
+                    <select onChange={props.handleChange} defaultValue="" name="businessType" id="newBusinessType">
+                        <option value="" disabled></option>
                         <option value="For-profit">For-profit</option>
                         <option value="Non-profit">Non-profit</option>
                         <option value="School/College">School/College</option>
@@ -129,11 +77,10 @@ class NewPartnerForm extends Component {
                     </select>
                     </div>
                 </form>
-                <button onClick={this.handleSubmit}>Submit Partner Organization</button>
-                <button onClick={this.props.closeModal}>Close Modal</button>
+                <button onClick={props.handleSubmit}>Submit Partner Organization</button>
+                <button onClick={props.closeNewPartnerModal}>Close Modal</button>
             </div>
         </div>
-    }
 }
 
 export default NewPartnerForm
