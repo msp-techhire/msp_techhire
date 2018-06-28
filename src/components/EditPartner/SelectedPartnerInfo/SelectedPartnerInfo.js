@@ -56,6 +56,8 @@ class SelectedPartnerInfo extends Component {
                 closeModal={this.closeModal}
                 selectedPartner={this.props.selectedPartner}
                 handleEditChange={this.props.handleEditChange}
+                updatePartnerInfo={this.props.updatePartnerInfo}
+                selectedPartnerID={this.props.selectedPartnerID}
             />
         </div>
     }

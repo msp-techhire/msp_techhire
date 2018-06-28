@@ -66,7 +66,9 @@ class EditPartner extends Component {
     this.props.history.push('login');
   }
 
-  //Open and close new partner modal
+/* ------------------------------ */
+/* OPEN AND CLOSE MODALS */
+/* ------------------------------ */
   openModal = () => {
     this.setState({ open: true });
   }
@@ -75,7 +77,9 @@ class EditPartner extends Component {
     this.setState({ open: false });
   }
 
-  //Function to get selected partner
+/* ------------------------------ */
+/* GET SELECTED PARTNER*/
+/* ------------------------------ */
   handleChange = (event) => {
     this.getPartnerData(event.target.value);
     this.setState({
@@ -83,7 +87,9 @@ class EditPartner extends Component {
     });
   }
 
-  //Functions for New Partners
+  /* ------------------------------ */
+/* FUNCTIONS FOR NEW PARTNERS */
+/* ------------------------------ */
   handleFormChange = (event) => {
     this.setState({
       newOrg: {
@@ -125,7 +131,9 @@ class EditPartner extends Component {
       .catch(err => console.log(err));
   }
 
-  //Functions to Edit Partners
+  /* ------------------------------ */
+/* FUNCTIONS TO EDIT PARTNERS */
+/* ------------------------------ */
   handleEditChange = (event) => {
     this.setState({
       selectedPartner: {
@@ -135,7 +143,21 @@ class EditPartner extends Component {
     });
   }
 
-  //Functions to retrieve data
+  updatePartnerInfo = (id) => {
+    axios({
+      method: 'PUT',
+      url: `/api/editPartner/updatePartner/${id}`,
+      data: this.state.selectedPartner
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch(err => console.log(err));
+  }
+
+ /* ------------------------------ */
+/* FUNCTIONS TO RETRIEVE DATA */
+/* ------------------------------ */
   getPartners = () => {
     axios({
       method: 'GET',
@@ -195,6 +217,8 @@ class EditPartner extends Component {
           <SelectedPartnerInfo 
             selectedPartner={this.state.selectedPartner}
             handleEditChange={this.handleEditChange}
+            updatePartnerInfo={this.updatePartnerInfo}
+            selectedPartnerID={this.state.selectedPartnerID}
           />
           <button value="showModal" onClick={this.openModal}>Add New Partner</button>
           <NewPartnerForm

@@ -16,6 +16,13 @@ router.get('/partnerInfo/:id', (req, res) => {
     .catch(err => res.sendStatus(500));
 });
 
+router.put('/updatePartner/:id', (req, res) => {
+    let id = req.params.id;
+    let partnerToEdit = req.body
+    console.log(id, partnerToEdit);
+    res.sendStatus(200);
+});
+
 router.post('/newPartner', (req, res) => {
     let newPartner = req.body;
     const queryText = `INSERT INTO "partner" ("org_name", "org_abbr", "address", "phone_number",
