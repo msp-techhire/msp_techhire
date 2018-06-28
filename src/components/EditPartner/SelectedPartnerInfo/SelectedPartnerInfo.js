@@ -15,7 +15,7 @@ class SelectedPartnerInfo extends Component {
         };
     }
 
-
+    //To open/close edit partner modal
     openModal = () => {
         this.setState({ open: true });
     }
@@ -55,6 +55,7 @@ class SelectedPartnerInfo extends Component {
                 show={this.state.open}
                 closeModal={this.closeModal}
                 selectedPartner={this.props.selectedPartner}
+                handleEditChange={this.props.handleEditChange}
             />
         </div>
     }

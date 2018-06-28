@@ -66,6 +66,7 @@ class EditPartner extends Component {
     this.props.history.push('login');
   }
 
+  //Open and close new partner modal
   openModal = () => {
     this.setState({ open: true });
   }
@@ -74,6 +75,7 @@ class EditPartner extends Component {
     this.setState({ open: false });
   }
 
+  //Function to get selected partner
   handleChange = (event) => {
     this.getPartnerData(event.target.value);
     this.setState({
@@ -124,8 +126,16 @@ class EditPartner extends Component {
   }
 
   //Functions to Edit Partners
+  handleEditChange = (event) => {
+    this.setState({
+      selectedPartner: {
+        ...this.state.selectedPartner,
+        [event.target.name]: event.target.value,
+      }
+    });
+  }
 
-  
+  //Functions to retrieve data
   getPartners = () => {
     axios({
       method: 'GET',
@@ -167,6 +177,8 @@ class EditPartner extends Component {
     .catch(err => console.log(err));
   }
 
+
+
   render() {
     let content = null;
 
@@ -182,6 +194,7 @@ class EditPartner extends Component {
           />
           <SelectedPartnerInfo 
             selectedPartner={this.state.selectedPartner}
+            handleEditChange={this.handleEditChange}
           />
           <button value="showModal" onClick={this.openModal}>Add New Partner</button>
           <NewPartnerForm
