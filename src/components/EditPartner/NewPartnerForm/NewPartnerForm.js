@@ -32,43 +32,43 @@ const NewPartnerForm = (props) => {
                 <form>
                     
                     <div className="formGroup">
-                    <label htmlFor="orgName">Organization Name</label>
-                    <input onChange={props.handleChange} type="text" name="orgName" id="orgName" value={props.newOrg.orgName}/>
+                    <label htmlFor="newOrgName">Organization Name</label>
+                    <input onChange={props.handleChange} type="text" name="orgName" id="newOrgName" value={props.newOrg.orgName}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="orgAbbreviation">Organization Abbreviation</label>
-                    <input onChange={props.handleChange} type="text" name="orgAbbreviation" id="orgAbbreviation" value={props.newOrg.orgAbbreviation}/>
+                    <label htmlFor="neworgAbbreviation">Organization Abbreviation</label>
+                    <input onChange={props.handleChange} type="text" name="orgAbbreviation" id="newOrgAbbreviation" value={props.newOrg.orgAbbreviation}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="orgAddress">Address</label>
-                    <input onChange={props.handleChange} type="text" name="orgAddress" id="orgAddress" value={props.newOrg.orgAddress}/>
+                    <label htmlFor="newOrgAddress">Address</label>
+                    <input onChange={props.handleChange} type="text" name="orgAddress" id="newOrgAddress" value={props.newOrg.orgAddress}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="orgWebsite">Website</label>
-                    <input onChange={props.handleChange} type="text" name="orgWebsite" id="orgWebsite" value={props.newOrg.orgWebsite}/>
+                    <label htmlFor="newOrgWebsite">Website</label>
+                    <input onChange={props.handleChange} type="text" name="orgWebsite" id="newOrgWebsite" value={props.newOrg.orgWebsite}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="orgPhone">Phone Number</label>
-                    <input onChange={props.handleChange} type="text" name="orgPhone" id="orgPhone" value={props.newOrg.orgPhone}/>
+                    <label htmlFor="newOrgPhone">Phone Number</label>
+                    <input onChange={props.handleChange} type="text" name="orgPhone" id="newOrgPhone" value={props.newOrg.orgPhone}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="directorFirst">Director First Name</label>
-                    <input onChange={props.handleChange} type="text" name="directorFirst" id="directorFirst" value={props.newOrg.directorFirst}/>
+                    <label htmlFor="newDirectorFirst">Director First Name</label>
+                    <input onChange={props.handleChange} type="text" name="directorFirst" id="newDirectorFirst" value={props.newOrg.directorFirst}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="directorLast">Director Last Name</label>
-                    <input onChange={props.handleChange} type="text" name="directorLast" id="directorLast" value={props.newOrg.directorLast}/>
+                    <label htmlFor="newDirectorLast">Director Last Name</label>
+                    <input onChange={props.handleChange} type="text" name="directorLast" id="newDirectorLast" value={props.newOrg.directorLast}/>
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="businessType">Business Type</label>
-                    <select onChange={props.handleChange} defaultValue="" name="businessType" id="businessType">
+                    <label htmlFor="newBusinessType">Business Type</label>
+                    <select onChange={props.handleChange} defaultValue="" name="businessType" id="newBusinessType">
                         <option value="" disabled></option>
                         <option value="For-profit">For-profit</option>
                         <option value="Non-profit">Non-profit</option>

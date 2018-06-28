@@ -97,7 +97,7 @@ class EditPartner extends Component {
   /* ------------------------------ */
   /* GET SELECTED PARTNER*/
   /* ------------------------------ */
-  handleChange = (event) => {
+  selectPartnerFromDropdown = (event) => {
     this.getPartnerData(event.target.value);
     this.setState({
       selectedPartnerID: event.target.value,
@@ -164,7 +164,7 @@ class EditPartner extends Component {
     axios({
       method: 'PUT',
       url: `/api/editPartner/updatePartner/${id}`,
-      data: this.state.selectedPartner
+      data: this.state.selectedPartner,
     })
       .then((response) => {
         console.log(response);
@@ -229,7 +229,7 @@ class EditPartner extends Component {
           <h1>Select A Partner</h1>
           <PartnerDropdown
             partners={this.state.partnerList}
-            handleChange={this.handleChange}
+            selectPartnerFromDropdown={this.selectPartnerFromDropdown}
             getPartnerData={this.getPartnerData}
           />
           <SelectedPartnerInfo
