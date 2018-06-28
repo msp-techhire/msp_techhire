@@ -24,21 +24,24 @@ class EditPartner extends Component {
       open: false,
       selectedPartnerID: this.props.selectedPartner.id,
       partnerList: [],
-      orgName: '',
-      orgAbbreviation: '',
-      orgAddress: '',
-      orgWebsite: '',
-      orgPhone: '',
-      directorFirst: '',
-      directorLast: '',
-      businessType: '',
+      newOrg: {
+        orgName: '',
+        orgAbbreviation: '',
+        orgAddress: '',
+        orgWebsite: '',
+        orgPhone: '',
+        directorFirst: '',
+        directorLast: '',
+        businessType: ''
+      },
+
     }
   }
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.getPartners();
-    if(this.state.selectedPartnerID === undefined) {
+    if (this.state.selectedPartnerID === undefined) {
       this.getPartnerData(1);
     }
   }
@@ -71,61 +74,56 @@ class EditPartner extends Component {
 
   handleFormChange = (event) => {
     this.setState({
-        [event.target.name]: event.target.value
-    });
-}
-
-handleFormSubmit = (event) => {
-  event.preventDefault();
-  if(this.state.orgName === '' || this.state.orgAbbreviation === '' || this.state.orgAddress === '' ||
-      this.state.orgWebsite === '' || this.state.orgPhone === '' || this.state.directorFirst === '' ||
-      this.state.directorLast === '' || this.state.businessType === '') {
-          return alert('Please complete all fields!');
+      newOrg: {
+        ...this.state.newOrg,
+        [event.target.name]: event.target.value,
       }
-  const objectToSend = {
-    orgName: this.state.orgName,
-    orgAbbreviation: this.state.orgAbbreviation,
-    orgAddress: this.state.orgAddress,
-    orgWebsite: this.state.orgWebsite,
-    orgPhone: this.state.orgPhone,
-    directorFirst: this.state.directorFirst,
-    directorLast: this.state.directorLast,
-    businessType: this.state.businessType,
+    });
   }
-  axios({
+
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    if (this.state.newOrg.orgName === '' || this.state.newOrg.orgAbbreviation === '' || this.state.newOrg.orgAddress === '' ||
+      this.state.newOrg.orgWebsite === '' || this.state.newOrg.orgPhone === '' || this.state.newOrg.directorFirst === '' ||
+      this.state.newOrg.directorLast === '' || this.state.newOrg.businessType === '') {
+      return alert('Please complete all fields!');
+    }
+    axios({
       method: 'POST',
       url: '/api/editPartner/newPartner',
-      data: objectToSend,
-  })
-  .then((response) => {
-      console.log(response);
-      this.setState({
-          orgName: '',
-          orgAbbreviation: '',
-          orgAddress: '',
-          orgWebsite: '',
-          orgPhone: '',
-          directorFirst: '',
-          directorLast: '',
-          businessType: '',
-      });
-      this.getPartners();
-      this.closeModal();
-  })
-  .catch(err => console.log(err));
-}
+      data: this.state.newOrg,
+    })
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          newOrg: {
+            orgName: '',
+            orgAbbreviation: '',
+            orgAddress: '',
+            orgWebsite: '',
+            orgPhone: '',
+            directorFirst: '',
+            directorLast: '',
+            businessType: '',
+          }
+        });
+        this.getPartners();
+        this.closeModal();
+      })
+      .catch(err => console.log(err));
+  }
 
   getPartners = () => {
     axios({
       method: 'GET',
       url: `/api/editPartner/partners`
     })
-    .then((response) => {
-      this.setState({
-        partnerList: response.data
-      });
-    })
-    .catch(err => console.log(err))
+      .then((response) => {
+        this.setState({
+          partnerList: response.data
+        });
+      })
+      .catch(err => console.log(err))
   }
 
   getPartnerData = (id) => {
@@ -152,18 +150,12 @@ handleFormSubmit = (event) => {
           <SelectedPartnerInfo />
           <button value="showModal" onClick={this.openModal}>Add New Partner</button>
           <NewPartnerForm
-            show={this.state.open} 
+            show={this.state.open}
             getPartners={this.getPartners}
             closeModal={this.closeModal}
             handleSubmit={this.handleFormSubmit}
             handleChange={this.handleFormChange}
-            orgName= {this.state.orgName}
-            orgAbbreviation= {this.state.orgAbbreviation}
-            orgAddress= {this.state.orgAddress}
-            orgWebsite= {this.state.orgWebsite}
-            orgPhone= {this.state.orgPhone}
-            directorFirst= {this.state.directorFirst}
-            directorLast= {this.state.directorLast}
+            newOrg={this.state.newOrg}
           />
           <button id="logoutButton" onClick={this.logout}>Log Out</button>
         </div>

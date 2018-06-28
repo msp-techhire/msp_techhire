@@ -33,37 +33,37 @@ const NewPartnerForm = (props) => {
                     
                     <div className="formGroup">
                     <label htmlFor="orgName">Organization Name</label>
-                    <input onChange={props.handleChange} type="text" name="orgName" id="orgName" value={props.orgName}/>
+                    <input onChange={props.handleChange} type="text" name="orgName" id="orgName" value={props.newOrg.orgName}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="orgAbbreviation">Organization Abbreviation</label>
-                    <input onChange={props.handleChange} type="text" name="orgAbbreviation" id="orgAbbreviation" value={props.orgAbbreviation}/>
+                    <input onChange={props.handleChange} type="text" name="orgAbbreviation" id="orgAbbreviation" value={props.newOrg.orgAbbreviation}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="orgAddress">Address</label>
-                    <input onChange={props.handleChange} type="text" name="orgAddress" id="orgAddress" value={props.orgAddress}/>
+                    <input onChange={props.handleChange} type="text" name="orgAddress" id="orgAddress" value={props.newOrg.orgAddress}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="orgWebsite">Website</label>
-                    <input onChange={props.handleChange} type="text" name="orgWebsite" id="orgWebsite" value={props.orgWebsite}/>
+                    <input onChange={props.handleChange} type="text" name="orgWebsite" id="orgWebsite" value={props.newOrg.orgWebsite}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="orgPhone">Phone Number</label>
-                    <input onChange={props.handleChange} type="text" name="orgPhone" id="orgPhone" value={props.orgPhone}/>
+                    <input onChange={props.handleChange} type="text" name="orgPhone" id="orgPhone" value={props.newOrg.orgPhone}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="directorFirst">Director First Name</label>
-                    <input onChange={props.handleChange} type="text" name="directorFirst" id="directorFirst" value={props.directorFirst}/>
+                    <input onChange={props.handleChange} type="text" name="directorFirst" id="directorFirst" value={props.newOrg.directorFirst}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="directorLast">Director Last Name</label>
-                    <input onChange={props.handleChange} type="text" name="directorLast" id="directorLast" value={props.directorLast}/>
+                    <input onChange={props.handleChange} type="text" name="directorLast" id="directorLast" value={props.newOrg.directorLast}/>
                     </div>
 
                     <div className="formGroup">
