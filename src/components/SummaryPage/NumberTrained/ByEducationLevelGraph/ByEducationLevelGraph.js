@@ -2,11 +2,12 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
 const graphStyle = {
-    width: '40%',
+    width: '29%',
     maxWidth: 600,
-    height: 500,
+    height: 300,
     margin: '0 auto',
     padding: 30,
+    display: 'inline-block',
 }
 
 
@@ -21,7 +22,7 @@ const EducationGraph = (props) => {
                             label: 'By Education Level',
                             data: [props.trainingData.highSchool, props.trainingData.someCollege, props.trainingData.associates, 
                                    props.trainingData.bachelors, props.trainingData.graduatePlus],
-                            backgroundColor: 'rgba(230, 126, 34, 0.6)'
+                            backgroundColor: 'rgba(176, 189, 99, 0.6)'
                         }
                     ],}}
                     options={{

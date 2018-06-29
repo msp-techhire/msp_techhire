@@ -43,12 +43,16 @@ class SummaryPage extends Component {
   calculateTrainingData = () => {
     let totalFemale = 0;
     let totalMale = 0;
+    let otherGender = 0;
     let unreportedGender = 0;
     let highSchool = 0;
     let someCollege = 0;
     let associates = 0;
     let bachelors = 0;
     let graduatePlus = 0;
+    let POCTrue = 0;
+    let POCFalse = 0;
+    let POCUnreported = 0;
 
     this.state.data.forEach(student => {
       switch (student.gender) {
@@ -57,6 +61,9 @@ class SummaryPage extends Component {
           break;
         case 'Male':
           totalMale = totalMale + 1;
+          break;
+        case 'Other':
+          otherGender = otherGender + 1;
           break;
         default:
           unreportedGender = unreportedGender + 1;
@@ -81,6 +88,18 @@ class SummaryPage extends Component {
           break;
       }
 
+      switch (student.person_of_color) {
+        case 'yes':
+          POCTrue = POCTrue + 1;
+          break;
+        case 'no':
+          POCFalse = POCFalse + 1;
+          break;
+        case 'unreported':
+          POCUnreported = POCUnreported + 1;
+          break
+      }
+
     });
 
     this.setState({
@@ -88,12 +107,16 @@ class SummaryPage extends Component {
         totalTrained: this.state.data.length,
         totalMale,
         totalFemale,
+        otherGender,
         unreportedGender,
         highSchool,
         someCollege,
         associates,
         bachelors,
         graduatePlus,
+        POCTrue,
+        POCFalse,
+        POCUnreported,
       }
     });
   }

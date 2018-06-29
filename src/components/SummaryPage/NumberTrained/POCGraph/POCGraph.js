@@ -11,23 +11,23 @@ const graphStyle = {
 }
 
 
-const GenderGraph = (props) => {
+const POCGraph = (props) => {
 
         return (
             <div style={graphStyle}>
                 <Bar
-                    data={{labels: ['Female', 'Male', 'Other', 'Unreported'],
+                    data={{labels: ['True', 'False', 'Unnreported'],
                     datasets: [
                         {
-                            label: 'By Gender',
-                            data: [props.trainingData.totalFemale, props.trainingData.totalMale, props.trainingData.otherGender, props.trainingData.unreportedGender],
+                            label: 'Person of Color',
+                            data: [props.trainingData.POCTrue, props.trainingData.POCFalse, props.trainingData.POCUnreported],
                             backgroundColor: 'rgba(1, 164, 215, 0.6)'
                         }
                     ],}}
                     options={{
                         title: {
                             display: true,
-                            text: 'Total by Gender',
+                            text: 'Person of Color',
                             fontSize: 25,
                         },
                         legend: {
@@ -48,4 +48,4 @@ const GenderGraph = (props) => {
         )
 }
 
-export default GenderGraph;
+export default POCGraph;
