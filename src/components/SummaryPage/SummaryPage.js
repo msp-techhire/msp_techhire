@@ -18,9 +18,7 @@ class SummaryPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      trainingData: {
-        totalTrained: 0,
-      },
+      trainingData: {},
       data: [],
     }
   }
@@ -45,22 +43,52 @@ class SummaryPage extends Component {
   calculateTrainingData = () => {
     let totalFemale = 0;
     let totalMale = 0;
-    let unreported = 0;
+    let unreportedGender = 0;
+    let highSchool = 0;
+    let someCollege = 0;
+    let associates = 0;
+    let bachelors = 0;
+    let graduatePlus = 0;
     this.state.data.forEach(student => {
       if (student.gender === 'Female') {
           totalFemale = totalFemale + 1;
       } else if(student.gender === 'Male') {
         totalMale = totalMale + 1;
       } else {
-        unreported = unreported + 1;
+        unreportedGender = unreportedGender + 1;
       }
+
+      switch (student.education_level) {
+        case 'HS/GED':
+          highSchool = highSchool + 1;
+          break;
+        case 'Some College':
+          someCollege = someCollege + 1;
+          break;
+        case 'Associates':
+          associates = associates + 1;
+          break;
+        case 'Bachelors':
+          bachelors = bachelors + 1;
+          break;
+        case 'Graduate and Beyond':
+          graduatePlus = graduatePlus + 1;
+          break;
+      }
+
     });
+
     this.setState({
       trainingData: {
         totalTrained: this.state.data.length,
         totalMale,
         totalFemale,
-        unreported,
+        unreportedGender,
+        highSchool,
+        someCollege,
+        associates,
+        bachelors,
+        graduatePlus,
       }
     });
   }
@@ -95,7 +123,7 @@ class SummaryPage extends Component {
           <button id="logoutButton" onClick={this.logout}>Log Out</button>
           <div>
             <JsonArrayToCsv convert={this.state.data} />
-            {JSON.stringify(this.state.data)}
+            {JSON.stringify(this.state.data[0])}
           </div>
         </div>
       );
@@ -112,3 +140,4 @@ class SummaryPage extends Component {
 
 // this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(SummaryPage);
+
