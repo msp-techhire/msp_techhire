@@ -18,7 +18,9 @@ class SummaryPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalTrained: 0,
+      trainingData: {
+        totalTrained: 0,
+      },
       data: [],
     }
   }
@@ -40,9 +42,26 @@ class SummaryPage extends Component {
     this.props.history.push('login');
   }
 
-  calculateTotalTrained = () => {
+  calculateTrainingData = () => {
+    let totalFemale = 0;
+    let totalMale = 0;
+    let unreported = 0;
+    this.state.data.forEach(student => {
+      if (student.gender === 'Female') {
+          totalFemale = totalFemale + 1;
+      } else if(student.gender === 'Male') {
+        totalMale = totalMale + 1;
+      } else {
+        unreported = unreported + 1;
+      }
+    });
     this.setState({
-      totalTrained: this.state.data.length,
+      trainingData: {
+        totalTrained: this.state.data.length,
+        totalMale,
+        totalFemale,
+        unreported,
+      }
     });
   }
 
@@ -58,7 +77,7 @@ class SummaryPage extends Component {
       this.setState({
         data,
       });
-      this.calculateTotalTrained();
+      this.calculateTrainingData();
     })
     .catch(error => console.log(`ERROR trying to GET /api/summary: ${error}`));
   }
@@ -70,14 +89,13 @@ class SummaryPage extends Component {
       content = (
         <div>
           <h1>Summary Page</h1>
-          <p>{this.state.totalTrained}</p>
           <NumberTrained 
-            data={this.state.data}
+            trainingData={this.state.trainingData}
           />
           <button id="logoutButton" onClick={this.logout}>Log Out</button>
           <div>
             <JsonArrayToCsv convert={this.state.data} />
-            {JSON.stringify(this.state.data[0])}
+            {JSON.stringify(this.state.data)}
           </div>
         </div>
       );
