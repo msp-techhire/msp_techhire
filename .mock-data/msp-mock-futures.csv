@@ -1,101 +1,101 @@
-person_id,gender,year_of_birth,person_of_color,education_level,city_of_residence,scholarship_recipient,previous_job_experience,pre_training_wage,training_start_date,training_status,training_end_date,training_type,exit_status,classroom_or_online,job_placement_date,hiring_job_title,hiring_company,starting_wage,second_job_placement_date,second_job_title,second_job_company,second_starting_wage
-C-1001,Male,1993,unreported,HS/GED,Robbinsdale,yes,Team Member,9.93,24/03/2015,Removed,17/12/2015,UX,Entered Military,Online,17/04/2016,Junior Designer,Merrill Corporation,26.53,28/03/2017,Junior Engineer,Foodsby,30.56
-C-1002,Other,1987,unreported,Associates,Eden Prairie,yes,,9.48,08/06/2015,Withdrew,15/08/2015,IT Fundamentals,Enrolled in Additional Training,Online,26/12/2015,Temp Developer,Code 42,26.77,25/08/2016,,,
-C-1003,Female,1993,unreported,Associates,Robbinsdale,yes,Contractor,14.27,04/01/2016,Graduated,10/07/2016,IT Fundamentals,Institutionalized,Online,26/11/2016,Junior Engineer,Bright Health,26.08,19/04/2017,Junior Engineer,Bite Squad,30.51
-C-1004,Unreported,1955,yes,Bachelors,Roseville,no,Supervisor,11.53,02/12/2015,Withdrew,14/09/2016,IT Fundamentals,Institutionalized,Classroom,26/08/2017,Designer,Nerdery,31.32,15/02/2018,,,
-C-1005,Unreported,1956,no,Graduate and Beyond,Plymouth,yes,Manager,15.19,01/09/2017,In Training,,QA,,Online,,,,,,,,
-C-1006,Unreported,1977,yes,Graduate and Beyond,Roseville,no,Associate,12.86,04/08/2016,Removed,17/05/2017,IT Fundamentals,Entered Military,Classroom,07/10/2017,Web Developer,Osborn 370,27.07,16/08/2018,,,
-C-1007,Other,1970,no,Graduate and Beyond,Eden Prairie,no,Manager,12.49,13/02/2017,Graduated,19/08/2017,UX,Enrolled in Additional Training,Classroom,14/05/2018,IT Support,Great North Labs,29.70,05/02/2019,Junior Designer,Code 42,25.52
-C-1008,Male,1962,yes,Some College,Robbinsdale,yes,Manager,12.13,05/07/2015,Withdrew,16/04/2016,IT Fundamentals,Incarcerated,Online,14/08/2016,Designer,Upsie,31.07,17/09/2016,,,
-C-1009,Other,1959,yes,Some College,Minneapolis,yes,Supervisor,12.25,12/10/2015,Withdrew,12/01/2016,QA,Incarcerated,Classroom,05/08/2016,Junior Developer,Merrill Corporation,27.07,11/10/2016,,,
-C-1010,Unreported,1986,yes,Graduate and Beyond,St. Paul,yes,Support,10.22,20/08/2015,Withdrew,10/03/2016,QA,Health/Medical,Online,10/04/2016,Junior Designer,Bite Squad,24.69,06/12/2016,,,
-C-1011,Other,1964,no,Bachelors,Plymouth,no,Temp,11.09,09/08/2015,Graduated,03/11/2015,UX,Entered Military,Classroom,11/10/2016,Programmer,Bright Health,28.45,02/11/2016,,,
-C-1012,Other,2001,yes,Associates,Minneapolis,no,Representative,13.62,21/11/2015,Withdrew,07/04/2016,IT Fundamentals,Enrolled in Additional Training,Classroom,17/07/2016,Junior Engineer,Osborn 370,26.79,19/05/2017,,,
-C-1013,Male,1950,unreported,Graduate and Beyond,Brooklyn Center,yes,Support,9.07,07/11/2016,Graduated,18/08/2017,IT Fundamentals,Health/Medical,Classroom,15/08/2018,Junior Developer,Google,31.16,03/07/2019,,,
-C-1014,Other,1980,unreported,Some College,Edina,yes,,15.94,25/09/2016,Graduated,20/06/2017,IT Fundamentals,Institutionalized,Classroom,06/11/2017,Junior Developer,Aftercode,29.36,16/11/2018,,,
-C-1015,Unreported,1961,yes,Associates,Brooklyn Center,yes,Manager,15.18,05/10/2015,Graduated,13/03/2016,UX,Institutionalized,Online,15/03/2017,Temp Developer,Branch Messenger,29.08,28/01/2018,,,
-C-1016,Female,1964,yes,Some College,Plymouth,no,Manager,10.88,12/07/2017,Removed,02/10/2017,QA,Incarcerated,Online,,,,,27/10/2019,,,
-C-1017,Unreported,1993,no,HS/GED,Plymouth,no,Manager,15.95,05/06/2017,Withdrew,23/08/2017,QA,Health/Medical,Classroom,17/10/2017,Junior Designer,Branch Messenger,27.79,23/09/2018,,,
-C-1018,Other,1963,no,Some College,St. Paul,yes,Manager,13.82,22/06/2016,Graduated,21/03/2017,IT Fundamentals,Institutionalized,Classroom,13/06/2017,IT Support,Osborn 370,29.49,24/12/2017,Project Manager,Code 42,29.44
-C-1019,Other,1988,yes,Associates,Minneapolis,yes,Representative,10.86,17/06/2017,Graduated,08/10/2017,QA,Health/Medical,Online,18/06/2018,Junior Engineer,Upsie,25.97,16/11/2018,,,
-C-1020,Other,1963,no,Bachelors,Robbinsdale,yes,Contractor,12.90,09/09/2016,Removed,04/02/2017,IT Fundamentals,Incarcerated,Online,15/04/2017,Programmer,Branch Messenger,26.70,17/10/2017,,,
-C-1021,Female,1960,yes,HS/GED,Plymouth,yes,Employee,11.92,31/07/2017,Removed,02/09/2017,QA,Enrolled in Additional Training,Classroom,09/09/2018,Junior Engineer,Bite Squad,31.04,17/06/2019,,,
-C-1022,Unreported,1970,yes,Associates,Plymouth,no,Support,9.09,01/10/2016,Graduated,10/07/2017,UX,Entered Employment,Classroom,14/01/2018,Web Developer,Google,29.42,03/07/2018,,,
-C-1023,Male,1982,no,Some College,Plymouth,yes,Employee,13.76,12/03/2016,Withdrew,13/05/2016,UX,Incarcerated,Classroom,02/10/2016,Designer,Apple,24.28,22/01/2017,,,
-C-1024,Male,1964,no,Bachelors,Brooklyn Center,yes,Manager,14.73,13/08/2016,Graduated,21/12/2016,UX,Institutionalized,Online,23/04/2017,Temp Designer,Bind Benefits,27.66,11/10/2017,,,
-C-1025,Unreported,1989,unreported,Some College,Edina,yes,Manager,11.53,20/12/2016,Graduated,12/02/2017,QA,Incarcerated,Online,07/02/2018,Junior Developer,Aftercode,24.41,26/12/2018,Project Manager,Nerdery,29.58
-C-1026,Female,1969,no,Bachelors,Plymouth,no,Temp,12.15,07/12/2015,Withdrew,23/07/2016,IT Fundamentals,Incarcerated,Classroom,02/07/2017,Designer,Loup Ventures,25.50,17/03/2018,,,
-C-1027,Male,1957,yes,Associates,Minneapolis,yes,Manager,14.46,18/03/2015,Removed,12/08/2015,UX,Health/Medical,Online,19/05/2016,Web Developer,Code 42,29.29,15/12/2016,IT Support,Google,26.39
-C-1028,Other,1952,yes,Graduate and Beyond,Plymouth,no,Representative,15.13,20/11/2016,Withdrew,22/03/2017,UX,Enrolled in Additional Training,Online,14/09/2017,Web Developer,Bright Health,26.75,02/07/2018,,,
-C-1029,Female,1994,no,Graduate and Beyond,Minneapolis,no,Representative,12.14,18/12/2017,Removed,25/03/2018,QA,Entered Military,Classroom,06/06/2018,Junior Engineer,Google,25.87,13/09/2018,,,
-C-1030,Female,1960,no,HS/GED,Edina,yes,Team Member,13.00,21/06/2015,Graduated,16/09/2015,QA,Health/Medical,Online,14/11/2015,Developer,Google,27.16,07/01/2016,,,
-C-1031,Female,1974,no,Some College,Eden Prairie,yes,,10.82,16/04/2016,Withdrew,13/08/2016,QA,Entered Employment,Online,19/04/2017,Temp Designer,Branch Messenger,28.43,23/06/2017,IT Support,Loup Ventures,24.59
-C-1032,Male,1962,no,Associates,Plymouth,no,Associate,13.75,28/03/2017,Removed,13/07/2017,IT Fundamentals,Health/Medical,Classroom,27/09/2017,Junior Engineer,Loup Ventures,28.10,17/02/2018,,,
-C-1033,Other,1992,no,Associates,Edina,yes,Associate,12.89,23/11/2017,Removed,06/07/2018,QA,Entered Military,Online,20/05/2019,Junior Developer,Bright Health,27.02,02/02/2020,,,
-C-1034,Male,1993,unreported,Associates,Robbinsdale,yes,,11.66,16/06/2017,Removed,16/02/2018,IT Fundamentals,Institutionalized,Classroom,03/01/2019,Designer,Merrill Corporation,30.29,04/01/2020,,,
-C-1035,Unreported,1986,no,Some College,Edina,no,Supervisor,14.23,17/09/2017,Withdrew,07/12/2017,IT Fundamentals,Incarcerated,Classroom,09/09/2018,Junior Designer,Code 42,27.05,22/03/2019,,,
-C-1036,Unreported,1995,unreported,Bachelors,Plymouth,yes,Support,14.92,02/09/2015,Graduated,08/11/2015,UX,Enrolled in Additional Training,Online,20/02/2016,IT Support,Osborn 370,27.65,13/07/2016,,,
-C-1037,Other,1971,yes,HS/GED,Roseville,yes,Cashier,12.40,26/07/2015,Removed,25/03/2016,IT Fundamentals,Enrolled in Additional Training,Online,20/01/2017,Programmer,Loup Ventures,28.97,08/06/2017,,,
-C-1038,Female,2000,yes,HS/GED,Plymouth,no,Manager,12.80,07/02/2017,Withdrew,05/05/2017,IT Fundamentals,Institutionalized,Online,07/04/2018,Temp Designer,Great North Labs,28.07,18/10/2018,,,
-C-1039,Unreported,1978,no,Graduate and Beyond,Edina,yes,Employee,14.00,05/07/2017,Withdrew,11/12/2017,IT Fundamentals,Enrolled in Additional Training,Online,15/04/2018,Temp Designer,Bright Health,30.78,15/04/2019,,,
-C-1040,Other,1966,unreported,HS/GED,Roseville,yes,Representative,13.62,26/08/2015,Withdrew,10/11/2015,IT Fundamentals,Incarcerated,Online,18/08/2016,Designer,Code 42,29.34,12/03/2017,,,
-C-1041,Female,1959,unreported,HS/GED,Brooklyn Center,yes,Support,11.12,27/12/2015,Removed,21/03/2016,QA,Entered Employment,Classroom,11/04/2016,Junior Designer,Branch Messenger,24.51,01/06/2016,,,
-C-1042,Unreported,1995,yes,Associates,Minneapolis,yes,Temp,10.02,28/01/2015,Withdrew,20/10/2015,IT Fundamentals,Entered Military,Classroom,15/11/2015,Designer,Microsoft,26.97,10/04/2016,,,
-C-1043,Male,1952,no,Graduate and Beyond,Eden Prairie,no,Employee,11.37,27/02/2017,Removed,19/05/2017,QA,Institutionalized,Classroom,06/03/2018,Temp Designer,Upsie,28.61,11/02/2019,,,
-C-1044,Male,1969,no,HS/GED,Brooklyn Center,no,Manager,9.90,06/09/2015,Graduated,21/05/2016,UX,Incarcerated,Online,17/07/2016,Junior Engineer,Upsie,24.32,23/11/2016,Junior Developer,Bright Health,31.81
-C-1045,Other,1963,yes,Associates,St. Paul,yes,Contractor,11.24,22/09/2015,Graduated,08/04/2016,IT Fundamentals,Entered Military,Classroom,07/05/2016,Junior Engineer,Apple,27.54,19/06/2016,,,
-C-1046,Unreported,1989,unreported,Bachelors,Roseville,yes,Representative,14.04,24/04/2015,Removed,27/01/2016,UX,Health/Medical,Online,13/07/2016,IT Support,Foodsby,26.73,07/05/2017,,,
-C-1047,Female,1965,yes,Graduate and Beyond,Minneapolis,yes,,11.28,08/01/2017,Graduated,27/04/2017,UX,Entered Employment,Classroom,19/07/2017,Junior Engineer,Apple,27.12,28/08/2018,Temp Developer,Google,26.27
-C-1048,Other,1968,no,Associates,Plymouth,no,Manager,10.97,31/05/2017,Graduated,15/09/2017,UX,Incarcerated,Classroom,01/09/2018,Junior Engineer,Branch Messenger,29.75,02/10/2018,,,
-C-1049,Other,1983,yes,Bachelors,Edina,no,Contractor,10.81,11/10/2017,Withdrew,10/05/2018,IT Fundamentals,Enrolled in Additional Training,Classroom,16/01/2019,IT Support,Great North Labs,28.92,05/07/2019,,,
-C-1050,Unreported,1958,unreported,HS/GED,St. Paul,yes,Temp,9.26,04/06/2016,Removed,17/12/2016,IT Fundamentals,Institutionalized,Classroom,13/12/2017,Temp Developer,Google,30.17,26/12/2018,Junior Engineer,Upsie,25.61
-C-1051,Male,1983,no,Bachelors,Edina,no,Cashier,9.36,24/11/2016,Withdrew,16/08/2017,QA,Entered Military,Online,16/01/2018,Junior Designer,Google,24.51,01/01/2019,,,
-C-1052,Female,1966,unreported,HS/GED,St. Paul,yes,Employee,12.65,28/02/2015,Withdrew,24/07/2015,IT Fundamentals,Institutionalized,Classroom,20/02/2016,Web Developer,Microsoft,27.77,26/05/2016,,,
-C-1053,Female,1969,yes,Bachelors,Roseville,no,Team Member,11.57,31/03/2015,Graduated,25/12/2015,IT Fundamentals,Incarcerated,Classroom,13/07/2016,Temp Designer,Foodsby,31.27,10/10/2016,,,
-C-1054,Other,1995,yes,Associates,Minneapolis,yes,Supervisor,11.94,23/11/2017,Withdrew,16/04/2018,QA,Entered Employment,Classroom,18/11/2018,Temp Designer,Bind Benefits,27.42,01/03/2019,,,
-C-1055,Female,1973,unreported,Associates,Plymouth,yes,Team Member,10.91,28/09/2016,Withdrew,27/02/2017,UX,Enrolled in Additional Training,Classroom,25/06/2017,Designer,Code 42,24.42,18/03/2018,,,
-C-1056,Male,1983,yes,HS/GED,Robbinsdale,no,Manager,11.98,24/11/2015,Graduated,08/04/2016,QA,Health/Medical,Classroom,05/08/2016,Programmer,Merrill Corporation,28.30,20/03/2017,,,
-C-1057,Male,1965,yes,Graduate and Beyond,Eden Prairie,no,Manager,15.56,16/03/2017,Removed,01/10/2017,IT Fundamentals,Health/Medical,Online,01/06/2018,Web Developer,Bright Health,26.39,04/12/2018,,,
-C-1058,Female,1993,unreported,HS/GED,Roseville,no,,14.94,28/08/2016,Graduated,13/11/2016,IT Fundamentals,Entered Employment,Classroom,15/09/2017,Designer,Loup Ventures,27.04,03/07/2018,Project Manager,Merrill Corporation,29.03
-C-1059,Male,1980,unreported,HS/GED,Minneapolis,no,Supervisor,15.56,01/05/2017,Graduated,22/01/2018,IT Fundamentals,Institutionalized,Classroom,18/09/2018,Designer,Merrill Corporation,30.12,20/04/2019,,,
-C-1060,Female,1959,unreported,Associates,Robbinsdale,yes,Team Member,11.93,25/11/2017,Removed,26/04/2018,QA,Incarcerated,Online,13/05/2018,Junior Engineer,Great North Labs,25.46,05/06/2018,Temp Developer,Branch Messenger,27.92
-C-1061,Unreported,1964,no,Bachelors,Edina,no,Team Member,12.61,27/09/2017,Withdrew,22/04/2018,IT Fundamentals,Entered Military,Classroom,17/08/2018,Web Developer,Bite Squad,27.35,06/02/2019,Temp Developer,Bind Benefits,31.17
-C-1062,Unreported,1957,unreported,Graduate and Beyond,Plymouth,no,Representative,11.40,11/02/2017,Removed,28/08/2017,UX,Incarcerated,Online,13/03/2018,Developer,Branch Messenger,28.67,13/06/2018,,,
-C-1063,Other,1967,no,Graduate and Beyond,Edina,yes,Associate,9.30,10/05/2017,Withdrew,23/12/2017,QA,Incarcerated,Classroom,04/03/2018,Temp Developer,Great North Labs,24.93,05/11/2018,Junior Engineer,Loup Ventures,30.56
-C-1064,Female,1950,no,Associates,Robbinsdale,yes,Associate,10.80,09/09/2016,Withdrew,09/12/2016,UX,Enrolled in Additional Training,Classroom,09/08/2017,IT Support,Great North Labs,25.89,10/01/2018,,,
-C-1065,Other,1956,yes,Bachelors,Edina,no,Temp,9.40,26/06/2017,Graduated,12/03/2018,QA,Institutionalized,Online,11/03/2019,Programmer,Great North Labs,26.22,28/12/2019,,,
-C-1066,Female,1950,no,Bachelors,Edina,no,Cashier,13.57,21/02/2017,Graduated,04/04/2017,UX,Institutionalized,Classroom,16/10/2017,Project Manager,Apple,27.26,10/03/2018,Designer,Aftercode,27.36
-C-1067,Female,1964,no,Bachelors,Robbinsdale,no,Supervisor,9.79,15/01/2016,Graduated,25/08/2016,QA,Incarcerated,Classroom,02/10/2016,Junior Engineer,Branch Messenger,27.67,23/07/2017,,,
-C-1068,Unreported,1974,unreported,Graduate and Beyond,Edina,no,Cashier,11.21,26/04/2015,Removed,11/08/2015,IT Fundamentals,Incarcerated,Online,06/06/2016,Web Developer,Merrill Corporation,29.29,25/02/2017,IT Support,Google,25.56
-C-1069,Male,1984,no,Some College,Minneapolis,yes,Team Member,9.22,30/12/2015,Graduated,05/02/2016,UX,Entered Military,Classroom,19/04/2016,Developer,Bright Health,25.15,05/01/2017,,,
-C-1070,Male,1969,yes,Some College,Roseville,yes,Team Member,13.44,09/07/2016,Graduated,01/10/2016,IT Fundamentals,Incarcerated,Online,24/10/2017,Project Manager,Microsoft,26.86,13/07/2018,,,
-C-1071,Female,1991,unreported,Associates,Edina,yes,Temp,15.87,01/08/2015,Graduated,24/05/2016,UX,Entered Military,Online,05/12/2016,Junior Engineer,Google,31.49,13/10/2017,,,
-C-1072,Unreported,1974,no,Associates,Plymouth,yes,Associate,15.42,29/05/2017,Removed,06/12/2017,UX,Institutionalized,Online,19/12/2018,Project Manager,Great North Labs,30.12,25/12/2019,,,
-C-1073,Male,1978,yes,Graduate and Beyond,Plymouth,no,Employee,10.94,21/08/2017,Withdrew,10/04/2018,QA,Entered Military,Classroom,27/05/2018,Developer,Microsoft,30.68,01/06/2018,,,
-C-1074,Other,1985,no,Associates,Plymouth,no,Employee,14.56,30/05/2017,Removed,18/01/2018,UX,Institutionalized,Online,20/02/2018,Programmer,Apple,30.38,22/02/2019,,,
-C-1075,Female,1996,yes,Some College,Edina,yes,Employee,12.58,22/05/2016,Withdrew,16/07/2016,UX,Incarcerated,Online,25/11/2016,Project Manager,Code 42,30.57,04/03/2017,,,
-C-1076,Unreported,1960,yes,Graduate and Beyond,Brooklyn Center,yes,Representative,12.20,01/12/2016,Graduated,24/07/2017,QA,Institutionalized,Online,19/04/2018,Temp Designer,Google,27.75,12/06/2018,,,
-C-1077,Male,1965,no,HS/GED,Minneapolis,yes,Contractor,14.95,22/12/2017,Graduated,10/05/2018,QA,Health/Medical,Classroom,07/07/2018,Junior Designer,Upsie,30.72,07/09/2018,Designer,Google,28.24
-C-1078,Unreported,1958,no,HS/GED,Minneapolis,no,,10.59,12/10/2015,Graduated,10/07/2016,IT Fundamentals,Incarcerated,Classroom,07/08/2016,IT Support,Great North Labs,31.30,09/07/2017,,,
-C-1079,Female,1976,yes,Some College,Edina,yes,Cashier,13.64,08/01/2015,Removed,16/06/2015,QA,Incarcerated,Online,25/09/2015,Temp Designer,Code 42,24.63,20/07/2016,,,
-C-1080,Unreported,1995,unreported,Graduate and Beyond,Edina,no,Cashier,15.23,16/12/2015,Withdrew,13/07/2016,QA,Enrolled in Additional Training,Online,03/12/2016,Designer,Loup Ventures,29.00,02/11/2017,Designer,Nerdery,27.23
-C-1081,Other,1978,unreported,Some College,Robbinsdale,no,Temp,13.59,26/11/2015,Graduated,17/08/2016,UX,Enrolled in Additional Training,Classroom,12/01/2017,Project Manager,Google,30.16,11/03/2017,,,
-C-1082,Unreported,1976,no,Bachelors,Edina,yes,Cashier,13.46,06/05/2017,Removed,03/08/2017,IT Fundamentals,Enrolled in Additional Training,Online,14/02/2018,Temp Designer,Loup Ventures,27.56,12/08/2018,,,
-C-1083,Female,2001,unreported,HS/GED,Eden Prairie,no,Manager,10.13,06/04/2015,Graduated,07/10/2015,IT Fundamentals,Entered Military,Classroom,14/12/2015,Project Manager,Merrill Corporation,31.51,19/01/2016,,,
-C-1084,Male,1977,yes,HS/GED,Minneapolis,no,Cashier,15.83,21/04/2015,Removed,08/10/2015,UX,Health/Medical,Online,22/01/2016,Programmer,Google,27.84,03/06/2016,,,
-C-1085,Other,1977,no,Graduate and Beyond,Brooklyn Center,yes,Contractor,12.28,15/01/2015,Withdrew,24/07/2015,IT Fundamentals,Entered Employment,Classroom,20/09/2015,Junior Engineer,Branch Messenger,29.49,21/11/2015,,,
-C-1086,Unreported,1983,unreported,Some College,Brooklyn Center,no,,13.14,03/07/2015,Withdrew,16/01/2016,UX,Health/Medical,Classroom,14/03/2016,Designer,Merrill Corporation,29.45,02/02/2017,,,
-C-1087,Female,1978,no,Bachelors,St. Paul,yes,,14.41,14/08/2016,Graduated,13/03/2017,UX,Enrolled in Additional Training,Classroom,27/12/2017,Temp Designer,Nerdery,29.06,25/08/2018,Junior Developer,Great North Labs,27.93
-C-1088,Unreported,1973,no,Associates,Edina,yes,Manager,13.12,28/06/2015,Withdrew,16/02/2016,IT Fundamentals,Institutionalized,Online,02/05/2016,Developer,Great North Labs,31.50,21/05/2017,,,
-C-1089,Other,1981,yes,Associates,Brooklyn Center,no,Manager,15.11,09/12/2015,Graduated,13/08/2016,QA,Institutionalized,Online,24/10/2016,Junior Designer,Bright Health,26.39,20/02/2017,,,
-C-1090,Male,1956,yes,Graduate and Beyond,St. Paul,no,Manager,9.59,02/05/2017,Graduated,21/08/2017,UX,Entered Military,Online,05/12/2017,Junior Engineer,Bite Squad,26.81,21/11/2018,,,
-C-1091,Other,1960,unreported,Graduate and Beyond,Minneapolis,no,Representative,12.86,19/08/2016,Removed,18/03/2017,UX,Health/Medical,Classroom,08/03/2018,Temp Developer,Loup Ventures,31.35,11/02/2019,Developer,Branch Messenger,24.52
-C-1092,Male,1978,yes,Associates,Plymouth,yes,Supervisor,9.17,04/08/2016,Removed,14/01/2017,QA,Entered Military,Online,26/09/2017,Project Manager,Branch Messenger,29.00,21/05/2018,,,
-C-1093,Male,1979,yes,Graduate and Beyond,Roseville,no,Representative,13.49,09/03/2017,Withdrew,15/12/2017,QA,Institutionalized,Classroom,19/07/2018,Project Manager,Bite Squad,24.52,18/04/2019,Temp Developer,Bind Benefits,30.79
-C-1094,Female,1977,no,Some College,Eden Prairie,yes,Employee,12.09,02/08/2016,Withdrew,21/04/2017,IT Fundamentals,Enrolled in Additional Training,Online,21/11/2017,Programmer,Loup Ventures,24.63,01/02/2018,Temp Developer,Loup Ventures,29.81
-C-1095,Male,1993,no,Some College,Roseville,no,Supervisor,11.20,01/06/2015,Withdrew,04/03/2016,QA,Enrolled in Additional Training,Online,25/04/2016,Junior Developer,Aftercode,28.50,24/01/2017,,,
-C-1096,Unreported,1983,no,Graduate and Beyond,Minneapolis,no,Support,15.99,08/09/2015,Graduated,12/02/2016,IT Fundamentals,Enrolled in Additional Training,Classroom,06/03/2016,Programmer,Bright Health,26.92,09/04/2016,IT Support,Upsie,29.32
-C-1097,Unreported,1953,yes,HS/GED,Roseville,yes,,15.60,02/10/2015,Removed,03/03/2016,UX,Institutionalized,Online,27/01/2017,Junior Engineer,Branch Messenger,25.95,24/09/2017,Programmer,Foodsby,29.78
-C-1098,Female,1970,yes,Bachelors,Minneapolis,no,Manager,12.10,22/05/2016,Withdrew,27/10/2016,UX,Entered Military,Classroom,20/12/2016,Junior Designer,Bright Health,31.91,15/05/2017,,,
-C-1099,Female,1983,no,Some College,Roseville,no,Team Member,13.66,06/05/2015,Withdrew,16/11/2015,UX,Enrolled in Additional Training,Online,22/07/2016,Designer,Osborn 370,25.98,06/06/2017,Developer,Bind Benefits,24.12
-C-1100,Female,1955,yes,HS/GED,Minneapolis,yes,Contractor,14.45,12/11/2015,Removed,02/04/2016,QA,Entered Military,Online,19/08/2016,Temp Developer,Bright Health,30.45,23/07/2017,,,
+person_id,partner_id,gender,year_of_birth,person_of_color,education_level,city_of_residence,scholarship_recipient,previous_job_experience,pre_training_wage,training_start_date,training_status,training_end_date,training_type,exit_status,classroom_or_online,job_placement_date,hiring_job_title,hiring_company,starting_wage,second_job_placement_date,second_job_title,second_job_company,second_starting_wage
+C-1001,4,Unreported,2000,Yes,Graduate and Beyond,Robbinsdale,No,Team Member,13.31,10/12/2015,Withdrew,01/03/2016,UX,Enrolled in Additional Training,Classroom,26/01/2017,Temp Designer,Upsie,31.01,,,,
+C-1002,4,Male,1965,Yes,Graduate and Beyond,St. Paul,No,,,18/02/2016,Removed,15/07/2016,QA,Health/Medical,Classroom,09/10/2016,Junior Engineer,Great North Labs,26.80,,,,
+C-1003,4,Other,1958,Yes,Graduate and Beyond,Robbinsdale,Yes,Support,14.16,04/02/2017,Graduated,14/09/2017,QA,Health/Medical,Online,20/02/2018,Developer,Osborn 370,27.44,,,,
+C-1004,4,Male,1975,Yes,Associates,St. Paul,No,Support,12.87,27/03/2016,Removed,20/12/2016,IT Fundamentals,Health/Medical,Classroom,11/03/2017,IT Support,Branch Messenger,30.94,,,,
+C-1005,4,Other,1964,Yes,Graduate and Beyond,Roseville,No,Cashier,11.74,01/11/2015,Withdrew,25/06/2016,IT Fundamentals,Entered Employment,Online,21/06/2017,Designer,Merrill Corporation,28.85,,,,
+C-1006,4,Male,1995,No,Bachelors,Robbinsdale,No,Manager,14.81,25/07/2016,Removed,17/04/2017,UX,Entered Military,Classroom,18/01/2018,Junior Developer,Merrill Corporation,24.67,06/08/2018,Junior Engineer,Osborn 370,29.71
+C-1007,4,Female,1962,Unreported,Bachelors,Eden Prairie,No,,,30/10/2015,Withdrew,02/03/2016,IT Fundamentals,Institutionalized,Online,27/12/2016,Developer,Upsie,26.78,09/03/2017,Web Developer,Loup Ventures,28.06
+C-1008,4,Unreported,1957,Yes,HS/GED,Edina,No,Support,10.52,07/09/2016,Graduated,04/11/2016,UX,Enrolled in Additional Training,Classroom,07/08/2017,IT Support,Loup Ventures,31.46,,,,
+C-1009,4,Male,1956,Yes,Graduate and Beyond,Brooklyn Center,No,,,14/01/2015,Graduated,03/04/2015,UX,Entered Employment,Online,15/01/2016,Junior Engineer,Great North Labs,26.31,18/07/2016,Junior Engineer,Great North Labs,27.13
+C-1010,4,Female,1980,Yes,HS/GED,Plymouth,No,Manager,15.50,22/09/2016,Graduated,10/06/2017,QA,Entered Military,Classroom,10/01/2018,Web Developer,Merrill Corporation,26.86,,,,
+C-1011,4,Male,1982,Yes,Graduate and Beyond,Minneapolis,Yes,Team Member,15.48,26/07/2016,Graduated,15/11/2016,QA,Institutionalized,Online,24/10/2017,Designer,Aftercode,25.76,24/02/2018,Project Manager,Bright Health,28.84
+C-1012,4,Unreported,1996,Yes,HS/GED,Plymouth,Yes,Temp,9.10,20/05/2016,Removed,19/02/2017,QA,Entered Employment,Classroom,16/02/2018,Junior Developer,Bind Benefits,28.74,,,,
+C-1013,4,Female,1976,Yes,HS/GED,Plymouth,No,Associate,10.49,24/05/2015,Removed,28/01/2016,QA,Enrolled in Additional Training,Classroom,03/07/2016,Junior Engineer,Osborn 370,27.82,09/09/2016,Designer,Foodsby,27.25
+C-1014,4,Male,1995,Yes,Graduate and Beyond,Plymouth,Yes,Employee,14.74,12/01/2017,Removed,06/04/2017,QA,Health/Medical,Online,09/03/2018,Junior Developer,Loup Ventures,30.94,,,,
+C-1015,4,Female,1985,Yes,Bachelors,Roseville,No,Employee,12.88,28/06/2016,Graduated,05/03/2017,QA,Enrolled in Additional Training,Classroom,24/03/2018,Designer,Branch Messenger,26.53,,,,
+C-1016,4,Female,2000,Unreported,Some College,Robbinsdale,No,Temp,14.49,26/12/2016,Removed,05/03/2017,QA,Enrolled in Additional Training,Online,19/05/2017,Junior Engineer,Loup Ventures,28.18,,,,
+C-1017,4,Male,1970,No,HS/GED,Brooklyn Center,Yes,Contractor,13.64,16/11/2015,Withdrew,05/06/2016,UX,Health/Medical,Classroom,12/08/2016,Junior Engineer,Osborn 370,27.35,,,,
+C-1018,4,Male,1968,Yes,Graduate and Beyond,Roseville,No,Associate,15.43,20/10/2016,Graduated,22/06/2017,IT Fundamentals,Health/Medical,Classroom,22/05/2018,Junior Designer,Bite Squad,29.15,,,,
+C-1019,4,Female,1995,Unreported,Graduate and Beyond,St. Paul,Yes,Manager,15.18,27/11/2015,Graduated,04/06/2016,UX,Entered Employment,Online,02/10/2016,Developer,Osborn 370,28.88,,,,
+C-1020,4,Female,1960,No,Some College,Brooklyn Center,No,Supervisor,13.79,19/12/2016,Withdrew,01/02/2017,QA,Entered Employment,Online,26/12/2017,Developer,Code 42,28.42,,,,
+C-1021,4,Female,1986,Yes,Graduate and Beyond,Robbinsdale,No,Representative,12.92,06/08/2016,Withdrew,17/11/2016,IT Fundamentals,Health/Medical,Online,08/01/2017,Junior Engineer,Upsie,28.77,,,,
+C-1022,4,Unreported,1975,Unreported,Graduate and Beyond,Eden Prairie,No,Associate,13.55,08/10/2016,Graduated,07/06/2017,QA,Health/Medical,Online,13/03/2018,IT Support,Great North Labs,27.10,,,,
+C-1023,4,Other,1991,Yes,Associates,Roseville,No,Team Member,15.75,24/05/2016,Graduated,15/02/2017,IT Fundamentals,Entered Employment,Classroom,07/03/2017,Temp Developer,Great North Labs,26.81,,,,
+C-1024,4,Unreported,1991,Unreported,Graduate and Beyond,Robbinsdale,No,Representative,14.35,21/12/2015,Graduated,01/08/2016,QA,Health/Medical,Classroom,16/03/2017,Web Developer,Microsoft,28.64,,,,
+C-1025,4,Female,1955,Yes,Some College,Robbinsdale,No,Contractor,10.65,22/03/2016,Removed,05/06/2016,IT Fundamentals,Health/Medical,Online,20/12/2016,Junior Engineer,Bind Benefits,27.31,,,,
+C-1026,4,Male,1995,No,Some College,Robbinsdale,Yes,Team Member,11.13,05/01/2017,Withdrew,11/07/2017,QA,Health/Medical,Online,01/04/2018,Project Manager,Code 42,26.77,,,,
+C-1027,4,Unreported,1995,No,Graduate and Beyond,Brooklyn Center,No,Manager,15.42,12/03/2017,Graduated,04/05/2017,QA,Entered Military,Classroom,26/07/2017,Programmer,Nerdery,28.15,,,,
+C-1028,4,Other,1965,Unreported,HS/GED,Minneapolis,No,Contractor,14.99,14/06/2015,Withdrew,15/03/2016,IT Fundamentals,Health/Medical,Classroom,20/05/2016,Junior Engineer,Upsie,24.02,,,,
+C-1029,4,Female,1957,Unreported,Associates,Minneapolis,Yes,Contractor,13.79,16/08/2015,Withdrew,17/10/2015,IT Fundamentals,Entered Military,Online,08/02/2016,Designer,Nerdery,28.61,,,,
+C-1030,4,Male,1988,No,Some College,St. Paul,No,Cashier,12.87,13/08/2015,Withdrew,10/12/2015,IT Fundamentals,Enrolled in Additional Training,Online,20/01/2016,Junior Designer,Bite Squad,31.23,,,,
+C-1031,4,Unreported,1997,Yes,Some College,Plymouth,No,Employee,13.52,07/06/2017,Withdrew,10/02/2018,UX,Health/Medical,Online,19/05/2018,Web Developer,Microsoft,26.75,,,,
+C-1032,4,Male,1986,Yes,HS/GED,Eden Prairie,Yes,Cashier,13.19,22/02/2016,Removed,17/04/2016,QA,Entered Military,Online,06/02/2017,Designer,Aftercode,26.49,,,,
+C-1033,4,Male,1974,Unreported,HS/GED,Eden Prairie,No,,,07/12/2017,Graduated,18/02/2018,IT Fundamentals,Incarcerated,Classroom,10/05/2018,Junior Engineer,Osborn 370,24.35,09/08/2018,Designer,Upsie,26.63
+C-1034,4,Unreported,1993,No,Graduate and Beyond,Brooklyn Center,Yes,Employee,14.59,18/10/2017,Removed,08/07/2018,IT Fundamentals,Institutionalized,Online,18/05/2019,Junior Engineer,Branch Messenger,25.73,,,,
+C-1035,4,Male,1962,Yes,Associates,Eden Prairie,Yes,Representative,9.10,30/06/2016,Graduated,20/03/2017,UX,Entered Employment,Online,26/04/2017,Junior Engineer,Code 42,30.33,,,,
+C-1036,4,Unreported,1974,Yes,HS/GED,Eden Prairie,No,Supervisor,9.49,29/09/2017,Withdrew,15/02/2018,IT Fundamentals,Enrolled in Additional Training,Classroom,18/01/2019,IT Support,Branch Messenger,25.53,,,,
+C-1037,4,Female,1976,Yes,Bachelors,St. Paul,Yes,,,01/05/2016,Withdrew,16/08/2016,QA,Entered Military,Classroom,26/09/2016,Developer,Microsoft,24.39,,,,
+C-1038,4,Male,1959,Unreported,HS/GED,Eden Prairie,Yes,Employee,13.25,09/02/2015,Graduated,24/11/2015,IT Fundamentals,Incarcerated,Online,20/02/2016,Junior Developer,Osborn 370,31.85,23/03/2016,Designer,Code 42,29.77
+C-1039,4,Other,1971,Unreported,Graduate and Beyond,Roseville,No,,,29/06/2015,Graduated,15/01/2016,UX,Incarcerated,Online,21/06/2016,IT Support,Code 42,30.47,,,,
+C-1040,4,Female,1983,Unreported,HS/GED,Brooklyn Center,Yes,Team Member,14.08,31/12/2015,Graduated,22/02/2016,IT Fundamentals,Entered Employment,Online,17/04/2016,Junior Designer,Aftercode,26.10,,,,
+C-1041,4,Unreported,1982,Yes,Associates,Minneapolis,No,Support,14.50,03/01/2017,Withdrew,10/04/2017,IT Fundamentals,Health/Medical,Online,01/05/2017,Temp Developer,Branch Messenger,28.58,,,,
+C-1042,4,Unreported,1982,No,HS/GED,Robbinsdale,Yes,Contractor,10.17,07/05/2016,Removed,02/09/2016,IT Fundamentals,Health/Medical,Online,21/11/2016,Junior Developer,Aftercode,31.82,,,,
+C-1043,4,Unreported,1991,No,Associates,Brooklyn Center,Yes,Employee,12.04,28/05/2017,Withdrew,12/07/2017,QA,Institutionalized,Online,21/04/2018,Temp Designer,Apple,29.15,,,,
+C-1044,4,Unreported,1985,Unreported,Bachelors,Edina,Yes,Support,10.67,02/08/2016,Withdrew,22/02/2017,IT Fundamentals,Entered Military,Classroom,26/08/2017,Developer,Nerdery,29.71,,,,
+C-1045,4,Female,1985,Unreported,Some College,Robbinsdale,Yes,Support,10.81,29/12/2015,Removed,24/05/2016,IT Fundamentals,Enrolled in Additional Training,Classroom,18/08/2016,Programmer,Upsie,30.28,17/01/2017,Web Developer,Code 42,26.88
+C-1046,4,Other,1969,No,Graduate and Beyond,Roseville,Yes,Associate,9.56,06/11/2016,Withdrew,18/06/2017,UX,Institutionalized,Classroom,23/01/2018,IT Support,Microsoft,27.33,03/12/2018,Junior Designer,Bright Health,27.61
+C-1047,4,Male,1978,Yes,HS/GED,Edina,Yes,Temp,9.07,25/03/2015,Graduated,04/05/2015,IT Fundamentals,Health/Medical,Classroom,07/02/2016,Designer,Merrill Corporation,27.18,,,,
+C-1048,4,Other,1952,Unreported,HS/GED,Brooklyn Center,Yes,Employee,12.10,13/09/2017,Removed,26/04/2018,QA,Entered Employment,Classroom,08/08/2018,IT Support,Great North Labs,27.84,01/07/2019,Programmer,Upsie,27.91
+C-1049,4,Unreported,1992,Yes,Some College,Edina,No,Representative,11.20,24/04/2016,Removed,13/09/2016,UX,Entered Military,Classroom,02/03/2017,Junior Designer,Microsoft,28.64,,,,
+C-1050,4,Other,1962,Yes,Graduate and Beyond,Edina,No,Supervisor,14.90,10/01/2016,Graduated,27/07/2016,UX,Health/Medical,Classroom,11/07/2017,Temp Designer,Merrill Corporation,31.65,,,,
+C-1051,4,Unreported,1992,Yes,Graduate and Beyond,Eden Prairie,No,Temp,11.90,16/08/2015,Withdrew,22/10/2015,QA,Health/Medical,Classroom,25/08/2016,IT Support,Apple,31.96,,,,
+C-1052,4,Unreported,1953,Unreported,Some College,Roseville,Yes,Temp,10.17,01/11/2015,Graduated,08/07/2016,UX,Entered Military,Classroom,21/11/2016,Programmer,Bite Squad,31.05,,,,
+C-1053,4,Male,2000,Unreported,Graduate and Beyond,Eden Prairie,No,Contractor,13.41,14/08/2017,Removed,17/12/2017,UX,Enrolled in Additional Training,Classroom,02/07/2018,Developer,Bite Squad,30.29,05/04/2019,Project Manager,Bite Squad,24.68
+C-1054,4,Male,1976,Unreported,Some College,Plymouth,No,,,14/05/2016,Graduated,25/07/2016,IT Fundamentals,Institutionalized,Online,21/08/2016,Developer,Branch Messenger,26.04,,,,
+C-1055,4,Unreported,1960,Yes,HS/GED,Roseville,No,Employee,10.89,09/05/2015,Withdrew,08/01/2016,IT Fundamentals,Entered Employment,Online,13/10/2016,Project Manager,Nerdery,27.29,,,,
+C-1056,4,Unreported,1976,Yes,Graduate and Beyond,Plymouth,Yes,,,18/02/2017,Removed,16/04/2017,QA,Entered Employment,Online,21/09/2017,Programmer,Foodsby,26.76,,,,
+C-1057,4,Other,1956,Yes,Some College,Edina,Yes,Team Member,15.58,29/10/2016,Graduated,13/05/2017,QA,Entered Employment,Classroom,13/02/2018,Temp Designer,Foodsby,31.83,,,,
+C-1058,4,Female,1985,Yes,Associates,Robbinsdale,Yes,Contractor,12.93,01/08/2015,Withdrew,13/10/2015,IT Fundamentals,Incarcerated,Online,12/11/2015,Temp Designer,Aftercode,29.42,,,,
+C-1059,4,Male,1975,Yes,Bachelors,Plymouth,Yes,,,20/07/2017,Withdrew,02/12/2017,IT Fundamentals,Health/Medical,Classroom,,,,,,,,
+C-1060,4,Unreported,1975,Yes,Associates,Roseville,Yes,Supervisor,10.75,11/03/2017,Graduated,14/11/2017,IT Fundamentals,Health/Medical,Classroom,,,,,,,,
+C-1061,4,Male,2000,Unreported,Some College,Roseville,No,Supervisor,9.40,12/04/2017,Withdrew,13/10/2017,IT Fundamentals,Entered Employment,Online,,,,,,,,
+C-1062,4,Unreported,1988,Yes,Bachelors,St. Paul,Yes,Team Member,12.19,09/03/2016,Graduated,04/11/2016,UX,Entered Military,Classroom,21/08/2017,Programmer,Aftercode,28.67,,,,
+C-1063,4,Female,1999,No,Some College,Edina,Yes,Contractor,14.43,30/09/2016,Withdrew,23/04/2017,QA,Entered Employment,Classroom,11/04/2018,IT Support,Microsoft,28.28,,,,
+C-1064,4,Unreported,1956,Unreported,Associates,Roseville,No,Cashier,13.79,12/02/2015,Withdrew,08/04/2015,UX,Enrolled in Additional Training,Online,03/03/2016,Junior Engineer,Nerdery,29.65,07/04/2016,Programmer,Upsie,26.72
+C-1065,4,Unreported,1970,Yes,Associates,Minneapolis,No,Supervisor,15.29,20/12/2016,Removed,06/06/2017,IT Fundamentals,Incarcerated,Classroom,02/04/2018,Temp Designer,Loup Ventures,30.91,,,,
+C-1066,4,Unreported,1983,No,Bachelors,Brooklyn Center,Yes,Cashier,9.53,08/02/2017,Graduated,21/05/2017,IT Fundamentals,Health/Medical,Online,01/06/2017,Programmer,Bright Health,27.02,,,,
+C-1067,4,Unreported,1983,Unreported,Some College,Brooklyn Center,Yes,Contractor,10.12,04/06/2017,Removed,12/09/2017,IT Fundamentals,Enrolled in Additional Training,Online,21/11/2017,Programmer,Microsoft,27.52,,,,
+C-1068,4,Male,1952,Yes,Bachelors,Roseville,No,Cashier,11.24,12/06/2015,Removed,25/08/2015,QA,Entered Employment,Online,18/12/2015,Developer,Apple,27.93,,,,
+C-1069,4,Female,1978,Unreported,HS/GED,Roseville,No,Supervisor,13.60,05/04/2016,Removed,27/10/2016,IT Fundamentals,Health/Medical,Online,09/01/2017,Web Developer,Microsoft,31.97,,,,
+C-1070,4,Female,1996,Unreported,HS/GED,Minneapolis,No,Cashier,12.78,30/07/2015,Removed,12/01/2016,UX,Institutionalized,Online,11/08/2016,Junior Engineer,Upsie,26.15,,,,
+C-1071,4,Unreported,1989,Yes,Associates,Minneapolis,Yes,Support,14.16,20/02/2017,Removed,13/04/2017,QA,Enrolled in Additional Training,Online,21/08/2017,Junior Designer,Loup Ventures,24.59,,,,
+C-1072,4,Other,1956,Yes,Bachelors,St. Paul,No,Supervisor,9.69,04/08/2015,Removed,06/10/2015,QA,Entered Employment,Classroom,09/09/2016,Programmer,Bright Health,27.52,,,,
+C-1073,4,Unreported,1994,No,Bachelors,St. Paul,Yes,Employee,14.41,16/01/2016,Withdrew,26/04/2016,UX,Entered Military,Classroom,17/03/2017,Designer,Bind Benefits,28.78,,,,
+C-1074,4,Other,1956,No,Some College,Minneapolis,No,Manager,15.02,13/04/2017,Graduated,18/10/2017,IT Fundamentals,Entered Military,Classroom,12/09/2018,Programmer,Bite Squad,24.11,,,,
+C-1075,4,Other,1994,No,Bachelors,Edina,No,,,27/06/2016,Removed,21/03/2017,QA,Entered Military,Online,10/08/2017,Project Manager,Microsoft,29.23,03/04/2018,Junior Engineer,Code 42,27.44
+C-1076,4,Female,1963,Yes,Associates,Minneapolis,No,Supervisor,15.56,11/09/2015,Graduated,09/11/2015,UX,Health/Medical,Online,13/02/2016,Junior Designer,Merrill Corporation,29.87,,,,
+C-1077,4,Male,1981,Unreported,Some College,Eden Prairie,Yes,Employee,12.75,08/02/2015,Removed,14/06/2015,QA,Entered Military,Online,15/06/2016,Junior Designer,Foodsby,29.33,,,,
+C-1078,4,Female,1965,No,Graduate and Beyond,Minneapolis,Yes,Contractor,9.74,21/05/2016,Graduated,27/07/2016,UX,Health/Medical,Classroom,17/08/2016,Developer,Code 42,29.22,,,,
+C-1079,4,Male,1965,Yes,Some College,St. Paul,No,Supervisor,12.08,06/12/2016,Removed,03/06/2017,QA,Health/Medical,Online,07/05/2018,IT Support,Bind Benefits,25.66,05/11/2018,IT Support,Google,29.20
+C-1080,4,Unreported,1981,No,Some College,Edina,Yes,Team Member,10.58,03/08/2015,Removed,19/02/2016,QA,Health/Medical,Classroom,05/05/2016,Junior Engineer,Merrill Corporation,26.48,,,,
+C-1081,4,Other,1951,No,Some College,Plymouth,Yes,Cashier,9.77,22/03/2015,Withdrew,26/12/2015,UX,Entered Employment,Classroom,15/06/2016,Web Developer,Osborn 370,31.61,04/05/2017,IT Support,Upsie,24.23
+C-1082,4,Female,1971,No,HS/GED,Roseville,No,Cashier,12.74,22/11/2016,Graduated,06/02/2017,UX,Entered Employment,Online,23/02/2018,Temp Designer,Upsie,29.20,08/02/2019,Junior Engineer,Code 42,24.51
+C-1083,4,Other,1967,No,Graduate and Beyond,Eden Prairie,No,Representative,14.03,10/01/2017,Removed,09/03/2017,UX,Incarcerated,Classroom,06/06/2017,IT Support,Loup Ventures,31.22,,,,
+C-1084,4,Male,1972,Unreported,Associates,Roseville,No,Temp,14.54,20/05/2015,Withdrew,14/02/2016,IT Fundamentals,Entered Military,Online,04/02/2017,Junior Engineer,Branch Messenger,29.45,16/09/2017,Junior Designer,Bite Squad,24.38
+C-1085,4,Male,1968,Unreported,Associates,Brooklyn Center,Yes,Support,12.28,30/05/2017,Removed,08/08/2017,UX,Institutionalized,Online,16/05/2018,IT Support,Loup Ventures,28.69,,,,
+C-1086,4,Other,1994,No,Associates,Eden Prairie,Yes,Contractor,12.57,08/12/2015,Withdrew,11/03/2016,IT Fundamentals,Institutionalized,Classroom,10/02/2017,IT Support,Google,30.87,05/04/2017,Developer,Foodsby,25.16
+C-1087,4,Unreported,1988,No,HS/GED,Roseville,Yes,,,09/07/2015,Removed,06/12/2015,UX,Entered Employment,Classroom,19/12/2016,Temp Designer,Branch Messenger,26.07,,,,
+C-1088,4,Other,1980,No,Associates,Robbinsdale,Yes,,,04/08/2016,Removed,09/12/2016,UX,Entered Military,Classroom,06/03/2017,Junior Engineer,Code 42,28.12,,,,
+C-1089,4,Unreported,1969,Unreported,Some College,St. Paul,Yes,Temp,11.74,27/11/2015,Withdrew,11/08/2016,UX,Institutionalized,Online,12/11/2016,IT Support,Microsoft,27.86,,,,
+C-1090,4,Male,1965,Unreported,HS/GED,Plymouth,No,,,22/05/2017,Withdrew,04/08/2017,QA,Entered Military,Online,20/03/2018,Junior Developer,Loup Ventures,28.60,25/04/2019,Programmer,Osborn 370,28.24
+C-1091,4,Unreported,1988,Unreported,HS/GED,St. Paul,Yes,Manager,14.37,26/10/2017,Removed,07/12/2017,UX,Entered Military,Online,04/03/2018,Temp Designer,Google,26.62,,,,
+C-1092,4,Male,1950,No,HS/GED,Robbinsdale,Yes,Associate,9.17,24/06/2016,Removed,08/10/2016,IT Fundamentals,Entered Military,Online,13/10/2017,Programmer,Upsie,31.06,,,,
+C-1093,4,Other,1997,Yes,Some College,Plymouth,No,Employee,12.25,19/09/2017,Graduated,17/03/2018,QA,Entered Employment,Classroom,07/08/2018,Temp Developer,Osborn 370,25.40,,,,
+C-1094,4,Male,1993,Yes,Some College,Edina,No,Supervisor,14.55,08/12/2016,Removed,04/03/2017,IT Fundamentals,Entered Employment,Online,10/10/2017,Temp Developer,Bright Health,30.75,05/02/2018,Web Developer,Loup Ventures,28.81
+C-1095,4,Unreported,1967,No,Graduate and Beyond,Robbinsdale,No,Contractor,12.95,01/05/2016,Withdrew,21/02/2017,UX,Health/Medical,Online,24/02/2018,Junior Designer,Code 42,26.77,,,,
+C-1096,4,Male,1963,Yes,Some College,Plymouth,Yes,Cashier,11.50,31/10/2017,Graduated,19/02/2018,QA,Entered Military,Classroom,,,,,,,,
+C-1097,4,Female,1957,No,Some College,Robbinsdale,No,Employee,14.34,15/05/2016,Withdrew,22/11/2016,QA,Entered Employment,Online,15/02/2017,Junior Designer,Osborn 370,26.19,,,,
+C-1098,4,Male,1998,Unreported,Bachelors,St. Paul,Yes,Contractor,15.54,09/04/2016,Removed,22/07/2016,QA,Health/Medical,Classroom,11/01/2017,Junior Engineer,Bright Health,24.91,,,,
+C-1099,4,Female,1997,No,Some College,St. Paul,Yes,,,13/05/2017,Withdrew,26/07/2017,IT Fundamentals,Institutionalized,Classroom,15/11/2017,Programmer,Loup Ventures,31.40,,,,
+C-1100,4,Unreported,1969,Unreported,Associates,Plymouth,No,Associate,11.52,31/05/2015,Graduated,20/10/2015,IT Fundamentals,Entered Employment,Online,24/05/2016,Project Manager,Upsie,29.54,,,,
