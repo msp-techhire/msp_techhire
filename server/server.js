@@ -30,7 +30,6 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/editPartner', editPartner);
-
 app.use('/api/partner', partnerRouter)
 app.use('/api/summary', summaryRouter);
 app.use('/api/admin', searchAdmin); 

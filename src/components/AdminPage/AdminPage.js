@@ -11,6 +11,9 @@ import JsonArrayToCsv from '../JsonArrayToCsv/JsonArrayToCsv';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Edit from '@material-ui/icons/Edit'
+
+// import Modal from './modal/modal';
 
 
 const mapStateToProps = state => ({
@@ -25,6 +28,7 @@ class AdminPage extends Component {
       searchQuery: '',
       fieldSearchQuery: '',
       fieldName: '',
+      editStudent: {},
     }
   }
 
@@ -49,7 +53,6 @@ class AdminPage extends Component {
         search: this.state.searchQuery
       }
     }).then((response) => {
-      console.log(response.data);
       this.setState({
         results: response.data
       })
@@ -76,6 +79,13 @@ class AdminPage extends Component {
       ...this.state,
       [event.target.name]: event.target.value
     })
+  }
+
+  editStudent = person => {
+    this.setState({editStudent: person}, () => {
+      let student = this.state.editStudent;
+      console.log(student);
+    });
   }
 
   render() {
@@ -141,12 +151,13 @@ class AdminPage extends Component {
                   <th>Type</th>
                   <th>Class Type</th>
                   <th>Exit Status</th>
+                  <th>Edit</th>
                 </tr>
               </thead>
               <tbody>
                 {this.state.results.map((person, i) => (
                   <tr key={i}>
-                    <td >{person.partner_id}</td>
+                    <td>{person.partner_id}</td>
                     <td>{person.formatted_id}</td>
                     <td>{person.gender}</td>
                     <td>{person.year_of_birth}</td>
@@ -162,6 +173,7 @@ class AdminPage extends Component {
                     <td>{person.training_type}</td>
                     <td>{person.classroom_or_online}</td>
                     <td>{person.exit_status}</td>
+                    {/* <td><Modal /></td> */}
                   </tr>
                 ))}
               </tbody>
