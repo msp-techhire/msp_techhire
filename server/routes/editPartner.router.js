@@ -18,19 +18,23 @@ router.get('/partnerInfo/:id', (req, res) => {
 
 router.put('/updatePartner/:id', (req, res) => {
     let id = req.params.id;
-    let partnerToEdit = req.body
-    const queryText = `UPDATE "partner" SET 
-                      "graduated" = $1 
-                      "graduated" = $2 
-                      "graduated" = $3 
-                      "graduated" = $4 
-                      "graduated" = $5 
-                      "director_first_name" = $6 
-                      "director_last_name" = $7
+    let partnerToEdit = req.body;
+    const queryText = `UPDATE "partner" 
+                    SET "org_name" = $1, 
+                      "org_abbr" = $2, 
+                      "address" = $3, 
+                      "phone_number" = $4, 
+                      "website" = $5, 
+                      "director_first_name" = $6, 
+                      "director_last_name" = $7,
                       "business_type" = $8  
-                      WHERE "id" = $`;
+                      WHERE "id" = $9`;
     console.log(id, partnerToEdit);
-    res.sendStatus(200);
+    pool.query(queryText, [partnerToEdit.orgName, partnerToEdit.orgAbbreviation, partnerToEdit.orgAddress,
+                partnerToEdit.orgPhone, partnerToEdit.orgWebsite, partnerToEdit.directorFirst,
+                partnerToEdit.directorLast, partnerToEdit.businessType, Number(id)])
+    .then(response => res.sendStatus(200))
+    .catch(err => res.sendStatus(500));
 });
 
 router.post('/newPartner', (req, res) => {
