@@ -89,13 +89,13 @@ class SummaryPage extends Component {
       }
 
       switch (student.person_of_color) {
-        case 'yes':
+        case 'Yes':
           POCTrue = POCTrue + 1;
           break;
-        case 'no':
+        case 'No':
           POCFalse = POCFalse + 1;
           break;
-        case 'unreported':
+        case 'Unreported':
           POCUnreported = POCUnreported + 1;
           break
       }
