@@ -170,8 +170,8 @@ li a:hover {
 }
 
 #inputFieldSearch {
-    margin-left: 76%;
-    width: 800px;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 #searchButtons {
@@ -186,7 +186,7 @@ table, th, td {
 }
 
 #searchTableResults {
-    width: 80%;
+    width: 90%;
     margin: auto;
     text-align: center;
     font-size: 12px;
@@ -220,4 +220,10 @@ width: 10px;
 
 #editButton { 
     width: 25px;
+}
+
+/* -------------- Multi-purpose quick-style class names -------------- */
+
+.il-block {
+    display: inline-block;
 }
