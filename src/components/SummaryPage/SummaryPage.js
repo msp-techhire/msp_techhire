@@ -49,13 +49,18 @@ class SummaryPage extends Component {
     let associates = 0;
     let bachelors = 0;
     let graduatePlus = 0;
+
     this.state.data.forEach(student => {
-      if (student.gender === 'Female') {
+      switch (student.gender) {
+        case 'Female':
           totalFemale = totalFemale + 1;
-      } else if(student.gender === 'Male') {
-        totalMale = totalMale + 1;
-      } else {
-        unreportedGender = unreportedGender + 1;
+          break;
+        case 'Male':
+          totalMale = totalMale + 1;
+          break;
+        default:
+          unreportedGender = unreportedGender + 1;
+          break
       }
 
       switch (student.education_level) {

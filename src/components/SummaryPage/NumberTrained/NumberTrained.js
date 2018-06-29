@@ -1,4 +1,5 @@
 import React from 'react';
+import GenderGraph from './ByGenderGraph/ByGenderGraph';
 
 const NumberTrained = (props) => {
     return <div>
@@ -12,6 +13,9 @@ const NumberTrained = (props) => {
         <p>Associates: {props.trainingData.associates}</p>
         <p>Bachelors: {props.trainingData.bachelors}</p>
         <p>Graduate and Beyond: {props.trainingData.graduatePlus}</p>
+        <GenderGraph 
+            trainingData={props.trainingData}
+        />
     </div>
 }
 
