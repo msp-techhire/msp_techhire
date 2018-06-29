@@ -10,23 +10,24 @@ const graphStyle = {
 }
 
 
-const GenderGraph = (props) => {
+const EducationGraph = (props) => {
 
         return (
             <div style={graphStyle}>
                 <Bar
-                    data={{labels: ['Female', 'Male', 'Unreported'],
+                    data={{labels: ['High School', 'Some College', 'Associates', 'Bachelors', 'Graduate Plus'],
                     datasets: [
                         {
-                            label: 'By Gender',
-                            data: [props.trainingData.totalFemale, props.trainingData.totalMale, props.trainingData.unreportedGender],
+                            label: 'By Education Level',
+                            data: [props.trainingData.highSchool, props.trainingData.someCollege, props.trainingData.associates, 
+                                   props.trainingData.bachelors, props.trainingData.graduatePlus],
                             backgroundColor: 'rgba(230, 126, 34, 0.6)'
                         }
                     ],}}
                     options={{
                         title: {
                             display: true,
-                            text: 'Total by Gender',
+                            text: 'Total by Education Level',
                             fontSize: 25,
                         },
                         legend: {
@@ -47,4 +48,4 @@ const GenderGraph = (props) => {
         )
 }
 
-export default GenderGraph;
+export default EducationGraph;

@@ -1,5 +1,6 @@
 import React from 'react';
 import GenderGraph from './ByGenderGraph/ByGenderGraph';
+import EducationGraph from './ByEducationLevelGraph/ByEducationLevelGraph';
 
 const NumberTrained = (props) => {
     return <div>
@@ -14,6 +15,9 @@ const NumberTrained = (props) => {
         <p>Bachelors: {props.trainingData.bachelors}</p>
         <p>Graduate and Beyond: {props.trainingData.graduatePlus}</p>
         <GenderGraph 
+            trainingData={props.trainingData}
+        />
+        <EducationGraph 
             trainingData={props.trainingData}
         />
     </div>
