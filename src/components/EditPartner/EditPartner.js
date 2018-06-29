@@ -10,7 +10,6 @@ import { triggerLogout } from '../../redux/actions/loginActions';
 import NewPartnerForm from './NewPartnerForm/NewPartnerForm';
 import SelectedPartnerInfo from './SelectedPartnerInfo/SelectedPartnerInfo';
 
-
 const mapStateToProps = state => ({
   user: state.user,
   selectedPartner: state.editPartnerReducer.selectedPartner,
@@ -242,6 +241,7 @@ class EditPartner extends Component {
             show={this.state.editPartnerModal.open}
           />
           <button value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</button>
+
           <NewPartnerForm
             show={this.state.newPartnerModal.open}
             getPartners={this.getPartners}
@@ -250,6 +250,9 @@ class EditPartner extends Component {
             handleChange={this.handleFormChange}
             newOrg={this.state.newOrg}
           />
+
+
+
           <button id="logoutButton" onClick={this.logout}>Log Out</button>
         </div>
       );

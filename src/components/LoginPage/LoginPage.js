@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 class LoginPage extends Component {
   constructor(props) {
     super(props);
- 
+
     this.state = {
       username: '',
       password: '',
@@ -23,7 +23,7 @@ class LoginPage extends Component {
     this.props.dispatch(clearError());
   }
 
-  
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.userName) {
       this.props.history.push('landing');
@@ -53,7 +53,7 @@ class LoginPage extends Component {
           className="alert"
           role="alert"
         >
-          { this.props.login.message }
+          {this.props.login.message}
         </h2>
       );
     }
@@ -63,43 +63,46 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        { this.renderAlert() }
-        <form onSubmit={this.login} className="logInForm">
-          <h1 id="textLogin">Login</h1>
-          <div>
-            <label htmlFor="username" id="textUsername">
-              Username:
+        {this.renderAlert()}
+        <div class="wrapperGridLogin">
+          <div id="logoLogin"></div>
+          <form onSubmit={this.login} className="logInForm">
+            <h1 id="textLogin">Login</h1>
+            <div>
+              <label htmlFor="username" id="textUsername">
+                Username:
               <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                className="logInInput"
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password" id="textPassword">
-              Password:
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  className="logInInput"
+                  onChange={this.handleInputChangeFor('username')}
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="password" id="textPassword">
+                Password:
               <input
-                type="password"
-                name="password"
-                className="logInInput"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
+                  type="password"
+                  name="password"
+                  className="logInInput"
+                  value={this.state.password}
+                  onChange={this.handleInputChangeFor('password')}
+                />
+              </label>
+            </div>
+            <div>
+              <input
+                type="submit"
+                name="submit"
+                value="Log In"
               />
-            </label>
-          </div>
-          <div>
-            <input
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
-            <Link to="/register">Register</Link>
-          </div>
-        </form>
-        <div id="logoLogin"></div>
+              <Link to="/register">Register</Link>
+            </div>
+          </form>
+        </div>
+        <div class="wrapperGridPhotoLogin" id="loginPhoto"></div>
       </div>
     );
   }
