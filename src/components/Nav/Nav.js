@@ -11,11 +11,11 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { Link } from 'react-router-dom';
+import { Link, browserHistory, withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
-
+import { triggerLogout } from '../../redux/actions/loginActions';
 
 const drawerWidth = 240;
 
@@ -84,6 +84,11 @@ class Nav extends React.Component {
     });
   };
 
+    logout = () => {
+    this.props.dispatch(triggerLogout());
+    this.props.history.push('login');
+  }
+
   render() {
     const { classes, theme } = this.props;
     const { anchor, open } = this.state;
@@ -134,6 +139,12 @@ class Nav extends React.Component {
           </Link>
             </Button>
           </List>
+          <Divider />
+          <List>
+            <Button size="small"
+              onClick={this.logout}>Log Out
+            </Button>
+          </List>
         </div>
       </Drawer>
     )
@@ -179,7 +190,7 @@ Nav.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps)(withStyles(styles, { withTheme: true })(Nav));
+export default connect(mapStateToProps)(withStyles(styles, { withTheme: true })(withRouter(Nav)));
 
 
 
