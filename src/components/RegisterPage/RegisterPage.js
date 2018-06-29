@@ -21,7 +21,7 @@ class RegisterPage extends Component {
   }
 
   componentDidUpdate() {
-    if (!this.props.user.isLoading && (this.props.user.userName === null )) { //|| this.props.user.userRole !== 'admin'
+    if (!this.props.user.isLoading && (this.props.user.userName === null || this.props.user.userRole !== 'admin' )) {
       this.props.history.push('login');
     }
   }

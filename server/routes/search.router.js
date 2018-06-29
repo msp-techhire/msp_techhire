@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectNonAdmins } = require('../modules/authorization-middleware');
 
 // To avoid doing extra unnecessary work, and to avoid malicious SQL
 // injection, the following string runs the 'field' query through a quick
@@ -12,8 +13,7 @@ const cleanStr = str => str.split(/[^a-z_]/).filter(String).join('');
 
 // GET
 
-router.get('/', (req, res) => {
-  if (req.isAuthenticated()) {
+router.get('/', rejectNonAdmins, (req, res) => {
     const queryText = `SELECT * FROM "person"
                       WHERE "partner_id"::text ILIKE $1::text
                       OR "formatted_id"::text ILIKE $1::text
@@ -39,18 +39,15 @@ router.get('/', (req, res) => {
         console.log('Error completing GET Search query first', err);
         res.sendStatus(500);
       });
-  } else {
-    res.sendStatus(403);
-  }
 });
 
-router.get('/field/:name', (req, res) => {
+router.get('/field/:name', rejectNonAdmins, (req, res) => {
   if (req.isAuthenticated()) {
     const field = cleanStr(req.params.name); // Avoid malicious SQL injection
+    // have a checker to verify that only the columns 
     const search = `${req.query.search}`;
 
-    let queryText = `SELECT * FROM "person"
-    WHERE "${field}"::text ILIKE $1::text;`;
+    let queryText = `SELECT * FROM "person" WHERE "${field}"::text ILIKE $1::text;`;
 
     pool.query(queryText, [search]).then(result => {
       res.send(result.rows);
@@ -62,5 +59,14 @@ router.get('/field/:name', (req, res) => {
     res.sendStatus(403);
   }
 });
+
+router.get('/full/:name', (req, res) => {
+  if (req.isAuthenticated()) {
+    const field = cleanStr(req.params.name); // Avoid malicious SQL injection
+    const search = `${req.query.search}`;
+
+    let personQueryText = `SELECT * FROM "person" WHERE "${field}"::text ILIKE $1::text;`
+  }
+})
 
 module.exports = router;
