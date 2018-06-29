@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 import Nav from '../../components/Nav/Nav';
+import NumberTrained from './NumberTrained/NumberTrained';
+import JsonArrayToCsv from '../JsonArrayToCsv/JsonArrayToCsv';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
-import axios from 'axios';
-
-import JsonArrayToCsv from '../JsonArrayToCsv/JsonArrayToCsv';
 
 
 const mapStateToProps = state => ({
   user: state.user,
 });
- 
+
 class SummaryPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {},
+      totalTrained: 0,
+      data: [],
     }
   }
+
   componentDidMount() {
-    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER});
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    this.fetchAll();
   }
 
   componentDidUpdate() {
@@ -36,40 +39,46 @@ class SummaryPage extends Component {
     this.props.dispatch(triggerLogout());
     this.props.history.push('login');
   }
-  
+
+  calculateTotalTrained = () => {
+    this.setState({
+      totalTrained: this.state.data.length,
+    });
+  }
+
   fetchAll = () => {
     console.log(this.props.user.userRole);
     axios.get('/api/summary', {
       params: {
         role: this.props.user.userRole,
       }
-    }).then(response => {
+    })
+    .then(response => {
       const data = response.data;
       this.setState({
-        data: data,
+        data,
       });
-    }).catch(error => {
-      console.log(`ERROR trying to GET /api/summary: ${error}`);
-    });
+      this.calculateTotalTrained();
+    })
+    .catch(error => console.log(`ERROR trying to GET /api/summary: ${error}`));
   }
 
   render() {
     let content = null;
-    console.log(content);
 
     if (this.props.user.userName) {
       content = (
         <div>
-          <p>
-            Summary Page
-          </p>
-          <button id="logoutButton"
-            onClick={this.logout}>Log Out</button>
-            <button id="test" onClick={this.fetchAll}>Test</button>
-            <div>
-              <JsonArrayToCsv convert={this.state.data} />
-              {JSON.stringify(this.state.data)}
-            </div>
+          <h1>Summary Page</h1>
+          <p>{this.state.totalTrained}</p>
+          <NumberTrained 
+            data={this.state.data}
+          />
+          <button id="logoutButton" onClick={this.logout}>Log Out</button>
+          <div>
+            <JsonArrayToCsv convert={this.state.data} />
+            {JSON.stringify(this.state.data[0])}
+          </div>
         </div>
       );
     }
@@ -77,9 +86,9 @@ class SummaryPage extends Component {
     return (
       <div>
         <Nav />
-        { content }
+        {content}
       </div>
-    ); 
+    );
   }
 }
 
