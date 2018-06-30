@@ -2,28 +2,26 @@ import React from 'react';
 import GenderGraph from './ByGenderGraph/ByGenderGraph';
 import EducationGraph from './ByEducationLevelGraph/ByEducationLevelGraph';
 import POCGraph from './POCGraph/POCGraph';
-
-
-const graphWrapper = {
-    width: '90%',
-    margin: '0 auto',
-    textAlign: 'center',
-}
+import EmployedByGenderGraph from './EmployedByGender/EmployedByGender';
+import WageGainData from './WageGainByTrack/WageGainByTrack';
 
 const NumberTrained = (props) => {
     return <div>
-        <p>Total: {props.trainingData.totalTrained}</p>
-        <div style={graphWrapper}>
-            <GenderGraph 
+            <GenderGraph
                 trainingData={props.trainingData}
             />
-            <EducationGraph 
+            <EducationGraph
                 trainingData={props.trainingData}
             />
-            <POCGraph 
+            <POCGraph
                 trainingData={props.trainingData}
             />
-        </div>
+            <EmployedByGenderGraph
+                trainingData={props.trainingData}
+            />
+        <WageGainData
+            wageGainData={props.wageGainData}
+        />
     </div>
 }
 
