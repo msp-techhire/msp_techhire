@@ -235,14 +235,13 @@ class SummaryPage extends Component {
           />
           <div>
             <JsonArrayToCsv convert={this.state.data} />
-            {JSON.stringify(this.state.data[0])}
           </div>
         </div>
       );
     }
 
     return (
-      <div>
+      <div id="summaryPage">
         <Nav />
         {content}
       </div>

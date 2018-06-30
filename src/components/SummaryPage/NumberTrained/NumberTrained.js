@@ -5,30 +5,21 @@ import POCGraph from './POCGraph/POCGraph';
 import EmployedByGenderGraph from './EmployedByGender/EmployedByGender';
 import WageGainData from './WageGainByTrack/WageGainByTrack';
 
-
-const graphWrapper = {
-    width: '90%',
-    margin: '0 auto',
-    textAlign: 'center',
-}
-
 const NumberTrained = (props) => {
     return <div>
-        <div style={graphWrapper}>
-            <GenderGraph 
+            <GenderGraph
                 trainingData={props.trainingData}
             />
-            <EducationGraph 
+            <EducationGraph
                 trainingData={props.trainingData}
             />
-            <POCGraph 
+            <POCGraph
                 trainingData={props.trainingData}
             />
-        </div>
-        <EmployedByGenderGraph 
-            trainingData={props.trainingData}
-        />
-        <WageGainData 
+            <EmployedByGenderGraph
+                trainingData={props.trainingData}
+            />
+        <WageGainData
             wageGainData={props.wageGainData}
         />
     </div>

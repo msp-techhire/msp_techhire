@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
 const WageGainData = (props) => {
-    return <div id="wageGrowth">
+    return <div>
         <h1>Wage Gain Data</h1>
             <Grid container spacing={32}>
                 <Grid item xs={12} md={4}>
