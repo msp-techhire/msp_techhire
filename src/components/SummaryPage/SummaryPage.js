@@ -53,6 +53,10 @@ class SummaryPage extends Component {
     let POCTrue = 0;
     let POCFalse = 0;
     let POCUnreported = 0;
+    let numberEmployedMale = 0;
+    let numberEmployedFemale = 0;
+    let numberEmployedOther = 0;
+    let numberEmployedUnreported = 0;
 
     this.state.data.forEach(student => {
       switch (student.gender) {
@@ -100,6 +104,23 @@ class SummaryPage extends Component {
           break
       }
 
+      if(student.title !== '' && student.title !== null) {
+        switch (student.gender) {
+          case 'Female':
+            numberEmployedFemale = numberEmployedFemale + 1;
+            break;
+          case 'Male':
+            numberEmployedMale = numberEmployedMale + 1;
+            break;
+          case 'Other':
+            numberEmployedOther = numberEmployedOther + 1;
+            break;
+          default:
+            numberEmployedUnreported = numberEmployedUnreported + 1;
+            break
+        }
+      }
+
     });
 
     this.setState({
@@ -117,6 +138,10 @@ class SummaryPage extends Component {
         POCTrue,
         POCFalse,
         POCUnreported,
+        numberEmployedMale,
+        numberEmployedFemale,
+        numberEmployedOther,
+        numberEmployedUnreported
       }
     });
   }
