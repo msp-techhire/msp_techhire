@@ -1,10 +1,9 @@
-import { put, takeEvery } from 'redux-saga/effects';
-import axios from 'axios';
+import { takeEvery } from 'redux-saga/effects';
 import { USER_ACTIONS } from '../actions/userActions';
 
 
 // worker Saga: will be fired on "FETCH_USER" actions
-function* getWageData(action) {
+function* getWageData() {
   try {
     console.log('getWageData ran');
     // const wageData = yield axios.get(`/api/editPartner/partnerInfo/${action.payload}`)

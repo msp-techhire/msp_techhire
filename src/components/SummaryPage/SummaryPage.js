@@ -233,7 +233,6 @@ class SummaryPage extends Component {
             trainingData={this.state.trainingData}
             wageGainData={this.state.wageGainData}
           />
-          <button id="logoutButton" onClick={this.logout}>Log Out</button>
           <div>
             <JsonArrayToCsv convert={this.state.data} />
             {JSON.stringify(this.state.data[0])}
