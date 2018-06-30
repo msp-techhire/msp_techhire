@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 const SelectedPartnerInfo = (props) => {
 
     return <div>
-        <h1>Partner Information</h1>
+        <h1 id="textSelectPartner">Partner Information</h1>
         <Paper>
             <Table id="selectedPartnerTable">
                 <TableHead>

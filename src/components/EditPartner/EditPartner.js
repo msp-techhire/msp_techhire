@@ -225,7 +225,7 @@ class EditPartner extends Component {
       content = (
         <div id="editPartnerPage">
 
-          <h1>Select A Partner</h1>
+          <h1 id="textSelectPartner">Select A Partner</h1>
           <PartnerDropdown
             partners={this.state.partnerList}
             selectPartnerFromDropdown={this.selectPartnerFromDropdown}
@@ -250,10 +250,6 @@ class EditPartner extends Component {
             handleChange={this.handleFormChange}
             newOrg={this.state.newOrg}
           />
-
-
-
-          <button id="logoutButton" onClick={this.logout}>Log Out</button>
         </div>
       );
     }
