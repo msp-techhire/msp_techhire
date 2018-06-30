@@ -13,32 +13,39 @@ const cleanStr = str => str.split(/[^a-z_]/).filter(String).join('');
 
 // GET
 
+router.get('/columns/:name', rejectNonAdmins, (req, res) => {
+  const name = req.params.name;
+  const queryText = `SELECT "column_name" FROM "information_schema"."columns" WHERE "table_name" = $1;`;
+  pool.query(queryText, [name]).then(results => {
+    let columnNames = [];
+    results.rows.forEach(row => columnNames.push(row.column_name));
+    res.send(columnNames);
+  }).catch(error => {
+    console.error(`ERROR trying to GET /api/admin/columns/:name: ${error}`);
+    res.sendStatus(500);
+  });
+})
+
 router.get('/', rejectNonAdmins, (req, res) => {
-    const queryText = `SELECT * FROM "person"
-                      WHERE "partner_id"::text ILIKE $1::text
-                      OR "formatted_id"::text ILIKE $1::text
-                      OR "gender"::text ILIKE $1::text
-                      OR "year_of_birth"::text ILIKE $1::text
-                      OR "person_of_color"::text ILIKE $1::text
-                      OR "education_level"::text ILIKE $1::text
-                      OR "city_of_residence"::text ILIKE $1::text
-                      OR "scholarship_recipient"::text ILIKE $1::text
-                      OR "previous_job_experience"::text ILIKE $1::text
-                      OR "pre_training_wage"::text ILIKE $1::text
-                      OR "training_start_date"::text ILIKE $1::text
-                      OR "training_status"::text ILIKE $1::text
-                      OR "training_end_date"::text ILIKE $1::text
-                      OR "training_type"::text ILIKE $1::text
-                      OR "classroom_or_online"::text ILIKE $1::text
-                      OR "exit_status"::text ILIKE $1::text`; // TO DO only return first 50, next step is pagination
+  const firstQuery = `SELECT "column_name" from "information_schema"."columns" WHERE "table_name" = 'person';`;
+  let columnNames = [];
+  pool.query(firstQuery).then(results => {
+    results.rows.forEach(row => columnNames.push(`"${row.column_name}"::text ILIKE $1::text`));
+    let columnQuery = columnNames.join(' OR ');
+    const queryText = `SELECT * FROM "person" WHERE ${columnQuery};`; // TO DO only return first 50, next step is pagination
+
     pool.query(queryText, [req.query.search])
       .then((result) => {
         res.send(result.rows);
       })
       .catch((err) => {
-        console.log('Error completing GET Search query first', err);
+        console.log('ERROR getting /api/admin/?search=[query]:', err);
         res.sendStatus(500);
       });
+
+  }).catch(error => {
+    console.error(`ERROR getting column names before retrieving rows: ${error}`);
+  });
 });
 
 router.get('/field/:name', rejectNonAdmins, (req, res) => {
