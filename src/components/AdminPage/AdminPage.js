@@ -15,6 +15,7 @@ import Edit from '@material-ui/icons/Edit'
 
 // import Modal from './modal/modal';
 
+const PAGE_LENGTH = 25;
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -25,10 +26,14 @@ class AdminPage extends Component {
     super(props);
     this.state = {
       results: [],
+      resultsLength: 0,
+      currentPage: 0,
+      totalPages: 0,
       searchQuery: '',
       fieldSearchQuery: '',
       fieldName: '',
       editStudent: {},
+      personColumns: null,
     }
   }
 
@@ -47,16 +52,38 @@ class AdminPage extends Component {
     this.props.history.push('login');
   }
 
+  // getTableColumns = tableName => {
+  //   axios.get(`/api/admin/columns/${tableName}`).then(response => {
+  //     const data = response.data;
+  //     let columns = [];
+  //     for (let item of data) {
+  //       columns.push(item.column_name);
+  //     }
+  //     this.setState({
+  //       personColumns: columns,
+  //     });
+  //   }).catch(error => {
+  //     console.error(`ERROR trying to GET /api/admin/columns/:name: ${error}`);
+  //     alert('Error: Retrieving table columns was unsuccessful.');
+  //   });
+  // }
+
   fetchData = () => {
     axios.get(`/api/admin`, {
       params: {
         search: this.state.searchQuery
       }
     }).then((response) => {
+      const data = response.data;
+      const totalPages = Math.ceil(data.length / PAGE_LENGTH);
       this.setState({
-        results: response.data
-      })
+        results: data,
+        resultsLength: data.length,
+        currentPage: 1,
+        totalPages: totalPages,
+      });
     }).catch((error) => {
+      console.error(error);
       alert('error with GET in Admin file', error);
     })
   }
@@ -78,7 +105,7 @@ class AdminPage extends Component {
     this.setState({
       ...this.state,
       [event.target.name]: event.target.value
-    })
+    });
   }
 
   editStudent = person => {
@@ -88,10 +115,38 @@ class AdminPage extends Component {
     });
   }
 
+  goToPage = page => {
+    this.setState({
+      currentPage: page,
+    });
+  }
+
+  listPage = page => {
+    if (this.state.currentPage === page) return <span style={{ color:"blue" }}>{page}</span>
+    return <span style={{ textDecoration:"underline" }}>{page}</span>
+  }
+
   render() {
     let content = null;
 
     let buttonDisplayed = <Button id="searchButtons" variant="outlined" size="small" onClick={this.fetchData}>Search</Button>
+
+    let currentResults = [];
+    let lowerResults = (this.state.currentPage - 1) * PAGE_LENGTH;
+    let upperResults = this.state.currentPage * PAGE_LENGTH;
+    for (let i = lowerResults; i < upperResults; i++) {
+      if (this.state.results[i])currentResults.push(this.state.results[i]);
+    }
+    
+    let pages = [];
+    for (let i = 0; i < this.state.totalPages; i++) {
+      pages.push(<span key={`page-${i}`}>
+        <a 
+        className="page-listing il-block" 
+        style={{ fontSize:"14pt", cursor:"pointer" }} 
+        onClick={() => this.goToPage(i+1)}>{this.listPage(i+1)}</a> </span>
+      );
+    }
 
     if (this.props.user.userName) {
       content = (
@@ -103,8 +158,6 @@ class AdminPage extends Component {
             <p id="adminTextTopOfPage">
               Admin Page
           </p>
-            <button id="logoutButton"
-              onClick={this.logout}>Log Out</button>
           </div>
           <div id="inputFieldSearch" className="il-block">
             <div className="il-block">
@@ -135,49 +188,41 @@ class AdminPage extends Component {
             <table id="searchTableResults">
               <thead>
                 <tr>
-                  <th>Partner</th>
-                  <th>Id</th>
                   <th>Gender</th>
-                  <th>YOB</th>
                   <th>POC</th>
                   <th>Ed Level</th>
-                  <th>Residence</th>
                   <th>Scholarship</th>
-                  <th>Pre-experience</th>
                   <th>Pre-wage</th>
                   <th>Start Date</th>
-                  <th>Current Status</th>
-                  <th>End Date</th>
-                  <th>Type</th>
-                  <th>Class Type</th>
+                  <th>Title</th>
+                  <th>Company</th>
+                  <th>New wage</th>
                   <th>Exit Status</th>
                   <th>Edit</th>
                 </tr>
               </thead>
               <tbody>
-                {this.state.results.map((person, i) => (
+                {currentResults.map((person, i) => (
                   <tr key={i}>
-                    <td>{person.partner_id}</td>
-                    <td>{person.formatted_id}</td>
                     <td>{person.gender}</td>
-                    <td>{person.year_of_birth}</td>
                     <td>{person.person_of_color}</td>
                     <td>{person.education_level}</td>
-                    <td>{person.city_of_residence}</td>
                     <td>{person.scholarship_recipient}</td>
-                    <td>{person.previous_job_experience}</td>
                     <td>{person.pre_training_wage}</td>
-                    <td>{person.training_start_date}</td>
-                    <td>{person.training_status}</td>
-                    <td>{person.training_end_date}</td>
-                    <td>{person.training_type}</td>
-                    <td>{person.classroom_or_online}</td>
+                    <td>{person.start_date}</td>
+                    <td>{person.title}</td>
+                    <td>{person.company}</td>
+                    <td>{person.starting_wage}</td>
                     <td>{person.exit_status}</td>
                     {/* <td><Modal /></td> */}
                   </tr>
                 ))}
               </tbody>
             </table>
+          </div>
+          <div style={{ textAlign:"center" }}>
+            {pages}<br />
+            Total results: {this.state.resultsLength}
           </div>
         </div>
       );
