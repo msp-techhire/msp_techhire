@@ -145,7 +145,7 @@ class AdminPage extends Component {
       pages.push(<span key={`page-${i}`}>
         <a
           className="page-listing il-block"
-          style={{ fontSize: "14pt", cursor: "pointer" }}
+          // style={{ fontSize: "12pt", cursor: "pointer" }}
           onClick={() => this.goToPage(i + 1)}>{this.listPage(i + 1)}</a> </span>
       );
     }
@@ -191,7 +191,7 @@ class AdminPage extends Component {
           <div>
               <Table id="searchTableResults">
                 <TableHead>
-                  <TableRow>
+                  <TableRow id="tableHeader">
                     <TableCell>Gender</TableCell>
                     <TableCell>POC</TableCell>
                     <TableCell>Ed Level</TableCell>
@@ -207,7 +207,7 @@ class AdminPage extends Component {
                 </TableHead>
                 <TableBody>
                   {currentResults.map((person, i) => (
-                    <TableRow key={i}>
+                    <TableRow key={i} id="onHoverTableHighlight">
                       <TableCell>{person.gender}</TableCell>
                       <TableCell>{person.person_of_color}</TableCell>
                       <TableCell>{person.education_level}</TableCell>

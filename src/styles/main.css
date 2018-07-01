@@ -184,14 +184,13 @@ selectedPartnerTable
 
 /* Modal Form */
 
-
-
-
 /* ----------admin page ----------- */
 
-
 #searchTextTopOfPage {
-    margin-left: 5%;
+    color: #555555;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px;
 }
 
 #inputFieldSearch {
@@ -224,19 +223,31 @@ selectedPartnerTable
 /* -------------- table on admin page ------------- */
 
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #ccc;
+}
+
+#tableHeader {
+    background: #ccc;
+}
+
+#onHoverTableHighlight{
+    background: whitesmoke;
+}
+
+#onHoverTableHighlight:hover {
+    background: rgb(204, 225, 244);
 }
 
 #searchTableResults {
-    max-width: 100%;
+    max-width: 80%;
     margin: 10px;
     text-align: center;
-    font-size: 12px;
+    font-size: 10px;
     border-collapse: collapse;
 }
 
 #cellWidthAdminTable {
-    width: 20px;
+    width: 10px;
 }
 
 #jsonButton {
