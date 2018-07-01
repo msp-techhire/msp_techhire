@@ -190,27 +190,36 @@ selectedPartnerTable
 /* ----------admin page ----------- */
 
 
-#adminTextTopOfPage {
+#searchTextTopOfPage {
     margin-left: 5%;
 }
 
 #inputFieldSearch {
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 20px;
+}
+
+#fieldSearch {
+    width: 320px;
+}
+
+#addSearch {
+    width: 320px;
 }
 
 #searchButtons {
-    margin-left: 10px;
-    width: 80px;
+    width: 320px;
+    height: 40px;
+    font-size: 12px;
+    color: black;
+    margin: 10px;
+    background: rgb(204, 225, 244);
+    box-shadow: 2px 2px 10px 1px  #ccc;
 }
 
-.wrapperGridAdmin {
-    display: grid;
-    grid-template-columns: 5;
-    margin-top: 10px;
-    margin-left: auto;
+#searchButtons:hover {
+    background: rgb(1, 164, 215);
+    box-shadow: 2px 2px 10px 1px  #555555;
 }
-
 
 /* -------------- table on admin page ------------- */
 
@@ -228,6 +237,22 @@ table, th, td {
 
 #cellWidthAdminTable {
     width: 20px;
+}
+
+#jsonButton {
+    width: 320px;
+    height: 40px;
+    font-size: 12px;
+    color: black;
+    margin-left: 20px;
+    margin-top: 20px;
+    background: rgb(204, 225, 244);
+    box-shadow: 2px 2px 10px 1px  #ccc;
+}
+
+#jsonButton:hover {
+    background: rgb(1, 164, 215);
+    box-shadow: 2px 2px 10px 1px  #555555;
 }
 
 /* -------------- student edit table on admin page ------------- */

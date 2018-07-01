@@ -157,8 +157,8 @@ class AdminPage extends Component {
           <div id="mplsPhoto">
           </div>
           <div>
-            <p id="adminTextTopOfPage">
-              Admin Page
+            <p id="searchTextTopOfPage">
+              Search Page
           </p>
           </div>
           <div class="wrapperGridAdmin">
