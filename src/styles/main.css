@@ -204,6 +204,14 @@ selectedPartnerTable
     width: 80px;
 }
 
+.wrapperGridAdmin {
+    display: grid;
+    grid-template-columns: 5;
+    margin-top: 10px;
+    margin-left: auto;
+}
+
+
 /* -------------- table on admin page ------------- */
 
 table, th, td {
@@ -211,14 +219,15 @@ table, th, td {
 }
 
 #searchTableResults {
-    width: 90%;
-    margin: auto;
+    max-width: 100%;
+    margin: 10px;
     text-align: center;
     font-size: 12px;
     border-collapse: collapse;
 }
-#tablePartnerCell {
-width: 10px;
+
+#cellWidthAdminTable {
+    width: 20px;
 }
 
 /* -------------- student edit table on admin page ------------- */
