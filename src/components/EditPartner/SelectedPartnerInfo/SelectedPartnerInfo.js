@@ -36,7 +36,7 @@ const SelectedPartnerInfo = (props) => {
                 </TableBody>
             </Table>
         </Paper >
-        <Button id="editPartnerInformationButton" variant="outlined" onClick={props.openEditPartnerModal}>Edit Partner Information</Button>
+        <button id="editPartnerInformationButton" variant="outlined" onClick={props.openEditPartnerModal}>Edit Partner Information</button>
         <EditPartnerInfoForm
             show={props.show}
             closeEditPartnerModal={props.closeEditPartnerModal}
