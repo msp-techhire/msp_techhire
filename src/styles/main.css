@@ -97,7 +97,7 @@ input[type="submit"] {
     background:  url('/images/pathway.jpg');
     background-size: 80%;
     height: 150px;
-    min-width: 950px;
+    min-width: 975px;
     background-repeat: no-repeat;
     margin-top: 8px;
     margin-left: 150px;
@@ -303,8 +303,9 @@ table, th, td {
 }
 
 #searchTableResults {
-    width: 80%;
-    margin: 10px;
+    width: 90%;
+    min-width: 975px;
+    margin: 20px;
     text-align: center;
     font-size: 10px;
     border-collapse: collapse;
@@ -329,6 +330,13 @@ table, th, td {
 .jsonButton:hover {
     background: rgb(1, 164, 215);
     box-shadow: 2px 2px 10px 1px  #555555;
+}
+
+#pagesPerSearchDisplay {
+    color: #555555;
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
 }
 
 /* -------------- student edit table on admin page ------------- */
@@ -383,4 +391,5 @@ table, th, td {
     border-radius: 10px;
     padding: 15px;
     margin-left: 20px;
+    color: #555555;
 }
