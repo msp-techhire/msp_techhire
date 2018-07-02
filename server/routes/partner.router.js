@@ -115,8 +115,15 @@ VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $1
 
 router.delete('/', (req, res) => {
     console.log('DELETE all rows matching', req.user.id);
-    if (req.isAuthenticated()) {
-        let queryText = `DELETE FROM "person" WHERE "partner_id" = $1`;
+    // if (req.isAuthenticated()) {
+        let queryText = `DELETE FROM "person"
+        WHERE "partner_id" IN
+        (
+        SELECT "partner"."id"        
+                FROM "person"
+                JOIN "partner" ON "partner"."id"="person"."partner_id"
+                JOIN "user" ON "user"."id"="partner"."user_id"
+                WHERE "user"."id" = $1);`
         pool.query(queryText, [req.user.id])
             .then((result) => {
                 res.sendStatus(200)
@@ -125,9 +132,9 @@ router.delete('/', (req, res) => {
                 console.log('error on DELETE: ', error)
                 res.sendStatus(500);
             })
-    } else {
-        res.sendStatus(403);
-    }
+    // } else {
+    //     res.sendStatus(403);
+    // }
 });
 
 
