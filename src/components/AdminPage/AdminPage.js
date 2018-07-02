@@ -161,7 +161,7 @@ class AdminPage extends Component {
               Search Page
           </p>
           </div>
-          <div class="wrapperGridAdmin">
+          <div className="wrapperGridAdmin">
           <div id="inputFieldSearch" className="il-block">
             <div className="il-block">
               <TextField
