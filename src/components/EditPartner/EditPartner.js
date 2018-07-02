@@ -29,6 +29,7 @@ class EditPartner extends Component {
       },
       selectedPartnerID: this.props.selectedPartner.id,
       partnerList: [],
+      partnerStats: {},
       newOrg: {
         orgName: '',
         orgAbbreviation: '',
@@ -219,7 +220,16 @@ class EditPartner extends Component {
       method: 'GET',
       url:`/api/editpartner/partnerstats/${id}`
     })
-    .then(response => console.log(response.data))
+    .then(response => {
+      let objectForState = {
+        pre: Number(response.data[0].pre).toFixed(2),
+        post: Number(response.data[0].post).toFixed(2),
+        count: Number(response.data[0].count),
+      }
+      this.setState({
+        partnerStats: objectForState,
+      });
+    })
     .catch(err => console.log(err));
   }
 
@@ -254,7 +264,9 @@ class EditPartner extends Component {
             handleChange={this.handleFormChange}
             newOrg={this.state.newOrg}
           />
-          <SelectedPartnerStats />
+          <SelectedPartnerStats 
+            partnerStats={this.state.partnerStats}
+          />
         </div>
       );
     }

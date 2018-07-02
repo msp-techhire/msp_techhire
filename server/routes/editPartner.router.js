@@ -18,8 +18,13 @@ router.get('/partnerInfo/:id', rejectNonAdmins, (req, res) => {
 });
 
 router.get('/partnerstats/:id', rejectNonAdmins, (req, res) => {
-    console.log(req.params.id, 'Get Got Got');
-    res.sendStatus(200);
+    let id = req.params.id;
+    let queryText = `SELECT AVG(CAST (NULLIF("person"."pre_training_wage", '') AS DECIMAL(4, 2))) AS PRE, AVG(CAST(NULLIF("person"."starting_wage", '') AS DECIMAL(4, 2))) AS POST, COUNT(*)
+        FROM "person"
+        WHERE "partner_id"=$1;`;
+    pool.query(queryText, [id])
+    .then(response => res.send(response.rows))
+    .catch(err => res.sendStatus(500));
 });
 
 router.put('/updatePartner/:id', rejectNonAdmins, (req, res) => {
