@@ -64,7 +64,7 @@ class LoginPage extends Component {
     return (
       <div>
         {this.renderAlert()}
-        <div class="wrapperGridLogin">
+        <div className="wrapperGridLogin">
           <div id="logoLogin"></div>
           <form onSubmit={this.login} className="logInForm">
             <h1 id="textLogin">Login</h1>

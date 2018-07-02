@@ -7,7 +7,6 @@ import PartnerDropdown from './PartnerDropdown/PartnerDropdown';
 import { triggerLogout } from '../../redux/actions/loginActions';
 import NewPartnerForm from './NewPartnerForm/NewPartnerForm';
 import SelectedPartnerInfo from './SelectedPartnerInfo/SelectedPartnerInfo';
-import Button from '@material-ui/core/Button';
 import SelectedPartnerStats from './SelectedPartnerStats/SelectedPartnerStats';
 
 
