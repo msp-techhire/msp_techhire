@@ -23,7 +23,7 @@ class Partner extends Component {
   }
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-    // this.fetchData();
+    this.fetchData();
   }
 
   componentDidUpdate() {
@@ -34,6 +34,7 @@ class Partner extends Component {
 
   handleData = data => {
     this.setState({ data })
+    this.deletePerson();
     this.postPartnerData();
     this.fetchData();
   }
@@ -68,6 +69,18 @@ class Partner extends Component {
         alert('error with GET in Partner page', error);
       })
   }
+
+  deletePerson = () => {
+    axios.delete('/api/partner')
+    .then((response) => {
+        console.log(response);
+        // this.getAllItems();
+    })
+    .catch((error) => {
+        console.log('error on delete: ', error);
+        alert('You can only delete you added');
+    })
+  };
 
   render() {
     const keys = [
