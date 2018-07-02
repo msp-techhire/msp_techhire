@@ -7,7 +7,6 @@ import PartnerDropdown from './PartnerDropdown/PartnerDropdown';
 import { triggerLogout } from '../../redux/actions/loginActions';
 import NewPartnerForm from './NewPartnerForm/NewPartnerForm';
 import SelectedPartnerInfo from './SelectedPartnerInfo/SelectedPartnerInfo';
-import Button from '@material-ui/core/Button';
 import SelectedPartnerStats from './SelectedPartnerStats/SelectedPartnerStats';
 
 
@@ -238,7 +237,7 @@ class EditPartner extends Component {
 
     if (this.props.user.userName) {
       content = (
-        <div id="editPartnerPage">
+        <div id="editPartnerPage" className="appWrap">
 
           <h1 className="textSelectPartner">Select A Partner</h1>
           <PartnerDropdown
