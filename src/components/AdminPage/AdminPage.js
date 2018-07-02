@@ -33,7 +33,31 @@ class AdminPage extends Component {
       fieldSearchQuery: '',
       fieldName: '',
       editStudent: {},
-      personColumns: null,
+      personColumns: [
+        'Formatted ID',
+        'Partner ID',
+        'Year of Birth',
+        'Person of Color',
+        'Education Level',
+        'City of Residence',
+        'Scholarship Recipient',
+        'Previous Job Experience',
+        'Pre-training Wage',
+        'Training Start Date',
+        'Training Type',
+        'Training End Date',
+        'Training Type',
+        'Exit Status',
+        'Classroom or Online',
+        'First Job Start Date',
+        'First Job Title',
+        'First Company',
+        'First Job Starting Wage',
+        'Second Job Start Date',
+        'Second Job Title',
+        'Second Company',
+        'Second Job Starting Wage',
+      ],
     }
   }
 
@@ -52,21 +76,52 @@ class AdminPage extends Component {
     this.props.history.push('login');
   }
 
-  // getTableColumns = tableName => {
-  //   axios.get(`/api/admin/columns/${tableName}`).then(response => {
-  //     const data = response.data;
-  //     let columns = [];
-  //     for (let item of data) {
-  //       columns.push(item.column_name);
-  //     }
-  //     this.setState({
-  //       personColumns: columns,
-  //     });
-  //   }).catch(error => {
-  //     console.error(`ERROR trying to GET /api/admin/columns/:name: ${error}`);
-  //     alert('Error: Retrieving table columns was unsuccessful.');
-  //   });
-  // }
+  dropDown = id => {
+    <div>
+      <select id={"option-"+id}>
+        <option value="formatted_id">Formatted ID</option>
+        <option value="partner_id">Partner ID</option>
+        <option value="year_of_birth">Year of Birth</option>
+        <option value="person_of_color">Person of Color</option>
+        <option value="education_level">Education Level</option>
+        <option value="city_of_residence">City of Residence</option>
+        <option value="scholarship_recipient">Scholarship Recipient</option>
+        <option value="previous_job_experience">Previous Job Experience</option>
+        <option value="pre_training_wage">Pre-training Wage</option>
+        <option value="training_start_date">Training Start Date</option>
+        <option value="training_status">Training Status</option>
+        <option value="training_end_date">Training End Date</option>
+        <option value="training_type">Training Type</option>
+        <option value="exit_status">Exit Status</option>
+        <option value="classroom_or_online">Classroom or Online</option>
+        <option value="start_date">First Job Start Date</option>
+        <option value="title">First Job Title</option>
+        <option value="company">First Company</option>
+        <option value="starting_wage">First Job Starting Wage</option>
+        <option value="second_start_date">Second Job Start Date</option>
+        <option value="second_title">Second Job Title</option>
+        <option value="second_company">Second Company</option>
+        <option value="second_starting_wage">Second Job Starting Wage</option>
+      </select>
+      <input id={"field-"+id} />
+    </div>
+  }
+
+  getTableColumns = tableName => {
+    axios.get(`/api/admin/columns/${tableName}`).then(response => {
+      const data = response.data;
+      let columns = [];
+      for (let item of data) {
+        columns.push(item.column_name);
+      }
+      this.setState({
+        personColumns: columns,
+      });
+    }).catch(error => {
+      console.error(`ERROR trying to GET /api/admin/columns/:name: ${error}`);
+      alert('Error: Retrieving table columns was unsuccessful.');
+    });
+  }
 
   fetchData = () => {
     axios.get(`/api/admin`, {
@@ -109,7 +164,7 @@ class AdminPage extends Component {
   }
 
   editStudent = person => {
-    this.setState({editStudent: person}, () => {
+    this.setState({ editStudent: person }, () => {
       let student = this.state.editStudent;
       console.log(student);
     });
@@ -122,8 +177,8 @@ class AdminPage extends Component {
   }
 
   listPage = page => {
-    if (this.state.currentPage === page) return <span style={{ color:"blue" }}>{page}</span>
-    return <span style={{ textDecoration:"underline" }}>{page}</span>
+    if (this.state.currentPage === page) return <span style={{ color: "blue" }}>{page}</span>
+    return <span style={{ textDecoration: "underline" }}>{page}</span>
   }
 
   render() {
@@ -135,16 +190,16 @@ class AdminPage extends Component {
     let lowerResults = (this.state.currentPage - 1) * PAGE_LENGTH;
     let upperResults = this.state.currentPage * PAGE_LENGTH;
     for (let i = lowerResults; i < upperResults; i++) {
-      if (this.state.results[i])currentResults.push(this.state.results[i]);
+      if (this.state.results[i]) currentResults.push(this.state.results[i]);
     }
-    
+
     let pages = [];
     for (let i = 0; i < this.state.totalPages; i++) {
       pages.push(<span key={`page-${i}`}>
-        <a 
-        className="page-listing il-block" 
-        style={{ fontSize:"14pt", cursor:"pointer" }} 
-        onClick={() => this.goToPage(i+1)}>{this.listPage(i+1)}</a> </span>
+        <a
+          className="page-listing il-block"
+          style={{ fontSize: "14pt", cursor: "pointer" }}
+          onClick={() => this.goToPage(i + 1)}>{this.listPage(i + 1)}</a> </span>
       );
     }
 
@@ -220,7 +275,7 @@ class AdminPage extends Component {
               </tbody>
             </table>
           </div>
-          <div style={{ textAlign:"center" }}>
+          <div style={{ textAlign: "center" }}>
             {pages}<br />
             Total results: {this.state.resultsLength}
           </div>
