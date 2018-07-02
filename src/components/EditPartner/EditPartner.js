@@ -239,7 +239,7 @@ class EditPartner extends Component {
       content = (
         <div id="editPartnerPage">
 
-          <h1 id="textSelectPartner">Select A Partner</h1>
+          <h1 className="textSelectPartner">Select A Partner</h1>
           <PartnerDropdown
             partners={this.state.partnerList}
             selectPartnerFromDropdown={this.selectPartnerFromDropdown}

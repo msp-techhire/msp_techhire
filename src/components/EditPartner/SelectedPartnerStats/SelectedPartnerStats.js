@@ -3,10 +3,15 @@ import React from 'react';
 const SelectedPartnerStats = (props) => {
 
     return <div>
-        <h1>Selected Partner Stats</h1>
-        <p>Average Wage Pre Program: ${props.partnerStats.pre}</p>
-        <p>Average Wage Post Program: ${props.partnerStats.post}</p>
-        <p>Number of students: {props.partnerStats.count}</p>
+        <h1 className="textSelectPartner">Selected Partner Stats</h1>
+        <div className="factsWrapperPartnerStats">
+        <p className="textBubblePartnerStats">Average Wage Pre-Program: </p>
+        <p className="factsBubblePartnerStats">${props.partnerStats.pre}</p>
+        <p className="textBubblePartnerStats">Average Wage Post-Program: </p>
+        <p className="factsBubblePartnerStats">${props.partnerStats.post}</p>
+        <p className="textBubblePartnerStats">Number of students: </p>
+        <p className="factsBubblePartnerStats">{props.partnerStats.count}</p>
+        </div>
         </div>
     
 }
