@@ -144,7 +144,7 @@ class AdminPage extends Component {
     for (let i = 0; i < this.state.totalPages; i++) {
       pages.push(<span key={`page-${i}`}>
         <a
-          className="page-listing il-block"
+          className="page-listing-il-block"
           // style={{ fontSize: "12pt", cursor: "pointer" }}
           onClick={() => this.goToPage(i + 1)}>{this.listPage(i + 1)}</a> </span>
       );
@@ -224,7 +224,7 @@ class AdminPage extends Component {
                 </TableBody>
               </Table>
           </div>
-          <div style={{ textAlign: "center" }}>
+          <div id="pagesPerSearchDisplay" style={{ textAlign: "center" }}>
             {pages}<br />
             Total results: {this.state.resultsLength}
           </div>
