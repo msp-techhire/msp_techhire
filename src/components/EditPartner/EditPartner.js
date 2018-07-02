@@ -8,6 +8,7 @@ import { triggerLogout } from '../../redux/actions/loginActions';
 import NewPartnerForm from './NewPartnerForm/NewPartnerForm';
 import SelectedPartnerInfo from './SelectedPartnerInfo/SelectedPartnerInfo';
 import Button from '@material-ui/core/Button';
+import SelectedPartnerStats from './SelectedPartnerStats/SelectedPartnerStats';
 
 
 const mapStateToProps = state => ({
@@ -56,6 +57,7 @@ class EditPartner extends Component {
     this.getPartners();
     if (this.state.selectedPartnerID === undefined) {
       this.getPartnerData(1);
+      this.getPartnerStats(1);
     }
   }
 
@@ -98,6 +100,7 @@ class EditPartner extends Component {
   /* ------------------------------ */
   selectPartnerFromDropdown = (event) => {
     this.getPartnerData(event.target.value);
+    this.getPartnerStats(event.target.value);
     this.setState({
       selectedPartnerID: event.target.value,
     });
@@ -211,6 +214,15 @@ class EditPartner extends Component {
       .catch(err => console.log(err));
   }
 
+  getPartnerStats = (id) => {
+    axios({
+      method: 'GET',
+      url:`/api/editpartner/partnerstats/${id}`
+    })
+    .then(response => console.log(response.data))
+    .catch(err => console.log(err));
+  }
+
   render() {
     let content = null;
 
@@ -222,7 +234,6 @@ class EditPartner extends Component {
           <PartnerDropdown
             partners={this.state.partnerList}
             selectPartnerFromDropdown={this.selectPartnerFromDropdown}
-            getPartnerData={this.getPartnerData}
           />
           <SelectedPartnerInfo
             selectedPartner={this.state.selectedPartner}
@@ -243,6 +254,7 @@ class EditPartner extends Component {
             handleChange={this.handleFormChange}
             newOrg={this.state.newOrg}
           />
+          <SelectedPartnerStats />
         </div>
       );
     }

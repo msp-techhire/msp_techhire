@@ -17,6 +17,11 @@ router.get('/partnerInfo/:id', rejectNonAdmins, (req, res) => {
     .catch(err => res.sendStatus(500));
 });
 
+router.get('/partnerstats/:id', rejectNonAdmins, (req, res) => {
+    console.log(req.params.id, 'Get Got Got');
+    res.sendStatus(200);
+});
+
 router.put('/updatePartner/:id', rejectNonAdmins, (req, res) => {
     let id = req.params.id;
     let partnerToEdit = req.body;
