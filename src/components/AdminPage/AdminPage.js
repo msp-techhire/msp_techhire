@@ -150,7 +150,8 @@ class AdminPage extends Component {
     }
     let inputElement = document.createElement('input');
     let deleteSearch = document.createElement('button');
-    deleteSearch.setAttribute('onclick', `document.getElementById('search-${this.state.searchCounter}').parentElement.removeChild(document.getElementById('search-${this.state.searchCounter}'))`);
+    let node = `document.getElementById('search-${this.state.searchCounter}')`;
+    deleteSearch.setAttribute('onclick', `${node}.parentElement.removeChild(${node})`);
     deleteSearch.innerHTML = 'Remove';
     divElement.append(selectElement);
     divElement.append(inputElement);
