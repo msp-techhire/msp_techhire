@@ -254,7 +254,7 @@ class EditPartner extends Component {
             closeEditPartnerModal={this.closeEditPartnerModal}
             show={this.state.editPartnerModal.open}
           />
-          <Button id="addNewPartnerButton" variant="outlined" value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</Button>
+          <button id="addNewPartnerButton" variant="outlined" value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</button>
 
           <NewPartnerForm
             show={this.state.newPartnerModal.open}
