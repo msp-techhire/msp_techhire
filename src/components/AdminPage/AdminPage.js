@@ -16,6 +16,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Edit from '@material-ui/icons/Edit';
 
 // import Modal from './modal/modal';
 
@@ -48,7 +49,7 @@ class AdminPage extends Component {
         'Previous Job Experience',
         'Pre-training Wage',
         'Training Start Date',
-        'Training Type',
+        'Training Status',
         'Training End Date',
         'Training Type',
         'Exit Status',
@@ -62,6 +63,32 @@ class AdminPage extends Component {
         'Second Company',
         'Second Job Starting Wage',
       ],
+      personColumnNames: [
+        'formatted_id',
+        'partner_id',
+        'year_of_birth',
+        'person_of_color',
+        'education_level',
+        'city_of_residence',
+        'scholarship_recipient',
+        'previous_job_experience',
+        'pre_training_wage',
+        'training_start_date',
+        'training_status',
+        'training_end_date',
+        'training_type',
+        'exit_status',
+        'classroom_or_online',
+        'start_date',
+        'title',
+        'company',
+        'starting_wage',
+        'second_start_date',
+        'second_title',
+        'second_company',
+        'second_starting_wage'
+      ],
+      searchCounter: 0,
     }
   }
 
@@ -80,34 +107,88 @@ class AdminPage extends Component {
     this.props.history.push('login');
   }
 
+  addElement = (parentId, elementTag, elementId, html) => {
+    let parent = document.getElementById(parentId);
+    let newElement = document.createElement(elementTag);
+    newElement.setAttribute('class', 'il-block');
+    newElement.setAttribute('id', 'drop-' + elementId);
+    newElement.innerHTML = html;
+    parent.append(newElement);
+  }
+
+  removeElement = elementId => {
+    const element = document.getElementById(elementId);
+    element.parentNode.removeChild(element);
+  }
+
+  setNewAttribute = (id, attribute, value) => {
+    let element = document.getElementById(id);
+    element.setAttribute(attribute, value);
+  }
+
+  addSearchField = (parentId, id) => {
+    this.addElement(parentId, 'div', 'drop-' + id, '');
+    this.addElement('drop-' + id, 'select', 'option-' + id, '');
+    for (let i = 0; i < 23; i++) {
+      this.addElement('option-' + id, 'option', id + '-' + i, this.state.personColumns[i]);
+      this.setNewAttribute(id + '-' + i, 'value', this.state.personColumnNames[i]);
+    }
+    this.setState({ searchCounter: this.state.searchCounter + 1 });
+  }
+
+  addSearch = (parent) => {
+    let newParent = document.getElementById(parent);
+    let selectElement = document.createElement('select');
+    let divElement = document.createElement('div');
+    divElement.setAttribute('id', 'search-' + this.state.searchCounter)
+    selectElement.setAttribute('class', 'il-block');
+    for (let i = 0; i < 23; i++) {
+      let optionElement = document.createElement('option');
+      optionElement.setAttribute('value', this.state.personColumnNames[i]);
+      optionElement.innerHTML = this.state.personColumns[i];
+      selectElement.append(optionElement);
+    }
+    let inputElement = document.createElement('input');
+    let deleteSearch = document.createElement('button');
+    deleteSearch.setAttribute('onclick', `document.getElementById('search-${this.state.searchCounter}').parentElement.removeChild(document.getElementById('search-${this.state.searchCounter}'))`);
+    deleteSearch.innerHTML = 'Remove';
+    divElement.append(selectElement);
+    divElement.append(inputElement);
+    divElement.append(deleteSearch);
+    newParent.append(divElement);
+    this.setState({
+      searchCounter: this.state.searchCounter + 1
+    });
+  }
+
   dropDown = id => {
-    <div>
-      <select id={"option-"+id}>
-        <option value="formatted_id">Formatted ID</option>
-        <option value="partner_id">Partner ID</option>
-        <option value="year_of_birth">Year of Birth</option>
-        <option value="person_of_color">Person of Color</option>
-        <option value="education_level">Education Level</option>
-        <option value="city_of_residence">City of Residence</option>
-        <option value="scholarship_recipient">Scholarship Recipient</option>
-        <option value="previous_job_experience">Previous Job Experience</option>
-        <option value="pre_training_wage">Pre-training Wage</option>
-        <option value="training_start_date">Training Start Date</option>
-        <option value="training_status">Training Status</option>
-        <option value="training_end_date">Training End Date</option>
-        <option value="training_type">Training Type</option>
-        <option value="exit_status">Exit Status</option>
-        <option value="classroom_or_online">Classroom or Online</option>
-        <option value="start_date">First Job Start Date</option>
-        <option value="title">First Job Title</option>
-        <option value="company">First Company</option>
-        <option value="starting_wage">First Job Starting Wage</option>
-        <option value="second_start_date">Second Job Start Date</option>
-        <option value="second_title">Second Job Title</option>
-        <option value="second_company">Second Company</option>
-        <option value="second_starting_wage">Second Job Starting Wage</option>
+    return <div className="il-block" id={"drop-" + id}>
+      <select id={"option-" + id}>
+        <option id={id + "-1"} value="formatted_id">Formatted ID</option>
+        <option id={id + "-2"} value="partner_id">Partner ID</option>
+        <option id={id + "-3"} value="year_of_birth">Year of Birth</option>
+        <option id={id + "-4"} value="person_of_color">Person of Color</option>
+        <option id={id + "-5"} value="education_level">Education Level</option>
+        <option id={id + "-6"} value="city_of_residence">City of Residence</option>
+        <option id={id + "-7"} value="scholarship_recipient">Scholarship Recipient</option>
+        <option id={id + "-8"} value="previous_job_experience">Previous Job Experience</option>
+        <option id={id + "-9"} value="pre_training_wage">Pre-training Wage</option>
+        <option id={id + "-10"} value="training_start_date">Training Start Date</option>
+        <option id={id + "-11"} value="training_status">Training Status</option>
+        <option id={id + "-12"} value="training_end_date">Training End Date</option>
+        <option id={id + "-13"} value="training_type">Training Type</option>
+        <option id={id + "-14"} value="exit_status">Exit Status</option>
+        <option id={id + "-15"} value="classroom_or_online">Classroom or Online</option>
+        <option id={id + "-16"} value="start_date">First Job Start Date</option>
+        <option id={id + "-17"} value="title">First Job Title</option>
+        <option id={id + "-18"} value="company">First Company</option>
+        <option id={id + "-19"} value="starting_wage">First Job Starting Wage</option>
+        <option id={id + "-20"} value="second_start_date">Second Job Start Date</option>
+        <option id={id + "-21"} value="second_title">Second Job Title</option>
+        <option id={id + "-22"} value="second_company">Second Company</option>
+        <option id={id + "-23"} value="second_starting_wage">Second Job Starting Wage</option>
       </select>
-      <input id={"field-"+id} />
+      <input id={"field-" + id} />
     </div>
   }
 
@@ -147,7 +228,8 @@ class AdminPage extends Component {
     })
   }
 
-  singleFieldSearch = () => {
+  singleFieldSearch = (event) => {
+    event.preventDefault();
     const name = this.state.fieldName;
     const query = this.state.fieldSearchQuery;
     axios.get(`/api/admin/${name}?search=${query}`).then(response => {
@@ -200,7 +282,7 @@ class AdminPage extends Component {
       pages.push(<span key={`page-${i}`}>
         <a
           className="page-listing il-block"
-          // style={{ fontSize: "12pt", cursor: "pointer" }}
+          style={{ cursor: "pointer" }}
           onClick={() => this.goToPage(i + 1)}>{this.listPage(i + 1)}</a> </span>
       );
     }
@@ -216,68 +298,71 @@ class AdminPage extends Component {
               Search Page
           </p>
           </div>
-          <div class="wrapperGridAdmin">
-          <div id="inputFieldSearch" className="il-block">
-            <div className="il-block">
-              <TextField
-                id="fieldSearch"
-                onChange={this.handleSearchChange}
-                name="fieldSearchQuery"
-                value={this.state.fieldSearchQuery}
-                label="Search Single Field"
-                placeholder="Search"
-                margin="normal" ></TextField>
-              {buttonDisplayed}
+          <div className="wrapperGridAdmin">
+            <div id="inputFieldSearch" className="il-block">
+            <button onClick={() => this.addSearch('advanced-search')}>Add Field</button>
+              <div id="advanced-search" className="il-block">
+                <form onSubmit={this.state.singleFieldSearch}>
+                  <TextField
+                    id="fieldSearch"
+                    onChange={this.handleSearchChange}
+                    name="fieldSearchQuery"
+                    value={this.state.fieldSearchQuery}
+                    label="Search Single Field"
+                    placeholder="Search"
+                    margin="normal" ></TextField>
+                  {buttonDisplayed}
+                </form>
+              </div>
+              <div className="il-block">
+                  <TextField
+                    id="addSearch"
+                    onChange={this.handleSearchChange}
+                    name="searchQuery"
+                    value={this.state.searchQuery}
+                    label="Search Everything"
+                    placeholder="Search"
+                    margin="normal" ></TextField>
+                  {buttonDisplayed}
+              </div>
             </div>
-            <div className="il-block">
-              <TextField
-                id="addSearch"
-                onChange={this.handleSearchChange}
-                name="searchQuery"
-                value={this.state.searchQuery}
-                label="Search Everything"
-                placeholder="Search"
-                margin="normal" ></TextField>
-              {buttonDisplayed}
-            </div>
-          </div>
-          <JsonArrayToCsv convert={this.state.results} />
+            <JsonArrayToCsv convert={this.state.results} />
           </div>
           <div>
-              <Table id="searchTableResults">
-                <TableHead>
-                  <TableRow id="tableHeader">
-                    <TableCell>Gender</TableCell>
-                    <TableCell>POC</TableCell>
-                    <TableCell>Ed Level</TableCell>
-                    <TableCell>Scholarship</TableCell>
-                    <TableCell>Pre-wage</TableCell>
-                    <TableCell>Start Date</TableCell>
-                    <TableCell>Title</TableCell>
-                    <TableCell>Company</TableCell>
-                    <TableCell>New wage</TableCell>
-                    <TableCell>Exit Status</TableCell>
-                    <TableCell>Edit</TableCell>
+            <Table id="searchTableResults">
+              <TableHead>
+                <TableRow id="tableHeader">
+                  <TableCell>Gender</TableCell>
+                  <TableCell>POC</TableCell>
+                  <TableCell>Ed Level</TableCell>
+                  <TableCell>Scholarship</TableCell>
+                  <TableCell>Pre-wage</TableCell>
+                  <TableCell>Start Date</TableCell>
+                  <TableCell>Title</TableCell>
+                  <TableCell>Company</TableCell>
+                  <TableCell>New wage</TableCell>
+                  <TableCell>Exit Status</TableCell>
+                  <TableCell>Edit</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {currentResults.map((person, i) => (
+                  <TableRow key={i} id="onHoverTableHighlight">
+                    <TableCell>{person.gender}</TableCell>
+                    <TableCell>{person.person_of_color}</TableCell>
+                    <TableCell>{person.education_level}</TableCell>
+                    <TableCell>{person.scholarship_recipient}</TableCell>
+                    <TableCell>{person.pre_training_wage}</TableCell>
+                    <TableCell>{person.start_date}</TableCell>
+                    <TableCell>{person.title}</TableCell>
+                    <TableCell>{person.company}</TableCell>
+                    <TableCell>{person.starting_wage}</TableCell>
+                    <TableCell>{person.exit_status}</TableCell>
+                    <TableCell><Edit /></TableCell>
                   </TableRow>
-                </TableHead>
-                <TableBody>
-                  {currentResults.map((person, i) => (
-                    <TableRow key={i} id="onHoverTableHighlight">
-                      <TableCell>{person.gender}</TableCell>
-                      <TableCell>{person.person_of_color}</TableCell>
-                      <TableCell>{person.education_level}</TableCell>
-                      <TableCell>{person.scholarship_recipient}</TableCell>
-                      <TableCell>{person.pre_training_wage}</TableCell>
-                      <TableCell>{person.start_date}</TableCell>
-                      <TableCell>{person.title}</TableCell>
-                      <TableCell>{person.company}</TableCell>
-                      <TableCell>{person.starting_wage}</TableCell>
-                      <TableCell>{person.exit_status}</TableCell>
-                      {/* <TableCell><Modal /></TableCell> */}
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                ))}
+              </TableBody>
+            </Table>
           </div>
           <div style={{ textAlign: "center" }}>
             {pages}<br />

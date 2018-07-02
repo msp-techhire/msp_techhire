@@ -75,9 +75,9 @@ export default class FormDialog extends React.Component {
           <DialogTitle id="form-dialog-title">Edit Student Information</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              <TextField
+              Formatted Id<TextField
                 margin="dense"
-                id=""
+                id={"person" + person.id}
               />
             </DialogContentText>
           </DialogContent>
