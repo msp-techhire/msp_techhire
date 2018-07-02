@@ -20,6 +20,20 @@ class SummaryPage extends Component {
     this.state = {
       trainingData: {},
       data: [],
+      wageGainData: {
+        softwareDevelopment: {
+          preWage: 0,
+          postWage: 0,
+        },
+        computerUserSupport: {
+          preWage: 0,
+          postWage: 0,
+        },
+        projectManagement: {
+          preWage: 0,
+          postWage: 0,
+        }
+      }
     }
   }
 
@@ -53,6 +67,10 @@ class SummaryPage extends Component {
     let POCTrue = 0;
     let POCFalse = 0;
     let POCUnreported = 0;
+    let numberEmployedMale = 0;
+    let numberEmployedFemale = 0;
+    let numberEmployedOther = 0;
+    let numberEmployedUnreported = 0;
 
     this.state.data.forEach(student => {
       switch (student.gender) {
@@ -86,6 +104,8 @@ class SummaryPage extends Component {
         case 'Graduate and Beyond':
           graduatePlus = graduatePlus + 1;
           break;
+        default:
+          break;
       }
 
       switch (student.person_of_color) {
@@ -97,7 +117,26 @@ class SummaryPage extends Component {
           break;
         case 'Unreported':
           POCUnreported = POCUnreported + 1;
-          break
+          break;
+        default:
+          break;
+      }
+
+      if(student.title !== '' && student.title !== null) {
+        switch (student.gender) {
+          case 'Female':
+            numberEmployedFemale = numberEmployedFemale + 1;
+            break;
+          case 'Male':
+            numberEmployedMale = numberEmployedMale + 1;
+            break;
+          case 'Other':
+            numberEmployedOther = numberEmployedOther + 1;
+            break;
+          default:
+            numberEmployedUnreported = numberEmployedUnreported + 1;
+            break
+        }
       }
 
     });
@@ -117,8 +156,52 @@ class SummaryPage extends Component {
         POCTrue,
         POCFalse,
         POCUnreported,
+        numberEmployedMale,
+        numberEmployedFemale,
+        numberEmployedOther,
+        numberEmployedUnreported
       }
     });
+  }
+
+  calculateWageGains = () => {
+    axios({
+      method: 'GET',
+      url: '/api/summary/wages'
+    })
+    .then(response => {
+      let wageGrowthDollar = response.data.map(wage => {
+        return Number(wage.post).toFixed(2) - Number(wage.pre).toFixed(2);
+      });
+      let wageGrothPercent = response.data.map(wage => {
+        let increase = Number(wage.post).toFixed(2) - Number(wage.pre).toFixed(2);
+        let nextStep = increase / Number(wage.pre).toFixed(2);
+        return nextStep*100;
+      });
+      this.setState({
+        wageGainData: {
+          softwareDevelopment: {
+            preWage: Number(response.data[0].pre).toFixed(2),
+            postWage: Number(response.data[0].post).toFixed(2),
+            wageGrowth: wageGrowthDollar[0].toFixed(2),
+            wageGrowthPercentage: wageGrothPercent[0].toFixed(0),
+          },
+          computerUserSupport: {
+            preWage: Number(response.data[1].pre).toFixed(2),
+            postWage: Number(response.data[1].post).toFixed(2),
+            wageGrowth: wageGrowthDollar[1].toFixed(2),
+            wageGrowthPercentage: wageGrothPercent[1].toFixed(0),
+          },
+          projectManagement: {
+            preWage: Number(response.data[2].pre).toFixed(2),
+            postWage: Number(response.data[2].post).toFixed(2),
+            wageGrowth: wageGrowthDollar[2].toFixed(2),
+            wageGrowthPercentage: wageGrothPercent[2].toFixed(0),
+          }
+        }
+      });
+    })
+    .catch(err => console.log('uh oh', err));
   }
 
   fetchAll = () => {
@@ -134,6 +217,7 @@ class SummaryPage extends Component {
         data,
       });
       this.calculateTrainingData();
+      this.calculateWageGains();
     })
     .catch(error => console.log(`ERROR trying to GET /api/summary: ${error}`));
   }
@@ -144,21 +228,20 @@ class SummaryPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h1>Summary Page</h1>
+          <h1 className="summaryText">Summary Page</h1>
           <NumberTrained 
             trainingData={this.state.trainingData}
+            wageGainData={this.state.wageGainData}
           />
-          <button id="logoutButton" onClick={this.logout}>Log Out</button>
           <div>
             <JsonArrayToCsv convert={this.state.data} />
-            {JSON.stringify(this.state.data[0])}
           </div>
         </div>
       );
     }
 
     return (
-      <div>
+      <div id="summaryPage">
         <Nav />
         {content}
       </div>

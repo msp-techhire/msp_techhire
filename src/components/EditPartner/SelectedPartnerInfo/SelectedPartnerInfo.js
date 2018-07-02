@@ -1,20 +1,20 @@
 import React from 'react';
 import EditPartnerInfoForm from '../EditPartnerInfoForm/EditPartnerInfoForm';
-
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 const SelectedPartnerInfo = (props) => {
 
     return <div>
-        <h1>Partner Information</h1>
+        <h1 id="textSelectPartner">Partner Information</h1>
         <Paper>
             <Table id="selectedPartnerTable">
-                <TableHead>
+                <TableHead id="selectPartnerTableHead">
                     <TableRow>
                         <TableCell>Org Name</TableCell>
                         <TableCell>Address</TableCell>
@@ -36,7 +36,7 @@ const SelectedPartnerInfo = (props) => {
                 </TableBody>
             </Table>
         </Paper >
-        <button onClick={props.openEditPartnerModal}>Edit Partner Information</button>
+        <button id="editPartnerInformationButton" variant="outlined" onClick={props.openEditPartnerModal}>Edit Partner Information</button>
         <EditPartnerInfoForm
             show={props.show}
             closeEditPartnerModal={props.closeEditPartnerModal}

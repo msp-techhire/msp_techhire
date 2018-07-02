@@ -11,10 +11,15 @@ import JsonArrayToCsv from '../JsonArrayToCsv/JsonArrayToCsv';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Edit from '@material-ui/icons/Edit'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 // import Modal from './modal/modal';
 
+const PAGE_LENGTH = 25;
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -25,10 +30,14 @@ class AdminPage extends Component {
     super(props);
     this.state = {
       results: [],
+      resultsLength: 0,
+      currentPage: 0,
+      totalPages: 0,
       searchQuery: '',
       fieldSearchQuery: '',
       fieldName: '',
       editStudent: {},
+      personColumns: null,
     }
   }
 
@@ -47,16 +56,38 @@ class AdminPage extends Component {
     this.props.history.push('login');
   }
 
+  // getTableColumns = tableName => {
+  //   axios.get(`/api/admin/columns/${tableName}`).then(response => {
+  //     const data = response.data;
+  //     let columns = [];
+  //     for (let item of data) {
+  //       columns.push(item.column_name);
+  //     }
+  //     this.setState({
+  //       personColumns: columns,
+  //     });
+  //   }).catch(error => {
+  //     console.error(`ERROR trying to GET /api/admin/columns/:name: ${error}`);
+  //     alert('Error: Retrieving table columns was unsuccessful.');
+  //   });
+  // }
+
   fetchData = () => {
     axios.get(`/api/admin`, {
       params: {
         search: this.state.searchQuery
       }
     }).then((response) => {
+      const data = response.data;
+      const totalPages = Math.ceil(data.length / PAGE_LENGTH);
       this.setState({
-        results: response.data
-      })
+        results: data,
+        resultsLength: data.length,
+        currentPage: 1,
+        totalPages: totalPages,
+      });
     }).catch((error) => {
+      console.error(error);
       alert('error with GET in Admin file', error);
     })
   }
@@ -78,20 +109,46 @@ class AdminPage extends Component {
     this.setState({
       ...this.state,
       [event.target.name]: event.target.value
-    })
+    });
   }
 
   editStudent = person => {
-    this.setState({editStudent: person}, () => {
+    this.setState({ editStudent: person }, () => {
       let student = this.state.editStudent;
       console.log(student);
     });
   }
 
+  goToPage = page => {
+    this.setState({
+      currentPage: page,
+    });
+  }
+
+  listPage = page => {
+    if (this.state.currentPage === page) return <span style={{ color: "blue" }}>{page}</span>
+    return <span style={{ textDecoration: "underline" }}>{page}</span>
+  }
+
   render() {
     let content = null;
-
     let buttonDisplayed = <Button id="searchButtons" variant="outlined" size="small" onClick={this.fetchData}>Search</Button>
+    let currentResults = [];
+    let lowerResults = (this.state.currentPage - 1) * PAGE_LENGTH;
+    let upperResults = this.state.currentPage * PAGE_LENGTH;
+    for (let i = lowerResults; i < upperResults; i++) {
+      if (this.state.results[i]) currentResults.push(this.state.results[i]);
+    }
+
+    let pages = [];
+    for (let i = 0; i < this.state.totalPages; i++) {
+      pages.push(<span key={`page-${i}`}>
+        <a
+          className="page-listing-il-block"
+          // style={{ fontSize: "12pt", cursor: "pointer" }}
+          onClick={() => this.goToPage(i + 1)}>{this.listPage(i + 1)}</a> </span>
+      );
+    }
 
     if (this.props.user.userName) {
       content = (
@@ -100,12 +157,11 @@ class AdminPage extends Component {
           <div id="mplsPhoto">
           </div>
           <div>
-            <p id="adminTextTopOfPage">
-              Admin Page
+            <p id="searchTextTopOfPage">
+              Search Page
           </p>
-            <button id="logoutButton"
-              onClick={this.logout}>Log Out</button>
           </div>
+          <div className="wrapperGridAdmin">
           <div id="inputFieldSearch" className="il-block">
             <div className="il-block">
               <TextField
@@ -131,53 +187,46 @@ class AdminPage extends Component {
             </div>
           </div>
           <JsonArrayToCsv convert={this.state.results} />
+          </div>
           <div>
-            <table id="searchTableResults">
-              <thead>
-                <tr>
-                  <th>Partner</th>
-                  <th>Id</th>
-                  <th>Gender</th>
-                  <th>YOB</th>
-                  <th>POC</th>
-                  <th>Ed Level</th>
-                  <th>Residence</th>
-                  <th>Scholarship</th>
-                  <th>Pre-experience</th>
-                  <th>Pre-wage</th>
-                  <th>Start Date</th>
-                  <th>Current Status</th>
-                  <th>End Date</th>
-                  <th>Type</th>
-                  <th>Class Type</th>
-                  <th>Exit Status</th>
-                  <th>Edit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.results.map((person, i) => (
-                  <tr key={i}>
-                    <td>{person.partner_id}</td>
-                    <td>{person.formatted_id}</td>
-                    <td>{person.gender}</td>
-                    <td>{person.year_of_birth}</td>
-                    <td>{person.person_of_color}</td>
-                    <td>{person.education_level}</td>
-                    <td>{person.city_of_residence}</td>
-                    <td>{person.scholarship_recipient}</td>
-                    <td>{person.previous_job_experience}</td>
-                    <td>{person.pre_training_wage}</td>
-                    <td>{person.training_start_date}</td>
-                    <td>{person.training_status}</td>
-                    <td>{person.training_end_date}</td>
-                    <td>{person.training_type}</td>
-                    <td>{person.classroom_or_online}</td>
-                    <td>{person.exit_status}</td>
-                    {/* <td><Modal /></td> */}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+              <Table id="searchTableResults">
+                <TableHead>
+                  <TableRow id="tableHeader">
+                    <TableCell>Gender</TableCell>
+                    <TableCell>POC</TableCell>
+                    <TableCell>Ed Level</TableCell>
+                    <TableCell>Scholarship</TableCell>
+                    <TableCell>Pre-wage</TableCell>
+                    <TableCell>Start Date</TableCell>
+                    <TableCell>Title</TableCell>
+                    <TableCell>Company</TableCell>
+                    <TableCell>New wage</TableCell>
+                    <TableCell>Exit Status</TableCell>
+                    <TableCell>Edit</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {currentResults.map((person, i) => (
+                    <TableRow key={i} id="onHoverTableHighlight">
+                      <TableCell>{person.gender}</TableCell>
+                      <TableCell>{person.person_of_color}</TableCell>
+                      <TableCell>{person.education_level}</TableCell>
+                      <TableCell>{person.scholarship_recipient}</TableCell>
+                      <TableCell>{person.pre_training_wage}</TableCell>
+                      <TableCell>{person.start_date}</TableCell>
+                      <TableCell>{person.title}</TableCell>
+                      <TableCell>{person.company}</TableCell>
+                      <TableCell>{person.starting_wage}</TableCell>
+                      <TableCell>{person.exit_status}</TableCell>
+                      {/* <TableCell><Modal /></TableCell> */}
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+          </div>
+          <div id="pagesPerSearchDisplay" style={{ textAlign: "center" }}>
+            {pages}<br />
+            Total results: {this.state.resultsLength}
           </div>
         </div>
       );
@@ -193,5 +242,3 @@ class AdminPage extends Component {
 }
 
 export default connect(mapStateToProps)(AdminPage);
-
-

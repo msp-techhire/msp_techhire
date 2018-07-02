@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
 import Nav from '../../components/Nav/Nav';
-
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import PartnerDropdown from './PartnerDropdown/PartnerDropdown';
 import { triggerLogout } from '../../redux/actions/loginActions';
 import NewPartnerForm from './NewPartnerForm/NewPartnerForm';
 import SelectedPartnerInfo from './SelectedPartnerInfo/SelectedPartnerInfo';
+import Button from '@material-ui/core/Button';
+import SelectedPartnerStats from './SelectedPartnerStats/SelectedPartnerStats';
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -28,6 +29,7 @@ class EditPartner extends Component {
       },
       selectedPartnerID: this.props.selectedPartner.id,
       partnerList: [],
+      partnerStats: {},
       newOrg: {
         orgName: '',
         orgAbbreviation: '',
@@ -56,6 +58,7 @@ class EditPartner extends Component {
     this.getPartners();
     if (this.state.selectedPartnerID === undefined) {
       this.getPartnerData(1);
+      this.getPartnerStats(1);
     }
   }
 
@@ -98,6 +101,7 @@ class EditPartner extends Component {
   /* ------------------------------ */
   selectPartnerFromDropdown = (event) => {
     this.getPartnerData(event.target.value);
+    this.getPartnerStats(event.target.value);
     this.setState({
       selectedPartnerID: event.target.value,
     });
@@ -189,11 +193,6 @@ class EditPartner extends Component {
   }
 
   getPartnerData = (id) => {
-    // let action = {
-    //   type: USER_ACTIONS.GET_SELECTED_PARTNER_DATA,
-    //   payload: id,
-    // };
-    // this.props.dispatch(action);
     axios({
       method: 'GET',
       url: `/api/editPartner/partnerInfo/${id}`,
@@ -216,7 +215,23 @@ class EditPartner extends Component {
       .catch(err => console.log(err));
   }
 
-
+  getPartnerStats = (id) => {
+    axios({
+      method: 'GET',
+      url:`/api/editpartner/partnerstats/${id}`
+    })
+    .then(response => {
+      let objectForState = {
+        pre: Number(response.data[0].pre).toFixed(2),
+        post: Number(response.data[0].post).toFixed(2),
+        count: Number(response.data[0].count),
+      }
+      this.setState({
+        partnerStats: objectForState,
+      });
+    })
+    .catch(err => console.log(err));
+  }
 
   render() {
     let content = null;
@@ -225,11 +240,10 @@ class EditPartner extends Component {
       content = (
         <div id="editPartnerPage">
 
-          <h1>Select A Partner</h1>
+          <h1 id="textSelectPartner">Select A Partner</h1>
           <PartnerDropdown
             partners={this.state.partnerList}
             selectPartnerFromDropdown={this.selectPartnerFromDropdown}
-            getPartnerData={this.getPartnerData}
           />
           <SelectedPartnerInfo
             selectedPartner={this.state.selectedPartner}
@@ -240,7 +254,7 @@ class EditPartner extends Component {
             closeEditPartnerModal={this.closeEditPartnerModal}
             show={this.state.editPartnerModal.open}
           />
-          <button value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</button>
+          <button id="addNewPartnerButton" variant="outlined" value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</button>
 
           <NewPartnerForm
             show={this.state.newPartnerModal.open}
@@ -250,10 +264,9 @@ class EditPartner extends Component {
             handleChange={this.handleFormChange}
             newOrg={this.state.newOrg}
           />
-
-
-
-          <button id="logoutButton" onClick={this.logout}>Log Out</button>
+          <SelectedPartnerStats 
+            partnerStats={this.state.partnerStats}
+          />
         </div>
       );
     }
