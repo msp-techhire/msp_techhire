@@ -430,3 +430,85 @@ table, th, td {
     margin-left: 20px;
     color: #555555;
 }
+
+/* ---------- Partner Page ---------- */
+
+.partnerTextTopOfPage {
+    color: #555555;
+    font-size: 21px;
+    font-weight: bold;
+    margin: 20px;
+} 
+
+.partnerTextDownloadFiles {
+    color: #555555;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.chooseFilePartnerPageButton {
+    width: 320px;
+    height: 40px;
+    font-size: 12px;
+    color: black;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background: rgb(204, 225, 244);
+    box-shadow: 2px 2px 10px 1px  #ccc;
+}
+
+.chooseFilePartnerPageButton:hover {
+    background: rgb(1, 164, 215);
+    box-shadow: 2px 2px 10px 1px  #555555;
+}
+
+#photoPartnerPage {
+    background:  url('/images/pathway.jpg');
+    background-size: 90%;
+    height: 150px;
+    min-width: 975px;
+    background-repeat: no-repeat;
+    margin-top: 8px;
+    margin-left: 20px;
+}
+
+#partnerTableResults {
+    width: 80%;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+
+/* ------- need to edit ------- */
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+#tableHeader {
+    background: rgb(176, 189, 99);
+}
+
+#onHoverTableHighlight{
+    background: whitesmoke;
+}
+
+#onHoverTableHighlight:hover {
+    background: rgb(204, 225, 244);
+}
+
+#searchTableResults {
+    width: 90%;
+    min-width: 975px;
+    margin: 20px;
+    text-align: center;
+    font-size: 10px;
+    border-collapse: collapse;
+}
+
+#cellWidthAdminTable {
+    width: 10px;
+}
