@@ -11,7 +11,11 @@ import JsonArrayToCsv from '../JsonArrayToCsv/JsonArrayToCsv';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Edit from '@material-ui/icons/Edit'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 // import Modal from './modal/modal';
 
@@ -109,7 +113,7 @@ class AdminPage extends Component {
   }
 
   editStudent = person => {
-    this.setState({editStudent: person}, () => {
+    this.setState({ editStudent: person }, () => {
       let student = this.state.editStudent;
       console.log(student);
     });
@@ -122,29 +126,27 @@ class AdminPage extends Component {
   }
 
   listPage = page => {
-    if (this.state.currentPage === page) return <span style={{ color:"blue" }}>{page}</span>
-    return <span style={{ textDecoration:"underline" }}>{page}</span>
+    if (this.state.currentPage === page) return <span style={{ color: "blue" }}>{page}</span>
+    return <span style={{ textDecoration: "underline" }}>{page}</span>
   }
 
   render() {
     let content = null;
-
     let buttonDisplayed = <Button id="searchButtons" variant="outlined" size="small" onClick={this.fetchData}>Search</Button>
-
     let currentResults = [];
     let lowerResults = (this.state.currentPage - 1) * PAGE_LENGTH;
     let upperResults = this.state.currentPage * PAGE_LENGTH;
     for (let i = lowerResults; i < upperResults; i++) {
-      if (this.state.results[i])currentResults.push(this.state.results[i]);
+      if (this.state.results[i]) currentResults.push(this.state.results[i]);
     }
-    
+
     let pages = [];
     for (let i = 0; i < this.state.totalPages; i++) {
       pages.push(<span key={`page-${i}`}>
-        <a 
-        className="page-listing il-block" 
-        style={{ fontSize:"14pt", cursor:"pointer" }} 
-        onClick={() => this.goToPage(i+1)}>{this.listPage(i+1)}</a> </span>
+        <a
+          className="page-listing il-block"
+          // style={{ fontSize: "12pt", cursor: "pointer" }}
+          onClick={() => this.goToPage(i + 1)}>{this.listPage(i + 1)}</a> </span>
       );
     }
 
@@ -155,10 +157,11 @@ class AdminPage extends Component {
           <div id="mplsPhoto">
           </div>
           <div>
-            <p id="adminTextTopOfPage">
-              Admin Page
+            <p id="searchTextTopOfPage">
+              Search Page
           </p>
           </div>
+          <div class="wrapperGridAdmin">
           <div id="inputFieldSearch" className="il-block">
             <div className="il-block">
               <TextField
@@ -184,43 +187,44 @@ class AdminPage extends Component {
             </div>
           </div>
           <JsonArrayToCsv convert={this.state.results} />
-          <div>
-            <table id="searchTableResults">
-              <thead>
-                <tr>
-                  <th>Gender</th>
-                  <th>POC</th>
-                  <th>Ed Level</th>
-                  <th>Scholarship</th>
-                  <th>Pre-wage</th>
-                  <th>Start Date</th>
-                  <th>Title</th>
-                  <th>Company</th>
-                  <th>New wage</th>
-                  <th>Exit Status</th>
-                  <th>Edit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {currentResults.map((person, i) => (
-                  <tr key={i}>
-                    <td>{person.gender}</td>
-                    <td>{person.person_of_color}</td>
-                    <td>{person.education_level}</td>
-                    <td>{person.scholarship_recipient}</td>
-                    <td>{person.pre_training_wage}</td>
-                    <td>{person.start_date}</td>
-                    <td>{person.title}</td>
-                    <td>{person.company}</td>
-                    <td>{person.starting_wage}</td>
-                    <td>{person.exit_status}</td>
-                    {/* <td><Modal /></td> */}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           </div>
-          <div style={{ textAlign:"center" }}>
+          <div>
+              <Table id="searchTableResults">
+                <TableHead>
+                  <TableRow id="tableHeader">
+                    <TableCell>Gender</TableCell>
+                    <TableCell>POC</TableCell>
+                    <TableCell>Ed Level</TableCell>
+                    <TableCell>Scholarship</TableCell>
+                    <TableCell>Pre-wage</TableCell>
+                    <TableCell>Start Date</TableCell>
+                    <TableCell>Title</TableCell>
+                    <TableCell>Company</TableCell>
+                    <TableCell>New wage</TableCell>
+                    <TableCell>Exit Status</TableCell>
+                    <TableCell>Edit</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {currentResults.map((person, i) => (
+                    <TableRow key={i} id="onHoverTableHighlight">
+                      <TableCell>{person.gender}</TableCell>
+                      <TableCell>{person.person_of_color}</TableCell>
+                      <TableCell>{person.education_level}</TableCell>
+                      <TableCell>{person.scholarship_recipient}</TableCell>
+                      <TableCell>{person.pre_training_wage}</TableCell>
+                      <TableCell>{person.start_date}</TableCell>
+                      <TableCell>{person.title}</TableCell>
+                      <TableCell>{person.company}</TableCell>
+                      <TableCell>{person.starting_wage}</TableCell>
+                      <TableCell>{person.exit_status}</TableCell>
+                      {/* <TableCell><Modal /></TableCell> */}
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+          </div>
+          <div style={{ textAlign: "center" }}>
             {pages}<br />
             Total results: {this.state.resultsLength}
           </div>
@@ -238,5 +242,3 @@ class AdminPage extends Component {
 }
 
 export default connect(mapStateToProps)(AdminPage);
-
-
