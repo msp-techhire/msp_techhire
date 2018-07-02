@@ -67,8 +67,8 @@ const convert = data => {
 const JsonArrayToCsv = props => (
   <div className="JsonArrayToCsv" style={{ display: "inline-block" }}>
     {props.convert.length > 0 ?
-    <button id="jsonButton" onClick={() => convert(props.convert)}>Download CSV Spreadsheet</button> :
-    <button id="jsonButton" disabled="disabled">Download CSV Spreadsheet</button> }
+    <button class="jsonButton" onClick={() => convert(props.convert)}>Download CSV Spreadsheet</button> :
+    <button class="jsonButton" disabled="disabled">Download CSV Spreadsheet</button> }
   </div>
 );
 
