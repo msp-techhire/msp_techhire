@@ -7,16 +7,6 @@ body {
     font-weight: 700;
 }
 
-/* MuiTypography-root-32 MuiTypography-title-38 MuiTypography-colorInherit-51 MuiTypography-noWrap-48 {
-    background:  url('/images/city_photo_two.jpg');
-    background-size: 83% auto;
-    height: 300px;
-    width: auto;
-    background-repeat: no-repeat;
-    margin-top: 8px;
-    margin-left: 50px;
-} */
-
 /* ----------- login ------------- */
 
 #logoLogin {
@@ -103,6 +93,19 @@ input[type="submit"] {
 }
 
 /* -------------- ----------------- */
+.MuiToolbar-root-8 {
+    background:  url('/images/pathway.jpg');
+    background-size: 80%;
+    height: 150px;
+    min-width: 950px;
+    background-repeat: no-repeat;
+    margin-top: 8px;
+    margin-left: 150px;
+}
+
+.MuiIconButton-label-15 {
+    margin-left: -300px;
+}
 
 .navbar {
   background-color: #00acb0;
@@ -179,7 +182,6 @@ li a:hover {
 #editPartnerPage form {
     width: 60%;
     text-align: left;
-    
 }
 
 .formGroup {
@@ -193,14 +195,16 @@ li a:hover {
 #textSelectPartner {
     color: #555555;
     font-size: 21px;
-    margin: 10px;
+    margin-left: 20px;
+    margin-top: 15px;
 }
 
 #selectedPartnerDropDown {
     width: 320px !important;
     height: 40px !important;
     font-size: 12px;
-    margin: 10px;
+    margin-left: 20px;
+    margin-top: 15px;
     background: rgb(204, 225, 244);
     box-shadow: 2px 2px 10px 1px  #ccc;
 }
@@ -214,7 +218,8 @@ li a:hover {
     width: 320px;
     height: 40px;
     font-size: 12px;
-    margin: 10px;
+    margin-left: 20px;
+    margin-top: 15px;
     background: rgb(204, 225, 244);
     box-shadow: 2px 2px 10px 1px  #ccc;
 }
@@ -228,7 +233,8 @@ li a:hover {
     width: 320px;
     height: 40px;
     font-size: 12px;
-    margin: 10px;
+    margin-left: 20px;
+    margin-top: 15px;
     background: rgb(204, 225, 244);
     box-shadow: 2px 2px 10px 1px  #ccc;
 }
@@ -237,7 +243,6 @@ li a:hover {
     background: rgb(1, 164, 215);
     box-shadow: 2px 2px 10px 1px  #555555;
 }
-
 
 /* ----------admin page ----------- */
 
@@ -316,6 +321,7 @@ table, th, td {
     color: black;
     margin-left: 20px;
     margin-top: 20px;
+    margin-bottom: 20px;
     background: rgb(204, 225, 244);
     box-shadow: 2px 2px 10px 1px  #ccc;
 }
