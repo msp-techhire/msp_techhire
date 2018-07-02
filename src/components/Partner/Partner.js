@@ -35,7 +35,7 @@ class Partner extends Component {
   handleData = data => {
     this.setState({ data })
     this.deletePerson();
-    this.postPartnerData();
+    // this.postPartnerData();
     this.fetchData();
   }
 
@@ -50,7 +50,6 @@ class Partner extends Component {
         swal({
           title: 'You have successfully added data!',
           icon: 'success'
-
         });
       })
       .catch((error) => {
@@ -74,8 +73,12 @@ class Partner extends Component {
     axios.delete('/api/partner')
     .then((response) => {
         console.log(response);
-        // this.getAllItems();
+        this.postPartnerData();
     })
+    .then((response) => {
+      console.log(response);
+      window.location.reload();
+  })
     .catch((error) => {
         console.log('error on delete: ', error);
         alert('You can only delete you added');
@@ -138,13 +141,13 @@ class Partner extends Component {
           onError={this.handleError}
           render={onChange => <input type="file" onChange={onChange} />}
         />
-        {this.state.data && (
+        {/* {this.state.data && (
           <pre>{JSON.stringify(this.state.data, null, 2)}</pre>
         )}
 
         {this.state.error && (
           <pre>{JSON.stringify(this.state.error, null, 2)}</pre>
-        )}
+        )} */}
       </div>
     )
     // let content = null;
