@@ -28,7 +28,7 @@ const NewPartnerForm = (props) => {
 
         return <div style={backDropStyle}> 
             <div style={modalStyle}>
-                <h2 id="textSelectPartner">Register New Partner</h2>
+                <h2 className="textSelectPartner">Register New Partner</h2>
                 <form>
                     
                     <div className="formGroup">
