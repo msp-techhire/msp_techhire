@@ -7,6 +7,13 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 import CsvParse from '@vtex/react-csv-parse';
 import swal from 'sweetalert';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -99,48 +106,53 @@ class Partner extends Component {
 
     return (
       <div>
+        <div id="photoPartnerPage"></div>
+        <h1 className="partnerTextTopOfPage">Partner Page</h1>
+        <h2 className="partnerTextDownloadFiles">Download Files</h2>
         <div>
-          <table id="searchStudentTableResults">
-          <thead>
-            <tr>
-              <th>Student ID</th>
-              <th>Scholarship Recipient</th>
-              <th>Pre-training Wage</th>
-              <th>Training Start Date</th>
-              <th>Training Status</th>
-              <th>Training End Date</th>
-              <th>Training Type</th>
-              <th>Job Placement Date</th>
-              <th>Hiring Job Title</th>
-              <th>Hiring Company</th>
-              <th>Starting Wage</th>
-            </tr>
-            </thead>
-            <tbody>
-              {this.state.partnerList.map((person, i) => (
-                <tr key={i}>
-                  <td>{person.formatted_id}</td>
-                  <td>{person.scholarship_recipient}</td>
-                  <td>{person.pre_training_wage}</td>
-                  <td>{person.training_start_date}</td>
-                  <td>{person.training_status}</td>
-                  <td>{person.training_end_date}</td>
-                  <td>{person.training_type}</td>
-                  <td>{person.start_date}</td>
-                  <td>{person.title}</td>
-                  <td>{person.company}</td>
-                  <td>{person.starting_wage}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
         <CsvParse
           keys={keys}
           onDataUploaded={this.handleData}
           onError={this.handleError}
-          render={onChange => <input type="file" onChange={onChange} />}
+          render={onChange => <input className="chooseFilePartnerPageButton" type="file" onChange={onChange}/> }
         />
+        </div>
+        <div>
+          <Table id="partnerTableResults">
+          <TableHead>
+          <TableRow id="tableHeader">
+              <TableCell>Student ID</TableCell>
+              <TableCell>Scholarship Recipient</TableCell>
+              <TableCell>Pre-training Wage</TableCell>
+              <TableCell>Training Start Date</TableCell>
+              <TableCell>Training Status</TableCell>
+              <TableCell>Training End Date</TableCell>
+              <TableCell>Training Type</TableCell>
+              <TableCell>Job Placement Date</TableCell>
+              <TableCell>Hiring Job Title</TableCell>
+              <TableCell>Hiring Company</TableCell>
+              <TableCell>Starting Wage</TableCell>
+            </TableRow>
+            </TableHead>
+            <TableBody>
+              {this.state.partnerList.map((person, i) => (
+                <TableRow key={i}>
+                  <TableCell>{person.formatted_id}</TableCell>
+                  <TableCell>{person.scholarship_recipient}</TableCell>
+                  <TableCell>{person.pre_training_wage}</TableCell>
+                  <TableCell>{person.training_start_date}</TableCell>
+                  <TableCell>{person.training_status}</TableCell>
+                  <TableCell>{person.training_end_date}</TableCell>
+                  <TableCell>{person.training_type}</TableCell>
+                  <TableCell>{person.start_date}</TableCell>
+                  <TableCell>{person.title}</TableCell>
+                  <TableCell>{person.company}</TableCell>
+                  <TableCell>{person.starting_wage}</TableCell>
+                  </TableRow>
+              ))}
+           </TableBody>
+          </Table>
+        </div>
         {/* {this.state.data && (
           <pre>{JSON.stringify(this.state.data, null, 2)}</pre>
         )}
