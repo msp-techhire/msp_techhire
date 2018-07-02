@@ -28,7 +28,7 @@ const EditPartnerInfoForm = (props) => {
 
     return <div style={backDropStyle}>
         <div style={modalStyle}>
-            <h2 id="textSelectPartner">Edit Partner Info Form</h2>
+            <h2 className="textSelectPartner">Edit Partner Info Form</h2>
             <form>
                 <div className="formGroup">
                     <label htmlFor="orgEditName">Organization Name</label>

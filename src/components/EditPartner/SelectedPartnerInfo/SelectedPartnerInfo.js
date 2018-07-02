@@ -11,8 +11,7 @@ import Button from '@material-ui/core/Button';
 const SelectedPartnerInfo = (props) => {
 
     return <div>
-        <h1 id="textSelectPartner">Partner Information</h1>
-        <Paper>
+        <h1 className="textSelectPartner">Partner Information</h1>
             <Table id="selectedPartnerTable">
                 <TableHead id="selectPartnerTableHead">
                     <TableRow>
@@ -35,7 +34,6 @@ const SelectedPartnerInfo = (props) => {
                     </TableRow>
                 </TableBody>
             </Table>
-        </Paper >
         <button id="editPartnerInformationButton" variant="outlined" onClick={props.openEditPartnerModal}>Edit Partner Information</button>
         <EditPartnerInfoForm
             show={props.show}
