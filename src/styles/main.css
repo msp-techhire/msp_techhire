@@ -7,6 +7,16 @@ body {
     font-weight: 700;
 }
 
+/* MuiTypography-root-32 MuiTypography-title-38 MuiTypography-colorInherit-51 MuiTypography-noWrap-48 {
+    background:  url('/images/city_photo_two.jpg');
+    background-size: 83% auto;
+    height: 300px;
+    width: auto;
+    background-repeat: no-repeat;
+    margin-top: 8px;
+    margin-left: 50px;
+} */
+
 /* ----------- login ------------- */
 
 #logoLogin {
@@ -145,25 +155,21 @@ li a:hover {
     width: 80px;
 }
 
-/* ----------- */
-selectedPartnerTable
-
 /* Edit Partner Page */
 
-#editPartnerPage {
-    text-align: center;
+.MuiPaper-root-67 MuiPaper-elevation2-71 MuiPaper-rounded-68 {
+    width: 80%;
 }
 
 #selectedPartnerTable {
     text-align: center;
     border-collapse: collapse;
-
 }
 
 #selectedPartnerTable td,
 #selectedPartnerTable th {
-    padding: 3px 8px;
-    border: 1px solid #333;
+    border: 1px solid #ccc;
+
 }
 
 #selectPartnerTableHead {
@@ -172,23 +178,21 @@ selectedPartnerTable
 
 #editPartnerPage form {
     width: 60%;
-    margin: 0 auto;
     text-align: left;
+    
 }
 
 .formGroup {
     padding: 10px 0;
 }
 
-
 .formGroup label {
     padding-right: 10px;
-
 }
 
 #textSelectPartner {
     color: #555555;
-    font-size: 16px;
+    font-size: 21px;
     margin: 10px;
 }
 
@@ -239,7 +243,7 @@ selectedPartnerTable
 
 #searchTextTopOfPage {
     color: #555555;
-    font-size: 18px;
+    font-size: 21px;
     font-weight: bold;
     margin: 20px;
 }
@@ -271,6 +275,10 @@ selectedPartnerTable
     box-shadow: 2px 2px 10px 1px  #555555;
 }
 
+.MuiTableCell-root-158 {
+    padding: 5px !important;
+}
+
 /* -------------- table on admin page ------------- */
 
 table, th, td {
@@ -278,7 +286,7 @@ table, th, td {
 }
 
 #tableHeader {
-    background: #ccc;
+    background: rgb(176, 189, 99);
 }
 
 #onHoverTableHighlight{
@@ -290,7 +298,7 @@ table, th, td {
 }
 
 #searchTableResults {
-    max-width: 80%;
+    width: 80%;
     margin: 10px;
     text-align: center;
     font-size: 10px;
@@ -301,7 +309,7 @@ table, th, td {
     width: 10px;
 }
 
-#jsonButton {
+.jsonButton {
     width: 320px;
     height: 40px;
     font-size: 12px;
@@ -312,7 +320,7 @@ table, th, td {
     box-shadow: 2px 2px 10px 1px  #ccc;
 }
 
-#jsonButton:hover {
+.jsonButton:hover {
     background: rgb(1, 164, 215);
     box-shadow: 2px 2px 10px 1px  #555555;
 }
@@ -320,8 +328,6 @@ table, th, td {
 /* -------------- student edit table on admin page ------------- */
 
 #studentFieldSearch {
-    /* margin-left: 76%; */
-    /* width: 800px; */
     margin-bottom: 40px;
 }
 
@@ -331,6 +337,7 @@ table, th, td {
     text-align: center;
     font-size: 12px;
     border-collapse: collapse;
+    
 }
 
 #editStudentButtons {
@@ -349,12 +356,19 @@ table, th, td {
     display: inline-block;
 }
 
-/* -------------- Wage Growth Divs ------------- */
+/* -------------- Summary Page ------------- */
 
 #summaryPage {
     text-align: center;
 }
 
+.summaryText {
+    color: #555555;
+    font-size: 21px;
+    font-weight: bold;
+    margin: 20px;
+    text-align: left;
+}
 
 .wageGrowthDiv {
     display: inline-block;
@@ -362,4 +376,5 @@ table, th, td {
     background-color: rgba(1, 164, 215, 0.6);
     border-radius: 10px;
     padding: 15px;
+    margin-left: 20px;
 }

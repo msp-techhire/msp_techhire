@@ -28,7 +28,7 @@ const EducationGraph = (props) => {
                     options={{
                         title: {
                             display: true,
-                            text: 'Total by Education Level',
+                            text: 'Education Level',
                             fontSize: 25,
                         },
                         legend: {
