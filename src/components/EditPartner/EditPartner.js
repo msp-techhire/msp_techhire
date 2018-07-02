@@ -237,7 +237,7 @@ class EditPartner extends Component {
 
     if (this.props.user.userName) {
       content = (
-        <div id="editPartnerPage">
+        <div id="editPartnerPage" className="appWrap">
 
           <h1 className="textSelectPartner">Select A Partner</h1>
           <PartnerDropdown
