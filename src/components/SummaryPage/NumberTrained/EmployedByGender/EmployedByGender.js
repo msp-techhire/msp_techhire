@@ -27,7 +27,7 @@ const EmployedByGenderGraph = (props) => {
             options={{
                 title: {
                     display: true,
-                    text: 'Number Employed By Gender',
+                    text: 'Number Employed',
                     fontSize: 25,
                 },
                 legend: {
