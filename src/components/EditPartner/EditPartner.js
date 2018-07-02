@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
 import Nav from '../../components/Nav/Nav';
-
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import PartnerDropdown from './PartnerDropdown/PartnerDropdown';
 import { triggerLogout } from '../../redux/actions/loginActions';
 import NewPartnerForm from './NewPartnerForm/NewPartnerForm';
 import SelectedPartnerInfo from './SelectedPartnerInfo/SelectedPartnerInfo';
+import Button from '@material-ui/core/Button';
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -189,11 +189,6 @@ class EditPartner extends Component {
   }
 
   getPartnerData = (id) => {
-    // let action = {
-    //   type: USER_ACTIONS.GET_SELECTED_PARTNER_DATA,
-    //   payload: id,
-    // };
-    // this.props.dispatch(action);
     axios({
       method: 'GET',
       url: `/api/editPartner/partnerInfo/${id}`,
@@ -216,8 +211,6 @@ class EditPartner extends Component {
       .catch(err => console.log(err));
   }
 
-
-
   render() {
     let content = null;
 
@@ -225,7 +218,7 @@ class EditPartner extends Component {
       content = (
         <div id="editPartnerPage">
 
-          <h1>Select A Partner</h1>
+          <h1 id="textSelectPartner">Select A Partner</h1>
           <PartnerDropdown
             partners={this.state.partnerList}
             selectPartnerFromDropdown={this.selectPartnerFromDropdown}
@@ -240,7 +233,7 @@ class EditPartner extends Component {
             closeEditPartnerModal={this.closeEditPartnerModal}
             show={this.state.editPartnerModal.open}
           />
-          <button value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</button>
+          <Button id="addNewPartnerButton" variant="outlined" value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</Button>
 
           <NewPartnerForm
             show={this.state.newPartnerModal.open}
@@ -250,10 +243,6 @@ class EditPartner extends Component {
             handleChange={this.handleFormChange}
             newOrg={this.state.newOrg}
           />
-
-
-
-          <button id="logoutButton" onClick={this.logout}>Log Out</button>
         </div>
       );
     }
