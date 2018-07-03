@@ -29,6 +29,10 @@ class EditPartner extends Component {
       newUserModal: {
         open: false
       },
+      newUser: {
+        username: '',
+        password: '',
+      },
       selectedPartnerID: this.props.selectedPartner.id,
       partnerList: [],
       partnerStats: {},
@@ -65,6 +69,9 @@ class EditPartner extends Component {
     if (this.state.selectedPartnerID === undefined) {
       this.getPartnerData(1);
       this.getPartnerStats(1);
+      this.setState({
+        selectedPartnerID: 1
+      });
     }
   }
 
@@ -178,9 +185,24 @@ class EditPartner extends Component {
   /* FUNCTION FOR NEW USER */
   /* ------------------------------ */
 
+  handleNewUserChange = (event) => {
+    this.setState({
+      newUser: {
+        ...this.state.newUser,
+        [event.target.name]: event.target.value
+      }
+    });
+  }
+
   addNewUser = (event) => {
     event.preventDefault();
-    console.log('Button Clicked')
+    const objectToSend = {
+      id: this.state.selectedPartnerID,
+      username: this.state.newUser.username,
+      password: this.state.newUser.password,
+    };
+    console.log(objectToSend);
+    this.closeNewUserModal();
   }
 
   /* ------------------------------ */
@@ -231,6 +253,7 @@ class EditPartner extends Component {
     })
       .then((result) => {
         let selectedPartner = result.data[0];
+        console.log(selectedPartner);
         this.setState({
           selectedPartner: {
             orgName: selectedPartner.org_name,
@@ -288,6 +311,7 @@ class EditPartner extends Component {
             newUserShow={this.state.newUserModal.open}
             openNewUserModal={this.openNewUserModal}
             closeNewUserModal={this.closeNewUserModal}
+            handleNewUserChange={this.handleNewUserChange}
             addNewUser={this.addNewUser}
           />
           <button id="addNewPartnerButton" variant="outlined" value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</button>

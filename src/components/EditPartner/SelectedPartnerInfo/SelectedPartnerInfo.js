@@ -48,6 +48,7 @@ const SelectedPartnerInfo = (props) => {
             newUserShow={props.newUserShow}
             closeNewUserModal={props.closeNewUserModal}
             addNewUser={props.addNewUser}
+            handleNewUserChange={props.handleNewUserChange}
         />
     </div>
 }

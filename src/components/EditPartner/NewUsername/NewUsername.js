@@ -30,11 +30,11 @@ const NewUsername = (props) => {
             <form>
                 <div className="formGroupNewUser">
                     <label htmlFor="newUsername">Username</label>
-                    <input id="newUsername" type="text"/>
+                    <input id="newUsername" onChange={props.handleNewUserChange} name="username" type="text"/>
                 </div>
                 <div className="formGroupNewUser">
                     <label htmlFor="newPassword">Password</label>
-                    <input id="newPassword" type="text"/>
+                    <input id="newPassword" onChange={props.handleNewUserChange} name="password" type="text"/>
                 </div>
                 <input type="submit" onClick={props.addNewUser}/>
                 <button type="button" onClick={props.closeNewUserModal}>Close Modal</button>
