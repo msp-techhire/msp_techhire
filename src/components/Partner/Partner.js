@@ -7,8 +7,6 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 import CsvParse from '@vtex/react-csv-parse';
 import swal from 'sweetalert';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
