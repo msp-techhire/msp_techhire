@@ -463,22 +463,30 @@ table, th, td {
 }
 
 .chooseFilePartnerPageButton {
-    width: 320px;
-    height: 40px;
-    font-size: 12px;
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+    .chooseFilePartnerPageButton + label {
+    /* width: 320px;
+    height: 40px; */
+    font-size: 30px;
     color: black;
     margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 20px;
     background: rgb(204, 225, 244);
     box-shadow: 2px 2px 10px 1px  #ccc;
-}
-
-.chooseFilePartnerPageButton:hover {
-    background: rgb(1, 164, 215);
-    box-shadow: 2px 2px 10px 1px  #555555;
-}
-
+    }
+    
+    .chooseFilePartnerPageButton + label:hover {
+            background: rgb(1, 164, 215);
+            box-shadow: 2px 2px 10px 1px  #555555;
+        }
+ 
 #photoPartnerPage {
     background:  url('/images/pathway.jpg');
     background-size: 90%;
