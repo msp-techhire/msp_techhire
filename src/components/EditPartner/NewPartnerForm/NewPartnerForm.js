@@ -48,12 +48,12 @@ const NewPartnerForm = (props) => {
 
                     <div className="formGroup">
                     <label htmlFor="newOrgCity">City</label>
-                    <input onChange={props.handleChange} type="text" name="orgCity" id="newOrgCity" value={props.newOrg.orgAddress}/>
+                    <input onChange={props.handleChange} type="text" name="orgCity" id="newOrgCity" value={props.newOrg.orgCity}/>
                     </div>
 
                     <div className="formGroup">
                     <label htmlFor="newOrgZip">Zip</label>
-                    <input onChange={props.handleChange} type="text" name="orgZip" id="newOrgZip" value={props.newOrg.orgAddress}/>
+                    <input onChange={props.handleChange} type="text" name="orgZip" id="newOrgZip" value={props.newOrg.orgZip}/>
                     </div>
 
                     <div className="formGroup">
