@@ -1,20 +1,10 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-const graphStyle = {
-    width: '29%',
-    maxWidth: 600,
-    height: 300,
-    margin: '0 auto',
-    padding: 30,
-    display: 'inline-block',
-}
-
-
 const POCGraph = (props) => {
 
         return (
-            <div style={graphStyle}>
+            <div classNmae="graphDisplaySummaryPage">
                 <Bar
                     data={{labels: ['True', 'False', 'Unnreported'],
                     datasets: [
