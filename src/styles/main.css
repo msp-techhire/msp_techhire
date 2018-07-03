@@ -436,10 +436,54 @@ table, th, td {
     text-align: left;
 }
 
-.wageGrowthDiv {
+.factsWrapperStudentGraphs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+ /* {
+
+    maxWidth: 600,
+    height: 300,
+    margin: '0 auto',
+    padding: 30,
+    display: 'inline-block',
+} */
+
+.graphDisplaySummaryPage {
+    width: 600;
+    height: 600;
+    margin: '0 auto';
+    padding: 30;
+    display: 'inline-block';
+
+
+    /* background-size: 100%;
+    height: 150px;
+    min-width: 975px;
+    margin-top: 8px; */
+
+    /* display: block; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wageGrowthDivBlue {
     display: inline-block;
     max-width: 340px;
-    background-color: rgba(1, 164, 215, 0.6);
+    background: rgba(1, 164, 215, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+    margin-left: 20px;
+    color: #555555;
+}
+
+.wageGrowthDivGreen {
+    display: inline-block;
+    max-width: 340px;
+    background: rgb(176, 189, 99);
     border-radius: 10px;
     padding: 15px;
     margin-left: 20px;
@@ -505,9 +549,9 @@ table, th, td {
     border-collapse: collapse;
 }
 
-/* ------- need to edit ------- */
+/* ------- need to edit partner table dynamics and input button ------- */
 
-table, th, td {
+/* table, th, td {
     border: 1px solid #ccc;
 }
 
@@ -534,4 +578,4 @@ table, th, td {
 
 #cellWidthAdminTable {
     width: 10px;
-}
+} */
