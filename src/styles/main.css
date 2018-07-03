@@ -7,20 +7,15 @@ body {
     font-weight: 700;
 }
 
-/* MuiTypography-root-32 MuiTypography-title-38 MuiTypography-colorInherit-51 MuiTypography-noWrap-48 {
-    background:  url('/images/city_photo_two.jpg');
-    background-size: 83% auto;
-    height: 300px;
-    width: auto;
-    background-repeat: no-repeat;
-    margin-top: 8px;
-    margin-left: 50px;
-} */
+.appWrap {
+    width: 85%;
+    margin: 0 auto;
+}
 
 /* ----------- login ------------- */
 
 #logoLogin {
-    background:  url('/images/logoLogin.png');
+    background: url('/images/logoLogin.png');
     background-size: 400px 300px;
     height: 300px;
     width: 400px; 
@@ -31,21 +26,23 @@ body {
     width: 250px;
     height: 200px;
     padding: 25px;
-    border-radius: 2px;
+    border-radius: 25px;
     letter-spacing: 2px;
-margin-left: 45px;
+    margin-left: 45px;
+    color: #555555;
+    font-size: 14px;
 }
 
 #textLogin {
-    margin-left: 40px;
+    margin-left: 25px;
 }
 
 #textUsername {
-    margin-left: 40px;
+    margin-left: 25px;
 }
 
 #textPassword {
-    margin-left: 40px;
+    margin-left: 25px;
 }
 
 .logInInput {
@@ -80,29 +77,57 @@ input[type="submit"] {
 
 .wrapperGridLogin {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    margin-top: 100px;
-    margin-left: auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 60px;
+    margin-left: 175px;
+    grid-gap: 20px;
+    width: 80%;
 }
 
-.wrapperGridPhotoLogin {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    margin-top: 100px;
-    margin-left: auto;
-}
-
-#loginPhoto {
+#loginPhotoCity {
     background:  url('/images/city_photo_two.jpg');
-    background-size: 83% auto;
-    height: 300px;
-    width: auto;
+    background-size: 100%;
+    height: 150px;
+    min-width: 975px;
     background-repeat: no-repeat;
     margin-top: 8px;
-    margin-left: 50px
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#photoPathwayLoginPage {
+    background:  url('/images/pathway.jpg');
+    background-size: 100%;
+    height: 150px;
+    min-width: 975px;
+    background-repeat: no-repeat;
+    margin-top: 30px;
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 /* -------------- ----------------- */
+
+.MuiToolbar-root-8 {
+    background:  url('/images/pathway.jpg');
+    background-size: 100%;
+    height: 150px;
+    min-width: 975px;
+    background-repeat: no-repeat;
+}
+
+.MuiIconButton-label-15 {
+    background: white;
+    height: 45px;
+    border-radius: 25px;
+
+}
 
 .navbar {
   background-color: #00acb0;
@@ -164,12 +189,12 @@ li a:hover {
 #selectedPartnerTable {
     text-align: center;
     border-collapse: collapse;
+    margin-left: 20px;
 }
 
 #selectedPartnerTable td,
 #selectedPartnerTable th {
     border: 1px solid #ccc;
-
 }
 
 #selectPartnerTableHead {
@@ -179,7 +204,6 @@ li a:hover {
 #editPartnerPage form {
     width: 60%;
     text-align: left;
-    
 }
 
 .formGroup {
@@ -190,17 +214,19 @@ li a:hover {
     padding-right: 10px;
 }
 
-#textSelectPartner {
+.textSelectPartner {
     color: #555555;
     font-size: 21px;
-    margin: 10px;
+    margin-left: 20px;
+    margin-top: 15px;
 }
 
 #selectedPartnerDropDown {
     width: 320px !important;
     height: 40px !important;
     font-size: 12px;
-    margin: 10px;
+    margin-left: 20px;
+    margin-top: 15px;
     background: rgb(204, 225, 244);
     box-shadow: 2px 2px 10px 1px  #ccc;
 }
@@ -214,7 +240,8 @@ li a:hover {
     width: 320px;
     height: 40px;
     font-size: 12px;
-    margin: 10px;
+    margin-left: 20px;
+    margin-top: 15px;
     background: rgb(204, 225, 244);
     box-shadow: 2px 2px 10px 1px  #ccc;
 }
@@ -228,7 +255,8 @@ li a:hover {
     width: 320px;
     height: 40px;
     font-size: 12px;
-    margin: 10px;
+    margin-left: 20px;
+    margin-top: 15px;
     background: rgb(204, 225, 244);
     box-shadow: 2px 2px 10px 1px  #ccc;
 }
@@ -237,6 +265,35 @@ li a:hover {
     background: rgb(1, 164, 215);
     box-shadow: 2px 2px 10px 1px  #555555;
 }
+
+.factsWrapperPartnerStats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.factsBubblePartnerStats {
+    background: rgb(176, 189, 99);
+    height: 300px; 
+    width: 300px;   
+    border-radius: 50%;
+    letter-spacing: 2px;
+    text-align: center;
+    align-content: center;
+    margin: auto;
+    font-size: 1.2em;
+}
+
+.factsBubblePartnerStats h3 {
+    padding-top: 80px;
+}
+
+#selectedPartnerStatsDiv {
+    margin-top: 120px;
+}
+
+
 
 
 /* ----------admin page ----------- */
@@ -298,8 +355,9 @@ table, th, td {
 }
 
 #searchTableResults {
-    width: 80%;
-    margin: 10px;
+    width: 90%;
+    min-width: 975px;
+    margin: 20px;
     text-align: center;
     font-size: 10px;
     border-collapse: collapse;
@@ -316,6 +374,7 @@ table, th, td {
     color: black;
     margin-left: 20px;
     margin-top: 20px;
+    margin-bottom: 20px;
     background: rgb(204, 225, 244);
     box-shadow: 2px 2px 10px 1px  #ccc;
 }
@@ -323,6 +382,13 @@ table, th, td {
 .jsonButton:hover {
     background: rgb(1, 164, 215);
     box-shadow: 2px 2px 10px 1px  #555555;
+}
+
+#pagesPerSearchDisplay {
+    color: #555555;
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
 }
 
 /* -------------- student edit table on admin page ------------- */
@@ -370,11 +436,146 @@ table, th, td {
     text-align: left;
 }
 
-.wageGrowthDiv {
+.factsWrapperStudentGraphs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+ /* {
+
+    maxWidth: 600,
+    height: 300,
+    margin: '0 auto',
+    padding: 30,
+    display: 'inline-block',
+} */
+
+.graphDisplaySummaryPage {
+    width: 600;
+    height: 600;
+    margin: '0 auto';
+    padding: 30;
+    display: 'inline-block';
+
+
+    /* background-size: 100%;
+    height: 150px;
+    min-width: 975px;
+    margin-top: 8px; */
+
+    /* display: block; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wageGrowthDivBlue {
     display: inline-block;
     max-width: 340px;
-    background-color: rgba(1, 164, 215, 0.6);
+    background: rgba(1, 164, 215, 0.6);
     border-radius: 10px;
     padding: 15px;
     margin-left: 20px;
+    color: #555555;
 }
+
+.wageGrowthDivGreen {
+    display: inline-block;
+    max-width: 340px;
+    background: rgb(176, 189, 99);
+    border-radius: 10px;
+    padding: 15px;
+    margin-left: 20px;
+    color: #555555;
+}
+
+/* ---------- Partner Page ---------- */
+
+.partnerTextTopOfPage {
+    color: #555555;
+    font-size: 21px;
+    font-weight: bold;
+    margin: 20px;
+} 
+
+.partnerTextDownloadFiles {
+    color: #555555;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.chooseFilePartnerPageButton {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+    .chooseFilePartnerPageButton + label {
+    /* width: 320px;
+    height: 40px; */
+    font-size: 30px;
+    color: black;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background: rgb(204, 225, 244);
+    box-shadow: 2px 2px 10px 1px  #ccc;
+    }
+    
+    .chooseFilePartnerPageButton + label:hover {
+            background: rgb(1, 164, 215);
+            box-shadow: 2px 2px 10px 1px  #555555;
+        }
+ 
+#photoPartnerPage {
+    background:  url('/images/pathway.jpg');
+    background-size: 90%;
+    height: 150px;
+    min-width: 975px;
+    background-repeat: no-repeat;
+    margin-top: 8px;
+    margin-left: 20px;
+}
+
+#partnerTableResults {
+    width: 80%;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+
+/* ------- need to edit partner table dynamics and input button ------- */
+
+/* table, th, td {
+    border: 1px solid #ccc;
+}
+
+#tableHeader {
+    background: rgb(176, 189, 99);
+}
+
+#onHoverTableHighlight{
+    background: whitesmoke;
+}
+
+#onHoverTableHighlight:hover {
+    background: rgb(204, 225, 244);
+}
+
+#searchTableResults {
+    width: 90%;
+    min-width: 975px;
+    margin: 20px;
+    text-align: center;
+    font-size: 10px;
+    border-collapse: collapse;
+}
+
+#cellWidthAdminTable {
+    width: 10px;
+} */

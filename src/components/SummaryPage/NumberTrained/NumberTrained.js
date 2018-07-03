@@ -7,6 +7,7 @@ import WageGainData from './WageGainByTrack/WageGainByTrack';
 
 const NumberTrained = (props) => {
     return <div>
+        <div className="factsWrapperStudentGraphs">
             <GenderGraph
                 trainingData={props.trainingData}
             />
@@ -19,6 +20,7 @@ const NumberTrained = (props) => {
             <EmployedByGenderGraph
                 trainingData={props.trainingData}
             />
+            </div>
         <WageGainData
             wageGainData={props.wageGainData}
         />

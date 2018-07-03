@@ -337,7 +337,7 @@ class AdminPage extends Component {
               </TableBody>
             </Table>
           </div>
-          <div style={{ textAlign: "center" }}>
+          <div id="pagesPerSearchDisplay" style={{ textAlign: "center" }}>
             {pages}<br />
             Total results: {this.state.resultsLength}
           </div>

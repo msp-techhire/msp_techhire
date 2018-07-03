@@ -6,13 +6,11 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
 
 const SelectedPartnerInfo = (props) => {
 
     return <div>
-        <h1 id="textSelectPartner">Partner Information</h1>
-        <Paper>
+        <h1 className="textSelectPartner">Partner Information</h1>
             <Table id="selectedPartnerTable">
                 <TableHead id="selectPartnerTableHead">
                     <TableRow>
@@ -35,8 +33,7 @@ const SelectedPartnerInfo = (props) => {
                     </TableRow>
                 </TableBody>
             </Table>
-        </Paper >
-        <Button id="editPartnerInformationButton" variant="outlined" onClick={props.openEditPartnerModal}>Edit Partner Information</Button>
+        <button id="editPartnerInformationButton" variant="outlined" onClick={props.openEditPartnerModal}>Edit Partner Information</button>
         <EditPartnerInfoForm
             show={props.show}
             closeEditPartnerModal={props.closeEditPartnerModal}

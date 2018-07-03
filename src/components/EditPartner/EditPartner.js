@@ -7,7 +7,7 @@ import PartnerDropdown from './PartnerDropdown/PartnerDropdown';
 import { triggerLogout } from '../../redux/actions/loginActions';
 import NewPartnerForm from './NewPartnerForm/NewPartnerForm';
 import SelectedPartnerInfo from './SelectedPartnerInfo/SelectedPartnerInfo';
-import Button from '@material-ui/core/Button';
+import SelectedPartnerStats from './SelectedPartnerStats/SelectedPartnerStats';
 
 
 const mapStateToProps = state => ({
@@ -28,6 +28,7 @@ class EditPartner extends Component {
       },
       selectedPartnerID: this.props.selectedPartner.id,
       partnerList: [],
+      partnerStats: {},
       newOrg: {
         orgName: '',
         orgAbbreviation: '',
@@ -56,6 +57,7 @@ class EditPartner extends Component {
     this.getPartners();
     if (this.state.selectedPartnerID === undefined) {
       this.getPartnerData(1);
+      this.getPartnerStats(1);
     }
   }
 
@@ -98,6 +100,7 @@ class EditPartner extends Component {
   /* ------------------------------ */
   selectPartnerFromDropdown = (event) => {
     this.getPartnerData(event.target.value);
+    this.getPartnerStats(event.target.value);
     this.setState({
       selectedPartnerID: event.target.value,
     });
@@ -211,18 +214,35 @@ class EditPartner extends Component {
       .catch(err => console.log(err));
   }
 
+  getPartnerStats = (id) => {
+    axios({
+      method: 'GET',
+      url:`/api/editpartner/partnerstats/${id}`
+    })
+    .then(response => {
+      let objectForState = {
+        pre: Number(response.data[0].pre).toFixed(2),
+        post: Number(response.data[0].post).toFixed(2),
+        count: Number(response.data[0].count),
+      }
+      this.setState({
+        partnerStats: objectForState,
+      });
+    })
+    .catch(err => console.log(err));
+  }
+
   render() {
     let content = null;
 
     if (this.props.user.userName) {
       content = (
-        <div id="editPartnerPage">
+        <div id="editPartnerPage" className="appWrap">
 
-          <h1 id="textSelectPartner">Select A Partner</h1>
+          <h1 className="textSelectPartner">Select A Partner</h1>
           <PartnerDropdown
             partners={this.state.partnerList}
             selectPartnerFromDropdown={this.selectPartnerFromDropdown}
-            getPartnerData={this.getPartnerData}
           />
           <SelectedPartnerInfo
             selectedPartner={this.state.selectedPartner}
@@ -233,7 +253,7 @@ class EditPartner extends Component {
             closeEditPartnerModal={this.closeEditPartnerModal}
             show={this.state.editPartnerModal.open}
           />
-          <Button id="addNewPartnerButton" variant="outlined" value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</Button>
+          <button id="addNewPartnerButton" variant="outlined" value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</button>
 
           <NewPartnerForm
             show={this.state.newPartnerModal.open}
@@ -242,6 +262,9 @@ class EditPartner extends Component {
             handleSubmit={this.handleFormSubmit}
             handleChange={this.handleFormChange}
             newOrg={this.state.newOrg}
+          />
+          <SelectedPartnerStats 
+            partnerStats={this.state.partnerStats}
           />
         </div>
       );
