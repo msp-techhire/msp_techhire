@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-// import Grid from '@material-ui/core/Grid';
 import CsvParse from '@vtex/react-csv-parse';
 import swal from 'sweetalert';
 import axios from 'axios';
@@ -14,6 +13,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { triggerLogout } from '../../redux/actions/loginActions';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -42,7 +42,6 @@ class Partner extends Component {
   handleData = data => {
     this.setState({ data })
     this.deletePerson();
-    // this.postPartnerData();
     this.fetchData();
   }
 
@@ -92,6 +91,11 @@ class Partner extends Component {
     })
   };
 
+  logout = () => {
+    this.props.dispatch(triggerLogout());
+    this.props.history.push('login');
+  }
+
   render() {
     const keys = [
       "formatted_id", "partner_id", "gender", "year_of_birth",
@@ -107,6 +111,9 @@ class Partner extends Component {
     return (
       <div>
         <div id="photoPartnerPage"></div>
+        <Button size="small"
+              onClick={this.logout}>Log Out
+            </Button>
         <h1 className="partnerTextTopOfPage">Partner Page</h1>
         <h2 className="partnerTextDownloadFiles">Download Files</h2>
         <div>
@@ -114,7 +121,8 @@ class Partner extends Component {
           keys={keys}
           onDataUploaded={this.handleData}
           onError={this.handleError}
-          render={onChange => <input className="chooseFilePartnerPageButton" type="file" onChange={onChange}/> }
+          render={onChange => <div><input className="chooseFilePartnerPageButton" type="file" id="file" onChange={onChange} />
+        <label for="file">Add a File</label></div>}
         />
         </div>
         <div>
@@ -153,40 +161,8 @@ class Partner extends Component {
            </TableBody>
           </Table>
         </div>
-        {/* {this.state.data && (
-          <pre>{JSON.stringify(this.state.data, null, 2)}</pre>
-        )}
-
-        {this.state.error && (
-          <pre>{JSON.stringify(this.state.error, null, 2)}</pre>
-        )} */}
       </div>
     )
-    // let content = null;
-    // if (this.props.user.userName) {
-    //   content = (
-
-    //     <div>
-    //         <Grid item xs="12" zeroMinWidth>
-    //             <form onSubmit={this.handleSubmit}>
-    //               <label>
-    //                 Upload file:
-    //                 <input type="file" accept=".csv" /> 
-    //                 {/* ref={input => {this.fileInput = input}} */}
-    //               </label>
-    //               <br />
-    //               <button type="submit">Submit</button>
-    //             </form>
-    //           </Grid>
-    //     </div>
-    //   );
-    // }
-
-    //   return (
-    //     <div>
-    //       { content }
-    //     </div>
-    //   );
   }
 }
 
