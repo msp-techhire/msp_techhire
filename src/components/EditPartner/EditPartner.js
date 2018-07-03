@@ -26,6 +26,9 @@ class EditPartner extends Component {
       editPartnerModal: {
         open: false
       },
+      newUserModal: {
+        open: false
+      },
       selectedPartnerID: this.props.selectedPartner.id,
       partnerList: [],
       partnerStats: {},
@@ -97,6 +100,18 @@ class EditPartner extends Component {
 
   closeEditPartnerModal = () => {
     this.setState({ editPartnerModal: {open: false }});
+  }
+
+  /* ------------------------------ */
+  /* OPEN AND CLOSE NEW USER MODALS */
+  /* ------------------------------ */
+
+  openNewUserModal = () => {
+    this.setState({ newUserModal: {open: true }});
+  }
+
+  closeNewUserModal = () => {
+    this.setState({ newUserModal: {open: false }});
   }
 
   /* ------------------------------ */
@@ -261,6 +276,9 @@ class EditPartner extends Component {
             openEditPartnerModal={this.openEditPartnerModal}
             closeEditPartnerModal={this.closeEditPartnerModal}
             show={this.state.editPartnerModal.open}
+            newUserShow={this.state.newUserModal.open}
+            openNewUserModal={this.openNewUserModal}
+            closeNewUserModal={this.closeNewUserModal}
           />
           <button id="addNewPartnerButton" variant="outlined" value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</button>
 
