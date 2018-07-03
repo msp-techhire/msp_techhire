@@ -210,6 +210,18 @@ li a:hover {
     
 }
 
+.formGroupNewUser label {
+    padding-right: 10px;
+}
+
+.formGroupNewUser input{
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px; 
+    margin: 20px auto 0;
+    width: 50%;
+}
+
 #newOrgPhoneOne,
 #newOrgPhoneTwo,
 #newOrgPhoneThree {

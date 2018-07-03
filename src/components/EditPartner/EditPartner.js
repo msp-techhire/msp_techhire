@@ -175,6 +175,15 @@ class EditPartner extends Component {
   }
 
   /* ------------------------------ */
+  /* FUNCTION FOR NEW USER */
+  /* ------------------------------ */
+
+  addNewUser = (event) => {
+    event.preventDefault();
+    console.log('Button Clicked')
+  }
+
+  /* ------------------------------ */
   /* FUNCTIONS TO EDIT PARTNERS */
   /* ------------------------------ */
   handleEditChange = (event) => {
@@ -279,6 +288,7 @@ class EditPartner extends Component {
             newUserShow={this.state.newUserModal.open}
             openNewUserModal={this.openNewUserModal}
             closeNewUserModal={this.closeNewUserModal}
+            addNewUser={this.addNewUser}
           />
           <button id="addNewPartnerButton" variant="outlined" value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</button>
 

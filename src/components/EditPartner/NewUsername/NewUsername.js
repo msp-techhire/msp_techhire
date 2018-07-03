@@ -27,9 +27,18 @@ const NewUsername = (props) => {
     return <div style={backDropStyle}>
         <div style={modalStyle}>
             <h1>Hello New User</h1>
-            <input type="text"/>
-            <input type="text"/>
-            <button onClick={props.closeNewUserModal}>Close</button>
+            <form>
+                <div className="formGroupNewUser">
+                    <label htmlFor="newUsername">Username</label>
+                    <input id="newUsername" type="text"/>
+                </div>
+                <div className="formGroupNewUser">
+                    <label htmlFor="newPassword">Password</label>
+                    <input id="newPassword" type="text"/>
+                </div>
+                <input type="submit" onClick={props.addNewUser}/>
+                <button type="button" onClick={props.closeNewUserModal}>Close Modal</button>
+            </form>
         </div>
     </div>
 }
