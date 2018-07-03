@@ -62,8 +62,10 @@ const NewPartnerForm = (props) => {
                     </div>
 
                     <div className="formGroup">
-                    <label htmlFor="newOrgPhone">Phone Number</label>
-                    <input onChange={props.handleChange} type="text" name="orgPhone" id="newOrgPhone" value={props.newOrg.orgPhone}/>
+                    <label htmlFor="newOrgPhone1">Phone Number</label>
+                    <input onChange={props.handleChange} type="text" name="orgPhoneAreaCode" id="newOrgPhone1" value={props.newOrg.orgPhoneAreaCode}/>
+                    <input onChange={props.handleChange} type="text" name="orgPhoneFirstThree" id="newOrgPhone2" value={props.newOrg.orgPhoneFirstThree}/>
+                    <input onChange={props.handleChange} type="text" name="orgPhoneLastFour" id="newOrgPhone3" value={props.newOrg.orgPhoneLastFour}/>
                     </div>
 
                     <div className="formGroup">

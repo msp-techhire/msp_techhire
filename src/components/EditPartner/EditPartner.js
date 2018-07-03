@@ -36,7 +36,9 @@ class EditPartner extends Component {
         orgCity: '',
         orgZip: '',
         orgWebsite: '',
-        orgPhone: '',
+        orgPhoneAreaCode: '',
+        orgPhoneFirstThree: '',
+        orgPhoneLastFour: '',
         directorFirst: '',
         directorLast: '',
         businessType: ''
@@ -123,7 +125,8 @@ class EditPartner extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     if (this.state.newOrg.orgName === '' || this.state.newOrg.orgAbbreviation === '' || this.state.newOrg.orgAddress === '' ||
-      this.state.newOrg.orgZip === '' || this.state.newOrg.orgCity === '' || this.state.newOrg.orgWebsite === '' || this.state.newOrg.orgPhone === '' || this.state.newOrg.directorFirst === '' ||
+      this.state.newOrg.orgZip === '' || this.state.newOrg.orgCity === '' || this.state.newOrg.orgWebsite === '' || this.state.newOrg.orgPhoneAreaCode === '' || 
+      this.state.newOrg.orgPhoneFirstThree === '' || this.state.newOrg.orgPhoneLastFour === '' || this.state.newOrg.directorFirst === '' ||
       this.state.newOrg.directorLast === '' || this.state.newOrg.businessType === '') {
       return alert('Please complete all fields!');
     }
@@ -142,7 +145,9 @@ class EditPartner extends Component {
             orgCity: '',
             orgZip: '',
             orgWebsite: '',
-            orgPhone: '',
+            orgPhoneAreaCode: '',
+            orgPhoneFirstThree: '',
+            orgPhoneLastFour: '',
             directorFirst: '',
             directorLast: '',
             businessType: '',
