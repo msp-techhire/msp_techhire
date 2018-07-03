@@ -89,6 +89,7 @@ class AdminPage extends Component {
         'second_starting_wage'
       ],
       searchCounter: 0,
+      searchFields: [],
     }
   }
 
@@ -142,6 +143,7 @@ class AdminPage extends Component {
     let divElement = document.createElement('div');
     divElement.setAttribute('id', 'search-' + this.state.searchCounter)
     selectElement.setAttribute('class', 'il-block');
+    selectElement.setAttribute('id', `drop-${this.state.searchCounter}`);
     for (let i = 0; i < 23; i++) {
       let optionElement = document.createElement('option');
       optionElement.setAttribute('value', this.state.personColumnNames[i]);
@@ -151,46 +153,16 @@ class AdminPage extends Component {
     let inputElement = document.createElement('input');
     let deleteSearch = document.createElement('button');
     let node = `document.getElementById('search-${this.state.searchCounter}')`;
-    deleteSearch.setAttribute('onclick', `${node}.parentElement.removeChild(${node})`);
+    deleteSearch.setAttribute('onclick', `${node}.parentElement.removeChild(${node}); `);
     deleteSearch.innerHTML = 'Remove';
     divElement.append(selectElement);
     divElement.append(inputElement);
     divElement.append(deleteSearch);
     newParent.append(divElement);
     this.setState({
-      searchCounter: this.state.searchCounter + 1
+      searchFields: [...this.state.searchFields, `search-${this.state.searchCounter}`],
+      searchCounter: this.state.searchCounter + 1,
     });
-  }
-
-  dropDown = id => {
-    return <div className="il-block" id={"drop-" + id}>
-      <select id={"option-" + id}>
-        <option id={id + "-1"} value="formatted_id">Formatted ID</option>
-        <option id={id + "-2"} value="partner_id">Partner ID</option>
-        <option id={id + "-3"} value="year_of_birth">Year of Birth</option>
-        <option id={id + "-4"} value="person_of_color">Person of Color</option>
-        <option id={id + "-5"} value="education_level">Education Level</option>
-        <option id={id + "-6"} value="city_of_residence">City of Residence</option>
-        <option id={id + "-7"} value="scholarship_recipient">Scholarship Recipient</option>
-        <option id={id + "-8"} value="previous_job_experience">Previous Job Experience</option>
-        <option id={id + "-9"} value="pre_training_wage">Pre-training Wage</option>
-        <option id={id + "-10"} value="training_start_date">Training Start Date</option>
-        <option id={id + "-11"} value="training_status">Training Status</option>
-        <option id={id + "-12"} value="training_end_date">Training End Date</option>
-        <option id={id + "-13"} value="training_type">Training Type</option>
-        <option id={id + "-14"} value="exit_status">Exit Status</option>
-        <option id={id + "-15"} value="classroom_or_online">Classroom or Online</option>
-        <option id={id + "-16"} value="start_date">First Job Start Date</option>
-        <option id={id + "-17"} value="title">First Job Title</option>
-        <option id={id + "-18"} value="company">First Company</option>
-        <option id={id + "-19"} value="starting_wage">First Job Starting Wage</option>
-        <option id={id + "-20"} value="second_start_date">Second Job Start Date</option>
-        <option id={id + "-21"} value="second_title">Second Job Title</option>
-        <option id={id + "-22"} value="second_company">Second Company</option>
-        <option id={id + "-23"} value="second_starting_wage">Second Job Starting Wage</option>
-      </select>
-      <input id={"field-" + id} />
-    </div>
   }
 
   getTableColumns = tableName => {
@@ -231,16 +203,22 @@ class AdminPage extends Component {
 
   singleFieldSearch = (event) => {
     event.preventDefault();
-    const name = this.state.fieldName;
-    const query = this.state.fieldSearchQuery;
-    axios.get(`/api/admin/${name}?search=${query}`).then(response => {
-      this.setState({
-        results: response.data
-      });
-    }).catch(error => {
-      console.error(`ERROR trying to GET /api/admin/field/:name?search=[QUERY]:\n${error}`);
-      alert('Error in field search.');
-    });
+    for (let field of this.state.searchFields) {
+      const searchField = document.getElementById(field);
+      if (searchField) {
+        console.log(searchField.childNodes[0].nodeValue);
+      }
+    }
+    // const name = this.state.fieldName;
+    // const query = this.state.fieldSearchQuery;
+    // axios.get(`/api/admin/${name}?search=${query}`).then(response => {
+    //   this.setState({
+    //     results: response.data
+    //   });
+    // }).catch(error => {
+    //   console.error(`ERROR trying to GET /api/admin/field/:name?search=[QUERY]:\n${error}`);
+    //   alert('Error in field search.');
+    // });
   }
 
   handleSearchChange = (event) => {
@@ -301,31 +279,25 @@ class AdminPage extends Component {
           </div>
           <div className="wrapperGridAdmin">
             <div id="inputFieldSearch" className="il-block">
-            <button onClick={() => this.addSearch('advanced-search')}>Add Field</button>
-              <div id="advanced-search" className="il-block">
-                <form onSubmit={this.state.singleFieldSearch}>
-                  <TextField
-                    id="fieldSearch"
-                    onChange={this.handleSearchChange}
-                    name="fieldSearchQuery"
-                    value={this.state.fieldSearchQuery}
-                    label="Search Single Field"
-                    placeholder="Search"
-                    margin="normal" ></TextField>
-                  {buttonDisplayed}
-                </form>
-              </div>
               <div className="il-block">
-                  <TextField
-                    id="addSearch"
-                    onChange={this.handleSearchChange}
-                    name="searchQuery"
-                    value={this.state.searchQuery}
-                    label="Search Everything"
-                    placeholder="Search"
-                    margin="normal" ></TextField>
-                  {buttonDisplayed}
+                <TextField
+                  id="addSearch"
+                  onChange={this.handleSearchChange}
+                  name="searchQuery"
+                  value={this.state.searchQuery}
+                  label="Search Everything"
+                  placeholder="Search"
+                  margin="normal" ></TextField>
+                {buttonDisplayed}
               </div>
+            </div><br />
+            <button onClick={() => this.addSearch('form-items')}>Add Field</button>
+            <div id="advanced-search">
+              <form id="advanced-search-form" autoComplete="off">
+                <div id="form-items">
+                </div>
+                <button onClick={this.singleFieldSearch}>Search</button>
+              </form>
             </div>
             <JsonArrayToCsv convert={this.state.results} />
           </div>
