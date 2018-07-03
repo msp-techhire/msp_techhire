@@ -187,16 +187,43 @@ li a:hover {
 }
 
 #editPartnerPage form {
-    width: 60%;
     text-align: left;
 }
 
 .formGroup {
-    padding: 10px 0;
+    padding: 3px 0;
 }
 
 .formGroup label {
     padding-right: 10px;
+    width: 250px;
+    display: inline-block;
+    text-align: right;
+}
+
+.formGroup input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 20px auto 0;
+    width: 50%;
+    
+}
+
+#newOrgPhoneOne,
+#newOrgPhoneTwo,
+#newOrgPhoneThree {
+    display: inline-block;
+    margin-right: 7px;
+}
+
+#newOrgPhoneOne,
+#newOrgPhoneTwo {
+    width: 40px;
+}
+
+#newOrgPhoneThree {
+    width: 50px;
 }
 
 .textSelectPartner {
