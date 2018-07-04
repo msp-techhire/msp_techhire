@@ -10,6 +10,31 @@ const { rejectNonAdmins } = require('../modules/authorization-middleware');
 // insert the field name directly into the queryText declaration.
 // -Shely
 const cleanStr = str => str.split(/[^a-z_]/).filter(String).join('');
+const columnList = [
+  'formatted_id',
+  'partner_id',
+  'gender',
+  'year_of_birth',
+  'person_of_color',
+  'Education_level',
+  'city_of_residence',
+  'previous_job_experience',
+  'pre_training_wage',
+  'training_start_date',
+  'training_status',
+  'training_end_date',
+  'training_type',
+  'exit_status',
+  'classroom_or_online',
+  'start_date',
+  'title',
+  'company',
+  'starting_wage',
+  'second_start_date',
+  'second_title',
+  'second_company',
+  'second_starting_wage'
+];
 
 // GET
 
@@ -48,10 +73,9 @@ router.get('/', rejectNonAdmins, (req, res) => {
   });
 });
 
-router.get('/field/:name', rejectNonAdmins, (req, res) => {
-  if (req.isAuthenticated()) {
-    const field = cleanStr(req.params.name); // Avoid malicious SQL injection
-    // have a checker to verify that only the columns 
+router.get('/field/:name', (req, res) => {
+  const field = cleanStr(req.params.name); // Avoid malicious SQL injection
+  if (columnList.includes(field)) {
     const search = `${req.query.search}`;
 
     let queryText = `SELECT * FROM "person" WHERE "${field}"::text ILIKE $1::text;`;
@@ -59,11 +83,9 @@ router.get('/field/:name', rejectNonAdmins, (req, res) => {
     pool.query(queryText, [search]).then(result => {
       res.send(result.rows);
     }).catch(error => {
-      console.error(`ERROR trying to GET /api/admin/:name: ${error}`);
+      console.error(`ERROR trying to GET /api/admin/:name?search=[query]: ${error}`);
       res.sendStatus(500);
     });
-  } else {
-    res.sendStatus(403);
   }
 });
 
@@ -74,6 +96,6 @@ router.get('/full/:name', (req, res) => {
 
     let personQueryText = `SELECT * FROM "person" WHERE "${field}"::text ILIKE $1::text;`
   }
-})
+});
 
 module.exports = router;
