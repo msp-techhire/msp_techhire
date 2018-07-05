@@ -201,6 +201,7 @@ class EditPartner extends Component {
       username: this.state.newUser.username,
       password: this.state.newUser.password,
     };
+
     axios({
       method: 'POST',
       url: '/api/editPartner/newUser',
@@ -259,6 +260,7 @@ class EditPartner extends Component {
     })
       .then((result) => {
         let selectedPartner = result.data[0];
+        console.log(selectedPartner);
         this.setState({
           selectedPartner: {
             orgName: selectedPartner.org_name,
