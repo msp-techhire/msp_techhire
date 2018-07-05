@@ -18,6 +18,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Edit from '@material-ui/icons/Edit';
+import CreateNewAdmin from './CreateNewAdmin/CreateNewAdmin';
 
 // import Modal from './modal/modal';
 
@@ -42,6 +43,11 @@ class AdminPage extends Component {
       fieldSearchQuery: '',
       fieldName: '',
       editStudent: {},
+      newAdmin: {
+        show: false,
+        username: '',
+        password: '',
+      },
       personColumns: [
         'Formatted ID',
         'Partner ID',
@@ -487,6 +493,44 @@ class AdminPage extends Component {
   }
 
   /*
+  openNewAdmin = () => {
+    this.setState({
+      newAdmin: {
+        show: true
+      }
+    });
+  }
+
+  closeNewAdmin = () => {
+    this.setState({
+      newAdmin: {
+        show: false
+      }
+    });
+  }
+
+  addNewAdmin = () => {
+    axios({
+      method: 'POST',
+      url: '/api/summary/newAdmin',
+      data: {
+        username: this.state.newAdmin.username,
+        password: this.state.newAdmin.password,
+      }
+    })
+    .then(response => this.closeNewAdmin())
+    .catch(err => console.log(err))
+  }
+
+  handleNewAdminChange = (event) => {
+    this.setState({
+      newAdmin: {
+        ...this.state.newAdmin,
+        [event.target.name]: event.target.value
+      }
+    });
+  }
+
   setNewAttribute = (id, attribute, value) => {
     let element = document.getElementById(id);
     element.setAttribute(attribute, value);
@@ -760,6 +804,13 @@ class AdminPage extends Component {
             {pages}<br />
             Total results: {this.state.resultsLength}
           </div>
+          <button onClick={this.openNewAdmin}>Add New Admin Account</button>
+          <CreateNewAdmin 
+            addNewAdmin={this.addNewAdmin}
+            closeNewAdmin={this.closeNewAdmin}
+            newAdmin={this.state.newAdmin}
+            handleNewAdminChange={this.handleNewAdminChange}
+          />
         </div>
       );
     }

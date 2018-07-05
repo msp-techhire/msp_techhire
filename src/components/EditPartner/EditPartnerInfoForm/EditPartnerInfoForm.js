@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 const backDropStyle = {
     position: 'fixed',
@@ -75,8 +76,10 @@ const EditPartnerInfoForm = (props) => {
                     </select>
                 </div>
             </form>
-            <button onClick={() => props.updatePartnerInfo(Number(props.selectedPartnerID))}>Update Partner Info</button>
-            <button onClick={props.closeEditPartnerModal}>Close Edit Page</button>
+            <div className="buttonDiv">
+                <Button variant="raised" color="primary" onClick={() => props.updatePartnerInfo(Number(props.selectedPartnerID))}>Update Partner Info</Button>
+                <Button variant="raised" color="secondary" onClick={props.closeEditPartnerModal}>Close Edit Page</Button>
+            </div>
         </div>
     </div>
 }
