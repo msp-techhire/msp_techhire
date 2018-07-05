@@ -73,7 +73,7 @@ router.get('/', rejectNonAdmins, (req, res) => {
   });
 });
 
-router.get('/field/:name', (req, res) => {
+router.get('/field/:name', rejectNonAdmins, (req, res) => {
   const field = cleanStr(req.params.name); // Avoid malicious SQL injection
   if (columnList.includes(field)) {
     const search = `${req.query.search}`;
@@ -89,13 +89,46 @@ router.get('/field/:name', (req, res) => {
   }
 });
 
-router.get('/full/:name', (req, res) => {
+router.get('/full/:name', rejectNonAdmins, (req, res) => {
   if (req.isAuthenticated()) {
     const field = cleanStr(req.params.name); // Avoid malicious SQL injection
     const search = `${req.query.search}`;
 
     let personQueryText = `SELECT * FROM "person" WHERE "${field}"::text ILIKE $1::text;`
   }
+});
+
+router.get('/id/:id', rejectNonAdmins, (req, res) => {
+  pool.query(`SELECT * FROM "person" WHERE "id" = $1;`, [req.params.id]).then(result => {
+    res.send(result.rows);
+  }).catch(error => {
+    console.error(`ERROR trying to GET /api/admin/id/:id: ${error}`);
+    res.sendStatus(500);
+  });
+});
+
+// router.put('/id/:id', rejectNonAdmins, (req, res) => {
+//   let id = req.params.id;
+//   let editInfo = req.body;
+//   const queryText = `UPDATE "person" SET 
+//     "formatted_id" = $1, 
+//     "partner_id" = $2,
+//     "gender" = $3,
+//     "year_of_birth" = $4,
+//     "person_of_color" = $5,
+//     "education_level" = $6,
+//     "city_of_residence = $7,
+//     "scholarship_recipient" = $8,
+//     "`
+// })
+
+router.get(`/partners`, rejectNonAdmins, (req, res) => {
+  pool.query(`SELECT "id", "org_name" FROM "partner";`).then(result => {
+    res.send(result.rows);
+  }).catch(error => {
+    console.error(`ERROR trying to GET /api/admin/partners: ${error}`);
+    res.sendStatus(500);
+  });
 });
 
 module.exports = router;
