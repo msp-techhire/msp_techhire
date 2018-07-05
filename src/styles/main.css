@@ -12,6 +12,15 @@ body {
     margin: 0 auto;
 }
 
+.buttonDiv {
+    margin-top: 20px;
+}
+
+.buttonDiv :last-child{
+    margin-left: 20px;
+}
+
+
 /* ----------- login ------------- */
 
 #logoLogin {
