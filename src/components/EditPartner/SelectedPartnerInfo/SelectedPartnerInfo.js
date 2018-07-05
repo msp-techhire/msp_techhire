@@ -5,7 +5,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import NewUsername from '../NewUsername/NewUsername';
 
 const SelectedPartnerInfo = (props) => {
 
@@ -20,6 +20,7 @@ const SelectedPartnerInfo = (props) => {
                         <TableCell>Business Type</TableCell>
                         <TableCell>Phone Number</TableCell>
                         <TableCell>Website</TableCell>
+                        <TableCell>Add Username</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -30,6 +31,7 @@ const SelectedPartnerInfo = (props) => {
                         <TableCell>{props.selectedPartner.businessType}</TableCell>
                         <TableCell>{props.selectedPartner.orgPhone}</TableCell>
                         <TableCell>{props.selectedPartner.orgWebsite}</TableCell>
+                        <TableCell><button onClick={props.openNewUserModal}>Add User</button></TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
@@ -41,6 +43,12 @@ const SelectedPartnerInfo = (props) => {
             handleEditChange={props.handleEditChange}
             updatePartnerInfo={props.updatePartnerInfo}
             selectedPartnerID={props.selectedPartnerID}
+        />
+        <NewUsername
+            newUserShow={props.newUserShow}
+            closeNewUserModal={props.closeNewUserModal}
+            addNewUser={props.addNewUser}
+            handleNewUserChange={props.handleNewUserChange}
         />
     </div>
 }

@@ -50,11 +50,13 @@ router.put('/updatePartner/:id', rejectNonAdmins, (req, res) => {
 
 router.post('/newPartner', rejectNonAdmins, (req, res) => {
     let newPartner = req.body;
+    newPartner.updatedAddress = `${newPartner.orgAddress}, ${newPartner.orgCity}, MN ${newPartner.orgZip}`;
+    newPartner.orgPhone = `(${newPartner.orgPhoneAreaCode}) ${newPartner.orgPhoneFirstThree}-${newPartner.orgPhoneLastFour}`;
+    console.log(newPartner);
     const queryText = `INSERT INTO "partner" ("org_name", "org_abbr", "address", "phone_number",
                         "website", "director_first_name", "director_last_name", "business_type")
                         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
-    console.log(newPartner);
-    pool.query(queryText, [newPartner.orgName, newPartner.orgAbbreviation, newPartner.orgAddress, 
+    pool.query(queryText, [newPartner.orgName, newPartner.orgAbbreviation, newPartner.updatedAddress, 
         newPartner.orgPhone, newPartner.orgWebsite, newPartner.directorFirst, newPartner.directorLast,
         newPartner.businessType])
         .then((response) => {
