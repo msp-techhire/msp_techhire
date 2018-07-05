@@ -17,6 +17,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Edit from '@material-ui/icons/Edit';
+import CreateNewAdmin from './CreateNewAdmin/CreateNewAdmin';
 
 // import Modal from './modal/modal';
 
@@ -38,6 +39,11 @@ class AdminPage extends Component {
       fieldSearchQuery: '',
       fieldName: '',
       editStudent: {},
+      newAdmin: {
+        show: false,
+        username: '',
+        password: '',
+      },
       personColumns: [
         'Formatted ID',
         'Partner ID',
@@ -120,6 +126,44 @@ class AdminPage extends Component {
   removeElement = elementId => {
     const element = document.getElementById(elementId);
     element.parentNode.removeChild(element);
+  }
+
+  openNewAdmin = () => {
+    this.setState({
+      newAdmin: {
+        show: true
+      }
+    });
+  }
+
+  closeNewAdmin = () => {
+    this.setState({
+      newAdmin: {
+        show: false
+      }
+    });
+  }
+
+  addNewAdmin = () => {
+    axios({
+      method: 'POST',
+      url: '/api/summary/newAdmin',
+      data: {
+        username: this.state.newAdmin.username,
+        password: this.state.newAdmin.password,
+      }
+    })
+    .then(response => this.closeNewAdmin())
+    .catch(err => console.log(err))
+  }
+
+  handleNewAdminChange = (event) => {
+    this.setState({
+      newAdmin: {
+        ...this.state.newAdmin,
+        [event.target.name]: event.target.value
+      }
+    });
   }
 
   setNewAttribute = (id, attribute, value) => {
@@ -301,6 +345,13 @@ class AdminPage extends Component {
             </div>
             <JsonArrayToCsv convert={this.state.results} />
           </div>
+          <button onClick={this.openNewAdmin}>Test Me</button>
+          <CreateNewAdmin 
+            addNewAdmin={this.addNewAdmin}
+            closeNewAdmin={this.closeNewAdmin}
+            newAdmin={this.state.newAdmin}
+            handleNewAdminChange={this.handleNewAdminChange}
+          />
           <div>
             <Table id="searchTableResults">
               <TableHead>
