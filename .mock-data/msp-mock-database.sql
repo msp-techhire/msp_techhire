@@ -1,17 +1,9 @@
 CREATE TYPE current_type AS ENUM ('admin', 'partner');
 
-CREATE TABLE "user" (
-	"id" SERIAL PRIMARY KEY,
-	"username" VARCHAR (80) UNIQUE,
-	"password" VARCHAR(1000),
-	"role" current_type DEFAULT 'partner'
-);
-
 CREATE TYPE business AS ENUM ('For-profit', 'Non-profit', 'School/College', 'other');
 
 CREATE TABLE "partner" (
 	"id" SERIAL PRIMARY KEY,
-	"user_id" INTEGER REFERENCES "user"("id"),
 	"org_name" TEXT UNIQUE,
 	"org_abbr" VARCHAR (5) UNIQUE,
 	"address" TEXT,
@@ -20,6 +12,14 @@ CREATE TABLE "partner" (
 	"director_first_name" VARCHAR (30),
 	"director_last_name" VARCHAR (30),
 	"business_type" business
+);
+
+CREATE TABLE "user" (
+	"id" SERIAL PRIMARY KEY,
+	"partner_id" INTEGER REFERENCES "partner"("id"),
+	"username" VARCHAR (80) UNIQUE,
+	"password" VARCHAR(1000),
+	"role" current_type DEFAULT 'partner'
 );
 
 CREATE TABLE "contact" (
@@ -88,24 +88,25 @@ CREATE TABLE "person" (
 	"second_starting_wage" VARCHAR (10)
 );
 
-INSERT INTO "user" ("username", "password", "role") VALUES
-	('admin', '$2b$10$piO4hPIdiW9b.N3jP8YOzeO7CMrVrHoedywXXEi2WUx6Y/VbMdKyC', 'admin'),
-	('york', '$2b$10$l2y2dqBCGGV1fbvpkwGZJebgQsNAOJa2Fl39w5MyBq7wGkcIrL9U2', 'partner'),
-	('guild', '$2b$10$38bIMd.xOQFDCyDLv5LbYOP3OVaLaDeuNAay/7hF0TC3DP6cCje0u', 'partner'),
-	('prime', '$2b$10$pZJeRzSOJ1JQTjApmiUoveLMyNLbME0FGjO3FAJtSGPOGZLfwCuMq', 'partner'),
-	('futures', '$2b$10$7lTHkjKipKgGzXVjC1tMjez8iI8DBH3LY0bQjGaLMram2/Wblb/W.', 'partner'),
-	('service', '$2b$10$vc/SDovP6VyO4iuyEN4mQebd5c8kAc5TYdmmeLBHyMkfGLnCOhZbu', 'partner'),
-	('schools', '$2b$10$Q72ywka1yQyQHImF3ZmUWeOruFhspmF3GUYCoEJAk7YqVkCkusQl2', 'partner'),
-	('takoda', '$2b$10$41heIVPehMJBD.0UeThGauMOw40xe99xfMmE0olwr9nhkdPGU9bym', 'partner');
+INSERT INTO "partner" ("org_name", "org_abbr", "address", "phone_number", "website", "director_first_name", "director_last_name", "business_type") VALUES
+	('York Solutions', 'Y', '7100 Northland Cir N #202, Minneapolis, MN 55428', '7085318362', 'www.yorksolutions.net', 'Brandi', 'Willis', 'School/College'),
+	('The Software Guild', 'S', '15 S 5th St, Suite #600, Minneapolis, MN 55402', '5023385089', 'www.thesoftwareguild.com', 'Kipp', 'Graham', 'other'),
+	('Prime Digital Academy', 'P', '301 S 4th Ave Suite 577, Minneapolis, MN 55415', '9522228108', 'primeacademy.io', 'Mark', 'Hurlburt', 'For-profit'),
+	('Creating IT Futures', 'C', '3500 Lacey Road Suite 100, Downers Grove, IL 60515', '9528557421', 'www.creatingitfutures.org', 'Sue', 'Wallace', 'Non-profit'),
+	('Jewish Family and Childrens Services', 'J', '5905 Golden Valley Rd, Golden Valley, MN 55422', '9524172111', 'www.jfcsmpls.org', 'Judy', 'Halper', 'other'),
+	('Minnesota Computers for Schools', 'M', '970 Pickett Ave. North Bayport, MN 55003', '6513307985', 'mncfs.org', 'Desiree', 'Culpitt', 'School/College'),
+	('Takoda Institute', 'T', '1845 E Franklin Avenue, Minneapolis, MN 55404', '6123413358', 'www.takoda.org', 'Kimberly', 'Ben Haim', 'For-profit');
 
-INSERT INTO "partner" ("user_id", "org_name", "org_abbr", "address", "phone_number", "website", "director_first_name", "director_last_name", "business_type") VALUES
-	('2', 'York Solutions', 'Y', '7100 Northland Cir N #202, Minneapolis, MN 55428', '7085318362', 'www.yorksolutions.net', 'Brandi', 'Willis', 'School/College'),
-	('3', 'The Software Guild', 'S', '15 S 5th St, Suite #600, Minneapolis, MN 55402', '5023385089', 'www.thesoftwareguild.com', 'Kipp', 'Graham', 'other'),
-	('4', 'Prime Digital Academy', 'P', '301 S 4th Ave Suite 577, Minneapolis, MN 55415', '9522228108', 'primeacademy.io', 'Mark', 'Hurlburt', 'For-profit'),
-	('5', 'Creating IT Futures', 'C', '3500 Lacey Road Suite 100, Downers Grove, IL 60515', '9528557421', 'www.creatingitfutures.org', 'Sue', 'Wallace', 'Non-profit'),
-	('6', 'Jewish Family and Childrens Services', 'J', '5905 Golden Valley Rd, Golden Valley, MN 55422', '9524172111', 'www.jfcsmpls.org', 'Judy', 'Halper', 'other'),
-	('7', 'Minnesota Computers for Schools', 'M', '970 Pickett Ave. North Bayport, MN 55003', '6513307985', 'mncfs.org', 'Desiree', 'Culpitt', 'School/College'),
-	('8', 'Takoda Institute', 'T', '1845 E Franklin Avenue, Minneapolis, MN 55404', '6123413358', 'www.takoda.org', 'Kimberly', 'Ben Haim', 'For-profit');
+INSERT INTO "user" ("partner_id", "username", "password", "role") VALUES
+	(NULL, 'admin', '$2b$10$piO4hPIdiW9b.N3jP8YOzeO7CMrVrHoedywXXEi2WUx6Y/VbMdKyC', 'admin'),
+	('1', 'york', '$2b$10$l2y2dqBCGGV1fbvpkwGZJebgQsNAOJa2Fl39w5MyBq7wGkcIrL9U2', 'partner'),
+	('2', 'guild', '$2b$10$38bIMd.xOQFDCyDLv5LbYOP3OVaLaDeuNAay/7hF0TC3DP6cCje0u', 'partner'),
+	('3', 'prime', '$2b$10$pZJeRzSOJ1JQTjApmiUoveLMyNLbME0FGjO3FAJtSGPOGZLfwCuMq', 'partner'),
+	('4', 'futures', '$2b$10$7lTHkjKipKgGzXVjC1tMjez8iI8DBH3LY0bQjGaLMram2/Wblb/W.', 'partner'),
+	('5', 'service', '$2b$10$vc/SDovP6VyO4iuyEN4mQebd5c8kAc5TYdmmeLBHyMkfGLnCOhZbu', 'partner'),
+	('6', 'schools', '$2b$10$Q72ywka1yQyQHImF3ZmUWeOruFhspmF3GUYCoEJAk7YqVkCkusQl2', 'partner'),
+	('7', 'takoda', '$2b$10$41heIVPehMJBD.0UeThGauMOw40xe99xfMmE0olwr9nhkdPGU9bym', 'partner');
+
 
 INSERT INTO "contact" ("first_name", "last_name", "title", "phone_number", "email") VALUES
 	('Brandi', 'Willis', 'Director', '7085318362', 'bwill@yorksolutions.net'),
