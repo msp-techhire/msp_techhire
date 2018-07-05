@@ -242,6 +242,7 @@ li a:hover {
     font-size: 12px;
     margin-left: 20px;
     margin-top: 15px;
+    margin-bottom: -100px;
     background: rgb(204, 225, 244);
     box-shadow: 2px 2px 10px 1px  #ccc;
 }
@@ -275,9 +276,9 @@ li a:hover {
 
 .factsBubblePartnerStats {
     background: rgb(176, 189, 99);
-    height: 300px; 
-    width: 300px;   
-    border-radius: 50%;
+    height: 200px; 
+    width: 200px;   
+    border-radius: 10px;
     letter-spacing: 2px;
     text-align: center;
     align-content: center;
@@ -293,7 +294,11 @@ li a:hover {
     margin-top: 120px;
 }
 
-
+.selectedPartnerStatsText {
+    margin-top: -20px;
+    color: #3d3d3d;
+    font-size: 20px;
+}
 
 
 /* ----------admin page ----------- */
@@ -443,29 +448,12 @@ table, th, td {
     margin-left: 20px;
 }
 
- /* {
-
-    maxWidth: 600,
-    height: 300,
-    margin: '0 auto',
-    padding: 30,
-    display: 'inline-block',
-} */
-
 .graphDisplaySummaryPage {
     width: 600;
     height: 600;
     margin: '0 auto';
     padding: 30;
     display: 'inline-block';
-
-
-    /* background-size: 100%;
-    height: 150px;
-    min-width: 975px;
-    margin-top: 8px; */
-
-    /* display: block; */
     margin-left: auto;
     margin-right: auto;
 }
@@ -492,6 +480,22 @@ table, th, td {
 
 /* ---------- Partner Page ---------- */
 
+#logOutButton {
+    background: rgb(204, 225, 244);
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 875px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 1px  #ccc;
+
+}
+
+#logOutButton:hover {
+    background: rgb(1, 164, 215);
+    box-shadow: 2px 2px 10px 1px  #555555;
+}
+
 .partnerTextTopOfPage {
     color: #555555;
     font-size: 21px;
@@ -513,12 +517,12 @@ table, th, td {
         overflow: hidden;
         position: absolute;
         z-index: -1;
+        margin-bottom: 20px;
     }
+
     .chooseFilePartnerPageButton + label {
-    /* width: 320px;
-    height: 40px; */
-    font-size: 30px;
-    color: black;
+    font-size: 20px;
+    color: #555555;
     margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 20px;
@@ -533,7 +537,8 @@ table, th, td {
  
 #photoPartnerPage {
     background:  url('/images/pathway.jpg');
-    background-size: 90%;
+    width: 90%;
+    min-width: 975px;
     height: 150px;
     min-width: 975px;
     background-repeat: no-repeat;
@@ -542,11 +547,17 @@ table, th, td {
 }
 
 #partnerTableResults {
-    width: 80%;
-    margin-left: 20px;
+    width: 90%;
+    min-width: 975px;
+    margin: auto;
     text-align: center;
     font-size: 12px;
+    margin-top: 15px;
     border-collapse: collapse;
+}
+
+.MuiTableCell-root-24, .MuiTableCell-body-26{
+    padding: 5px !important;
 }
 
 /* ------- need to edit partner table dynamics and input button ------- */

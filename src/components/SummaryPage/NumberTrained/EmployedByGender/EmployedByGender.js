@@ -1,9 +1,17 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
+const graphStyle = {
+    maxWidth: 600,
+    height: 300,
+    margin: '0 auto',
+    padding: 30,
+    display: 'inline-block',
+    }
+
 const EmployedByGenderGraph = (props) => {
 
-    return <div classNmae="graphDisplaySummaryPage">
+    return <div style = {graphStyle} classNmae="graphDisplaySummaryPage">
         <Bar
             data={{
                 labels: ['Female', 'Male', 'Other', 'Unnreported'],
