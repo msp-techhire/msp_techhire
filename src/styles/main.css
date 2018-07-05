@@ -202,16 +202,55 @@ li a:hover {
 }
 
 #editPartnerPage form {
-    width: 60%;
     text-align: left;
 }
 
 .formGroup {
-    padding: 10px 0;
+    padding: 3px 0;
 }
 
 .formGroup label {
     padding-right: 10px;
+    width: 250px;
+    display: inline-block;
+    text-align: right;
+}
+
+.formGroup input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 20px auto 0;
+    width: 50%;
+    
+}
+
+.formGroupNewUser label {
+    padding-right: 10px;
+}
+
+.formGroupNewUser input{
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px; 
+    margin: 20px auto 0;
+    width: 50%;
+}
+
+#newOrgPhoneOne,
+#newOrgPhoneTwo,
+#newOrgPhoneThree {
+    display: inline-block;
+    margin-right: 7px;
+}
+
+#newOrgPhoneOne,
+#newOrgPhoneTwo {
+    width: 40px;
+}
+
+#newOrgPhoneThree {
+    width: 50px;
 }
 
 .textSelectPartner {
@@ -436,10 +475,54 @@ table, th, td {
     text-align: left;
 }
 
-.wageGrowthDiv {
+.factsWrapperStudentGraphs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+ /* {
+
+    maxWidth: 600,
+    height: 300,
+    margin: '0 auto',
+    padding: 30,
+    display: 'inline-block',
+} */
+
+.graphDisplaySummaryPage {
+    width: 600;
+    height: 600;
+    margin: '0 auto';
+    padding: 30;
+    display: 'inline-block';
+
+
+    /* background-size: 100%;
+    height: 150px;
+    min-width: 975px;
+    margin-top: 8px; */
+
+    /* display: block; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wageGrowthDivBlue {
     display: inline-block;
     max-width: 340px;
-    background-color: rgba(1, 164, 215, 0.6);
+    background: rgba(1, 164, 215, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+    margin-left: 20px;
+    color: #555555;
+}
+
+.wageGrowthDivGreen {
+    display: inline-block;
+    max-width: 340px;
+    background: rgb(176, 189, 99);
     border-radius: 10px;
     padding: 15px;
     margin-left: 20px;
@@ -505,9 +588,9 @@ table, th, td {
     border-collapse: collapse;
 }
 
-/* ------- need to edit ------- */
+/* ------- need to edit partner table dynamics and input button ------- */
 
-table, th, td {
+/* table, th, td {
     border: 1px solid #ccc;
 }
 
@@ -534,4 +617,4 @@ table, th, td {
 
 #cellWidthAdminTable {
     width: 10px;
-}
+} */

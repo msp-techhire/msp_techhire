@@ -7,9 +7,9 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('GET all route', req.user.id);
     if (req.isAuthenticated()) {
-        let queryText = `SELECT "user"."id", "partner"."user_id", "partner"."id", "person".*
+        let queryText = `SELECT "user"."id", "user"."partner_id", "partner"."id", "person".*
         FROM "user"
-        JOIN "partner" ON "user"."id"="partner"."user_id"
+        JOIN "partner" ON "user"."partner_id"="partner"."id"
         JOIN "person" ON "partner"."id"="person"."partner_id"
         WHERE "user"."id" = $1
         ORDER BY "person"."formatted_id" ASC;`
@@ -20,7 +20,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         // ORDER BY "user"."id";`
         pool.query(queryText, [req.user.id])
             .then((result) => {
-                console.log(result.rows)
                 res.send(result.rows);
             }).catch((error) => {
                 console.log('error on GET: ', error);

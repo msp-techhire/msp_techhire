@@ -26,6 +26,13 @@ class EditPartner extends Component {
       editPartnerModal: {
         open: false
       },
+      newUserModal: {
+        open: false
+      },
+      newUser: {
+        username: '',
+        password: '',
+      },
       selectedPartnerID: this.props.selectedPartner.id,
       partnerList: [],
       partnerStats: {},
@@ -33,8 +40,12 @@ class EditPartner extends Component {
         orgName: '',
         orgAbbreviation: '',
         orgAddress: '',
+        orgCity: '',
+        orgZip: '',
         orgWebsite: '',
-        orgPhone: '',
+        orgPhoneAreaCode: '',
+        orgPhoneFirstThree: '',
+        orgPhoneLastFour: '',
         directorFirst: '',
         directorLast: '',
         businessType: ''
@@ -58,6 +69,9 @@ class EditPartner extends Component {
     if (this.state.selectedPartnerID === undefined) {
       this.getPartnerData(1);
       this.getPartnerStats(1);
+      this.setState({
+        selectedPartnerID: 1
+      });
     }
   }
 
@@ -96,6 +110,18 @@ class EditPartner extends Component {
   }
 
   /* ------------------------------ */
+  /* OPEN AND CLOSE NEW USER MODALS */
+  /* ------------------------------ */
+
+  openNewUserModal = () => {
+    this.setState({ newUserModal: {open: true }});
+  }
+
+  closeNewUserModal = () => {
+    this.setState({ newUserModal: {open: false }});
+  }
+
+  /* ------------------------------ */
   /* GET SELECTED PARTNER*/
   /* ------------------------------ */
   selectPartnerFromDropdown = (event) => {
@@ -121,7 +147,8 @@ class EditPartner extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     if (this.state.newOrg.orgName === '' || this.state.newOrg.orgAbbreviation === '' || this.state.newOrg.orgAddress === '' ||
-      this.state.newOrg.orgWebsite === '' || this.state.newOrg.orgPhone === '' || this.state.newOrg.directorFirst === '' ||
+      this.state.newOrg.orgZip === '' || this.state.newOrg.orgCity === '' || this.state.newOrg.orgWebsite === '' || this.state.newOrg.orgPhoneAreaCode === '' || 
+      this.state.newOrg.orgPhoneFirstThree === '' || this.state.newOrg.orgPhoneLastFour === '' || this.state.newOrg.directorFirst === '' ||
       this.state.newOrg.directorLast === '' || this.state.newOrg.businessType === '') {
       return alert('Please complete all fields!');
     }
@@ -137,8 +164,12 @@ class EditPartner extends Component {
             orgName: '',
             orgAbbreviation: '',
             orgAddress: '',
+            orgCity: '',
+            orgZip: '',
             orgWebsite: '',
-            orgPhone: '',
+            orgPhoneAreaCode: '',
+            orgPhoneFirstThree: '',
+            orgPhoneLastFour: '',
             directorFirst: '',
             directorLast: '',
             businessType: '',
@@ -148,6 +179,37 @@ class EditPartner extends Component {
         this.closeNewPartnerModal();
       })
       .catch(err => console.log(err));
+  }
+
+  /* ------------------------------ */
+  /* FUNCTION FOR NEW USER */
+  /* ------------------------------ */
+
+  handleNewUserChange = (event) => {
+    this.setState({
+      newUser: {
+        ...this.state.newUser,
+        [event.target.name]: event.target.value
+      }
+    });
+  }
+
+  addNewUser = (event) => {
+    event.preventDefault();
+    const objectToSend = {
+      id: this.state.selectedPartnerID,
+      username: this.state.newUser.username,
+      password: this.state.newUser.password,
+    };
+
+    axios({
+      method: 'POST',
+      url: '/api/editPartner/newUser',
+      data: objectToSend,
+    })
+    .then(response => console.log(response))
+    .catch(err => console.log(err));
+    this.closeNewUserModal();
   }
 
   /* ------------------------------ */
@@ -198,6 +260,7 @@ class EditPartner extends Component {
     })
       .then((result) => {
         let selectedPartner = result.data[0];
+        console.log(selectedPartner);
         this.setState({
           selectedPartner: {
             orgName: selectedPartner.org_name,
@@ -252,6 +315,11 @@ class EditPartner extends Component {
             openEditPartnerModal={this.openEditPartnerModal}
             closeEditPartnerModal={this.closeEditPartnerModal}
             show={this.state.editPartnerModal.open}
+            newUserShow={this.state.newUserModal.open}
+            openNewUserModal={this.openNewUserModal}
+            closeNewUserModal={this.closeNewUserModal}
+            handleNewUserChange={this.handleNewUserChange}
+            addNewUser={this.addNewUser}
           />
           <button id="addNewPartnerButton" variant="outlined" value="showModal" onClick={this.openNewPartnerModal}>Add New Partner</button>
 
