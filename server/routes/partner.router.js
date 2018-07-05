@@ -89,7 +89,7 @@ VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $1
                 person.year_of_birth, titleCase(person.person_of_color), (person.education_level), 
                 person.city_of_residence, titleCase(person.scholarship_recipient), 
                 person.previous_job_experience, person.pre_training_wage, 
-                person.training_start_date, titleCase(person.training_status), person.training_end_date, 
+                person.training_start_date, (person.training_status), person.training_end_date, 
                 person.training_type, titleCase(person.exit_status), person.classroom_or_online,
                 person.start_date, person.title, person.company, person.starting_wage, 
                 person.second_start_date, person.second_title, person.second_company, 
