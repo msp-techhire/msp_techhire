@@ -778,7 +778,7 @@ class AdminPage extends Component {
                   <TableCell>Company</TableCell>
                   <TableCell>New wage</TableCell>
                   <TableCell>Exit Status</TableCell>
-                  <TableCell>Edit</TableCell>
+                  {/* <TableCell>Edit</TableCell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -794,7 +794,7 @@ class AdminPage extends Component {
                     <TableCell>{person.company}</TableCell>
                     <TableCell>{person.starting_wage}</TableCell>
                     <TableCell>{person.exit_status}</TableCell>
-                    <TableCell><EditStudentModal person={person}/></TableCell>
+                    {/* <TableCell><EditStudentModal person={person}/></TableCell> */}
                   </TableRow>
                 ))}
               </TableBody>
