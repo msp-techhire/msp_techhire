@@ -1,41 +1,19 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/Textfield';
+import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import axios from 'axios';
+import Edit from '@material-ui/icons/Edit';
 
 export default class FormDialog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       person: this.props.person,
-      personColumns: [
-        'ID',
-        'Formatted ID',
-        'Partner ID',
-        'Year of Birth',
-        'Person of Color',
-        'City of Residence',
-        'Scholarship Recipient',
-        'Previous Job Experience',
-        'Pre-training Wage',
-        'Training Start Date',
-        'Training Type',
-        'Exit Status',
-        'Classroom or Online',
-        'First Job Start Date',
-        'First Job Title',
-        'First Company',
-        'First Job Starting Wage',
-        'Second Job Start Date',
-        'Second Job Title',
-        'Second Company',
-        'Second Job Starting Wage',
-      ],
     }
   }
   state = {
@@ -43,7 +21,7 @@ export default class FormDialog extends React.Component {
   };
 
   saveChanges = () => {
-    axios.put('/api/admin', {
+    axios.put(`/api/admin/id/${this.state.person.id}`, {
       body: {
         person: this.state.person,
       },
@@ -64,9 +42,10 @@ export default class FormDialog extends React.Component {
   };
 
   render() {
+    const person = this.state.person;
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>Edit</Button>
+        <Button onClick={this.handleClickOpen}><Edit /></Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -75,9 +54,11 @@ export default class FormDialog extends React.Component {
           <DialogTitle id="form-dialog-title">Edit Student Information</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Formatted Id<TextField
+              Formatted ID:
+              <TextField
                 margin="dense"
                 id={"person" + person.id}
+                value={person.id}
               />
             </DialogContentText>
           </DialogContent>

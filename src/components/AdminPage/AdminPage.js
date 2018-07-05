@@ -8,6 +8,7 @@ import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
 import JsonArrayToCsv from '../JsonArrayToCsv/JsonArrayToCsv';
+import EditStudentModal from './EditStudentModal/EditStudentModal';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -777,7 +778,7 @@ class AdminPage extends Component {
                   <TableCell>Company</TableCell>
                   <TableCell>New wage</TableCell>
                   <TableCell>Exit Status</TableCell>
-                  <TableCell>Edit</TableCell>
+                  {/* <TableCell>Edit</TableCell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -793,7 +794,7 @@ class AdminPage extends Component {
                     <TableCell>{person.company}</TableCell>
                     <TableCell>{person.starting_wage}</TableCell>
                     <TableCell>{person.exit_status}</TableCell>
-                    <TableCell><Edit id={person.id}/></TableCell>
+                    {/* <TableCell><EditStudentModal person={person}/></TableCell> */}
                   </TableRow>
                 ))}
               </TableBody>
