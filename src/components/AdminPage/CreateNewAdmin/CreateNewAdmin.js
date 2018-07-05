@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 const backDropStyle = {
     position: 'fixed',
@@ -27,13 +28,19 @@ const CreateNewAdmin = (props) => {
 
     return <div style={backDropStyle}>
         <div style={modalStyle}>
-            <h1>Create New Admin</h1>
-            <label>Admin Username</label>
-            <input onChange={props.handleNewAdminChange} name="username" type="text" />
-            <label>Admin Password</label>
-            <input onChange={props.handleNewAdminChange} name="password" type="text" />
-            <button onClick={props.addNewAdmin}>Create New Admin</button>
-            <button onClick={props.closeNewAdmin}>Close Modal</button>
+            <h1>Create New Admin Account</h1>
+            <div className="formGroup">
+                <label>Admin Username</label>
+                <input onChange={props.handleNewAdminChange} name="username" type="text" />
+            </div>
+            <div className="formGroup">
+                <label>Admin Password</label>
+                <input onChange={props.handleNewAdminChange} name="password" type="text" />
+            </div>
+            <div className="buttonDiv">
+                <Button variant="raised" color="primary" onClick={props.addNewAdmin}>Create New Admin</Button>
+                <Button variant="raised" color="secondary" onClick={props.closeNewAdmin}>Close Modal</Button>
+            </div>
         </div>
     </div>
 }

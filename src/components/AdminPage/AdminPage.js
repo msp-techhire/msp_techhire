@@ -345,13 +345,6 @@ class AdminPage extends Component {
             </div>
             <JsonArrayToCsv convert={this.state.results} />
           </div>
-          <button onClick={this.openNewAdmin}>Test Me</button>
-          <CreateNewAdmin 
-            addNewAdmin={this.addNewAdmin}
-            closeNewAdmin={this.closeNewAdmin}
-            newAdmin={this.state.newAdmin}
-            handleNewAdminChange={this.handleNewAdminChange}
-          />
           <div>
             <Table id="searchTableResults">
               <TableHead>
@@ -392,6 +385,13 @@ class AdminPage extends Component {
             {pages}<br />
             Total results: {this.state.resultsLength}
           </div>
+          <button onClick={this.openNewAdmin}>Add New Admin Account</button>
+          <CreateNewAdmin 
+            addNewAdmin={this.addNewAdmin}
+            closeNewAdmin={this.closeNewAdmin}
+            newAdmin={this.state.newAdmin}
+            handleNewAdminChange={this.handleNewAdminChange}
+          />
         </div>
       );
     }
