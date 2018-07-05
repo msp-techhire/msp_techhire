@@ -93,6 +93,7 @@ class AdminPage extends Component {
       ],
       searchCounter: 0,
       searchFields: [],
+      partners: [],
     }
   }
 
@@ -121,12 +122,13 @@ class AdminPage extends Component {
   }
 
   partnerId = () => {
-    return <input
-      type="number"
+    return <select
       className="advanced-search"
-      placeholder="ie. 5"
       onLoad={this.handleValueChange}
-      onChange={this.handleValueChange} />
+      onChange={this.handleValueChange}>
+        <option value="">--Select--</option>
+        {this.state.partners.map(partner => <option key={partner.id} value={partner.id}>{partner.org_name}</option>)}
+      </select>
   }
 
   gender = () => {
@@ -444,9 +446,18 @@ class AdminPage extends Component {
     });
   }
 
+  getPartnerIds = () => {
+    axios.get('/')
+  }
+
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.setState({ selection: this.all() });
+    axios.get(`/api/admin/partners`).then(response => {
+      this.setState({
+        partners: response.data,
+      }, () => console.log(this.state.partners));
+    });
   }
 
   componentDidUpdate() {
@@ -673,7 +684,7 @@ class AdminPage extends Component {
                   <select className="advanced-search" onChange={this.handleFieldChange}>
                     <option value="*">All Fields</option>
                     <option value="formatted_id">Formatted ID</option>
-                    <option value="partner_id">Partner ID</option>
+                    <option value="partner_id">Partner</option>
                     <option value="gender">Gender</option>
                     <option value="year_of_birth">Year of Birth</option>
                     <option value="person_of_color">Person of Color</option>
