@@ -26,21 +26,23 @@ body {
     width: 250px;
     height: 200px;
     padding: 25px;
-    border-radius: 2px;
+    border-radius: 25px;
     letter-spacing: 2px;
     margin-left: 45px;
+    color: #555555;
+    font-size: 14px;
 }
 
 #textLogin {
-    margin-left: 40px;
+    margin-left: 25px;
 }
 
 #textUsername {
-    margin-left: 40px;
+    margin-left: 25px;
 }
 
 #textPassword {
-    margin-left: 40px;
+    margin-left: 25px;
 }
 
 .logInInput {
@@ -75,26 +77,39 @@ input[type="submit"] {
 
 .wrapperGridLogin {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    margin-top: 100px;
-    margin-left: auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 60px;
+    margin-left: 175px;
+    grid-gap: 20px;
+    width: 80%;
 }
 
-.wrapperGridPhotoLogin {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    margin-top: 100px;
-    margin-left: auto;
-}
-
-#loginPhoto {
+#loginPhotoCity {
     background:  url('/images/city_photo_two.jpg');
-    background-size: 83% auto;
-    height: 300px;
-    width: auto;
+    background-size: 100%;
+    height: 150px;
+    min-width: 975px;
     background-repeat: no-repeat;
     margin-top: 8px;
-    margin-left: 50px
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#photoPathwayLoginPage {
+    background:  url('/images/pathway.jpg');
+    background-size: 100%;
+    height: 150px;
+    min-width: 975px;
+    background-repeat: no-repeat;
+    margin-top: 30px;
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 /* -------------- ----------------- */
@@ -460,10 +475,54 @@ table, th, td {
     text-align: left;
 }
 
-.wageGrowthDiv {
+.factsWrapperStudentGraphs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+ /* {
+
+    maxWidth: 600,
+    height: 300,
+    margin: '0 auto',
+    padding: 30,
+    display: 'inline-block',
+} */
+
+.graphDisplaySummaryPage {
+    width: 600;
+    height: 600;
+    margin: '0 auto';
+    padding: 30;
+    display: 'inline-block';
+
+
+    /* background-size: 100%;
+    height: 150px;
+    min-width: 975px;
+    margin-top: 8px; */
+
+    /* display: block; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wageGrowthDivBlue {
     display: inline-block;
     max-width: 340px;
-    background-color: rgba(1, 164, 215, 0.6);
+    background: rgba(1, 164, 215, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+    margin-left: 20px;
+    color: #555555;
+}
+
+.wageGrowthDivGreen {
+    display: inline-block;
+    max-width: 340px;
+    background: rgb(176, 189, 99);
     border-radius: 10px;
     padding: 15px;
     margin-left: 20px;
@@ -487,22 +546,30 @@ table, th, td {
 }
 
 .chooseFilePartnerPageButton {
-    width: 320px;
-    height: 40px;
-    font-size: 12px;
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+    .chooseFilePartnerPageButton + label {
+    /* width: 320px;
+    height: 40px; */
+    font-size: 30px;
     color: black;
     margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 20px;
     background: rgb(204, 225, 244);
     box-shadow: 2px 2px 10px 1px  #ccc;
-}
-
-.chooseFilePartnerPageButton:hover {
-    background: rgb(1, 164, 215);
-    box-shadow: 2px 2px 10px 1px  #555555;
-}
-
+    }
+    
+    .chooseFilePartnerPageButton + label:hover {
+            background: rgb(1, 164, 215);
+            box-shadow: 2px 2px 10px 1px  #555555;
+        }
+ 
 #photoPartnerPage {
     background:  url('/images/pathway.jpg');
     background-size: 90%;
@@ -521,9 +588,9 @@ table, th, td {
     border-collapse: collapse;
 }
 
-/* ------- need to edit ------- */
+/* ------- need to edit partner table dynamics and input button ------- */
 
-table, th, td {
+/* table, th, td {
     border: 1px solid #ccc;
 }
 
@@ -550,4 +617,4 @@ table, th, td {
 
 #cellWidthAdminTable {
     width: 10px;
-}
+} */

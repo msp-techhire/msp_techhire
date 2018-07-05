@@ -64,6 +64,7 @@ class LoginPage extends Component {
     return (
       <div>
         {this.renderAlert()}
+        <div id="loginPhotoCity"></div>
         <div className="wrapperGridLogin">
           <div id="logoLogin"></div>
           <form onSubmit={this.login} className="logInForm">
@@ -102,7 +103,7 @@ class LoginPage extends Component {
             </div>
           </form>
         </div>
-        <div class="wrapperGridPhotoLogin" id="loginPhoto"></div>
+        <div id="photoPathwayLoginPage"></div>
       </div>
     );
   }
