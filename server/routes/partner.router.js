@@ -38,6 +38,13 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     }
 });
 
+
+const titleCase = str => {
+    return str.toLowerCase().split(' ').map(function(word) {
+      return (word.charAt(0).toUpperCase() + word.slice(1));
+    }).join(' ');
+  }
+  console.log(titleCase("I'm a little tea pot"));
 router.post('/', rejectUnauthenticated, (req, res) => {
     const people = req.body;
     let queryText = 
@@ -78,12 +85,12 @@ VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $1
     if (req.isAuthenticated()) {
         people.forEach((person) => {
             // console.log(person)
-            pool.query(queryText, [person.formatted_id, person.partner_id, person.gender, 
-                person.year_of_birth, person.person_of_color, person.education_level, 
-                person.city_of_residence, person.scholarship_recipient, 
+            pool.query(queryText, [person.formatted_id, person.partner_id, titleCase(person.gender), 
+                person.year_of_birth, titleCase(person.person_of_color), (person.education_level), 
+                person.city_of_residence, titleCase(person.scholarship_recipient), 
                 person.previous_job_experience, person.pre_training_wage, 
-                person.training_start_date, person.training_status, person.training_end_date, 
-                person.training_type, person.exit_status, person.classroom_or_online,
+                person.training_start_date, titleCase(person.training_status), person.training_end_date, 
+                person.training_type, titleCase(person.exit_status), person.classroom_or_online,
                 person.start_date, person.title, person.company, person.starting_wage, 
                 person.second_start_date, person.second_title, person.second_company, 
                 person.second_starting_wage])
@@ -121,7 +128,7 @@ router.delete('/', (req, res) => {
         SELECT "partner"."id"        
                 FROM "person"
                 JOIN "partner" ON "partner"."id"="person"."partner_id"
-                JOIN "user" ON "user"."id"="partner"."user_id"
+                JOIN "user" ON "user"."partner_id"="partner"."id"
                 WHERE "user"."id" = $1);`
         pool.query(queryText, [req.user.id])
             .then((result) => {

@@ -1,10 +1,18 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
+const graphStyle = {
+maxWidth: 600,
+height: 300,
+margin: '0 auto',
+padding: 30,
+display: 'inline-block',
+}
+
 const EducationGraph = (props) => {
 
         return (
-            <div className="graphDisplaySummaryPage">
+            <div style = {graphStyle} className="graphDisplaySummaryPage">
                 <Bar
                     data={{labels: ['High School', 'Some College', 'Associates', 'Bachelors', 'Graduate Plus'],
                     datasets: [

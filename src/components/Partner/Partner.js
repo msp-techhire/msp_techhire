@@ -78,9 +78,6 @@ class Partner extends Component {
           currentPage: 1,
           totalPages: totalPages,
         });
-        // this.setState({
-        //   partnerList: response.data
-        // })
       }).catch((error) => {
         alert('error with GET in Partner page', error);
       })
@@ -149,9 +146,9 @@ class Partner extends Component {
     return (
       <div>
         <div id="photoPartnerPage"></div>
-        <Button size="small"
+        <button id="logOutButton" size="medium" color="primary"
           onClick={this.logout}>Log Out
-            </Button>
+            </button>
         <h1 className="partnerTextTopOfPage">Partner Page</h1>
         <h2 className="partnerTextDownloadFiles">Download Files</h2>
         <div>
