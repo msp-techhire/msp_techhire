@@ -31,7 +31,6 @@ router.get('/wages', rejectNonAdmins, (req, res) => {
   
   pool.query(queryText)
   .then(response => {
-    console.log(response);
     res.send(response.rows);
   })
   .catch(err => res.sendStatus(500));

@@ -4,7 +4,7 @@ import { Bar } from 'react-chartjs-2';
 const GenderGraph = (props) => {
 
         return (
-            <div classNmae="graphDisplaySummaryPage">
+            <div className="graphDisplaySummaryPage">
                 <Bar
                     data={{labels: ['Female', 'Male', 'Other', 'Unreported'],
                     datasets: [

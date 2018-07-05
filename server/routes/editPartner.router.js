@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const pool = require('../modules/pool');
+const encryptLib = require('../modules/encryption');
 const { rejectNonAdmins } = require('../modules/authorization-middleware');
 
 
@@ -40,7 +41,6 @@ router.put('/updatePartner/:id', rejectNonAdmins, (req, res) => {
                         "director_last_name" = $7,
                         "business_type" = $8  
                         WHERE "id" = $9`;
-    console.log(id, partnerToEdit);
     pool.query(queryText, [partnerToEdit.orgName, partnerToEdit.orgAbbreviation, partnerToEdit.orgAddress,
                 partnerToEdit.orgPhone, partnerToEdit.orgWebsite, partnerToEdit.directorFirst,
                 partnerToEdit.directorLast, partnerToEdit.businessType, id])
@@ -52,7 +52,6 @@ router.post('/newPartner', rejectNonAdmins, (req, res) => {
     let newPartner = req.body;
     newPartner.updatedAddress = `${newPartner.orgAddress}, ${newPartner.orgCity}, MN ${newPartner.orgZip}`;
     newPartner.orgPhone = `(${newPartner.orgPhoneAreaCode}) ${newPartner.orgPhoneFirstThree}-${newPartner.orgPhoneLastFour}`;
-    console.log(newPartner);
     const queryText = `INSERT INTO "partner" ("org_name", "org_abbr", "address", "phone_number",
                         "website", "director_first_name", "director_last_name", "business_type")
                         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
@@ -63,6 +62,17 @@ router.post('/newPartner', rejectNonAdmins, (req, res) => {
             res.send(response.data);
         })
         .catch(err => res.sendStatus(500));
+});
+
+router.post('/newUser', rejectNonAdmins, (req, res) => {
+    let id = req.body.id;
+    let username = req.body.username;
+    let password = encryptLib.encryptPassword(req.body.password);
+    let queryText = `INSERT INTO "user" ("partner_id", "username", "password", "role")
+    VALUES ($1, $2, $3, $4)`;
+    pool.query(queryText, [id, username, password, "partner"])
+    .then(response => res.sendStatus(200))
+    .catch(err => res.sendStatus(500));
 });
 
 module.exports = router;

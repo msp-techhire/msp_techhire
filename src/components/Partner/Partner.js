@@ -11,6 +11,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Button from '@material-ui/core/Button';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
 const PAGE_LENGTH = 25;
@@ -159,7 +160,7 @@ class Partner extends Component {
             onDataUploaded={this.handleData}
             onError={this.handleError}
             render={onChange => <div><input className="chooseFilePartnerPageButton" type="file" id="file" onChange={onChange} />
-              <label for="file">Add a File</label></div>}
+              <label htmlFor="file">Add a File</label></div>}
           />
         </div>
         <div>

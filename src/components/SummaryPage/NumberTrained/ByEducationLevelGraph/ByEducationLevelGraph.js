@@ -4,7 +4,7 @@ import { Bar } from 'react-chartjs-2';
 const EducationGraph = (props) => {
 
         return (
-            <div classNmae="graphDisplaySummaryPage">
+            <div className="graphDisplaySummaryPage">
                 <Bar
                     data={{labels: ['High School', 'Some College', 'Associates', 'Bachelors', 'Graduate Plus'],
                     datasets: [

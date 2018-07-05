@@ -201,7 +201,13 @@ class EditPartner extends Component {
       username: this.state.newUser.username,
       password: this.state.newUser.password,
     };
-    console.log(objectToSend);
+    axios({
+      method: 'POST',
+      url: '/api/editPartner/newUser',
+      data: objectToSend,
+    })
+    .then(response => console.log(response))
+    .catch(err => console.log(err));
     this.closeNewUserModal();
   }
 
