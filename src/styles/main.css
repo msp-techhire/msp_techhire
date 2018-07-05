@@ -595,7 +595,7 @@ table, th, td {
     border-collapse: collapse;
 }
 
-.MuiTableCell-root-24, .MuiTableCell-body-26{
+.MuiTableCell-root-8, .MuiTableCell-head-9 {
     padding: 5px !important;
 }
 
