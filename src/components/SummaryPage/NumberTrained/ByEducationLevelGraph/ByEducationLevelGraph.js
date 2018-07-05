@@ -12,7 +12,7 @@ display: 'inline-block',
 const EducationGraph = (props) => {
 
         return (
-            <div style = {graphStyle} classNmae="graphDisplaySummaryPage">
+            <div style = {graphStyle} className="graphDisplaySummaryPage">
                 <Bar
                     data={{labels: ['High School', 'Some College', 'Associates', 'Bachelors', 'Graduate Plus'],
                     datasets: [

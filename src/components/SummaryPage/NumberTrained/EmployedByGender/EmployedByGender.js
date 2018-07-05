@@ -11,7 +11,7 @@ const graphStyle = {
 
 const EmployedByGenderGraph = (props) => {
 
-    return <div style = {graphStyle} classNmae="graphDisplaySummaryPage">
+    return <div style = {graphStyle} className="graphDisplaySummaryPage">
         <Bar
             data={{
                 labels: ['Female', 'Male', 'Other', 'Unnreported'],

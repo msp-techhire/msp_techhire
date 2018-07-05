@@ -12,7 +12,7 @@ const graphStyle = {
 const GenderGraph = (props) => {
 
         return (
-            <div style = {graphStyle} classNmae="graphDisplaySummaryPage">
+            <div style = {graphStyle} className="graphDisplaySummaryPage">
                 <Bar
                     data={{labels: ['Female', 'Male', 'Other', 'Unreported'],
                     datasets: [

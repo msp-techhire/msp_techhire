@@ -12,7 +12,7 @@ const graphStyle = {
 const POCGraph = (props) => {
 
         return (
-            <div style = {graphStyle} classNmae="graphDisplaySummaryPage">
+            <div style = {graphStyle} className="graphDisplaySummaryPage">
                 <Bar
                     data={{labels: ['True', 'False', 'Unnreported'],
                     datasets: [
