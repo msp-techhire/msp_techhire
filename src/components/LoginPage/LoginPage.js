@@ -99,7 +99,7 @@ class LoginPage extends Component {
                 name="submit"
                 value="Log In"
               />
-              <Link to="/register">Register</Link>
+              {/* <Link to="/register">Register</Link> */}
             </div>
           </form>
         </div>
