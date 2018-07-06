@@ -133,9 +133,9 @@ class AdminPage extends Component {
       className="advanced-search"
       onLoad={this.handleValueChange}
       onChange={this.handleValueChange}>
-        <option value="">--Select--</option>
-        {this.state.partners.map(partner => <option key={partner.id} value={partner.id}>{partner.org_name}</option>)}
-      </select>
+      <option value="">--Select--</option>
+      {this.state.partners.map(partner => <option key={partner.id} value={partner.id}>{partner.org_name}</option>)}
+    </select>
   }
 
   gender = () => {
@@ -658,23 +658,23 @@ class AdminPage extends Component {
 
   search = () => {
     if (this.state.field === '*') {
-      this.setState({searchQuery: this.state.value});
+      this.setState({ searchQuery: this.state.value });
       this.fetchData();
     } else {
       axios.get(`/api/admin/field/${this.state.field}?search=${this.state.value}`)
-      .then(response => {
-        const data = response.data;
-        const totalPages = Math.ceil(data.length / PAGE_LENGTH);
-        this.setState({
-          results: data,
-          resultsLength: data.length,
-          currentPage: 1,
-          totalPages: totalPages,
+        .then(response => {
+          const data = response.data;
+          const totalPages = Math.ceil(data.length / PAGE_LENGTH);
+          this.setState({
+            results: data,
+            resultsLength: data.length,
+            currentPage: 1,
+            totalPages: totalPages,
+          });
+        }).catch(error => {
+          console.error(`ERROR trying to GET /api/admin/field/:name?search=[query]: ${error}`);
+          alert("Uh-oh! Something went wrong with the search!");
         });
-      }).catch(error => {
-        console.error(`ERROR trying to GET /api/admin/field/:name?search=[query]: ${error}`);
-        alert("Uh-oh! Something went wrong with the search!");
-      });
     }
   }
 
@@ -708,6 +708,15 @@ class AdminPage extends Component {
             <p id="searchTextTopOfPage">
               Search Page
           </p>
+          </div>
+          <div>
+            <button id="addNewAdmin" onClick={this.openNewAdmin}>Add New Admin Account</button>
+            <CreateNewAdmin
+              addNewAdmin={this.addNewAdmin}
+              closeNewAdmin={this.closeNewAdmin}
+              newAdmin={this.state.newAdmin}
+              handleNewAdminChange={this.handleNewAdminChange}
+            />
           </div>
           <div className="wrapperGridAdmin">
             <div id="inputFieldSearch" className="il-block">
@@ -754,7 +763,7 @@ class AdminPage extends Component {
                     <option value="second_starting_wage">Second Job Starting Wage</option>
                   </select>
                   {this.state.selection}
-                  <button id="search-submit" className="advanced-search" onClick={this.search}>Search</button>
+                  <button id="searchSubmit" onClick={this.search}>Search</button>
                 </div>
               </div>
               <div id="second-adv-search">
@@ -763,7 +772,9 @@ class AdminPage extends Component {
               </div>
             </div>
           </div>
-          <JsonArrayToCsv convert={this.state.results} />
+          <div>
+            <JsonArrayToCsv convert={this.state.results} />
+          </div>
           <div>
             <Table id="searchTableResults">
               <TableHead>
@@ -804,13 +815,6 @@ class AdminPage extends Component {
             {pages}<br />
             Total results: {this.state.resultsLength}
           </div>
-          <button onClick={this.openNewAdmin}>Add New Admin Account</button>
-          <CreateNewAdmin 
-            addNewAdmin={this.addNewAdmin}
-            closeNewAdmin={this.closeNewAdmin}
-            newAdmin={this.state.newAdmin}
-            handleNewAdminChange={this.handleNewAdminChange}
-          />
         </div>
       );
     }
