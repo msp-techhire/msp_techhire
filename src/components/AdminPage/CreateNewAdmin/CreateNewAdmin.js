@@ -35,11 +35,11 @@ const CreateNewAdmin = (props) => {
             </div>
             <div className="formGroup">
                 <label>Admin Password</label>
-                <input onChange={props.handleNewAdminChange} name="password" type="text" />
+                <input onChange={props.handleNewAdminChange} name="password" type="password" />
             </div>
             <div className="buttonDiv">
-                <Button variant="raised" color="primary" onClick={props.addNewAdmin}>Create New Admin</Button>
-                <Button variant="raised" color="secondary" onClick={props.closeNewAdmin}>Close Modal</Button>
+                <Button variant="raised" color="primary" onClick={props.addNewAdmin}>Submit</Button>
+                <Button variant="raised" color="secondary" onClick={props.closeNewAdmin}>Close</Button>
             </div>
         </div>
     </div>

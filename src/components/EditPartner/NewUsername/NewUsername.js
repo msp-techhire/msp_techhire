@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 const backDropStyle = {
     position: 'fixed',
@@ -34,10 +35,12 @@ const NewUsername = (props) => {
                 </div>
                 <div className="formGroupNewUser">
                     <label htmlFor="newPassword">Password</label>
-                    <input id="newPassword" onChange={props.handleNewUserChange} name="password" type="text"/>
+                    <input id="newPassword" onChange={props.handleNewUserChange} name="password" type="password"/>
                 </div>
-                <input type="submit" onClick={props.addNewUser}/>
-                <button type="button" onClick={props.closeNewUserModal}>Close Modal</button>
+                <div class="buttonDiv">
+                    <Button variant="raised" color="primary" onClick={props.addNewUser}>Submit</Button>
+                    <Button variant="raised" color="secondary" onClick={props.closeNewUserModal}>Close</Button>
+                </div>
             </form>
         </div>
     </div>

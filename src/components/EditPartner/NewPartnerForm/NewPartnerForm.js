@@ -29,7 +29,7 @@ const NewPartnerForm = (props) => {
 
         return <div style={backDropStyle}> 
             <div style={modalStyle}>
-                <h2 className="textSelectPartner">Register New Partner</h2>
+                <h2>Register New Partner</h2>
                 <form>
                     
                     <div className="formGroup">
@@ -91,8 +91,8 @@ const NewPartnerForm = (props) => {
                     </div>
                 </form>
                 <div className="buttonDiv">
-                    <Button variant="raised" color="primary" onClick={props.handleSubmit}>Submit Partner Organization</Button>
-                    <Button variant="raised" color="secondary" onClick={props.closeNewPartnerModal}>Close Modal</Button>
+                    <Button variant="raised" color="primary" onClick={props.handleSubmit}>Submit</Button>
+                    <Button variant="raised" color="secondary" onClick={props.closeNewPartnerModal}>Close</Button>
                 </div>
             </div>
         </div>
