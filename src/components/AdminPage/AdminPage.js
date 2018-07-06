@@ -492,7 +492,6 @@ class AdminPage extends Component {
     element.parentNode.removeChild(element);
   }
 
-  /*
   openNewAdmin = () => {
     this.setState({
       newAdmin: {
@@ -531,6 +530,7 @@ class AdminPage extends Component {
     });
   }
 
+  /*
   setNewAttribute = (id, attribute, value) => {
     let element = document.getElementById(id);
     element.setAttribute(attribute, value);
