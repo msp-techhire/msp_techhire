@@ -63,6 +63,39 @@ class EditPartner extends Component {
     }
   }
 
+  /* PRESENTATION FUNCTIONS: START */
+  tempState = {};
+
+  fill = (state, id, value) => {
+    if (state === 'orgName') {
+      this.tempState = {};
+    }
+    let element = document.getElementById(id);
+    element.value = value;
+    this.tempState = {...this.tempState, [state]: value};
+    if (state === 'businessType') {
+      this.setState({
+        newOrg: {...this.tempState}
+      });
+    }
+  }
+  
+  formAutofill = () => {
+      this.fill('orgName', 'newOrgName', 'TechSpec University');
+      this.fill('orgAbbreviation', 'newOrgAbbreviation', 'U');
+      this.fill('orgAddress', 'newOrgAddress', '3000 Localhost Drive');
+      this.fill('orgCity', 'newOrgCity', 'Minneapolis');
+      this.fill('orgZip', 'newOrgZip', '55442');
+      this.fill('orgWebsite', 'newOrgWebsite', 'www.techspec-university.com');
+      this.fill('orgPhoneAreaCode', 'newOrgPhoneOne', '612');
+      this.fill('orgPhoneFirstThree', 'newOrgPhoneTwo', '555');
+      this.fill('orgPhoneLastFour', 'newOrgPhoneThree', '2018');
+      this.fill('directorFirst', 'newDirectorFirst', 'Victor');
+      this.fill('directorLast', 'newDirectorLast', 'Colton');
+      this.fill('businessType', 'newBusinessType', 'For-profit');
+  }
+  /* PRESENTATION FUNCTIONS: END */
+
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.getPartners();
@@ -260,7 +293,6 @@ class EditPartner extends Component {
     })
       .then((result) => {
         let selectedPartner = result.data[0];
-        console.log(selectedPartner);
         this.setState({
           selectedPartner: {
             orgName: selectedPartner.org_name,
@@ -330,6 +362,8 @@ class EditPartner extends Component {
             handleSubmit={this.handleFormSubmit}
             handleChange={this.handleFormChange}
             newOrg={this.state.newOrg}
+            fill={this.fill}
+            formAutofill={this.formAutofill}
           />
           <SelectedPartnerStats 
             partnerStats={this.state.partnerStats}

@@ -149,15 +149,14 @@ class Partner extends Component {
         <button id="logOutButton" size="medium" color="primary"
           onClick={this.logout}>Log Out
             </button>
-        <h1 className="partnerTextTopOfPage">Partner Page</h1>
-        <h2 className="partnerTextDownloadFiles">Download Files</h2>
+        <h1 className="partnerTextTopOfPage">Partner Portal</h1>
         <div>
           <CsvParse
             keys={keys}
             onDataUploaded={this.handleData}
             onError={this.handleError}
             render={onChange => <div><input className="chooseFilePartnerPageButton" type="file" id="file" onChange={onChange} />
-              <label htmlFor="file">Add a File</label></div>}
+              <label htmlFor="file">Upload File</label></div>}
           />
         </div>
         <div>

@@ -228,7 +228,7 @@ class SummaryPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div className="appWrap">
-          <h1 className="summaryText">Summary Page</h1>
+          <h1 className="summaryText">Summary</h1>
           <NumberTrained 
             trainingData={this.state.trainingData}
             wageGainData={this.state.wageGainData}

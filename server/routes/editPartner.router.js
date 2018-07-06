@@ -3,7 +3,6 @@ const pool = require('../modules/pool');
 const encryptLib = require('../modules/encryption');
 const { rejectNonAdmins } = require('../modules/authorization-middleware');
 
-
 router.get('/partners', rejectNonAdmins, (req, res) => {
     pool.query('SELECT "org_name", "id" FROM "partner"')
     .then(response => res.send(response.rows))

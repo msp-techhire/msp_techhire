@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 const backDropStyle = {
     position: 'fixed',
@@ -28,7 +29,10 @@ const NewPartnerForm = (props) => {
 
         return <div style={backDropStyle}> 
             <div style={modalStyle}>
-                <h2 className="textSelectPartner">Register New Partner</h2>
+                <h2>Register New Partner</h2>
+                {/* PRESENTATION ONLY START */}
+                <div style={{ display:"inline-block", width:"30px", height:"30px" }} onClick={props.formAutofill}></div>
+                {/* PRESENTATION ONLY END */}
                 <form>
                     
                     <div className="formGroup">
@@ -89,8 +93,10 @@ const NewPartnerForm = (props) => {
                     </select>
                     </div>
                 </form>
-                <button onClick={props.handleSubmit}>Submit Partner Organization</button>
-                <button onClick={props.closeNewPartnerModal}>Close Modal</button>
+                <div className="buttonDiv">
+                    <Button variant="raised" color="primary" onClick={props.handleSubmit}>Submit</Button>
+                    <Button variant="raised" color="secondary" onClick={props.closeNewPartnerModal}>Close</Button>
+                </div>
             </div>
         </div>
 }

@@ -73,7 +73,7 @@ router.get('/', rejectNonAdmins, (req, res) => {
   });
 });
 
-router.get('/field/:name', (req, res) => {
+router.get('/field/:name', rejectNonAdmins, (req, res) => {
   const field = cleanStr(req.params.name); // Avoid malicious SQL injection
   if (columnList.includes(field)) {
     const search = `${req.query.search}`;
@@ -89,13 +89,92 @@ router.get('/field/:name', (req, res) => {
   }
 });
 
-router.get('/full/:name', (req, res) => {
+router.get('/full/:name', rejectNonAdmins, (req, res) => {
   if (req.isAuthenticated()) {
     const field = cleanStr(req.params.name); // Avoid malicious SQL injection
     const search = `${req.query.search}`;
 
     let personQueryText = `SELECT * FROM "person" WHERE "${field}"::text ILIKE $1::text;`
   }
+});
+
+router.get('/id/:id', rejectNonAdmins, (req, res) => {
+  pool.query(`SELECT * FROM "person" WHERE "id" = $1;`, [req.params.id]).then(result => {
+    res.send(result.rows);
+  }).catch(error => {
+    console.error(`ERROR trying to GET /api/admin/id/:id: ${error}`);
+    res.sendStatus(500);
+  });
+});
+
+router.put('/id/:id', rejectNonAdmins, (req, res) => {
+  let id = req.params.id;
+  let edit = req.body;
+  const queryText = `UPDATE "person" SET 
+    "formatted_id" = $1, 
+    "partner_id" = $2,
+    "gender" = $3,
+    "year_of_birth" = $4,
+    "person_of_color" = $5,
+    "education_level" = $6,
+    "city_of_residence = $7,
+    "scholarship_recipient" = $8,
+    "previous_job_experience" = $9,
+    "pre_training_wage" = $10,
+    "training_start_date" = $11,
+    "training_status" = $12,
+    "training_end_date" = $13,
+    "training_type" = $14,
+    "exit_status" = $15,
+    "classroom_or_online" = $16,
+    "start_date" = $17,
+    "title" = $18,
+    "company" = $19,
+    "starting_wage" = $20,
+    "second_start_date" = $21,
+    "second_title" = $22,
+    "second_company" = $23,
+    "second_starting_wage" = $24
+    WHERE "id" = $25;`;
+  pool.query(queryText, [
+    edit.formattedId,
+    edit.partnerId,
+    edit.gender,
+    edit.yearOfBirth,
+    edit.personOfColor,
+    edit.educationLevel,
+    edit.cityOfResidence,
+    edit.scholarshipRecipient,
+    edit.previousJobExperience,
+    edit.preTrainingWage,
+    edit.trainingStartDate,
+    edit.trainingStatus,
+    edit.trainingEndDate,
+    edit.trainingType,
+    edit.exitStatus,
+    edit.classroomOrOnline,
+    edit.startDate,
+    edit.title,
+    edit.company,
+    edit.startingWage,
+    edit.secondStartDate,
+    edit.secondTitle,
+    edit.secondCompany,
+    edit.secondStartingWage,
+    id
+  ]).then(() => res.sendStatus(200)).catch(error => {
+    console.error(`ERROR trying to PUT /api/admin/id/:id: ${error}`);
+    res.sendStatus(500);
+  });
+});
+
+router.get(`/partners`, rejectNonAdmins, (req, res) => {
+  pool.query(`SELECT "id", "org_name" FROM "partner";`).then(result => {
+    res.send(result.rows);
+  }).catch(error => {
+    console.error(`ERROR trying to GET /api/admin/partners: ${error}`);
+    res.sendStatus(500);
+  });
 });
 
 module.exports = router;
