@@ -260,7 +260,6 @@ class EditPartner extends Component {
     })
       .then((result) => {
         let selectedPartner = result.data[0];
-        console.log(selectedPartner);
         this.setState({
           selectedPartner: {
             orgName: selectedPartner.org_name,

@@ -706,7 +706,7 @@ class AdminPage extends Component {
           </div>
           <div>
             <p id="searchTextTopOfPage">
-              Search Page
+              Search
           </p>
           </div>
           <div>
