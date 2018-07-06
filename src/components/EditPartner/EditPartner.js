@@ -63,9 +63,9 @@ class EditPartner extends Component {
     }
   }
 
+  /* PRESENTATION FUNCTIONS: START */
   tempState = {};
 
-  /* PRESENTATION FUNCTIONS: START */
   fill = (state, id, value) => {
     if (state === 'orgName') {
       this.tempState = {};
