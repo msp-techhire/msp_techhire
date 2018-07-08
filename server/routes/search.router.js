@@ -86,6 +86,18 @@ router.get('/field/:name', rejectNonAdmins, (req, res) => {
       console.error(`ERROR trying to GET /api/admin/:name?search=[query]: ${error}`);
       res.sendStatus(500);
     });
+  } else if (field === '*') {
+    const search = `${req.query.search}`;
+    let queryList = [];
+    columnList.forEach(item => queryList.push(`${item}::text ILIKE $1::text`));
+    let queryItem = queryList.join(' OR ');
+    const queryText = `SELECT * FROM "person" WHERE ${queryItem};`;
+    pool.query(queryText, [search]).then(result => {
+      res.send(result.rows);
+    }).catch(error => {
+      console.error(`ERROR trying to GET /api/admin/:name?search=[query]: ${error}`);
+      res.sendStatus(500);
+    });
   }
 });
 
@@ -173,6 +185,15 @@ router.get(`/partners`, rejectNonAdmins, (req, res) => {
     res.send(result.rows);
   }).catch(error => {
     console.error(`ERROR trying to GET /api/admin/partners: ${error}`);
+    res.sendStatus(500);
+  });
+});
+
+router.get(`/all`, rejectNonAdmins, (req, res) => {
+  pool.query(`SELECT * FROM "person";`).then(result => {
+    res.send(result.rows);
+  }).catch(error => {
+    console.error(`ERROR trying to GET /api/admin/all: ${error}`);
     res.sendStatus(500);
   });
 });
