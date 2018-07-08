@@ -552,6 +552,38 @@ tr [class*='MuiTableCell-root'] {
     padding: 5px !important;
 }
 
+/* ------------- Form Buttons ----------- */
+
+.buttonEnterForms {
+    background: rgb(204, 225, 244);
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 30px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 1px  #ccc;
+}
+
+.buttonEnterForms:hover {
+    background: rgb(1, 164, 215);
+    box-shadow: 2px 2px 10px 1px  #555555;
+} 
+
+.buttonCloseForms {
+    background: rgb(204, 225, 244);
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 30px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 1px  #ccc;
+}
+
+.buttonCloseForms:hover {
+    background: rgb(1, 164, 215);
+    box-shadow: 2px 2px 10px 1px  #555555;
+} 
+
 /* ----------- Download CSV button and pagination ------------ */
 
 .jsonButton {

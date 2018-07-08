@@ -77,8 +77,8 @@ const EditPartnerInfoForm = (props) => {
                 </div>
             </form>
             <div className="buttonDiv">
-                <Button variant="raised" color="primary" onClick={() => props.updatePartnerInfo(Number(props.selectedPartnerID))}>Update</Button>
-                <Button variant="raised" color="secondary" onClick={props.closeEditPartnerModal}>Close</Button>
+                <button className="buttonEnterForms" onClick={() => props.updatePartnerInfo(Number(props.selectedPartnerID))}>Update</button>
+                <button className="buttonCloseForms" onClick={props.closeEditPartnerModal}>Close</button>
             </div>
         </div>
     </div>
