@@ -1,7 +1,5 @@
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import CsvParse from '@vtex/react-csv-parse';
 import swal from 'sweetalert';
@@ -13,11 +11,30 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import { triggerLogout } from '../../redux/actions/loginActions';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import DialogContentText from '@material-ui/core/DialogContentText';
+
+library.add(faInfoCircle)
 
 const PAGE_LENGTH = 25;
 
 const mapStateToProps = state => ({
   user: state.user,
+});
+
+const styles = theme => ({
+  container: {
+      justifyContent: 'center',
+      
+  },
 });
 
 class Partner extends Component {
@@ -115,7 +132,16 @@ class Partner extends Component {
     return <span style={{ textDecoration: "underline" }}>{page}</span>
   }
 
+handleClickOpen = () => {
+    this.setState({ open: true });
+};
+
+handleClose = () => {
+    this.setState({ open: false })
+};
+  
   render() {
+    const { classes } = this.props;
     let currentResults = [];
     let lowerResults = (this.state.currentPage - 1) * PAGE_LENGTH;
     let upperResults = this.state.currentPage * PAGE_LENGTH;
@@ -146,7 +172,7 @@ class Partner extends Component {
     return (
       <div>
         <div id="photoPartnerPage"></div>
-        <button id="logOutButton" size="medium" color="primary"
+        <button id="logOutButton" size="medium" color="primary" style={{float: "right", marginRight: "67px"}}
           onClick={this.logout}>Log Out
             </button>
         <h1 className="partnerTextTopOfPage">Partner Portal</h1>
@@ -158,6 +184,35 @@ class Partner extends Component {
             render={onChange => <div><input className="chooseFilePartnerPageButton" type="file" id="file" onChange={onChange} />
               <label htmlFor="file">Upload File</label></div>}
           />
+        </div>
+        <div>
+        <p onClick={this.handleClickOpen}>
+        <FontAwesomeIcon icon={faInfoCircle} 
+        style = {{color: "black",  fontSize: "30px",
+        marginLeft: "143px",
+        marginTop: "-43px",
+        float: "left",
+        zIndex: "9999"
+      }}
+        /></p>
+        <Dialog
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    aria-labelledby="form-dialog-title"
+                >
+   
+                    <DialogContent>
+                      <DialogContentText>
+                      I'm a little teapot
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+            <Button onClick={this.handleClose} color="primary" autoFocus>
+              Close
+            </Button>
+          </DialogActions>
+                    </Dialog>
+       
         </div>
         <div>
           <Table id="partnerTableResults">
@@ -203,5 +258,8 @@ class Partner extends Component {
     )
   }
 }
+Partner.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default connect(mapStateToProps)(Partner);
+export default connect(mapStateToProps)(withStyles(styles)(Partner));
