@@ -453,8 +453,24 @@ class AdminPage extends Component {
     });
   }
 
-  getPartnerIds = () => {
-    axios.get('/')
+  // getPartnerIds = () => {
+  //   axios.get('/')
+  // }
+  fetchAll = () => {
+    let data;
+    axios.get(`/api/admin/all`).then(response => {
+      const data = response.data;
+      const totalPages = Math.ceil(data.length / PAGE_LENGTH);
+      this.setState({
+        results: data,
+        resultsLength: data.length,
+        currentPage: 1,
+        totalPages: totalPages,
+      });
+    }).catch(error => {
+      console.error(`ERROR trying to GET /api/admin/all: ${error}`);
+      alert('Oops! Something went wrong!');
+    });
   }
 
   componentDidMount() {
@@ -465,6 +481,7 @@ class AdminPage extends Component {
         partners: response.data,
       }, () => console.log(this.state.partners));
     });
+    this.fetchAll();
   }
 
   componentDidUpdate() {
@@ -658,8 +675,7 @@ class AdminPage extends Component {
 
   search = () => {
     if (this.state.field === '*') {
-      this.setState({ searchQuery: this.state.value });
-      this.fetchData();
+      this.setState({ searchQuery: this.state.value }, () => this.fetchData());
     } else {
       axios.get(`/api/admin/field/${this.state.field}?search=${this.state.value}`)
         .then(response => {

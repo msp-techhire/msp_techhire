@@ -38,8 +38,8 @@ const CreateNewAdmin = (props) => {
                 <input onChange={props.handleNewAdminChange} name="password" type="password" />
             </div>
             <div className="buttonDiv">
-                <Button variant="raised" color="primary" onClick={props.addNewAdmin}>Submit</Button>
-                <Button variant="raised" color="secondary" onClick={props.closeNewAdmin}>Close</Button>
+                <button className="buttonEnterForms" onClick={props.addNewAdmin}>Submit</button>
+                <button className="buttonCloseForms" onClick={props.closeNewAdmin}>Close</button>
             </div>
         </div>
     </div>

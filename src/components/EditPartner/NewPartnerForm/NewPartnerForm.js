@@ -94,8 +94,8 @@ const NewPartnerForm = (props) => {
                     </div>
                 </form>
                 <div className="buttonDiv">
-                    <Button variant="raised" color="primary" onClick={props.handleSubmit}>Submit</Button>
-                    <Button variant="raised" color="secondary" onClick={props.closeNewPartnerModal}>Close</Button>
+                    <button className="buttonEnterForms" onClick={props.handleSubmit}>Submit</button>
+                    <button className="buttonCloseForms" onClick={props.closeNewPartnerModal}>Close</button>
                 </div>
             </div>
         </div>
