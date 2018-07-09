@@ -12,7 +12,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         JOIN "partner" ON "user"."partner_id"="partner"."id"
         JOIN "person" ON "partner"."id"="person"."partner_id"
         WHERE "user"."id" = $1
-        ORDER BY "person"."formatted_id" ASC;`
+        ORDER BY "person"."id" DESC;`
         // let queryText2=  `SELECT "user"."id", "partner"."user_id", "partner"."id", "person"."partner_id"
         // FROM "user"
         // JOIN "partner" ON "user"."id"="partner"."user_id"

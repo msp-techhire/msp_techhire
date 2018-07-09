@@ -57,7 +57,7 @@ router.get('/', rejectNonAdmins, (req, res) => {
   pool.query(firstQuery).then(results => {
     results.rows.forEach(row => columnNames.push(`"${row.column_name}"::text ILIKE $1::text`));
     let columnQuery = columnNames.join(' OR ');
-    const queryText = `SELECT * FROM "person" WHERE ${columnQuery};`; // TO DO only return first 50, next step is pagination
+    const queryText = `SELECT * FROM "person" WHERE ${columnQuery} ORDER BY "id" DESC;`; // TO DO only return first 50, next step is pagination
 
     pool.query(queryText, [req.query.search])
       .then((result) => {
@@ -78,7 +78,7 @@ router.get('/field/:name', rejectNonAdmins, (req, res) => {
   if (columnList.includes(field)) {
     const search = `${req.query.search}`;
 
-    let queryText = `SELECT * FROM "person" WHERE "${field}"::text ILIKE $1::text;`;
+    let queryText = `SELECT * FROM "person" WHERE "${field}"::text ILIKE $1::text ORDER BY "id" DESC;`;
 
     pool.query(queryText, [search]).then(result => {
       res.send(result.rows);
@@ -89,7 +89,7 @@ router.get('/field/:name', rejectNonAdmins, (req, res) => {
   } else if (field === '*') {
     const search = `${req.query.search}`;
     let queryList = [];
-    columnList.forEach(item => queryList.push(`${item}::text ILIKE $1::text`));
+    columnList.forEach(item => queryList.push(`${item}::text ILIKE $1::text ORDER BY "id" DESC`));
     let queryItem = queryList.join(' OR ');
     const queryText = `SELECT * FROM "person" WHERE ${queryItem};`;
     pool.query(queryText, [search]).then(result => {
@@ -106,7 +106,7 @@ router.get('/full/:name', rejectNonAdmins, (req, res) => {
     const field = cleanStr(req.params.name); // Avoid malicious SQL injection
     const search = `${req.query.search}`;
 
-    let personQueryText = `SELECT * FROM "person" WHERE "${field}"::text ILIKE $1::text;`
+    let personQueryText = `SELECT * FROM "person" WHERE "${field}"::text ILIKE $1::text ORDER BY "id" DESC;`
   }
 });
 
@@ -190,7 +190,7 @@ router.get(`/partners`, rejectNonAdmins, (req, res) => {
 });
 
 router.get(`/all`, rejectNonAdmins, (req, res) => {
-  pool.query(`SELECT * FROM "person";`).then(result => {
+  pool.query(`SELECT * FROM "person" ORDER BY "id" DESC;`).then(result => {
     res.send(result.rows);
   }).catch(error => {
     console.error(`ERROR trying to GET /api/admin/all: ${error}`);
