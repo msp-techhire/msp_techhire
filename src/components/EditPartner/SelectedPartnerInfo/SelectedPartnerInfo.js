@@ -10,7 +10,6 @@ import NewUsername from '../NewUsername/NewUsername';
 const SelectedPartnerInfo = (props) => {
 
     return <div>
-        <h1 className="textSelectPartner">Partner Information</h1>
             <Table id="selectedPartnerTable">
                 <TableHead id="selectPartnerTableHead">
                     <TableRow>
