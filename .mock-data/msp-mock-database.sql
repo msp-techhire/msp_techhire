@@ -83,32 +83,32 @@ CREATE TABLE "person" (
 );
 
 INSERT INTO "partner" ("org_name", "org_abbr", "address", "phone_number", "website", "director_first_name", "director_last_name", "business_type") VALUES
-	('York Solutions', 'Y', '7100 Northland Cir N #202, Minneapolis, MN 55428', '7085318362', 'www.yorksolutions.net', 'Brandi', 'Willis', 'School/College'),
-	('The Software Guild', 'S', '15 S 5th St, Suite #600, Minneapolis, MN 55402', '5023385089', 'www.thesoftwareguild.com', 'Kipp', 'Graham', 'other'),
-	('Prime Digital Academy', 'P', '301 S 4th Ave Suite 577, Minneapolis, MN 55415', '9522228108', 'primeacademy.io', 'Mark', 'Hurlburt', 'For-profit'),
-	('Creating IT Futures', 'C', '3500 Lacey Road Suite 100, Downers Grove, IL 60515', '9528557421', 'www.creatingitfutures.org', 'Sue', 'Wallace', 'Non-profit'),
-	('Jewish Family and Childrens Services', 'J', '5905 Golden Valley Rd, Golden Valley, MN 55422', '9524172111', 'www.jfcsmpls.org', 'Judy', 'Halper', 'other'),
-	('Minnesota Computers for Schools', 'M', '970 Pickett Ave. North Bayport, MN 55003', '6513307985', 'mncfs.org', 'Desiree', 'Culpitt', 'School/College'),
-	('Takoda Institute', 'T', '1845 E Franklin Avenue, Minneapolis, MN 55404', '6123413358', 'www.takoda.org', 'Kimberly', 'Ben Haim', 'For-profit');
+	('Yankee Situations', 'Y', '700 Southside Ct N #404, Minneapolis, MN 55428', '7085558362', 'www.yankeesituations.net', 'Barry', 'Wilson', 'School/College'),
+	('The Hardware Group', 'S', '15 N 50th Way, Suite #6, Minneapolis, MN 55402', '5025555089', 'www.thehardwaregroup.com', 'Skip', 'Gram', 'other'),
+	('Pine Virtual Advancement', 'P', '3010 S 14th Ave Suite 755, Minneapolis, MN 55415', '9525558108', 'primeadvancement.io', 'Larkin', 'Hubert', 'For-profit'),
+	('Constructing IP Fortunes', 'C', '350 Lackey Route Suite 10, Downers Grove, IL 60515', '9525557421', 'www.constructingipfortunes.org', 'Sun', 'Willis', 'Non-profit'),
+	('Just Fantastic Computational Service', 'J', '505 New Hope Blvd, Golden Valley, MN 55422', '9525552111', 'www.justmpls.org', 'June', 'Hopper', 'other'),
+	('Minneapolis Computing Scholarships', 'M', '79 Fence Dr. North Bayport, MN 55003', '6515557985', 'mplscs.org', 'Donald', 'Corben', 'School/College'),
+	('Tadoma Industries', 'T', '18435 N France St., Minneapolis, MN 55404', '6125553358', 'www.tadomaind.org', 'Catherine', 'De Rolo', 'For-profit');
 
 INSERT INTO "user" ("partner_id", "username", "password", "role") VALUES
 	(NULL, 'admin', '$2b$10$piO4hPIdiW9b.N3jP8YOzeO7CMrVrHoedywXXEi2WUx6Y/VbMdKyC', 'admin'),
-	('1', 'york', '$2b$10$l2y2dqBCGGV1fbvpkwGZJebgQsNAOJa2Fl39w5MyBq7wGkcIrL9U2', 'partner'),
-	('2', 'guild', '$2b$10$38bIMd.xOQFDCyDLv5LbYOP3OVaLaDeuNAay/7hF0TC3DP6cCje0u', 'partner'),
-	('3', 'prime', '$2b$10$pZJeRzSOJ1JQTjApmiUoveLMyNLbME0FGjO3FAJtSGPOGZLfwCuMq', 'partner'),
-	('4', 'futures', '$2b$10$7lTHkjKipKgGzXVjC1tMjez8iI8DBH3LY0bQjGaLMram2/Wblb/W.', 'partner'),
+	('1', 'yankee', '$2b$10$l2y2dqBCGGV1fbvpkwGZJebgQsNAOJa2Fl39w5MyBq7wGkcIrL9U2', 'partner'),
+	('2', 'group', '$2b$10$38bIMd.xOQFDCyDLv5LbYOP3OVaLaDeuNAay/7hF0TC3DP6cCje0u', 'partner'),
+	('3', 'pine', '$2b$10$pZJeRzSOJ1JQTjApmiUoveLMyNLbME0FGjO3FAJtSGPOGZLfwCuMq', 'partner'),
+	('4', 'fortunes', '$2b$10$7lTHkjKipKgGzXVjC1tMjez8iI8DBH3LY0bQjGaLMram2/Wblb/W.', 'partner'),
 	('5', 'service', '$2b$10$vc/SDovP6VyO4iuyEN4mQebd5c8kAc5TYdmmeLBHyMkfGLnCOhZbu', 'partner'),
-	('6', 'schools', '$2b$10$Q72ywka1yQyQHImF3ZmUWeOruFhspmF3GUYCoEJAk7YqVkCkusQl2', 'partner'),
-	('7', 'takoda', '$2b$10$41heIVPehMJBD.0UeThGauMOw40xe99xfMmE0olwr9nhkdPGU9bym', 'partner');
+	('6', 'scholarships', '$2b$10$Q72ywka1yQyQHImF3ZmUWeOruFhspmF3GUYCoEJAk7YqVkCkusQl2', 'partner'),
+	('7', 'tadoma', '$2b$10$41heIVPehMJBD.0UeThGauMOw40xe99xfMmE0olwr9nhkdPGU9bym', 'partner');
 
 INSERT INTO "contact" ("first_name", "last_name", "title", "phone_number", "email") VALUES
-	('Brandi', 'Willis', 'Director', '7085318362', 'bwill@yorksolutions.net'),
-	('Kipp', 'Graham', 'Director', '5023385089', 'kgraham@thesoftwareguild.com'),
-	('Mark', 'Hurlburt', 'Director', '9522228108', 'mark@mncfs.org'),
-	('Sue', 'Wallace', 'Director', '9528557421', 'swallace@comptia.org'),
-	('Judy', 'Halper', 'Director', '9524172111', 'jfcs@jfcsmpls.org'),
-	('Desiree', 'Culpitt', 'Director', '6513307985', 'desiree.culpitt@mncfs.org'),
-	('Kimberly', 'Ben Haim', 'Director', '6123413358', 'kimberlyb@aioic.org');
+	('Barry', 'Wilson', 'Director', '7085558362', 'barryw@yankeesituations.net'),
+	('Skip', 'Gram', 'Director', '5025555089', 'skipgram@thehardwaregroup.com'),
+	('Larkin', 'Hubert', 'Director', '9525558108', 'larkin@pineadvancement.io'),
+	('Sun', 'Willis', 'Director', '9525557421', 'swillis@constructingipfortunes.org'),
+	('June', 'Hopper', 'Director', '9525552111', 'jhopper@justmpls.org'),
+	('Donald', 'Corben', 'Director', '6515557985', 'donald.corben@mplscs.org'),
+	('Catherine', 'De Rolo', 'Director', '6125553358', 'catherine.derolo@tadomaind.org');
 
 INSERT INTO "partner_contact" ("partner_id", "contact_id", "contact_type") VALUES
 	('1', '1', 'Primary'),

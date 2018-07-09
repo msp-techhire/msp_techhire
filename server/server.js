@@ -17,8 +17,8 @@ const searchAdmin = require('./routes/search.router');
 const editStudentRouter = require('./routes/studentSearch.router');
 
 // Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: '50mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // Passport Session Configuration //
 app.use(sessionMiddleware);
