@@ -51,8 +51,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         `INSERT INTO "person" ("formatted_id", "partner_id", "gender", "year_of_birth", 
 "person_of_color", "education_level", "city_of_residence", "scholarship_recipient", 
 "previous_job_experience", "pre_training_wage", "training_start_date", "training_status", 
-"training_end_date", "training_type", "exit_status", "classroom_or_online", "start_date", 
-"title", "company", "starting_wage", "second_start_date", "second_title", "second_company", 
+"training_end_date", "training_type", "classroom_or_online", "exit_status", "start_date", 
+"company", "title", "starting_wage", "second_start_date", "second_company", "second_title",
 "second_starting_wage")
 VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, 
     $19, $20, $21, $22, $23, $24);`
