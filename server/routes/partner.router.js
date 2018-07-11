@@ -5,7 +5,6 @@ var format = require('pg-format');
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-    console.log('GET all route', req.user.id);
         let queryText = `SELECT "user"."id", "user"."partner_id", "partner"."id", "person".*
         FROM "user"
         JOIN "partner" ON "user"."partner_id"="partner"."id"
@@ -43,7 +42,6 @@ VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $1
                 person.second_start_date, person.second_company, person.second_title, 
                 person.second_starting_wage])
                 .then((result) => {
-                    console.log(result);
                 }).catch((error) => {
                     console.log('error on POST', error);
                     res.sendStatus(500);
@@ -52,7 +50,6 @@ VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $1
 });
 
 router.delete('/', rejectUnauthenticated, (req, res) => {
-    console.log('DELETE all rows matching', req.user.id);
         let queryText = `DELETE FROM "person"
         WHERE "partner_id" IN
         (
@@ -70,6 +67,5 @@ router.delete('/', rejectUnauthenticated, (req, res) => {
                 res.sendStatus(500);
             })
 });
-
 
 module.exports = router;

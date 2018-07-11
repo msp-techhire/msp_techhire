@@ -3,7 +3,6 @@ import { LOGIN_ACTIONS } from '../actions/loginActions';
 import { USER_ACTIONS } from '../actions/userActions';
 import { callLogin, callLogout } from '../requests/loginRequests';
 
-// worker Saga: will be fired on "LOGIN" actions
 function* loginUser(action) {
   try {
     yield put({ type: LOGIN_ACTIONS.CLEAR_LOGIN_ERROR });
@@ -33,7 +32,6 @@ function* loginUser(action) {
   }
 }
 
-// worker Saga: will be fired on "LOGOUT" actions
 function* logoutUser(action) {
   try {
     yield callLogout(action);

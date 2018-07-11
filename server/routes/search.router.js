@@ -3,12 +3,6 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectNonAdmins } = require('../modules/authorization-middleware');
 
-// To avoid doing extra unnecessary work, and to avoid malicious SQL
-// injection, the following string runs the 'field' query through a quick
-// string cleaner to be sure that only lower-case characters and
-// underscores are allowed in the string. No spaces. This allows us to
-// insert the field name directly into the queryText declaration.
-// -Shely
 const cleanStr = str => str.split(/[^a-z_]/).filter(String).join('');
 const columnList = [
   'formatted_id',
@@ -36,8 +30,6 @@ const columnList = [
   'second_starting_wage'
 ];
 
-// GET
-
 router.get('/columns/:name', rejectNonAdmins, (req, res) => {
   const name = req.params.name;
   const queryText = `SELECT "column_name" FROM "information_schema"."columns" WHERE "table_name" = $1;`;
@@ -46,7 +38,7 @@ router.get('/columns/:name', rejectNonAdmins, (req, res) => {
     results.rows.forEach(row => columnNames.push(row.column_name));
     res.send(columnNames);
   }).catch(error => {
-    console.error(`ERROR trying to GET /api/admin/columns/:name: ${error}`);
+    console.error(`ERROR trying to GET`);
     res.sendStatus(500);
   });
 })
@@ -64,17 +56,15 @@ router.get('/', rejectNonAdmins, (req, res) => {
         res.send(result.rows);
       })
       .catch((err) => {
-        console.log('ERROR getting /api/admin/?search=[query]:', err);
         res.sendStatus(500);
       });
-
   }).catch(error => {
-    console.error(`ERROR getting column names before retrieving rows: ${error}`);
+    console.error(`ERROR getting`);
   });
 });
 
 router.get('/field/:name', rejectNonAdmins, (req, res) => {
-  const field = cleanStr(req.params.name); // Avoid malicious SQL injection
+  const field = cleanStr(req.params.name);
   if (columnList.includes(field)) {
     const search = `${req.query.search}`;
 
@@ -83,7 +73,7 @@ router.get('/field/:name', rejectNonAdmins, (req, res) => {
     pool.query(queryText, [search]).then(result => {
       res.send(result.rows);
     }).catch(error => {
-      console.error(`ERROR trying to GET /api/admin/:name?search=[query]: ${error}`);
+      console.error(`ERROR trying to GET`);
       res.sendStatus(500);
     });
   } else if (field === '*') {
@@ -95,7 +85,7 @@ router.get('/field/:name', rejectNonAdmins, (req, res) => {
     pool.query(queryText, [search]).then(result => {
       res.send(result.rows);
     }).catch(error => {
-      console.error(`ERROR trying to GET /api/admin/:name?search=[query]: ${error}`);
+      console.error(`ERROR trying to GET`);
       res.sendStatus(500);
     });
   }
@@ -103,7 +93,7 @@ router.get('/field/:name', rejectNonAdmins, (req, res) => {
 
 router.get('/full/:name', rejectNonAdmins, (req, res) => {
   if (req.isAuthenticated()) {
-    const field = cleanStr(req.params.name); // Avoid malicious SQL injection
+    const field = cleanStr(req.params.name);
     const search = `${req.query.search}`;
 
     let personQueryText = `SELECT * FROM "person" WHERE "${field}"::text ILIKE $1::text ORDER BY "id" DESC;`
@@ -114,7 +104,7 @@ router.get('/id/:id', rejectNonAdmins, (req, res) => {
   pool.query(`SELECT * FROM "person" WHERE "id" = $1;`, [req.params.id]).then(result => {
     res.send(result.rows);
   }).catch(error => {
-    console.error(`ERROR trying to GET /api/admin/id/:id: ${error}`);
+    console.error(`ERROR trying to GET`);
     res.sendStatus(500);
   });
 });
@@ -175,7 +165,7 @@ router.put('/id/:id', rejectNonAdmins, (req, res) => {
     edit.secondStartingWage,
     id
   ]).then(() => res.sendStatus(200)).catch(error => {
-    console.error(`ERROR trying to PUT /api/admin/id/:id: ${error}`);
+    console.error(`ERROR trying to PUT`);
     res.sendStatus(500);
   });
 });
@@ -184,7 +174,7 @@ router.get(`/partners`, rejectNonAdmins, (req, res) => {
   pool.query(`SELECT "id", "org_name" FROM "partner";`).then(result => {
     res.send(result.rows);
   }).catch(error => {
-    console.error(`ERROR trying to GET /api/admin/partners: ${error}`);
+    console.error(`ERROR trying to GET`);
     res.sendStatus(500);
   });
 });
@@ -193,7 +183,7 @@ router.get(`/all`, rejectNonAdmins, (req, res) => {
   pool.query(`SELECT * FROM "person" ORDER BY "id" DESC;`).then(result => {
     res.send(result.rows);
   }).catch(error => {
-    console.error(`ERROR trying to GET /api/admin/all: ${error}`);
+    console.error(`ERROR trying to GET`);
     res.sendStatus(500);
   });
 });

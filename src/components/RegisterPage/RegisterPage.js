@@ -39,7 +39,6 @@ class RegisterPage extends Component {
         password: this.state.password,
       };
 
-      // making the request to the server to post the new user's registration
       axios.post('/api/user/register/', body)
         .then((response) => {
           if (response.status === 201) {
@@ -56,7 +55,7 @@ class RegisterPage extends Component {
           });
         });
     }
-  } // end registerUser
+  }
 
   handleInputChangeFor = propertyName => (event) => {
     this.setState({
