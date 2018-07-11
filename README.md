@@ -1,15 +1,6 @@
-
-# Collaborators:
-
-* Greg Orvik
-* Michele Dexter
-* Alex Gjorvad
-* Liz Goff
-
-
 # MSP TechHire
 
-Description.
+MSP TechHire is an amazing program that partnered with several high-quality advanced learning programs and regional companies to train and hire a more diverse community in technology fields in the Saint Paul and Minneapolis area. MSP TechHire asked us to create a full-stack application to help track student success supported by the program from MSP TechHire's partner organizations. They also needed a way to transfer this data from their partners to the program quarterly. Finally, MSP TechHire wanted us to find a way to access the data uploaded by their partner organizations in order to show State Representatives ROI, efficient ways to access specific data for meetings, seamless ways to get data to see how they could improve the program for MSP TechHire and their partners, and quick ways to show potential sponsors how well the program is working in the community.
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -61,8 +52,10 @@ Please read CONTRIBUTING.md for details on our code of conduct, and the process 
 This is version 1.0.0
 
 ## Authors
-Billie Thompson - Initial work - PurpleBooth
-See also the list of contributors who participated in this project.
+* Greg Orvik
+* Michele Dexter
+* Alex Gjorvad
+* Liz Goff
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
