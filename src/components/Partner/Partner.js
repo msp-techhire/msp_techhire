@@ -191,8 +191,7 @@ handleClose = () => {
         style = {{color: "black",  fontSize: "30px",
         marginLeft: "143px",
         marginTop: "-43px",
-        float: "left",
-        zIndex: "9999"
+        float: "left"
       }}
         /></p>
         <Dialog
@@ -200,10 +199,9 @@ handleClose = () => {
                     onClose={this.handleClose}
                     aria-labelledby="form-dialog-title"
                 >
-   
                     <DialogContent>
                       <DialogContentText>
-                      I'm a little teapot
+                      To upload student data, click on the "Upload File" button.  Navigate to the spreadsheet used to report MSP TechHire student data and click "Open".
                       </DialogContentText>
                     </DialogContent>
                     <DialogActions>
@@ -212,7 +210,6 @@ handleClose = () => {
             </Button>
           </DialogActions>
                     </Dialog>
-       
         </div>
         <div>
           <Table id="partnerTableResults">

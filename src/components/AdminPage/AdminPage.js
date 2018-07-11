@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import Nav from '../../components/Nav/Nav';
 import axios from 'axios';
-
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
-
 import JsonArrayToCsv from '../JsonArrayToCsv/JsonArrayToCsv';
 import EditStudentModal from './EditStudentModal/EditStudentModal';
-
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Table from '@material-ui/core/Table';
@@ -19,6 +15,15 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Edit from '@material-ui/icons/Edit';
 import CreateNewAdmin from './CreateNewAdmin/CreateNewAdmin';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import DialogContentText from '@material-ui/core/DialogContentText';
 
 // import Modal from './modal/modal';
 
@@ -694,6 +699,14 @@ class AdminPage extends Component {
     }
   }
 
+  handleClickOpen = () => {
+    this.setState({ open: true });
+};
+
+handleClose = () => {
+    this.setState({ open: false })
+};
+
   render() {
     let content = null;
     let buttonDisplayed = <Button id="searchButtons" variant="outlined" size="small" onClick={this.fetchData}>Search</Button>
@@ -789,8 +802,63 @@ class AdminPage extends Component {
             </div>
           </div>
           <div>
+        <p onClick={this.handleClickOpen}>
+        <FontAwesomeIcon icon={faInfoCircle} 
+           style = {{color: "black",  fontSize: "30px",
+           marginLeft: "910px",
+           marginTop: "-52px",
+           float: "left"
+      }}
+        /></p>
+        <Dialog
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    aria-labelledby="form-dialog-title"
+                >
+   
+                    <DialogContent>
+                      <DialogContentText>
+                      Select the column you wish to search by in the first search field.  Then, select the value you wish to search for by typing a value or selecting a value from the dropdown menu in the second search field.
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+            <Button onClick={this.handleClose} color="primary" autoFocus>
+              Close
+            </Button>
+          </DialogActions>
+                    </Dialog>
+       
+        </div>
+          <div>
             <JsonArrayToCsv convert={this.state.results} />
           </div>
+          <div>
+        <p onClick={this.handleClickOpen}>
+        <FontAwesomeIcon icon={faInfoCircle} 
+           style = {{color: "black",  fontSize: "30px",
+           marginLeft: "205px",
+           marginTop: "-69px",
+           float: "left"
+      }}
+        /></p>
+        <Dialog
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    aria-labelledby="form-dialog-title"
+                >
+                    <DialogContent>
+                      <DialogContentText>
+                        The "Download CSV File" will only download data rows that are returned in the table below.  Data for all columns, not just the columns visible on the table, will be downloaded.  Use the "Search" fields above to tailor your table results to the data you wish to download.
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+            <Button onClick={this.handleClose} color="primary" autoFocus>
+              Close
+            </Button>
+          </DialogActions>
+                    </Dialog>
+       
+        </div>
           <div>
             <Table id="searchTableResults">
               <TableHead>
@@ -834,6 +902,7 @@ class AdminPage extends Component {
         </div>
       );
     }
+    
 
     return (
       <div>
