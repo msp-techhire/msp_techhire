@@ -33,7 +33,6 @@ const mapStateToProps = state => ({
 const styles = theme => ({
   container: {
       justifyContent: 'center',
-      
   },
 });
 
@@ -73,7 +72,6 @@ class Partner extends Component {
   postPartnerData = () => {
     axios.post('/api/partner', this.state.data)
       .then((response) => {
-        console.log('success');
         swal({
           title: 'You have successfully added data!',
           icon: 'success'
@@ -96,7 +94,7 @@ class Partner extends Component {
           totalPages: totalPages,
         });
       }).catch((error) => {
-        alert('error with GET in Partner page', error);
+        alert('error with GET');
       })
   }
 
@@ -111,8 +109,8 @@ class Partner extends Component {
         window.location.reload();
       })
       .catch((error) => {
-        console.log('error on delete: ', error);
-        alert('You can only delete you added');
+        console.log('error on delete');
+        alert('You can only delete.');
       })
   };
 

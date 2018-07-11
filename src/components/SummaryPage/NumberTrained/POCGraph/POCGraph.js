@@ -10,7 +10,6 @@ const graphStyle = {
     }
 
 const POCGraph = (props) => {
-
         return (
             <div style = {graphStyle} className="graphDisplaySummaryPage">
                 <Bar

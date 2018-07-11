@@ -14,7 +14,6 @@ import SummaryPage from './components/SummaryPage/SummaryPage';
 import EditPartner from './components/EditPartner/EditPartner';
 import Partner from './components/Partner/Partner';
 import LandingPage from './components/LandingPage/LandingPage';
-
 import './styles/main.css';
 
 const App = () => (
@@ -23,38 +22,37 @@ const App = () => (
       <Switch>
         <Redirect exact from="/" to="/login" />
         <Route
-          path="/login" // LOGIN page
+          path="/login" 
           component={LoginPage}
         />
         <Route
-          path="/register" // TEMPORARY registration page
+          path="/register" 
           component={RegisterPage}
         />
         <Route
-          path="/admin" // admin landing page
+          path="/admin" 
           component={AdminPage}
         />
         <Route
-          path="/summary" // admin summary page
+          path="/summary" 
           component={SummaryPage}
         />
         <Route
-          path="/editpartner" // admin edit partner page
+          path="/editpartner" 
           component={EditPartner}
         />
         <Route
-          path="/studentEdit" // admin edit student
+          path="/studentEdit" 
           component={EditStudentPage}
         />
         <Route
-          path="/partner" // partner landing page
+          path="/partner" 
           component={Partner}
         />
         <Route
           path="/landing"
           component={LandingPage}
         />
-        {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 
       </Switch>
