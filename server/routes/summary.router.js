@@ -4,9 +4,6 @@ const router = express.Router();
 const encryptLib = require('../modules/encryption');
 const { rejectNonAdmins } = require('../modules/authorization-middleware');
 
-/**
- * GET route template
- */
 router.get('/', rejectNonAdmins, (req, res) => {
     const queryText = `SELECT * FROM "person";`;
     pool.query(queryText)
@@ -37,9 +34,6 @@ router.get('/wages', rejectNonAdmins, (req, res) => {
   .catch(err => res.sendStatus(500));
 });
 
-/**
- * POST route template
- */
 router.post('/newAdmin', (req, res) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);

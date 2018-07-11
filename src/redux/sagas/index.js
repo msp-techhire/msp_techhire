@@ -6,6 +6,5 @@ export default function* rootSaga() {
   yield all([
     userSaga(),
     loginSaga(),
-    // watchIncrementAsync()
   ]);
 }

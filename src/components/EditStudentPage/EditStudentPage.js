@@ -31,7 +31,7 @@ class EditStudentPage extends Component {
   }
 
   componentDidUpdate() {
-    if (!this.props.user.isLoading && (this.props.user.userName === null)) {   //|| this.props.user.userRole !== 'admin'
+    if (!this.props.user.isLoading && (this.props.user.userName === null)) {  
       this.props.history.push('login');
     }
   }
@@ -47,29 +47,25 @@ class EditStudentPage extends Component {
         search: this.state.searchStudentQuery
       }
     }).then((response) => {
-      console.log(response.data);
       this.setState({
         results: response.data
       })
     }).catch((error) => {
-      alert('error with GET in Admin file', error);
+      alert('error with GET');
     })
   }
 
-  // PUT
-
-  addEdit = (taco) => {
-    console.log('adding edit', taco);
+  addEdit = (newEdit) => {
     axios.put(`/api/studentEdit/${this.state.editId}`, { searchStudentQuery: this.state })
       .then((response) => {
-        console.log('put response', response);
         this.fetchData();
         this.setState({
           editOn: false
         })
       })
-      .catch((error) => {
-        console.log('put/add error in addEdit Admin', error);
+      .catch(error => {
+        console.error(`ERROR trying to PUT`);
+        alert('Error: Edit was unsuccessful.');
       });
   }
 
@@ -85,8 +81,6 @@ class EditStudentPage extends Component {
       [event.target.name]: event.target.value
     })
   }
-
-  // end adding new gets and edits ----------------
 
   render() {
     let content = null;

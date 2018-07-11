@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { Link, browserHistory, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
@@ -92,8 +92,6 @@ class Nav extends React.Component {
   render() {
     const { classes, theme } = this.props;
     const { anchor, open } = this.state;
-
-    // if (this.props.user.userName) {
     const drawer = (
       <Drawer
         variant="persistent"
@@ -191,7 +189,3 @@ Nav.propTypes = {
 };
 
 export default connect(mapStateToProps)(withStyles(styles, { withTheme: true })(withRouter(Nav)));
-
-
-
-

@@ -10,7 +10,6 @@ const graphStyle = {
     }
 
 const EmployedByGenderGraph = (props) => {
-
     return <div style = {graphStyle} className="graphDisplaySummaryPage">
         <Bar
             data={{

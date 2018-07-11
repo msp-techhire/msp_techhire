@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
 import Nav from '../../components/Nav/Nav';
 import NumberTrained from './NumberTrained/NumberTrained';
 import JsonArrayToCsv from '../JsonArrayToCsv/JsonArrayToCsv';
-
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
-
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -201,7 +198,10 @@ class SummaryPage extends Component {
         }
       });
     })
-    .catch(err => console.log('uh oh', err));
+    .catch(error => {
+      console.error(`ERROR trying to GET`);
+      alert('Error: Retrieving was unsuccessful.');
+    });
   }
 
   fetchAll = () => {
@@ -219,7 +219,10 @@ class SummaryPage extends Component {
       this.calculateTrainingData();
       this.calculateWageGains();
     })
-    .catch(error => console.log(`ERROR trying to GET /api/summary: ${error}`));
+    .catch(error => {
+      console.error(`ERROR trying to GET`);
+      alert('Error: Retrieving was unsuccessful.');
+    });
   }
 
   render() {
@@ -249,6 +252,4 @@ class SummaryPage extends Component {
   }
 }
 
-// this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(SummaryPage);
-

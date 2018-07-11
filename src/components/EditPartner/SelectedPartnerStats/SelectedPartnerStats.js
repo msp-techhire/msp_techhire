@@ -18,7 +18,6 @@ const SelectedPartnerStats = (props) => {
             </div>
         </div>
         </div>
-    
 }
 
 export default SelectedPartnerStats;
