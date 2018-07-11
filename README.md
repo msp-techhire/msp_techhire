@@ -21,17 +21,15 @@ And repeat
 until finished
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
-Explain how to run the automated tests for this system
+## Downloading CSV files
+The "Download CSV File" button on the "Search" page of the admin portal will only download data rows that are returned in the table below it. Data for all columns, not just the columns visible within the table, will be downloaded. Use the "Search" fields above to tailor your table results to the data you wish to download.  If no search is run, the "Download CSV File" button will download all student data in the database.
 
-## Break down into end to end tests
-Explain what these tests test and why
+The "Download CSV Spreadsheet" button on the "Summary" page of the admin portal will also download all student data in the database.
 
-Give an example
-## And coding style tests
-Explain what these tests test and why
+## Uploading CSV files
 
-Give an example
+To upload student data, click on the "Upload File" button. Navigate to the spreadsheet you use to report MSP TechHire student data and click "Open".  This spreadsheet must be a .csv file.  This can be changed in Microsoft Excel while saving your spreadsheet.
+
 ## Deployment
 Add additional notes about how to deploy this on a live system
 
