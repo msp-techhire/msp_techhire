@@ -36,14 +36,20 @@ Give an example
 Add additional notes about how to deploy this on a live system
 
 ## Built With
-Dropwizard - The web framework used
-Maven - Dependency Management
-ROME - Used to generate RSS Feeds
+React - A JavaScript library for building user interfaces.
+PostgreSQL - Open source database.
+ChartJS - Open source HTML5 charts.
+Node.js - A JavaScript runtime built on Chrome's V8 JavaScript engine.
+Express - Web application framework running on Node.js.
+Material-UI - React Components that Implement Google's Material Design.
+Passport.js - Authentication middleware.
+react-csv-parse - Import data from a csv file to your app and your api.
+
 ## Contributing
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
-We use SemVer for versioning. For the versions available, see the tags on this repository.
+This is version 1.0.0
 
 ## Authors
 * Greg Orvik
