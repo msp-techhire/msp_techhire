@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 
-
 const mapStateToProps = state => ({
   user: state.user,
   login: state.login,
@@ -11,7 +10,6 @@ const mapStateToProps = state => ({
 class LoginPage extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       username: '',
       password: '',
@@ -22,7 +20,6 @@ class LoginPage extends Component {
     this.props.dispatch(clearError());
   }
 
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.userName) {
       this.props.history.push('landing');
@@ -31,7 +28,6 @@ class LoginPage extends Component {
 
   login = (event) => {
     event.preventDefault();
-
     if (this.state.username === '' || this.state.password === '') {
       this.props.dispatch(formError());
     } else {

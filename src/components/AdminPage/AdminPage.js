@@ -5,27 +5,19 @@ import axios from 'axios';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 import JsonArrayToCsv from '../JsonArrayToCsv/JsonArrayToCsv';
-import EditStudentModal from './EditStudentModal/EditStudentModal';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Edit from '@material-ui/icons/Edit';
 import CreateNewAdmin from './CreateNewAdmin/CreateNewAdmin';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import DialogContentText from '@material-ui/core/DialogContentText';
-
-// import Modal from './modal/modal';
 
 const PAGE_LENGTH = 25;
 
@@ -115,7 +107,6 @@ class AdminPage extends Component {
     });
   }
 
-  /* Field Displays START */
   all = () => {
     return <input
       type="text"
@@ -366,7 +357,6 @@ class AdminPage extends Component {
       onLoad={this.handleValueChange}
       onChange={this.handleValueChange} />
   }
-  /* Field Displays END */
 
   handleFieldChange = event => {
     const selection = event.target.value;
@@ -458,9 +448,6 @@ class AdminPage extends Component {
     });
   }
 
-  // getPartnerIds = () => {
-  //   axios.get('/')
-  // }
   fetchAll = () => {
     let data;
     axios.get(`/api/admin/all`).then(response => {
@@ -473,7 +460,7 @@ class AdminPage extends Component {
         totalPages: totalPages,
       });
     }).catch(error => {
-      console.error(`ERROR trying to GET /api/admin/all: ${error}`);
+      console.error(`ERROR trying to GET`);
       alert('Oops! Something went wrong!');
     });
   }
@@ -484,7 +471,7 @@ class AdminPage extends Component {
     axios.get(`/api/admin/partners`).then(response => {
       this.setState({
         partners: response.data,
-      }, () => console.log(this.state.partners));
+      });
     });
     this.fetchAll();
   }
@@ -539,8 +526,8 @@ class AdminPage extends Component {
         password: this.state.newAdmin.password,
       }
     })
-    .then(response => this.closeNewAdmin())
-    .catch(err => console.log(err))
+      .then(response => this.closeNewAdmin())
+      .catch(err => console.log(err))
   }
 
   handleNewAdminChange = (event) => {
@@ -551,51 +538,6 @@ class AdminPage extends Component {
       }
     });
   }
-
-  /*
-  setNewAttribute = (id, attribute, value) => {
-    let element = document.getElementById(id);
-    element.setAttribute(attribute, value);
-  }
-
-  addSearchField = (parentId, id) => {
-    this.addElement(parentId, 'div', 'drop-' + id, '');
-    this.addElement('drop-' + id, 'select', 'option-' + id, '');
-    for (let i = 0; i < 23; i++) {
-      this.addElement('option-' + id, 'option', id + '-' + i, this.state.personColumns[i]);
-      this.setNewAttribute(id + '-' + i, 'value', this.state.personColumnNames[i]);
-    }
-    this.setState({ searchCounter: this.state.searchCounter + 1 });
-  }
-
-  addSearch = (parent) => {
-    let newParent = document.getElementById(parent);
-    let selectElement = document.createElement('select');
-    let divElement = document.createElement('div');
-    divElement.setAttribute('id', 'search-' + this.state.searchCounter)
-    selectElement.setAttribute('class', 'il-block');
-    selectElement.setAttribute('id', `drop-${this.state.searchCounter}`);
-    for (let i = 0; i < 23; i++) {
-      let optionElement = document.createElement('option');
-      optionElement.setAttribute('value', this.state.personColumnNames[i]);
-      optionElement.innerHTML = this.state.personColumns[i];
-      selectElement.append(optionElement);
-    }
-    let inputElement = document.createElement('input');
-    let deleteSearch = document.createElement('button');
-    let node = `document.getElementById('search-${this.state.searchCounter}')`;
-    deleteSearch.setAttribute('onclick', `${node}.parentElement.removeChild(${node}); `);
-    deleteSearch.innerHTML = 'Remove';
-    divElement.append(selectElement);
-    divElement.append(inputElement);
-    divElement.append(deleteSearch);
-    newParent.append(divElement);
-    this.setState({
-      searchFields: [...this.state.searchFields, `search-${this.state.searchCounter}`],
-      searchCounter: this.state.searchCounter + 1,
-    });
-  }
-  */
 
   getTableColumns = tableName => {
     axios.get(`/api/admin/columns/${tableName}`).then(response => {
@@ -608,8 +550,8 @@ class AdminPage extends Component {
         personColumns: columns,
       });
     }).catch(error => {
-      console.error(`ERROR trying to GET /api/admin/columns/:name: ${error}`);
-      alert('Error: Retrieving table columns was unsuccessful.');
+      console.error(`ERROR trying to GET`);
+      alert('Error: Retrieving was unsuccessful.');
     });
   }
 
@@ -628,8 +570,8 @@ class AdminPage extends Component {
         totalPages: totalPages,
       });
     }).catch((error) => {
-      console.error(error);
-      alert('error with GET in Admin file', error);
+      console.error(`ERROR trying to GET`);
+      alert('Error: Retrieving was unsuccessful.');
     })
   }
 
@@ -638,19 +580,8 @@ class AdminPage extends Component {
     for (let field of this.state.searchFields) {
       const searchField = document.getElementById(field);
       if (searchField) {
-        console.log(searchField.childNodes[0].nodeValue);
       }
     }
-    // const name = this.state.fieldName;
-    // const query = this.state.fieldSearchQuery;
-    // axios.get(`/api/admin/${name}?search=${query}`).then(response => {
-    //   this.setState({
-    //     results: response.data
-    //   });
-    // }).catch(error => {
-    //   console.error(`ERROR trying to GET /api/admin/field/:name?search=[QUERY]:\n${error}`);
-    //   alert('Error in field search.');
-    // });
   }
 
   handleSearchChange = (event) => {
@@ -663,7 +594,6 @@ class AdminPage extends Component {
   editStudent = person => {
     this.setState({ editStudent: person }, () => {
       let student = this.state.editStudent;
-      console.log(student);
     });
   }
 
@@ -693,7 +623,7 @@ class AdminPage extends Component {
             totalPages: totalPages,
           });
         }).catch(error => {
-          console.error(`ERROR trying to GET /api/admin/field/:name?search=[query]: ${error}`);
+          console.error(`ERROR trying to GET`);
           alert("Uh-oh! Something went wrong with the search!");
         });
     }
@@ -701,11 +631,11 @@ class AdminPage extends Component {
 
   handleClickOpen = () => {
     this.setState({ open: true });
-};
+  };
 
-handleClose = () => {
+  handleClose = () => {
     this.setState({ open: false })
-};
+  };
 
   render() {
     let content = null;
@@ -749,17 +679,6 @@ handleClose = () => {
           </div>
           <div className="wrapperGridAdmin">
             <div id="inputFieldSearch" className="il-block">
-              {/* <div className="il-block">
-                <TextField
-                  id="addSearch"
-                  onChange={this.handleSearchChange}
-                  name="searchQuery"
-                  value={this.state.searchQuery}
-                  label="Search Everything"
-                  placeholder="Search"
-                  margin="normal" ></TextField>
-                {buttonDisplayed}
-              </div> */}
             </div><br />
             <div id="advanced-search">
               <div id="first-adv-search">
@@ -802,63 +721,62 @@ handleClose = () => {
             </div>
           </div>
           <div>
-        <p onClick={this.handleClickOpen}>
-        <FontAwesomeIcon icon={faInfoCircle} 
-           style = {{color: "black",  fontSize: "30px",
-           marginLeft: "910px",
-           marginTop: "-52px",
-           float: "left"
-      }}
-        /></p>
-        <Dialog
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                    aria-labelledby="form-dialog-title"
-                >
-   
-                    <DialogContent>
-                      <DialogContentText>
-                      Select the column you wish to search by in the first search field.  Then, select the value you wish to search for by typing a value or selecting a value from the dropdown menu in the second search field.
-                      </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-            <Button onClick={this.handleClose} color="primary" autoFocus>
-              Close
+            <p onClick={this.handleClickOpen}>
+              <FontAwesomeIcon icon={faInfoCircle}
+                style={{
+                  color: "black", fontSize: "30px",
+                  marginLeft: "910px",
+                  marginTop: "-52px",
+                  float: "left"
+                }}
+              /></p>
+            <Dialog
+              open={this.state.open}
+              onClose={this.handleClose}
+              aria-labelledby="form-dialog-title"
+            >
+              <DialogContent>
+                <DialogContentText>
+                  Select the column you wish to search by in the first search field.  Then, select the value you wish to search for by typing a value or selecting a value from the dropdown menu in the second search field.
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={this.handleClose} color="primary" autoFocus>
+                  Close
             </Button>
-          </DialogActions>
-                    </Dialog>
-       
-        </div>
+              </DialogActions>
+            </Dialog>
+          </div>
           <div>
             <JsonArrayToCsv convert={this.state.results} />
           </div>
           <div>
-        <p onClick={this.handleClickOpen}>
-        <FontAwesomeIcon icon={faInfoCircle} 
-           style = {{color: "black",  fontSize: "30px",
-           marginLeft: "205px",
-           marginTop: "-69px",
-           float: "left"
-      }}
-        /></p>
-        <Dialog
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                    aria-labelledby="form-dialog-title"
-                >
-                    <DialogContent>
-                      <DialogContentText>
-                        The "Download CSV File" will only download data rows that are returned in the table below.  Data for all columns, not just the columns visible on the table, will be downloaded.  Use the "Search" fields above to tailor your table results to the data you wish to download.
+            <p onClick={this.handleClickOpen}>
+              <FontAwesomeIcon icon={faInfoCircle}
+                style={{
+                  color: "black", fontSize: "30px",
+                  marginLeft: "205px",
+                  marginTop: "-69px",
+                  float: "left"
+                }}
+              /></p>
+            <Dialog
+              open={this.state.open}
+              onClose={this.handleClose}
+              aria-labelledby="form-dialog-title"
+            >
+              <DialogContent>
+                <DialogContentText>
+                  The "Download CSV File" will only download data rows that are returned in the table below.  Data for all columns, not just the columns visible on the table, will be downloaded.  Use the "Search" fields above to tailor your table results to the data you wish to download.
                       </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-            <Button onClick={this.handleClose} color="primary" autoFocus>
-              Close
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={this.handleClose} color="primary" autoFocus>
+                  Close
             </Button>
-          </DialogActions>
-                    </Dialog>
-       
-        </div>
+              </DialogActions>
+            </Dialog>
+          </div>
           <div>
             <Table id="searchTableResults">
               <TableHead>
@@ -873,7 +791,6 @@ handleClose = () => {
                   <TableCell>Company</TableCell>
                   <TableCell>New wage</TableCell>
                   <TableCell>Exit Status</TableCell>
-                  {/* <TableCell>Edit</TableCell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -889,7 +806,6 @@ handleClose = () => {
                     <TableCell>{person.company}</TableCell>
                     <TableCell>{person.starting_wage}</TableCell>
                     <TableCell>{person.exit_status}</TableCell>
-                    {/* <TableCell><EditStudentModal person={person}/></TableCell> */}
                   </TableRow>
                 ))}
               </TableBody>
@@ -902,8 +818,6 @@ handleClose = () => {
         </div>
       );
     }
-    
-
     return (
       <div>
         <Nav />

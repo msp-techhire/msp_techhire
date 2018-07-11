@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 const mapStateToProps = state => ({
   search: state.search,
@@ -23,7 +22,6 @@ class AdvancedSearch extends Component {
     });
   }
 
-  /* Field Displays START */
   all = () => {
     return <input 
       type="text" 
@@ -198,7 +196,7 @@ class AdvancedSearch extends Component {
       onChange={this.handleValueChange}>
       <option value="">--Select--</option>
       <option value="Classroom">Classroom</option>
-      <option vlaue="Online">Online</option>
+      <option value="Online">Online</option>
     </select> 
   }
 
@@ -273,7 +271,6 @@ class AdvancedSearch extends Component {
       onLoad={this.handleValueChange}
       onChange={this.handleValueChange} />
   }
-  /* Field Displays END */
 
   handleFieldChange = event => {
     const selection = event.target.value;

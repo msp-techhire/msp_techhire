@@ -9,7 +9,6 @@ import NewPartnerForm from './NewPartnerForm/NewPartnerForm';
 import SelectedPartnerInfo from './SelectedPartnerInfo/SelectedPartnerInfo';
 import SelectedPartnerStats from './SelectedPartnerStats/SelectedPartnerStats';
 
-
 const mapStateToProps = state => ({
   user: state.user,
   selectedPartner: state.editPartnerReducer.selectedPartner,
@@ -63,7 +62,6 @@ class EditPartner extends Component {
     }
   }
 
-  /* PRESENTATION FUNCTIONS: START */
   tempState = {};
 
   fill = (state, id, value) => {
@@ -94,7 +92,6 @@ class EditPartner extends Component {
     this.fill('directorLast', 'newDirectorLast', 'Colton');
     this.fill('businessType', 'newBusinessType', 'For-profit');
   }
-  /* PRESENTATION FUNCTIONS: END */
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -119,9 +116,6 @@ class EditPartner extends Component {
     this.props.history.push('login');
   }
 
-  /* ------------------------------ */
-  /* OPEN AND CLOSE NEW PARTNER MODALS */
-  /* ------------------------------ */
   openNewPartnerModal = () => {
     this.setState({ newPartnerModal: { open: true } });
   }
@@ -129,10 +123,6 @@ class EditPartner extends Component {
   closeNewPartnerModal = () => {
     this.setState({ newPartnerModal: { open: false } });
   }
-
-  /* ------------------------------ */
-  /* OPEN AND CLOSE EDIT PARTNER MODALS */
-  /* ------------------------------ */
 
   openEditPartnerModal = () => {
     this.setState({ editPartnerModal: { open: true } });
@@ -142,10 +132,6 @@ class EditPartner extends Component {
     this.setState({ editPartnerModal: { open: false } });
   }
 
-  /* ------------------------------ */
-  /* OPEN AND CLOSE NEW USER MODALS */
-  /* ------------------------------ */
-
   openNewUserModal = () => {
     this.setState({ newUserModal: { open: true } });
   }
@@ -154,9 +140,6 @@ class EditPartner extends Component {
     this.setState({ newUserModal: { open: false } });
   }
 
-  /* ------------------------------ */
-  /* GET SELECTED PARTNER*/
-  /* ------------------------------ */
   selectPartnerFromDropdown = (event) => {
     this.getPartnerData(event.target.value);
     this.getPartnerStats(event.target.value);
@@ -165,9 +148,6 @@ class EditPartner extends Component {
     });
   }
 
-  /* ------------------------------ */
-  /* FUNCTIONS FOR NEW PARTNERS */
-  /* ------------------------------ */
   handleFormChange = (event) => {
     this.setState({
       newOrg: {
@@ -191,7 +171,6 @@ class EditPartner extends Component {
       data: this.state.newOrg,
     })
       .then((response) => {
-        console.log(response);
         this.setState({
           newOrg: {
             orgName: '',
@@ -213,10 +192,6 @@ class EditPartner extends Component {
       })
       .catch(err => console.log(err));
   }
-
-  /* ------------------------------ */
-  /* FUNCTION FOR NEW USER */
-  /* ------------------------------ */
 
   handleNewUserChange = (event) => {
     this.setState({
@@ -245,9 +220,6 @@ class EditPartner extends Component {
     this.closeNewUserModal();
   }
 
-  /* ------------------------------ */
-  /* FUNCTIONS TO EDIT PARTNERS */
-  /* ------------------------------ */
   handleEditChange = (event) => {
     this.setState({
       selectedPartner: {
@@ -264,15 +236,12 @@ class EditPartner extends Component {
       data: this.state.selectedPartner,
     })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
       })
       .catch(err => console.log(err));
     this.closeEditPartnerModal();
   }
 
-  /* ------------------------------ */
-  /* FUNCTIONS TO RETRIEVE DATA */
-  /* ------------------------------ */
   getPartners = () => {
     axios({
       method: 'GET',
@@ -283,7 +252,10 @@ class EditPartner extends Component {
           partnerList: response.data
         });
       })
-      .catch(err => console.log(err))
+      .catch(error => {
+        console.error(`ERROR trying to GET`);
+        alert('Error: Retrieving was unsuccessful.');
+      });
   }
 
   getPartnerData = (id) => {
@@ -306,7 +278,10 @@ class EditPartner extends Component {
           }
         });
       })
-      .catch(err => console.log(err));
+      .catch(error => {
+        console.error(`ERROR trying to GET`);
+        alert('Error: Retrieving was unsuccessful.');
+      });
   }
 
   getPartnerStats = (id) => {
@@ -324,7 +299,10 @@ class EditPartner extends Component {
           partnerStats: objectForState,
         });
       })
-      .catch(err => console.log(err));
+      .catch(error => {
+        console.error(`ERROR trying to GET`);
+        alert('Error: Retrieving was unsuccessful.');
+      });
   }
 
   render() {
@@ -372,7 +350,6 @@ class EditPartner extends Component {
         </div>
       );
     }
-
     return (
       <div>
         <Nav />
@@ -382,5 +359,4 @@ class EditPartner extends Component {
   }
 }
 
-// this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(EditPartner);
