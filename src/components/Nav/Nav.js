@@ -23,8 +23,17 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
   },
-
+  muitoolbar: {
+    background:  'url("/images/pathway.jpg")',
+    backgroundSize: '100%',
+    height: '150px',
+    minWidth: '975px',
+    backgroundRepeat: 'no-repeat'
+  },
   menuButton: {
+    backgroundColor: 'white',
+    height: '45px',
+    borderRadius: '25px',
     marginLeft: 12,
     marginRight: 20,
   },
@@ -158,7 +167,7 @@ class Nav extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Toolbar disableGutters={!open}>
+        <Toolbar className={classes.muitoolbar} disableGutters={!open}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
