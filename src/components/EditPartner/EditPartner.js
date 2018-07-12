@@ -322,6 +322,7 @@ class EditPartner extends Component {
           />
 
           <SelectedPartnerInfo
+            selectedPartnerId={this.state.selectedPartnerID}
             selectedPartner={this.state.selectedPartner}
             handleEditChange={this.handleEditChange}
             updatePartnerInfo={this.updatePartnerInfo}
