@@ -13,6 +13,7 @@ const SelectedPartnerInfo = (props) => {
             <Table id="selectedPartnerTable">
                 <TableHead id="selectPartnerTableHead">
                     <TableRow>
+                        <TableCell>Partner Id</TableCell>
                         <TableCell>Org Name</TableCell>
                         <TableCell>Address</TableCell>
                         <TableCell>Director</TableCell>
@@ -24,6 +25,7 @@ const SelectedPartnerInfo = (props) => {
                 </TableHead>
                 <TableBody>
                     <TableRow>
+                        <TableCell>{props.selectedPartnerID}</TableCell>
                         <TableCell>{props.selectedPartner.orgName}</TableCell>
                         <TableCell>{props.selectedPartner.orgAddress}</TableCell>
                         <TableCell>{props.selectedPartner.directorFirst} {props.selectedPartner.directorLast}</TableCell>
